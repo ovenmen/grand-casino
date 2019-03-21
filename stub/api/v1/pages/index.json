@@ -1,0 +1,13 @@
+{
+    "head": {
+        "title": "Главная",
+        "description": "Next.js template",
+        "keywords": ""
+    },
+    "header": "Стартовая страница",
+    "content": [
+        {
+            "title": "Первый блок"
+        }
+    ]
+}
