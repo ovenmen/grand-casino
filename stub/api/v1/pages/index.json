@@ -5,6 +5,52 @@
         "keywords": ""
     },
     "header": "Стартовая страница",
+    "brand": ["G", "C"],
+    "navigation": [
+        {
+            "title": "Главная",
+            "value": "/",
+            "active": true
+        },
+        {
+            "title": "Мероприятия",
+            "value": "/events",
+            "submenu": [
+                {
+                    "title": "Grand Caasino",
+                    "value": "/events/grand-caasino"
+                },
+                {
+                    "title": "Grand Royal",
+                    "value": "/events/grand-royal"
+                },
+                {
+                    "title": "Grand Casino",
+                    "value": "/events/grand-casino"
+                },
+                {
+                    "title": "Grand Club",
+                    "value": "/events/grand-club"
+                }
+            ]
+        },
+        {
+            "title": "Цены",
+            "value": "/prices"
+        },
+        {
+            "title": "Франшиза",
+            "value": "/franchise"
+        },
+        {
+            "title": "Отзывы и FAQ",
+            "value": "/reviews"
+        },
+        {
+            "title": "Контакты",
+            "value": "/contacts"
+        }
+    ],
     "content": [
         {
             "title": "Первый блок"

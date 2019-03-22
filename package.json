@@ -12,6 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "@zeit/next-css": "^1.0.1",
     "isomorphic-unfetch": "^3.0.0",
     "koa": "^2.7.0",
     "koa-json": "^2.0.2",
@@ -21,9 +25,11 @@
     "react-dom": "^16.8.4"
   },
   "devDependencies": {
+    "classnames": "^2.2.6",
     "cross-env": "^5.2.0",
     "eslint": "^5.15.2",
     "eslint-plugin-react": "^7.12.4",
+    "lodash": "^4.17.11",
     "nodemon": "^1.18.10"
   }
 }
