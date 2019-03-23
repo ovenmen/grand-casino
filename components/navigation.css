@@ -1,71 +1,75 @@
 .navigation {
-    background-color: #000000;
-}
-
-.menu,
-.menu-vertical,
-.submenu {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    transition: all 0.4s ease-in-out;
+    background: #000000;
 }
 
 .menu {
+    display: flex;
     justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.vertical {
-    flex-direction: column;
-}
-
-.menu .menu-item {
-    display: inline-block;
-    padding: 3rem 1rem;
-}
-
-.vertical .menu-item {
-    padding: 0.5rem 0;
+.menu-item {
+    padding: 2rem 1rem;
 }
 
 .submenu {
-    margin: 0 -2rem;
-    padding: 1rem 2rem;
+    list-style: none;
+    margin: 0;
+    visibility: hidden;
     position: absolute;
     z-index: -1;
-    top: 10rem;
     background: #2f2250;
-    transition: all 0.4s ease-in-out;
+    padding: 1rem 2rem;
+    top: 10rem;
     opacity: 0;
-    visibility: hidden;
+    transition: top 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+.menu-item:hover .submenu {
+    visibility: visible;
+    top: 5.75rem;
+    opacity: 1;
+    z-index: 100;
 }
 
 .submenu-item {
-    padding: 0.8rem 0;
+    padding: 0.5rem 0;
 }
 
 .active {
     color: #a48eec;
 }
 
-.menu-item:hover .submenu {
-    opacity: 1;
-    z-index: 100;
-    top: 7.7rem;
-    visibility: visible;
-}
-
 .toggle-button {
-    display: flex;
-    cursor: pointer;
     position: absolute;
+    top: 2px;
     right: 1rem;
-    top: 0;
-    align-self: center;
-    z-index: 100;
+    cursor: pointer;
 }
 
-.visible {
-    max-height: 20rem;
+@media (max-width: 640px) {
+    .menu {
+        flex-direction: column;
+    }
+
+    .menu-item {
+        padding: 0.5rem 0;
+    }
+
+    .submenu {
+        display: none;
+    }
+
+    .hidden {
+        visibility: hidden;
+        max-height: 0;
+        transition: all 0.4s ease-in-out;
+    }
+
+    .visible {
+        visibility: visible;
+        max-height: 20rem;
+    }
 }
