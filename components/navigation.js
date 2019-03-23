@@ -21,51 +21,48 @@ class Navigation extends React.Component {
     }
 
     render() {
-        const { brand, navigation } = this.props
+        const { navigation, brand } = this.props
         const { isOpen } = this.state
-        const icon = isOpen ? faTimes : faBars
-        const classes = isOpen ? 'menu vertical visible' : 'menu show-for-medium'
+        const classes = classnames('cell small-12 medium-11 larg-11 hidden', isOpen && 'visible')
 
         return (
             <nav className="navigation">
+                <div className="toggle-button show-for-small-only align-top">
+                    <span className="color-white" onClick={this.handleClickToggleButton}>
+                        <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
+                    </span>
+                </div>
                 <div className="grid-x grid-padding-x align-middle">
-                    <div className="cell small-12 medium-12 large-12 row-wrap">
-                        <div className="grid-x align-middle">
-                            <div className="cell small-12 medium-1 large-1">
-                                <Brand brand={brand} />
-                            </div>
-                            <div className="toggle-button show-for-small-only align-top">
-                                <span className="color-white align-right" onClick={this.handleClickToggleButton}>
-                                    <FontAwesomeIcon icon={icon} />
-                                </span>
-                            </div>
-                            <div className="cell small-12 medium-11 large-11">
-                                <ul className={classes}>
-                                    {map(navigation, (menuItem, menuIndex) => (
-                                        <li className={menuItem.active ? 'menu-item active' : 'menu-item'} key={uniqueId(menuIndex)}>
-                                            <Link href={menuItem.value}>
-                                                <a className={classnames('color-white font-bold h5', menuItem.active && 'active')}>
-                                                    {menuItem.title}
-                                                </a>
-                                            </Link>
-                                            {menuItem.submenu && (
-                                                <ul className="submenu flex-dir-column show-for-medium">
-                                                    {map(menuItem.submenu, (submenuItem, submenuIndex) => (
-                                                        <li className="submenu-item" key={uniqueId(submenuIndex)}>
-                                                            <Link href={submenuItem.value}>
-                                                                <a className={classnames('color-white font-bold h5', submenuItem.active && 'active')}>
-                                                                    {submenuItem.title}
-                                                                </a>
-                                                            </Link>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            )}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                    <div className="cell small-12 medium-1 large-1">
+                        <div className="cell small-12 medium-1 large-1">
+                            <Brand brand={brand} />
                         </div>
+                    </div>
+                    <div className={classes}>
+                        <ul className="menu">
+                            {map(navigation, (menuItem, menuIndex) => (
+                                <li className={menuItem.active ? 'menu-item active' : 'menu-item'} key={uniqueId(menuIndex)}>
+                                    <Link href={menuItem.value}>
+                                        <a className={classnames('color-white font-bold h5', menuItem.active && 'active')}>
+                                            {menuItem.title}
+                                        </a>
+                                    </Link>
+                                    {menuItem.submenu && (
+                                        <ul className="submenu flex-dir-column">
+                                            {map(menuItem.submenu, (submenuItem, submenuIndex) => (
+                                                <li className="submenu-item" key={uniqueId(submenuIndex)}>
+                                                    <Link href={submenuItem.value}>
+                                                        <a className={classnames('color-white font-bold h5', submenuItem.active && 'active')}>
+                                                            {submenuItem.title}
+                                                        </a>
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </nav>
