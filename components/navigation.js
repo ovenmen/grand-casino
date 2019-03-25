@@ -32,7 +32,7 @@ class Navigation extends React.Component {
                         <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
                     </span>
                 </div>
-                <div className="grid-x grid-padding-x align-middle align-center">
+                <div className="grid-x grid-padding-x align-middle">
                     <div className="cell small-12 medium-12 large-1">
                         <div className="brand">
                             <Brand brand={brand} />

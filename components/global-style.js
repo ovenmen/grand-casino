@@ -2,7 +2,7 @@ import React from 'react'
 
 const GlobalStyle = () => (
     <style global jsx>{`
-        body {
+        * {
             font-family: 'PT Serif', serif;
         }
         .link,

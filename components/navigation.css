@@ -41,7 +41,7 @@
 }
 
 .active {
-    color: #a48eec;
+    color: #a48eec !important;
 }
 
 .toggle-button {
