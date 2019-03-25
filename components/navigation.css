@@ -8,10 +8,12 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    position: relative;
 }
 
 .menu-item {
     padding: 2rem 1rem;
+    white-space: nowrap;
 }
 
 .submenu {
@@ -49,7 +51,7 @@
     cursor: pointer;
 }
 
-@media (max-width: 640px) {
+@media screen and (max-width: 39.9375em) {
     .menu {
         flex-direction: column;
     }
@@ -65,11 +67,26 @@
     .hidden {
         visibility: hidden;
         max-height: 0;
+        overflow: hidden;
         transition: all 0.4s ease-in-out;
     }
 
     .visible {
         visibility: visible;
         max-height: 20rem;
+    }
+}
+
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+    .brand {
+        text-align: center;
+    }
+
+    .menu {
+        justify-content: space-between;
+    }
+
+    .menu-item {
+        padding: 2rem 0;
     }
 }

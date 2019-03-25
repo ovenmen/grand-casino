@@ -5,18 +5,21 @@ const GlobalStyle = () => (
         body {
             font-family: 'PT Serif', serif;
         }
-        a {
-            color: #fff;
+        .link,
+        .link-not-hover,
+        .link-not-hover:focus,
+        .link:focus {
+            color: #ffffff;
             transition: all 0.3s ease-in-out;
         }
-        a:hover {
+        .link:hover {
             color: #a48eec !important;
+        }
+        .link-not-hover:hover {
+            color: #ffffff;
         }
         .color-white {
             color: #ffffff;
-        }
-        .row-wrap {
-            flex-wrap: wrap;
         }
     `}</style>
 )
