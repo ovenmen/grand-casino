@@ -28,6 +28,7 @@ export default class extends App {
                     <base href={BASE_URL} />
                     <link rel="stylesheet" href="/static/css/foundation.min.css" />
                     <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700&amp;subset=cyrillic" rel="stylesheet" />
+                    <link rel="icon" type="image/ico" sizes="16x16" href="/static/images/favicon.ico" />
                 </Head>
                 <Layout>
                     <Component {...pageProps} />

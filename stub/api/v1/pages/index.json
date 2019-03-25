@@ -1,7 +1,7 @@
 {
     "head": {
-        "title": "Главная",
-        "description": "Next.js template",
+        "title": "Grand Casino | Выездные мероприятия",
+        "description": "Выездные мероприятия",
         "keywords": ""
     },
     "header": "Стартовая страница",
@@ -51,9 +51,10 @@
             "value": "/contacts"
         }
     ],
-    "content": [
-        {
-            "title": "Первый блок"
+    "content": {
+        "promo": {
+            "header": "DO YOU WANNA SEE YOUR",
+            "description": "FIANCE CUT IN HALF BY A MAGICIAN?"
         }
-    ]
+    }
 }

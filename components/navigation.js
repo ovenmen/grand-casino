@@ -23,27 +23,27 @@ class Navigation extends React.Component {
     render() {
         const { navigation, brand } = this.props
         const { isOpen } = this.state
-        const classes = classnames('cell small-12 medium-11 larg-11 hidden', isOpen && 'visible')
+        const classes = classnames('cell small-12 medium-12 large-11 hidden', isOpen && 'visible')
 
         return (
-            <nav className="navigation">
-                <div className="toggle-button show-for-small-only align-top">
+            <nav className="navigation grid-container fluid">
+                <div className="toggle-button show-for-small-only">
                     <span className="color-white" onClick={this.handleClickToggleButton}>
                         <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
                     </span>
                 </div>
                 <div className="grid-x grid-padding-x align-middle">
-                    <div className="cell small-12 medium-1 large-1">
-                        <div className="cell small-12 medium-1 large-1">
+                    <div className="cell small-12 medium-12 large-1">
+                        <div className="brand">
                             <Brand brand={brand} />
                         </div>
                     </div>
                     <div className={classes}>
                         <ul className="menu">
                             {map(navigation, (menuItem, menuIndex) => (
-                                <li className={menuItem.active ? 'menu-item active' : 'menu-item'} key={uniqueId(menuIndex)}>
+                                <li className="menu-item" key={uniqueId(menuIndex)}>
                                     <Link href={menuItem.value}>
-                                        <a className={classnames('color-white font-bold h5', menuItem.active && 'active')}>
+                                        <a className={classnames('link font-bold h5', menuItem.active && 'active')}>
                                             {menuItem.title}
                                         </a>
                                     </Link>
@@ -52,7 +52,7 @@ class Navigation extends React.Component {
                                             {map(menuItem.submenu, (submenuItem, submenuIndex) => (
                                                 <li className="submenu-item" key={uniqueId(submenuIndex)}>
                                                     <Link href={submenuItem.value}>
-                                                        <a className={classnames('color-white font-bold h5', submenuItem.active && 'active')}>
+                                                        <a className={classnames('link font-bold h5', submenuItem.active && 'active')}>
                                                             {submenuItem.title}
                                                         </a>
                                                     </Link>
