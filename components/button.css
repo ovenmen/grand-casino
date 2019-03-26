@@ -1,0 +1,17 @@
+.button {
+    border: 2px solid #ffffff;
+    padding: 1.5rem 2.5rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.link.button:hover {
+    background: #ffffff;
+    color: #372964 !important;
+}
+
+@media screen and (max-width: 39.9375em) {
+    .button {
+        padding: 0.7rem 1rem;
+    }
+}
