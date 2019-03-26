@@ -55,6 +55,12 @@
         "promo": {
             "header": "DO YOU WANNA SEE YOUR",
             "description": "FIANCE CUT IN HALF BY A MAGICIAN?"
+        },
+        "action": {
+            "header": "PEOPLE ALWAYS LOVED MAGIC",
+            "description": "People always loved magic, solely because of how entertaining watching all these tricks is.",
+            "buttonTitle": "Написать нам",
+            "buttonHref": "/contacts"
         }
     }
 }

@@ -3,13 +3,15 @@ import { object } from 'prop-types'
 
 import fetchDataPage from '../utils/fetch-data-page'
 import Promo from '../components/promo'
+import Action from '../components/action'
 
 const IndexPage = ({ data }) => {
-    const { promo } = data.content
+    const { promo, action } = data.content
 
     return (
         <section>
             <Promo {...promo} />
+            <Action {...action} />
         </section>
     )
 }
