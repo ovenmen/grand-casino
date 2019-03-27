@@ -1,7 +1,7 @@
 .action {
     background: url('/static/images/bg-action.jpg') center center no-repeat;
     background-size: cover;
-    padding: 5vw;
+    padding: 5vw 10vw;
 }
 
 .headers-actions {
