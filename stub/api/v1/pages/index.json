@@ -61,6 +61,41 @@
             "description": "People always loved magic, solely because of how entertaining watching all these tricks is.",
             "buttonTitle": "Написать нам",
             "buttonHref": "/contacts"
+        },
+        "activity": {
+            "header": "Мероприятия",
+            "description": [
+                "When we are talking about any kind of a personal event, be it a private party, a bachelorette party, birthday or what not, it is never a bad idea to enhance the mood with a little bit of mystery & fun!",
+                "This is exactly what my magic shows are all about. With a range of magic tricks up my sleeve."
+            ],
+            "buttonTitle": "Написать нам",
+            "buttonHref": "/contacts",
+            "items": [
+                {
+                    "header": "Grand Caasino",
+                    "buttonTitle": "Подробнее",
+                    "buttonHref": "/events/grand-caasino",
+                    "image": "bg-event.jpg"
+                },
+                {
+                    "header": "Grand Royal",
+                    "buttonTitle": "Подробнее",
+                    "buttonHref": "/events/grand-royal",
+                    "image": "bg-event.jpg"
+                },
+                {
+                    "header": "Grand Casino",
+                    "buttonTitle": "Подробнее",
+                    "buttonHref": "/events/grand-casino",
+                    "image": "bg-event.jpg"
+                },
+                {
+                    "header": "Grand Club",
+                    "buttonTitle": "Подробнее",
+                    "buttonHref": "/events/grand-club",
+                    "image": "bg-event.jpg"
+                }
+            ]
         }
     }
 }
