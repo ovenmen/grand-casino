@@ -16,7 +16,7 @@ const Action = ({ header, description, buttonTitle, buttonHref }) => (
                 </div>
                 <div className="cell small-12 medium-12 large-4">
                     <p className="button-action color-white text-right">
-                        <Button title={buttonTitle} href={buttonHref} />
+                        <Button title={buttonTitle} href={buttonHref} bigSize />
                     </p>
                 </div>
             </div>
