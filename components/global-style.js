@@ -5,6 +5,10 @@ const GlobalStyle = () => (
         * {
             font-family: 'PT Serif', serif;
         }
+        html,
+        body {
+            scroll-behavior: smooth;
+        }
         .link,
         .link-not-hover,
         .link-not-hover:focus,

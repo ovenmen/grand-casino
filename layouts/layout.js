@@ -2,6 +2,7 @@ import React from 'react'
 import { object } from 'prop-types'
 
 import Navigation from '../components/navigation'
+import Scroller from '../components/scroller'
 
 const Layout = ({ children }) => {
     const { navigation, brand } = children.props.data
@@ -14,6 +15,7 @@ const Layout = ({ children }) => {
             <main>
                 {children}
             </main>
+            <Scroller />
         </article>
     )
 }

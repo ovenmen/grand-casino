@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-simple-template",
+  "name": "grand-casino",
   "version": "1.0.0",
   "description": "",
   "main": "server/index.js",
@@ -21,14 +21,14 @@
     "koa-json": "^2.0.2",
     "koa-router": "^7.4.0",
     "next": "^8.0.3",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "classnames": "^2.2.6",
     "cross-env": "^5.2.0",
-    "eslint": "^5.15.2",
+    "eslint": "^5.16.0",
     "eslint-plugin-react": "^7.12.4",
     "lodash": "^4.17.11",
     "nodemon": "^1.18.10"
