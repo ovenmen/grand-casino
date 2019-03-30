@@ -5,12 +5,14 @@ import fetchDataPage from '../utils/fetch-data-page'
 import Promo from '../components/promo'
 import Action from '../components/action'
 import Activity from '../components/activity'
+import Reviews from '../components/reviews'
 
 const IndexPage = ({ data }) => {
     const {
         promo,
         action,
-        activity
+        activity,
+        reviews
     } = data.content
 
     return (
@@ -18,6 +20,7 @@ const IndexPage = ({ data }) => {
             <Promo {...promo} />
             <Action {...action} />
             <Activity {...activity} />
+            <Reviews {...reviews} />
         </section>
     )
 }
