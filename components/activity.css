@@ -5,11 +5,11 @@
 .info {
     background: url('/static/images/bg-activity.jpg') center center no-repeat;
     background-size: cover;
-    padding: 5vw;
+    padding: 5.5vw;
 }
 
 .activity-event {
-    height: 16rem;
+    height: 17rem;
     position: relative;
     z-index: 1000;
 }

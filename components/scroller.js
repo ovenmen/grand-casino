@@ -3,9 +3,9 @@ import classnames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons'
 
-import './scroller.css'
+import { SHOW_SCROLL_POSITION} from '../config'
 
-const SHOW_SCROLL_POSITION = 100
+import './scroller.css'
 
 class Scroller extends Component {
     state = {
