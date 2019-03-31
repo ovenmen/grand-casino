@@ -2,7 +2,7 @@ import React from 'react'
 
 const GlobalStyle = () => (
     <style global jsx>{`
-        * {
+        body {
             font-family: 'PT Serif', serif;
         }
         html,
@@ -27,6 +27,18 @@ const GlobalStyle = () => (
         }
         .color-purple {
             color: #372964;
+        }
+        .error {
+            padding: 10vw 5vw;
+        }
+        .error-header {
+            color: #372964;
+            font-size: 5rem;
+        }
+        @media screen and (max-width: 39.9375em) {
+            .error-header {
+                font-size: 3.5rem;
+            }
         }
     `}</style>
 )

@@ -26,7 +26,7 @@
     padding: 1rem 2rem;
     top: 10rem;
     opacity: 0;
-    transition: top 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.2s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 
 .menu-item:hover .submenu {
