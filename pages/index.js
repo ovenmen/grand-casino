@@ -8,12 +8,7 @@ import Activity from '../components/activity'
 import Reviews from '../components/reviews'
 
 const IndexPage = ({ data }) => {
-    const {
-        promo,
-        action,
-        activity,
-        reviews
-    } = data.content
+    const { promo, action, activity, reviews } = data.content
 
     return (
         <section>

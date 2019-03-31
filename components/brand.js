@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const Brand = ({ brand }) => (
     <Link href="/">
-        <a className="h2 link-not-hover">
+        <a className="h2 link color-white">
             <span className="first-letter font-bold">{head(brand)}</span>
             <span className="last-letter font-bold">{last(brand)}</span>
         </a>

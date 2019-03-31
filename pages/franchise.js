@@ -4,24 +4,24 @@ import { object } from 'prop-types'
 import fetchDataPage from '../utils/fetch-data-page'
 import HeaderPage from '../components/header-page'
 import Breadcrumbs from '../components/breadcrumbs'
-import TablePrices from '../components/table-prices'
+import Ymap from '../components/ymap'
 import Action from '../components/action'
 
 const PricesPage = ({ data }) => {
     const { header, headerImage, breadcrumbs } = data
-    const { action, tablePrices } = data.content
+    const { action, map } = data.content
 
     return (
         <section>
             <Breadcrumbs breadcrumbs={breadcrumbs} />
             <HeaderPage header={header} image={headerImage} />
-            <TablePrices {...tablePrices} />
+            <Ymap {...map} />
             <Action {...action} />
         </section>
     )
 }
 
-PricesPage.getInitialProps = fetchDataPage('prices')
+PricesPage.getInitialProps = fetchDataPage('franchise')
 
 PricesPage.propTypes = {
     data: object

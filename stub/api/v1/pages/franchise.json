@@ -1,10 +1,11 @@
 {
     "head": {
-        "title": "Grand Casino | 404",
-        "description": "404 - Страница не найдена",
+        "title": "Grand Casino | Франшиза",
+        "description": "Франшиза",
         "keywords": ""
     },
-    "header": "404",
+    "header": "Франшиза",
+    "headerImage": "bg-prices-header-page.jpg",
     "brand": ["G", "C"],
     "navigation": [
         {
@@ -39,7 +40,8 @@
         },
         {
             "title": "Франшиза",
-            "value": "/franchise"
+            "value": "/franchise",
+            "active": true
         },
         {
             "title": "Отзывы и FAQ",
@@ -50,10 +52,47 @@
             "value": "/contacts"
         }
     ],
+    "breadcrumbs": [
+        {
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Франшиза",
+            "value": "/franchise",
+            "active": true
+        }
+    ],
     "content": {
-        "error": {
-            "header": "404",
-            "description": "Страница не найдена"
+        "map": {
+            "header": "",
+            "description": "",
+            "items": [
+                {
+                    "city": "Самара",
+                    "cooperation": true,
+                    "lat": "53.195534",
+                    "long": "50.102240"
+                },
+                {
+                    "city": "Москва",
+                    "cooperation": true,
+                    "lat": "55.753203",
+                    "long": "37.622976"
+                },
+                {
+                    "city": "Томск",
+                    "cooperation": false,
+                    "lat": "56.484622",
+                    "long": "84.948122"
+                }
+            ]
+        },
+        "action": {
+            "header": "People Always Loved Magic, Solely Because Of How Entertaining Watching All These Tricks Is",
+            "description": "",
+            "buttonTitle": "Написать нам",
+            "buttonHref": "/contacts"
         }
     },
     "footer": {
