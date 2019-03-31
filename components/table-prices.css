@@ -1,0 +1,12 @@
+.table-prices {
+    padding: 5vw;
+}
+
+.price-row {
+    border-bottom: 1px solid #d2e0eb;
+}
+
+.price-item {
+    margin: 0;
+    padding: 1rem 0;
+}
