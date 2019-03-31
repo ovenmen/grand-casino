@@ -25,6 +25,9 @@ const GlobalStyle = () => (
         .color-white {
             color: #ffffff;
         }
+        .color-purple {
+            color: #372964;
+        }
     `}</style>
 )
 
