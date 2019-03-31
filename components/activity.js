@@ -11,8 +11,8 @@ import './activity.css'
 const Activity = ({ header, description, buttonTitle, buttonHref, items }) => (
     <section className="activity">
         <div className="grid-x align-middle">
-            <div className="cell small-12 medium-12 large-6">
-                <div className="grid-x grid-padding-x flex-dir-column info">
+            <div className="cell small-12 medium-12 large-6 info">
+                <div className="grid-x grid-padding-x flex-dir-column">
                     <div className="cell small-12">
                         <h2 className="text-uppercase text-right color-white margin-bottom-3">
                             <strong>{header}</strong>
