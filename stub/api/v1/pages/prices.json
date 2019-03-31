@@ -1,0 +1,66 @@
+{
+    "head": {
+        "title": "Grand Casino | Цены",
+        "description": "Стоимость мероприятий",
+        "keywords": ""
+    },
+    "header": "Стоимость мероприятий",
+    "headerImage": "bg-prices-header-page.jpg",
+    "brand": ["G", "C"],
+    "navigation": [
+        {
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Мероприятия",
+            "value": "/events",
+            "submenu": [
+                {
+                    "title": "Grand Caasino",
+                    "value": "/events/grand-caasino"
+                },
+                {
+                    "title": "Grand Royal",
+                    "value": "/events/grand-royal"
+                },
+                {
+                    "title": "Grand Casino",
+                    "value": "/events/grand-casino"
+                },
+                {
+                    "title": "Grand Club",
+                    "value": "/events/grand-club"
+                }
+            ]
+        },
+        {
+            "title": "Цены",
+            "value": "/prices",
+            "active": true
+        },
+        {
+            "title": "Франшиза",
+            "value": "/franchise"
+        },
+        {
+            "title": "Отзывы и FAQ",
+            "value": "/reviews"
+        },
+        {
+            "title": "Контакты",
+            "value": "/contacts"
+        }
+    ],
+    "content": {
+        
+    },
+    "footer": {
+        "description": "The world of magic is both intriguing and scary! It can either fascinate and entertain you with some amazing hand or card tricks or up your adrenaline. Whatever the case and the occasion, be sure that I will make your booking well worth it!",
+        "address": "22 St. Black Road Raleigh, PA 34578",
+        "operationMode": "Monday through Sunday, 24/7",
+        "email": "questoria.surgut@gmail.com",
+        "phone": "+7 (927) 725-22-29",
+        "copirated": "© 2019 Magnifio, Inc. All Rights Reserved"
+    }
+}
