@@ -19,8 +19,8 @@ app.prepare().then(() => {
         ctx.respond = true
     })
 
-    router.post('/api/v1/pages/about', async ctx => {
-        const json = require('../stub/api/v1/pages/about.json')
+    router.post('/api/v1/pages/prices', async ctx => {
+        const json = require('../stub/api/v1/pages/prices.json')
         ctx.body = { data: json }
         ctx.respond = true
     })
