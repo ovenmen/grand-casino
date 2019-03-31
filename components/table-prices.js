@@ -8,7 +8,7 @@ const TablePrices = ({ items }) => (
     <section className="table-prices">
         <div className="grid-container fluid">
             {map(items, (item, index) => (
-                <div className="grid-x price-row" key={uniqueId(index)}>
+                <div className="grid-x grid-padding-x price-row" key={uniqueId(index)}>
                     <div className="cell small-10 medium-10 large-10">
                         <p className="price-item">{item.title}</p>
                     </div>
