@@ -2,7 +2,6 @@ import React from 'react'
 import { string } from 'prop-types'
 
 import Button from './button'
-import './action.css'
 
 const Action = ({ header, description, buttonTitle, buttonHref }) => (
     <section className="action">
@@ -21,6 +20,45 @@ const Action = ({ header, description, buttonTitle, buttonHref }) => (
                 </div>
             </div>
         </div>
+
+        <style jsx>{`
+            .action {
+                background: url('/static/images/bg-action.jpg') center center no-repeat;
+                background-size: cover;
+                padding: 5vw 10vw;
+            }
+            .headers-actions {
+                padding-left: 3vw;
+                border-left: 4px solid #a8a8aa;
+            }
+            @media screen and (max-width: 39.9375em) {
+                .headers-actions,
+                .button-action {
+                    text-align: center;
+                }
+                .headers-actions {
+                    border: none;
+                    padding: 0;
+                }
+                .button-action {
+                    margin-top: 5vw;
+                }
+            }
+            @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+                .headers-actions,
+                .button-action {
+                    text-align: center;
+                }
+                .headers-actions {
+                    border: none;
+                    padding: 0;
+                }
+                .button-action {
+                    margin-top: 5vw;
+                    margin-bottom: 3vw;
+                }
+            }
+        `}</style>
     </section>
 )
 

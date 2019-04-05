@@ -2,8 +2,6 @@ import React from 'react'
 import { array } from 'prop-types'
 import { map, uniqueId } from 'lodash'
 
-import './table-prices.css'
-
 const TablePrices = ({ items }) => (
     <section className="table-prices">
         <div className="grid-container fluid">
@@ -18,6 +16,19 @@ const TablePrices = ({ items }) => (
                 </div>
             ))}
         </div>
+
+        <style jsx>{`
+            .table-prices {
+                padding: 5vw 10vw;
+            }
+            .price-row {
+                border-bottom: 1px solid #d2e0eb;
+            }
+            .price-item {
+                margin: 0;
+                padding: 1rem 0;
+            }
+        `}</style>
     </section>
 )
 

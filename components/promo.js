@@ -1,8 +1,6 @@
 import React from  'react'
 import { string } from 'prop-types'
 
-import './promo.css'
-
 const Promo = ({ header, description }) => (
     <section className="promo">
         <div className="grid-container fluid">
@@ -15,6 +13,19 @@ const Promo = ({ header, description }) => (
                 </div>
             </div>
         </div>
+
+        <style jsx>{`
+            .promo {
+                background: url('/static/images/bg-promo.jpg') center center no-repeat;
+                background-size: cover;
+            }
+            .headers {
+                margin-top: 28vw;
+                margin-bottom: 12vw;
+                padding-right: 3vw;
+                border-right: 4px solid #a8a8aa;
+            }
+        `}</style>
     </section>
 )
 

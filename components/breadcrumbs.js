@@ -3,8 +3,6 @@ import { array } from 'prop-types'
 import { map, uniqueId } from 'lodash'
 import Link from 'next/link'
 
-import './breadcrumbs.css'
-
 const Breadcrumbs = ({ breadcrumbs }) => (
     <section className="breadcrumbs">
         <div className="grid-container fluid">
@@ -25,6 +23,27 @@ const Breadcrumbs = ({ breadcrumbs }) => (
                 </div>
             </div>
         </div>
+
+        <style jsx>{`
+            .breadcrumbs {
+                padding: 1vw 0;
+            }
+            .breadcrumbs-nav {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            .breadcrumbs-nav .nav-item {
+                cursor: pointer;
+            }
+            .breadcrumbs-separate {
+                padding: 1rem 0.25rem;
+            }
+            .breadcrumbs-nav .nav-item:last-child {
+                cursor: auto;
+                color: #9c9c9c;
+            }
+        `}</style>
     </section>
 )
 
