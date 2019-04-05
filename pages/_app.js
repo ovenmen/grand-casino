@@ -8,6 +8,7 @@ import Loader from '../components/loader'
 import GlobalStyle from '../components/global-style'
 
 const Layout = dynamic(() => import('../layouts/layout'), {
+    // eslint-disable-next-line react/display-name
     loading: () => <Loader />,
     ssr: false
 })
