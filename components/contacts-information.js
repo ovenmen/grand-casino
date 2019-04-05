@@ -1,5 +1,5 @@
 import React from 'react'
-import { object } from 'prop-types'
+import { string } from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faVk, faFacebook, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
@@ -69,7 +69,11 @@ const ContactsInformation = ({ header, address, operationMode, phone, email }) =
 )
 
 ContactsInformation.propTypes = {
-    contactsInformationBlock: object
+    header: string,
+    address: string,
+    operationMode: string,
+    phone: string,
+    email: string
 }
 
 export default ContactsInformation
