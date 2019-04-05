@@ -12,10 +12,10 @@ const IndexPage = ({ data }) => {
 
     return (
         <section>
-            <Promo {...promo} />
-            <Action {...action} />
-            <Activity {...activity} />
-            <Reviews {...reviews} />
+            {promo && <Promo {...promo} />}
+            {action && <Action {...action} />}
+            {activity && <Activity {...activity} />}
+            {reviews && <Reviews {...reviews} />}
         </section>
     )
 }

@@ -13,10 +13,10 @@ const PricesPage = ({ data }) => {
 
     return (
         <section>
-            <Breadcrumbs breadcrumbs={breadcrumbs} />
-            <HeaderPage header={header} image={headerImage} />
-            <Ymap {...map} />
-            <Action {...action} />
+            {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
+            {header && headerImage && <HeaderPage header={header} image={headerImage} />}
+            {map && <Ymap {...map} />}
+            {action && <Action {...action} />}
         </section>
     )
 }

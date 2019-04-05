@@ -76,23 +76,23 @@ const Footer = ({ brand, footer, navigation }) => (
                     <p className="color-white">{footer.copirated}</p>
                 </div>
                 <div className="cell small-12 medium-2 large-2">
-                    <ul className="social-list">
-                        <li className="social-list-item">
+                    <ul className="social-list no-bullet">
+                        <li>
                             <a href="https://vk.com/questoria" className="color-white link" rel="noopener noreferrer" target="_blank">
                                 <FontAwesomeIcon className="fa-fw" icon={faVk} />
                             </a>
                         </li>
-                        <li className="social-list-item">
+                        <li>
                             <a href="https://www.facebook.com/questoria/" className="color-white link" rel="noopener noreferrer" target="_blank">
                                 <FontAwesomeIcon className="fa-fw" icon={faFacebook} />
                             </a>
                         </li>
-                        <li className="social-list-item">
+                        <li>
                             <a href="https://www.instagram.com/questories/" className="color-white link" rel="noopener noreferrer" target="_blank">
                                 <FontAwesomeIcon className="fa-fw" icon={faInstagram} />
                             </a>
                         </li>
-                        <li className="social-list-item">
+                        <li>
                             <a href="https://www.youtube.com/user/questoriaru" className="color-white link" rel="noopener noreferrer" target="_blank">
                                 <FontAwesomeIcon className="fa-fw" icon={faYoutube} />
                             </a>
@@ -146,7 +146,6 @@ const Footer = ({ brand, footer, navigation }) => (
                 border-top: 1px solid #7b7b7b;
             }
             .footer-social-section .social-list {
-                list-style: none;
                 display: flex;
                 padding: 0;
                 justify-content: space-around;
