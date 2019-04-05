@@ -4,8 +4,6 @@ import { map, uniqueId } from 'lodash'
 
 import { STATIC_IMAGES_URL } from '../config'
 
-import './reviews.css'
-
 const Reviews = ({ header, items }) => (
     <section className="reviews">
         <div className="grid-x grid-padding-x">
@@ -29,6 +27,34 @@ const Reviews = ({ header, items }) => (
                 </div>
             ))}
         </div>
+
+        <style jsx>{`
+            .reviews {
+                background: url('/static/images/bg-reviews.jpg') center center;
+                background-size: cover;
+                padding: 5vw;
+            }
+            .reviews-avatar {
+                border-radius: 50%;
+                width: 15vh;
+                height: 15vh;
+            }
+            .review-border:nth-child(odd) .review {
+                border-right: 1px solid #e3eff3;
+            }
+            .review {
+                padding: 0 5vw;
+            }
+            @media screen and (max-width: 39.9375em) {
+                .review-border:nth-child(odd) .review {
+                    border-right: none;
+                }
+                .review {
+                    padding: 0;
+                    margin-bottom: 3rem;
+                }
+            }
+        `}</style>
     </section>
 )
 

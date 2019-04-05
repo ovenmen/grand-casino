@@ -5,8 +5,6 @@ import { YMaps, Map, ZoomControl, GeolocationControl, Placemark } from 'react-ya
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
-import './ymap.css'
-
 const LABEL = '<strong>GC</strong>'
 
 class YMap extends Component {
@@ -53,6 +51,36 @@ class YMap extends Component {
                         ))}
                     </Map>
                 </YMaps>
+
+                <style jsx>{`
+                    .map-container {
+                        max-width: 100%;
+                        height: 30rem;
+                        position: relative;
+                        padding: 0 10vw;
+                    }
+                    .map-container .spinner-container {
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                    }
+                    .map-container .icon {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        margin-top: -3rem;
+                        margin-left: -1.5rem;
+                    }
+                    .map-container .spinner-text {
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        right: 0;
+                        margin-top: 2rem;
+                    }
+                `}</style>
             </div>
         )
     }

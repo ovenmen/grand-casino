@@ -29,7 +29,7 @@ const GlobalStyle = () => (
             color: #372964;
         }
         .error {
-            padding: 10vw 5vw;
+            padding: 5vw;
         }
         .error-header {
             color: #372964;
