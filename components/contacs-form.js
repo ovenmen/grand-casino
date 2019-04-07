@@ -47,7 +47,7 @@ class ContactsForm extends Component {
 
         return (
             <section className="contacts-from">
-                <div className="grid-x grid-margin-x">
+                <div className="grid-x">
                     <div className="cell small-12 medium-12 large-12">
                         <div className="grid-x">
                             <div className="cell small-12 medium-12 large-12">
@@ -55,7 +55,7 @@ class ContactsForm extends Component {
                             </div>
                         </div>
                         <form onSubmit={this.handleSubmitForm}>
-                            <div className="grid-x grid-margin-x">
+                            <div className="grid-x">
                                 <div className="cell small-12 medium-12 large-6 margin-bottom-1">
                                     <Field
                                         name={nameInput.name}
@@ -121,6 +121,7 @@ class ContactsForm extends Component {
                 <style jsx>{`
                     .contacts-from {
                         padding: 5vw;
+                        padding-top: 0;
                     }
                     .submit-button {
                         border: 2px solid #372964;

@@ -25,7 +25,7 @@ const Action = ({ header, description, buttonTitle, buttonHref }) => (
             .action {
                 background: url('/static/images/bg-action.jpg') center center no-repeat;
                 background-size: cover;
-                padding: 5vw 10vw;
+                padding: 5vw;
             }
             .headers-actions {
                 padding-left: 3vw;

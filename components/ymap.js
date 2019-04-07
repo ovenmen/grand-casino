@@ -55,9 +55,8 @@ class YMap extends Component {
                 <style jsx>{`
                     .map-container {
                         max-width: 100%;
-                        height: 30rem;
                         position: relative;
-                        padding: 0 10vw;
+                        padding:5vw;
                     }
                     .map-container .spinner-container {
                         position: absolute;
