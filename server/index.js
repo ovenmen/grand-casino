@@ -14,34 +14,39 @@ app.prepare().then(() => {
     const router = new Router()
 
     router.post('/api/v1/pages/index', async ctx => {
-        const json = require('../stub/api/v1/pages/index.json')
+        const json = await require('../stub/api/v1/pages/index.json')
         ctx.body = { data: json }
         ctx.respond = true
     })
 
     router.post('/api/v1/pages/prices', async ctx => {
-        const json = require('../stub/api/v1/pages/prices.json')
+        const json = await require('../stub/api/v1/pages/prices.json')
         ctx.body = { data: json }
         ctx.respond = true
     })
 
     router.post('/api/v1/pages/franchise', async ctx => {
-        const json = require('../stub/api/v1/pages/franchise.json')
+        const json = await require('../stub/api/v1/pages/franchise.json')
         ctx.body = { data: json }
         ctx.respond = true
     })
 
     router.post('/api/v1/pages/contacts', async ctx => {
-        const json = require('../stub/api/v1/pages/contacts.json')
+        const json = await require('../stub/api/v1/pages/contacts.json')
         ctx.body = { data: json }
         ctx.respond = true
     })
 
     router.post('/api/v1/pages/error', async ctx => {
-        const json = require('../stub/api/v1/pages/error.json')
+        const json = await require('../stub/api/v1/pages/error.json')
         ctx.body = { data: json }
         ctx.respond = true
     })
+
+    // router.get('/contacts?send=true', async ctx => {
+    //     await app.render(ctx.req, ctx.res, '/contacts')
+    //     ctx.respond = true
+    // })
 
     router.get('*', async ctx => {
         await handle(ctx.req, ctx.res)

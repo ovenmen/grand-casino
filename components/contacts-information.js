@@ -27,7 +27,6 @@ const ContactsInformation = ({ header, address, operationMode, phone, email }) =
         <style jsax>{`
             .contacts-information {
                 padding: 5vw;
-                padding-top: 0;
             }
         `}</style>
     </section>
