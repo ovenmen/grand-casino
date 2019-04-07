@@ -16,7 +16,6 @@ const PricesPage = ({ data }) => {
         <section>
             {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
             {header && headerImage && <HeaderPage header={header} image={headerImage} />}
-            {map && <Ymap {...map} />}
             <div className="grid-x">
                 <div className="cell small-12 medium-6 large-6">
                     {contactsForm && <ContactsForm {...contactsForm} />}
@@ -25,6 +24,7 @@ const PricesPage = ({ data }) => {
                     {contactsInformation && <ContactsInformation {...contactsInformation} />}
                 </div>
             </div>
+            {map && <Ymap {...map} />}
         </section>
     )
 }
