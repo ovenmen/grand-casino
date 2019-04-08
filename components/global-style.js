@@ -9,6 +9,11 @@ const GlobalStyle = () => (
         body {
             scroll-behavior: smooth;
         }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100000;
+        }
         .link,
         .link-not-hover,
         .link-not-hover:focus,
@@ -27,6 +32,9 @@ const GlobalStyle = () => (
         }
         .color-purple {
             color: #372964;
+        }
+        .color-grey {
+            color: #424242;
         }
         .error {
             padding: 5vw;

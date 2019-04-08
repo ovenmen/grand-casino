@@ -5,7 +5,7 @@
         "keywords": ""
     },
     "header": "Grand Club",
-    "headerImage": "bg-grand-club.jpg",
+    "headerImage": "bg-grand-club-header-page.jpg",
     "brand": ["G", "C"],
     "navigation": [
         {
@@ -30,7 +30,8 @@
                 },
                 {
                     "title": "Grand Club",
-                    "value": "/events/grand-club"
+                    "value": "/events/grand-club",
+                    "active": true
                 }
             ]
         },
