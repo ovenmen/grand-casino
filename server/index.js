@@ -43,10 +43,13 @@ app.prepare().then(() => {
         ctx.respond = true
     })
 
-    // router.get('/contacts?send=true', async ctx => {
-    //     await app.render(ctx.req, ctx.res, '/contacts')
-    //     ctx.respond = true
-    // })
+    router.get('/events/:subpage', async ctx => {
+        const subpage = ctx.params.subpage
+        const json = await require(`../stub/api/v1/pages/${subpage}.json`)
+        const data = { data: json }
+        await app.render(ctx.req, ctx.res, '/event-page', data)
+        ctx.respond = false
+    })
 
     router.get('*', async ctx => {
         await handle(ctx.req, ctx.res)

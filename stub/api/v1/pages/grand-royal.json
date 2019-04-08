@@ -1,0 +1,91 @@
+{
+    "head": {
+        "title": "Grand Casino | Grand Royal",
+        "description": "Grand Royal",
+        "keywords": ""
+    },
+    "header": "Grand Royal",
+    "headerImage": "bg-grand-royal.jpg",
+    "brand": ["G", "C"],
+    "navigation": [
+        {
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Мероприятия",
+            "value": "/events",
+            "submenu": [
+                {
+                    "title": "Grand Caasino",
+                    "value": "/events/grand-caasino"
+                },
+                {
+                    "title": "Grand Royal",
+                    "value": "/events/grand-royal"
+                },
+                {
+                    "title": "Grand Casino",
+                    "value": "/events/grand-casino"
+                },
+                {
+                    "title": "Grand Club",
+                    "value": "/events/grand-club"
+                }
+            ]
+        },
+        {
+            "title": "Цены",
+            "value": "/prices"
+        },
+        {
+            "title": "Франшиза",
+            "value": "/franchise"
+        },
+        {
+            "title": "Отзывы и FAQ",
+            "value": "/reviews"
+        },
+        {
+            "title": "Контакты",
+            "value": "/contacts"
+        }
+    ],
+    "breadcrumbs": [
+        {
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Мероприятия",
+            "value": "/events"
+        },
+        {
+            "title": "Grand Royal",
+            "value": "/events/grand-royal",
+            "active": true
+        }
+    ],
+    "content": {
+        "eventDescription": [
+            "If you’ve been a part of virtually any workforce for at least 5+ years, then you know how much of a pain and a bumbling bore a corporate party can be…",
+            "Regardless, there is indeed a magic pill, which will swiftly turn the most boring corporate event into a flaming ride of fun and excitement – the magic show! And despite an obvious conflict of interest, I can sincerely tell you that no other magic tricks show even slightly resembles my Grand Show! Filled with both mystery & fun, humor & excitement – my magic shows were loved by tens of thousands and were booked hundreds of times!",
+            "Here’s a short list of my routine tricks I do at the corporate events: Hand Ability Routine; The Smoke Trick; Sawing a Girl in Half; Head Removal Trick; Catching the Bullets Trick; The Crossbow Headshot Trick; Escape Artist; Levitation; Metamorphosis etc…",
+            "Since the times I was just a little boy, I’ve been fascinated with the tricks that my grandfather pulled off to entertain me."
+        ],
+        "action": {
+            "header": "It`s Magic",
+            "description": "Solely because of how entertaining watching all",
+            "buttonTitle": "Написать нам",
+            "buttonHref": "/contacts"
+        }
+    },
+    "footer": {
+        "description": "The world of magic is both intriguing and scary! It can either fascinate and entertain you with some amazing hand or card tricks or up your adrenaline. Whatever the case and the occasion, be sure that I will make your booking well worth it!",
+        "address": "22 St. Black Road Raleigh, PA 34578",
+        "operationMode": "Monday through Sunday, 24/7",
+        "email": "questoria.surgut@gmail.com",
+        "phone": "+7 (927) 725-22-29",
+        "copirated": "© 2019 Magnifio, Inc. All Rights Reserved"
+    }
+}

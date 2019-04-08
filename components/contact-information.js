@@ -4,7 +4,7 @@ import { string } from 'prop-types'
 import Follow from './follow'
 
 const ContactInformation = ({ header, address, operationMode, phone, email }) => (
-    <section className="contacts-information">
+    <section className="contact-information">
         <div className="grid-x">
             <div className="cell small-12 medium-12 large-12">
                 <h3 className="margin-bottom-3 font-bold">{header}</h3>
@@ -19,13 +19,13 @@ const ContactInformation = ({ header, address, operationMode, phone, email }) =>
             </div>
         </div>
         <div className="grid-x">
-            <div className="cell small-12 medium-12 large-12">
+            <div className="cell small-12 medium-12 large-12 margin-top-2">
                 <Follow />
             </div>
         </div>
 
         <style jsx>{`
-            .contacts-information {
+            .contact-information {
                 padding: 5vw;
             }
         `}</style>

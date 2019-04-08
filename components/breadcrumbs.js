@@ -43,6 +43,11 @@ const Breadcrumbs = ({ breadcrumbs }) => (
                 cursor: auto;
                 color: #9c9c9c;
             }
+            @media screen and (max-width: 39.9375em) {
+                .breadcrumbs-nav .nav-item {
+                    font-size: 0.8rem;
+                }
+            }
         `}</style>
     </section>
 )
