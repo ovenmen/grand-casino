@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
 
     return (
         <article>
-            <header>
+            <header className="shadow">
                 <Navigation navigation={navigation} brand={brand} />
             </header>
             <main>

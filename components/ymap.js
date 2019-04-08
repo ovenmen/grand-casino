@@ -57,13 +57,15 @@ class YMap extends Component {
                         max-width: 100%;
                         position: relative;
                         padding:5vw;
+                        min-height: 30rem;
                     }
-                    .map-container .spinner-container {
+                    .spinner-container {
                         position: absolute;
                         top: 0;
                         bottom: 0;
                         left: 0;
                         right: 0;
+                        height: 30rem;
                     }
                     .map-container .icon {
                         position: absolute;

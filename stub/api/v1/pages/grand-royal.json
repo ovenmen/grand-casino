@@ -5,7 +5,7 @@
         "keywords": ""
     },
     "header": "Grand Royal",
-    "headerImage": "bg-grand-royal.jpg",
+    "headerImage": "bg-grand-royal-header-page.jpg",
     "brand": ["G", "C"],
     "navigation": [
         {
@@ -22,7 +22,8 @@
                 },
                 {
                     "title": "Grand Royal",
-                    "value": "/events/grand-royal"
+                    "value": "/events/grand-royal",
+                    "active": true
                 },
                 {
                     "title": "Grand Casino",

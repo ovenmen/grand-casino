@@ -1,0 +1,119 @@
+{
+    "head": {
+        "title": "Grand Casino | Франшиза",
+        "description": "Франшиза",
+        "keywords": ""
+    },
+    "header": "Франшиза",
+    "headerImage": "bg-prices-header-page.jpg",
+    "brand": ["G", "C"],
+    "navigation": [
+        {
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Мероприятия",
+            "value": "/events",
+            "active": true,
+            "submenu": [
+                {
+                    "title": "Grand Caasino",
+                    "value": "/events/grand-caasino"
+                },
+                {
+                    "title": "Grand Royal",
+                    "value": "/events/grand-royal"
+                },
+                {
+                    "title": "Grand Casino",
+                    "value": "/events/grand-casino"
+                },
+                {
+                    "title": "Grand Club",
+                    "value": "/events/grand-club"
+                }
+            ]
+        },
+        {
+            "title": "Цены",
+            "value": "/prices"
+        },
+        {
+            "title": "Франшиза",
+            "value": "/franchise"
+        },
+        {
+            "title": "Отзывы и FAQ",
+            "value": "/reviews"
+        },
+        {
+            "title": "Контакты",
+            "value": "/contacts"
+        }
+    ],
+    "breadcrumbs": [
+        {
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Франшиза",
+            "value": "/franchise",
+            "active": true
+        }
+    ],
+    "content": {
+        "events": {
+            "items": [
+                {
+                    "header": "Grand Caasino",
+                    "headerHref": "/events/grand-caasino",
+                    "description": "When we are talking about any kind of a personal event, be it a private party, a bachelorette party, birthday or what not, it is never a bad idea to enhance the mood with a little bit of mystery & fun! This is exactly what my magic shows are all about. With a range of magic tricks up my sleeve, I will…",
+                    "image": "grand-casino-event.jpg",
+                    "buttonTitle": "Фотогалерея",
+                    "buttonHref": "/events/grand-caasino/photo"
+                },
+                {
+                    "header": "Grand Royal",
+                    "headerHref": "/events/grand-royal",
+                    "description": "If you’ve been a part of virtually any workforce for at least 5+ years, then you know how much of a pain and a bumbling bore a corporate party can be. Regardless, there is indeed a magic pill, which will swiftly turn the most boring corporate event into a flaming ride of fun and excitement – the magic show!",
+                    "image": "grand-casino-event.jpg",
+                    "buttonTitle": "Фотогалерея",
+                    "buttonHref": "/events/grand-royal/photo"
+                },
+                {
+                    "header": "Grand Casino",
+                    "headerHref": "/events/grand-casino",
+                    "description": "Telling you such basic facts like “kids like fun & entertaining shows” will probably be a time-waster. This is why I’ll just tell you about how much kids love my magic shows. With a range of interactive (and fairly harmless) tricks devised specifically for young audiences of boys and girls, this routine will…",
+                    "image": "grand-casino-event.jpg",
+                    "buttonTitle": "Фотогалерея",
+                    "buttonHref": "/events/grand-casino/photo"
+                },
+                {
+                    "header": "Grand Club",
+                    "headerHref": "/events/grand-club",
+                    "description": "Filled with both mystery & fun, humor & excitement – my magic shows were loved by tens of thousands and were booked hundreds of times! Here a short list of my routine tricks I do at my magical Grand Shows: Hand Ability Routine; The Smoke Trick; Sawing a Girl in Half…",
+                    "image": "grand-casino-event.jpg",
+                    "buttonTitle": "Фотогалерея",
+                    "buttonHref": "/events/grand-club/photo"
+                }
+            ]
+        },
+        "review": {
+            "header": "PEOPLE LOVE MY MAGIC SHOWS!",
+            "fullname": "Emily Watcher",
+            "city": "New York City, NY",
+            "image": "face2.png",
+            "description": "When my boy Tommy was turning 11, I wanted his birthday party to be special. This why I listened to what my good old friend Katherine referred me to and booked this guy."
+        }
+    },
+    "footer": {
+        "description": "The world of magic is both intriguing and scary! It can either fascinate and entertain you with some amazing hand or card tricks or up your adrenaline. Whatever the case and the occasion, be sure that I will make your booking well worth it!",
+        "address": "22 St. Black Road Raleigh, PA 34578",
+        "operationMode": "Monday through Sunday, 24/7",
+        "email": "questoria.surgut@gmail.com",
+        "phone": "+7 (927) 725-22-29",
+        "copirated": "© 2019 Magnifio, Inc. All Rights Reserved"
+    }
+}

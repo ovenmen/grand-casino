@@ -5,7 +5,7 @@
         "keywords": ""
     },
     "header": "Grand Caasino",
-    "headerImage": "bg-grand-caasino.jpg",
+    "headerImage": "bg-grand-caasino-header-page.jpg",
     "brand": ["G", "C"],
     "navigation": [
         {
@@ -18,7 +18,8 @@
             "submenu": [
                 {
                     "title": "Grand Caasino",
-                    "value": "/events/grand-caasino"
+                    "value": "/events/grand-caasino",
+                    "active": true
                 },
                 {
                     "title": "Grand Royal",
