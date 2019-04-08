@@ -5,8 +5,8 @@ import fetchDataPage from '../utils/fetch-data-page'
 import HeaderPage from '../components/header-page'
 import Breadcrumbs from '../components/breadcrumbs'
 import Ymap from '../components/ymap'
-import ContactsForm from '../components/contacs-form'
-import ContactsInformation from '../components/contacts-information'
+import ContactForm from '../components/contact-form'
+import ContactInformation from '../components/contact-information'
 
 const PricesPage = ({ data }) => {
     const { header, headerImage, breadcrumbs } = data
@@ -18,10 +18,10 @@ const PricesPage = ({ data }) => {
             {header && headerImage && <HeaderPage header={header} image={headerImage} />}
             <div className="grid-x">
                 <div className="cell small-12 medium-6 large-6">
-                    {contactsForm && <ContactsForm {...contactsForm} />}
+                    {contactsForm && <ContactForm {...contactsForm} />}
                 </div>
                 <div className="cell small-12 medium-6 large-6">
-                    {contactsInformation && <ContactsInformation {...contactsInformation} />}
+                    {contactsInformation && <ContactInformation {...contactsInformation} />}
                 </div>
             </div>
             {map && <Ymap {...map} />}

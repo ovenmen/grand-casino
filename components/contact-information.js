@@ -3,7 +3,7 @@ import { string } from 'prop-types'
 
 import Follow from './follow'
 
-const ContactsInformation = ({ header, address, operationMode, phone, email }) => (
+const ContactInformation = ({ header, address, operationMode, phone, email }) => (
     <section className="contacts-information">
         <div className="grid-x">
             <div className="cell small-12 medium-12 large-12">
@@ -24,7 +24,7 @@ const ContactsInformation = ({ header, address, operationMode, phone, email }) =
             </div>
         </div>
 
-        <style jsax>{`
+        <style jsx>{`
             .contacts-information {
                 padding: 5vw;
             }
@@ -32,7 +32,7 @@ const ContactsInformation = ({ header, address, operationMode, phone, email }) =
     </section>
 )
 
-ContactsInformation.propTypes = {
+ContactInformation.propTypes = {
     header: string,
     address: string,
     operationMode: string,
@@ -40,4 +40,4 @@ ContactsInformation.propTypes = {
     email: string
 }
 
-export default ContactsInformation
+export default ContactInformation

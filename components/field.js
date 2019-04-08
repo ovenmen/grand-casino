@@ -5,7 +5,7 @@ import classnames from 'classnames'
 
 const Field = props => {
     const passedProps = omit(props, 'isValid')
-    const className = classnames('field', props.isValid && 'error')
+    const className = classnames('field', !props.isValid && 'error')
 
     return (
         <Fragment>
