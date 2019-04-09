@@ -6,14 +6,12 @@ import Field from './field'
 import { API_SEND_FORM_URL } from '../config'
 import sendFormData from '../utils/send-form-data'
 
-const ContactForm  = (props) => {
+const ReviewsForm  = (props) => {
     const [name, setName] = useState('')
-    const [phone, setPhone] = useState('')
     const [city, setCity] = useState('')
     const [date, setDate] = useState('')
     const [message, setMessage] = useState('')
     const [nameError, setNameError] = useState(false)
-    const [phoneError, setPhoneError] = useState(false)
     const [cityError, setCityError] = useState(false)
     const [dateError, setDateError] = useState(false)
     const [messageError, setMessageError] = useState(false)
@@ -27,10 +25,6 @@ const ContactForm  = (props) => {
         case 'name':
             setName(value)
             setNameError(value === '')
-            break
-        case 'phone':
-            setPhone(value)
-            setPhoneError(value === '')
             break
         case 'city':
             setCity(value)
@@ -51,11 +45,10 @@ const ContactForm  = (props) => {
 
     const handleSubmitForm = (event) => {
         event.preventDefault()
-        const isValid = name !== '' && phone !== '' && city !== '' && date !== '' && message !== ''
-        const data = { name, phone, city, date, message }
+        const isValid = name !== '' && city !== '' && date !== '' && message !== ''
+        const data = { name, city, date, message }
 
         setNameError(name === '')
-        setPhoneError(phone === '')
         setCityError(city === '')
         setDateError(date === '')
         setMessageError(message === '')
@@ -67,20 +60,20 @@ const ContactForm  = (props) => {
     }
 
     const { header, fields, submitButtonTitle } = props
-    const [ nameInput, phoneInput, cityInput, dateInput, messageInput ] = fields
+    const [ nameInput, cityInput, dateInput, messageInput ] = fields
 
     return (
         <section className="contact-form">
             <div className="grid-x">
                 <div className="cell small-12 medium-12 large-12">
                     <div className="grid-x">
-                        <div className="cell small-12 medium-12 large-12">
+                        <div className="cell">
                             <h3 className="font-bold margin-bottom-3">{header}</h3>
                         </div>
                     </div>
                     <form onSubmit={handleSubmitForm}>
-                        <div className="grid-x grid-margin-x">
-                            <div className="cell small-12 medium-12 large-6 margin-bottom-1">
+                        <div className="grid-x">
+                            <div className="cell margin-bottom-1">
                                 {nameInput && <Field
                                     name={nameInput.name}
                                     type={nameInput.type}
@@ -89,18 +82,9 @@ const ContactForm  = (props) => {
                                     onChange={handleOnChange}
                                 />}
                             </div>
-                            <div className="cell small-12 medium-12 large-6 margin-bottom-1">
-                                {phoneInput && <Field
-                                    name={phoneInput.name}
-                                    type={phoneInput.type}
-                                    placeholder={phoneInput.placeholder}
-                                    isValid={!phoneError}
-                                    onChange={handleOnChange}
-                                />}
-                            </div>
                         </div>
-                        <div className="grid-x grid-margin-x">
-                            <div className="cell small-12 medium-12 large-6 margin-bottom-1">
+                        <div className="grid-x">
+                            <div className="cell margin-bottom-1">
                                 {cityInput && <Field
                                     name={cityInput.name}
                                     type={cityInput.type}
@@ -109,7 +93,9 @@ const ContactForm  = (props) => {
                                     onChange={handleOnChange}
                                 />}
                             </div>
-                            <div className="cell small-12 medium-12 large-6 margin-bottom-1">
+                        </div>
+                        <div className="grid-x">
+                            <div className="cell margin-bottom-1">
                                 {dateInput && <Field
                                     name={dateInput.name}
                                     type={dateInput.type}
@@ -120,7 +106,7 @@ const ContactForm  = (props) => {
                             </div>
                         </div>
                         <div className="grid-x">
-                            <div className="cell small-12 medium-12 large-12 margin-bottom-1">
+                            <div className="cell margin-bottom-1">
                                 {messageInput && <Field
                                     name={messageInput.name}
                                     type={messageInput.type}
@@ -132,7 +118,7 @@ const ContactForm  = (props) => {
                             </div>
                         </div>
                         <div className="grid-x margin-top-1">
-                            <div className="cell small-12 medium-12 large-12 text-right">
+                            <div className="cell text-right">
                                 <div className="submit-button">
                                     <input type="submit" value={submitButtonTitle} className="color-white h5" />
                                 </div>
@@ -174,10 +160,10 @@ const ContactForm  = (props) => {
     )
 }
 
-ContactForm.propTypes = {
+ReviewsForm.propTypes = {
     header :string,
     fields: array,
     submitButtonTitle: string
 }
 
-export default ContactForm
+export default ReviewsForm
