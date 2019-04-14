@@ -41,6 +41,9 @@ const Follow = () => (
                 justify-content: space-around;
                 margin: 0;
             }
+            li a:visited {
+                color: #372964;
+            }
         `}</style>
     </div>
 )
