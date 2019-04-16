@@ -94,27 +94,27 @@
                 {
                     "name": "name",
                     "type": "text",
-                    "placeholder": "Имя"
+                    "placeholder": "ИМЯ"
                 },
                 {
                     "name": "phone",
                     "type": "tel",
-                    "placeholder": "Телефон"
+                    "placeholder": "ТЕЛЕФОН"
                 },
                 {
                     "name": "city",
                     "type": "text",
-                    "placeholder": "город"
+                    "placeholder": "ГОРОД"
                 },
                 {
                     "name": "date",
                     "type": "date",
-                    "placeholder": "Желаемая дата"
+                    "placeholder": "ЖЕЛАЕМАЯ ДАТА"
                 },
                 {
                     "name": "message",
                     "type": "textarea",
-                    "placeholder": "Комментарий"
+                    "placeholder": "КОММЕНТАРИЙ"
                 }
             ],
             "submitButtonTitle": "Отправить"

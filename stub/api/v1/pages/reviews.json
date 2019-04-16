@@ -70,22 +70,22 @@
                 {
                     "name": "name",
                     "type": "text",
-                    "placeholder": "Имя"
+                    "placeholder": "ИМЯ"
                 },
                 {
                     "name": "city",
                     "type": "text",
-                    "placeholder": "город"
+                    "placeholder": "ГОРОД"
                 },
                 {
                     "name": "date",
                     "type": "date",
-                    "placeholder": "Желаемая дата"
+                    "placeholder": "ЖЕЛАЕМАЯ ДАТА"
                 },
                 {
                     "name": "message",
                     "type": "textarea",
-                    "placeholder": "Комментарий"
+                    "placeholder": "КОММЕНТАРИЙ"
                 }
             ],
             "submitButtonTitle": "Отправить"
@@ -93,6 +93,18 @@
         "allReviews": {
             "header": "Все отзывы",
             "items": [
+                {
+                    "fullname": "Rickie Sandorum",
+                    "city": "Chicago, IL",
+                    "image": "face1.png",
+                    "description": "Choosing a theme for this year’s New Year’s Party was a daunting feat.Eventually, I cannot be happier that I went with the magician, as his tricks made everyone feel entertained!"
+                },
+                {
+                    "fullname": "Emily Watcher",
+                    "city": "New York City, NY",
+                    "image": "face2.png",
+                    "description": "When my boy Tommy was turning 11, I wanted his birthday party to be special. This why I listened to what my good old friend Katherine referred me to and booked this guy."
+                },
                 {
                     "fullname": "Rickie Sandorum",
                     "city": "Chicago, IL",
