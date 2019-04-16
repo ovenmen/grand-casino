@@ -24,7 +24,6 @@ const Field = props => {
                     max-width: 100%;
                     padding: 1rem 0;
                     color: #848484;
-                    text-transform: uppercase;
                     line-height: 1rem;
                 }
                 .error {
