@@ -1,11 +1,11 @@
 {
     "head": {
-        "title": "Grand Casino | Grand Caasino",
-        "description": "Grand Caasino",
+        "title": "Grand Casino | Gold Casino",
+        "description": "Gold Casino",
         "keywords": "фан казино, фан казино самара, выездное казино, рулетка, покер, блэкджек, корпоратив, сценарий праздника, сценарий юбилея, шоу программы, мальчишник, девичник, сценарий девичника, аренда казино, роскошная вечеринка"
     },
-    "header": "Grand Caasino",
-    "headerImage": "bg-grand-caasino-header-page.jpg",
+    "header": "Gold Casino",
+    "headerImage": "bg-gold-casino-header-page.jpg",
     "brand": ["G", "C"],
     "navigation": [
         {
@@ -17,21 +17,21 @@
             "value": "/events",
             "submenu": [
                 {
-                    "title": "Grand Caasino",
-                    "value": "/events/grand-caasino",
+                    "title": "Casino Club",
+                    "value": "/events/casino-club"
+                },
+                {
+                    "title": "Gold Casino",
+                    "value": "/events/gold-casino",
                     "active": true
                 },
                 {
-                    "title": "Grand Royal",
-                    "value": "/events/grand-royal"
+                    "title": "Casino Royal",
+                    "value": "/events/casino-royal"
                 },
                 {
                     "title": "Grand Casino",
                     "value": "/events/grand-casino"
-                },
-                {
-                    "title": "Grand Club",
-                    "value": "/events/grand-club"
                 }
             ]
         },
@@ -62,8 +62,8 @@
             "value": "/events"
         },
         {
-            "title": "Grand Caasino",
-            "value": "/events/grand-caasino",
+            "title": "Gold Casino",
+            "value": "/events/gold-casino",
             "active": true
         }
     ],

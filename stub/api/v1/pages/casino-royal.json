@@ -1,11 +1,11 @@
 {
     "head": {
-        "title": "Grand Casino | Grand Club",
-        "description": "Grand Club",
+        "title": "Grand Casino | Casino Royal",
+        "description": "Casino Royal",
         "keywords": "фан казино, фан казино самара, выездное казино, рулетка, покер, блэкджек, корпоратив, сценарий праздника, сценарий юбилея, шоу программы, мальчишник, девичник, сценарий девичника, аренда казино, роскошная вечеринка"
     },
-    "header": "Grand Club",
-    "headerImage": "bg-grand-club-header-page.jpg",
+    "header": "Casino Royal",
+    "headerImage": "bg-casino-royal-header-page.jpg",
     "brand": ["G", "C"],
     "navigation": [
         {
@@ -17,21 +17,21 @@
             "value": "/events",
             "submenu": [
                 {
-                    "title": "Grand Caasino",
-                    "value": "/events/grand-caasino"
+                    "title": "Casino Club",
+                    "value": "/events/casino-club"
                 },
                 {
-                    "title": "Grand Royal",
-                    "value": "/events/grand-royal"
+                    "title": "Gold Casino",
+                    "value": "/events/gold-casino"
+                },
+                {
+                    "title": "Casino Royal",
+                    "value": "/events/casino-royal",
+                    "active": true
                 },
                 {
                     "title": "Grand Casino",
                     "value": "/events/grand-casino"
-                },
-                {
-                    "title": "Grand Club",
-                    "value": "/events/grand-club",
-                    "active": true
                 }
             ]
         },
@@ -62,22 +62,21 @@
             "value": "/events"
         },
         {
-            "title": "Grand Club",
-            "value": "/events/grand-club",
+            "title": "Grand Royal",
+            "value": "/events/grand-royal",
             "active": true
         }
     ],
     "content": {
         "eventDescription": [
             "If you’ve been a part of virtually any workforce for at least 5+ years, then you know how much of a pain and a bumbling bore a corporate party can be…",
-            "Regardless, there is indeed a magic pill, which will swiftly turn the most boring corporate event into a flaming ride of fun and excitement – the magic show!",
-            "Catching the Bullets Trick; The Crossbow Headshot Trick; Escape Artist; Levitation; Metamorphosis etc…",
-            "Since the times I was just a little boy, I’ve been fascinated with the tricks that my grandfather pulled off to entertain me.",
-            "So the moment I asked him to teach me those tricks, my career path’s been sealed. Now I am a world-famous magician, who gets around 250 event bookings every single year, entertaining thousands of people with my magic tricks!"
+            "Regardless, there is indeed a magic pill, which will swiftly turn the most boring corporate event into a flaming ride of fun and excitement – the magic show! And despite an obvious conflict of interest, I can sincerely tell you that no other magic tricks show even slightly resembles my Grand Show! Filled with both mystery & fun, humor & excitement – my magic shows were loved by tens of thousands and were booked hundreds of times!",
+            "Here’s a short list of my routine tricks I do at the corporate events: Hand Ability Routine; The Smoke Trick; Sawing a Girl in Half; Head Removal Trick; Catching the Bullets Trick; The Crossbow Headshot Trick; Escape Artist; Levitation; Metamorphosis etc…",
+            "Since the times I was just a little boy, I’ve been fascinated with the tricks that my grandfather pulled off to entertain me."
         ],
         "action": {
-            "header": "Loved Magic",
-            "description": "People always loved magic.",
+            "header": "It`s Magic",
+            "description": "Solely because of how entertaining watching all",
             "buttonTitle": "Написать нам",
             "buttonHref": "/contacts"
         }
