@@ -18,20 +18,20 @@
             "active": true,
             "submenu": [
                 {
-                    "title": "Grand Caasino",
-                    "value": "/events/grand-caasino"
+                    "title": "Casino Club",
+                    "value": "/events/casino-club"
                 },
                 {
-                    "title": "Grand Royal",
-                    "value": "/events/grand-royal"
+                    "title": "Gold Casino",
+                    "value": "/events/gold-casino"
+                },
+                {
+                    "title": "Casino Royal",
+                    "value": "/events/casino-royal"
                 },
                 {
                     "title": "Grand Casino",
                     "value": "/events/grand-casino"
-                },
-                {
-                    "title": "Grand Club",
-                    "value": "/events/grand-club"
                 }
             ]
         },
@@ -64,39 +64,51 @@
         }
     ],
     "content": {
+        "info": {
+            "description": [
+                "Хотите ворваться в буйство неоновых огней Лас-Вегаса, не покидая родного города? Поймать удачу, поставив «на зеро»? Отдаться куражу зеленого сукна и ни разу не проиграть? Да! Если играть в фан-казино. ",
+                "Пригласите к себе на мальчишник или корпоратив аттракцион выездного казино Grand Casino, и о вашей роскошной вечеринке будут вспоминать долго!",
+                "Выездное казино Grand Casino — это веселый и азартный праздник без проигрыша.",
+                "Мы организуем игры на сувенирные деньги абсолютно легально и гарантируем вихрь положительных эмоций ваших гостей."
+            ]
+        },
         "events": {
             "items": [
                 {
-                    "header": "Grand Caasino",
+                    "header": "Casino Club",
+                    "subheader": "10-20 человек",
+                    "headerHref": "/events/grand-club",
+                    "description": "Пакет азартных развлечений для кулуарных мероприятий до 20 человек. У вас дружеская вечеринка в стиле «Мальчишника в Вегасе» (только для своих), день рождения или встреча с партнерами в узком кругу? Будьте уверены, мы сохраним в тайне, кто сорвал самый «большой куш».",
+                    "image": "grand-casino-event.jpg",
+                    "buttonTitle": "Фотогалерея",
+                    "buttonHref": "/events/grand-club/photo"
+                },
+                {
+                    "header": "Gold Casino",
+                    "subheader": "20-50 человек",
                     "headerHref": "/events/grand-caasino",
-                    "description": "When we are talking about any kind of a personal event, be it a private party, a bachelorette party, birthday or what not, it is never a bad idea to enhance the mood with a little bit of mystery & fun! This is exactly what my magic shows are all about. With a range of magic tricks up my sleeve, I will…",
+                    "description": "Пакет для тематической вечеринки до 50 человек. Для тех, кто хочет почувствовать себя на юбилее «королем рулетки», пойти на годовщине «ва-банк», или стать на девичнике «принцессами покера»!",
                     "image": "grand-casino-event.jpg",
                     "buttonTitle": "Фотогалерея",
                     "buttonHref": "/events/grand-caasino/photo"
                 },
                 {
-                    "header": "Grand Royal",
+                    "header": "Casino Royal",
+                    "subheader": "50-100 человек",
                     "headerHref": "/events/grand-royal",
-                    "description": "If you’ve been a part of virtually any workforce for at least 5+ years, then you know how much of a pain and a bumbling bore a corporate party can be. Regardless, there is indeed a magic pill, which will swiftly turn the most boring corporate event into a flaming ride of fun and excitement – the magic show!",
+                    "description": "Пакет для большого торжества до 100 человек. Идеальный набор для корпоратива, свадьбы или выпускного. Азарт и кураж выездного казино создадут на вашем празднике непередаваемый коктейль роскоши и веселья. Развлечение совершенно законно, ведь игра проходит на интерес, а не на деньги!",
                     "image": "grand-casino-event.jpg",
                     "buttonTitle": "Фотогалерея",
                     "buttonHref": "/events/grand-royal/photo"
                 },
                 {
-                    "header": "Grand Casino",
+                    "header": "Grand casino",
+                    "subheader": "более 100 человек",
                     "headerHref": "/events/grand-casino",
-                    "description": "Telling you such basic facts like “kids like fun & entertaining shows” will probably be a time-waster. This is why I’ll just tell you about how much kids love my magic shows. With a range of interactive (and fairly harmless) tricks devised specifically for young audiences of boys and girls, this routine will…",
+                    "description": "Пакет для масштабных мероприятий и церемоний от 100 человек. Большое количество гостей требует особого подхода к подготовке праздника. Нужно продумать детали и при этом удивить всех шоу-программой. Выездное фан-казино отлично справится с этой задачей и станет яркой фишкой праздника в стиле «Гэтсби» или «Казино Рояль».",
                     "image": "grand-casino-event.jpg",
                     "buttonTitle": "Фотогалерея",
                     "buttonHref": "/events/grand-casino/photo"
-                },
-                {
-                    "header": "Grand Club",
-                    "headerHref": "/events/grand-club",
-                    "description": "Filled with both mystery & fun, humor & excitement – my magic shows were loved by tens of thousands and were booked hundreds of times! Here a short list of my routine tricks I do at my magical Grand Shows: Hand Ability Routine; The Smoke Trick; Sawing a Girl in Half…",
-                    "image": "grand-casino-event.jpg",
-                    "buttonTitle": "Фотогалерея",
-                    "buttonHref": "/events/grand-club/photo"
                 }
             ]
         },

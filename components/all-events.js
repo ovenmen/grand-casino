@@ -22,6 +22,7 @@ const AllEvents = ({ items }) => (
                                     <a className="link color-grey">{event.header}</a>
                                 </Link>
                             </h4>
+                            <h4 className="subheader">{event.subheader}</h4>
                             <p>{event.description}</p>
                             <p className="gallary-button">
                                 <Link href={event.buttonHref}>

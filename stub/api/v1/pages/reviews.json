@@ -17,20 +17,20 @@
             "value": "/events",
             "submenu": [
                 {
-                    "title": "Grand Caasino",
-                    "value": "/events/grand-caasino"
+                    "title": "Casino Club",
+                    "value": "/events/casino-club"
                 },
                 {
-                    "title": "Grand Royal",
-                    "value": "/events/grand-royal"
+                    "title": "Gold Casino",
+                    "value": "/events/gold-casino"
+                },
+                {
+                    "title": "Casino Royal",
+                    "value": "/events/casino-royal"
                 },
                 {
                     "title": "Grand Casino",
                     "value": "/events/grand-casino"
-                },
-                {
-                    "title": "Grand Club",
-                    "value": "/events/grand-club"
                 }
             ]
         },
