@@ -134,7 +134,6 @@ const ReviewsForm  = (props) => {
                 }
                 .submit-button {
                     border: 2px solid #372964;
-                    padding: 0.5rem 1rem;
                     background: #372964;
                     display: inline-block;
                     transition: all 0.3s ease-in-out;
@@ -145,6 +144,7 @@ const ReviewsForm  = (props) => {
                     margin: 0;
                     transition: all 0.3s ease-in-out;
                     outline: none;
+                    padding: 0.5rem 1rem;
                 }
                 .submit-button:hover {
                     background: #ffffff;
