@@ -1,10 +1,10 @@
 {
     "head": {
-        "title": "Grand Casino | Франшиза",
-        "description": "Франшиза",
+        "title": "Grand Casino | Мероприятия",
+        "description": "Мероприятия",
         "keywords": "фан казино, фан казино самара, выездное казино, рулетка, покер, блэкджек, корпоратив, сценарий праздника, сценарий юбилея, шоу программы, мальчишник, девичник, сценарий девичника, аренда казино, роскошная вечеринка"
     },
-    "header": "Франшиза",
+    "header": "Мероприятия",
     "headerImage": "bg-prices-header-page.jpg",
     "brand": ["G", "C"],
     "navigation": [
@@ -77,29 +77,29 @@
                 {
                     "header": "Casino Club",
                     "subheader": "10-20 человек",
-                    "headerHref": "/events/grand-club",
+                    "headerHref": "/events/casino-club",
                     "description": "Пакет азартных развлечений для кулуарных мероприятий до 20 человек. У вас дружеская вечеринка в стиле «Мальчишника в Вегасе» (только для своих), день рождения или встреча с партнерами в узком кругу? Будьте уверены, мы сохраним в тайне, кто сорвал самый «большой куш».",
                     "image": "grand-casino-event.jpg",
                     "buttonTitle": "Фотогалерея",
-                    "buttonHref": "/events/grand-club/photo"
+                    "buttonHref": "/events/casino-club/photo"
                 },
                 {
                     "header": "Gold Casino",
                     "subheader": "20-50 человек",
-                    "headerHref": "/events/grand-caasino",
+                    "headerHref": "/events/gold-casino",
                     "description": "Пакет для тематической вечеринки до 50 человек. Для тех, кто хочет почувствовать себя на юбилее «королем рулетки», пойти на годовщине «ва-банк», или стать на девичнике «принцессами покера»!",
                     "image": "grand-casino-event.jpg",
                     "buttonTitle": "Фотогалерея",
-                    "buttonHref": "/events/grand-caasino/photo"
+                    "buttonHref": "/events/gold-casino/photo"
                 },
                 {
                     "header": "Casino Royal",
                     "subheader": "50-100 человек",
-                    "headerHref": "/events/grand-royal",
+                    "headerHref": "/events/casino-royal",
                     "description": "Пакет для большого торжества до 100 человек. Идеальный набор для корпоратива, свадьбы или выпускного. Азарт и кураж выездного казино создадут на вашем празднике непередаваемый коктейль роскоши и веселья. Развлечение совершенно законно, ведь игра проходит на интерес, а не на деньги!",
                     "image": "grand-casino-event.jpg",
                     "buttonTitle": "Фотогалерея",
-                    "buttonHref": "/events/grand-royal/photo"
+                    "buttonHref": "/events/casino-royalphoto"
                 },
                 {
                     "header": "Grand casino",

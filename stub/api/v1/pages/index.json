@@ -73,27 +73,27 @@
             "buttonHref": "/contacts",
             "items": [
                 {
-                    "header": "Grand Caasino",
+                    "header": "Casino Club",
                     "buttonTitle": "Подробнее",
-                    "buttonHref": "/events/grand-caasino",
+                    "buttonHref": "/events/casino-club",
                     "image": "bg-event.jpg"
                 },
                 {
-                    "header": "Grand Royal",
+                    "header": "Gold Casino",
                     "buttonTitle": "Подробнее",
-                    "buttonHref": "/events/grand-royal",
+                    "buttonHref": "/events/gold-casino",
                     "image": "bg-event.jpg"
                 },
                 {
-                    "header": "Grand Casino",
+                    "header": "Casino Royal",
+                    "buttonTitle": "Подробнее",
+                    "buttonHref": "/events/casino-royal",
+                    "image": "bg-event.jpg"
+                },
+                {
+                    "header": "Grand casino",
                     "buttonTitle": "Подробнее",
                     "buttonHref": "/events/grand-casino",
-                    "image": "bg-event.jpg"
-                },
-                {
-                    "header": "Grand Club",
-                    "buttonTitle": "Подробнее",
-                    "buttonHref": "/events/grand-club",
                     "image": "bg-event.jpg"
                 }
             ]
