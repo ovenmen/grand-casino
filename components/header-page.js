@@ -15,7 +15,7 @@ const HeaderPage = ({ header, image }) => (
         <style jsx>{`
             .header-page {
                 position: relative;
-                padding: 5vw;
+                padding: 2.5vw;
             }
             .header-page-image {
                 width: 100%;
