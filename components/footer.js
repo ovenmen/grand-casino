@@ -110,22 +110,22 @@ const Footer = ({ brand, footer, navigation }) => (
             .footer-main-section {
                 padding: 5vw;
             }
-            .footer-main-section .description {
+            .description {
                 margin: 0;
                 padding-bottom: 0;
                 padding-right: 1.5rem;
                 padding-left: 0.5rem;
                 padding-top: 0.5rem;
             }
-            .footer-main-section .list {
+            .list {
                 padding: 0 1.5rem;
                 margin: 0;
             }
-            .footer-main-section .list-item {
+            .list-item {
                 margin: 1rem 0;
                 padding-left: 0.5rem;
             }
-            .footer-main-section .link .icon {
+            .icon {
                 font-size: 1rem;
                 margin-left: 1rem;
                 visibility: hidden;
@@ -133,11 +133,11 @@ const Footer = ({ brand, footer, navigation }) => (
                 transition: all 0.3s ease-in-out;
                 color: #a48eec;
             }
-            .footer-main-section .list-item .link:hover .icon {
+            .link:hover .icon {
                 visibility: visible;
                 opacity: 1;
             }
-            .footer-main-section .contact-icon {
+            .contact-icon {
                 margin-right: 1rem;
             }
             .footer-social-section {
@@ -145,7 +145,7 @@ const Footer = ({ brand, footer, navigation }) => (
                 margin: 0 2rem;
                 border-top: 1px solid #7b7b7b;
             }
-            .footer-social-section .social-list {
+            .social-list {
                 display: flex;
                 padding: 0;
                 justify-content: space-around;

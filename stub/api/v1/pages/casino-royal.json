@@ -68,13 +68,25 @@
         }
     ],
     "content": {
-        "info": {
+        "eventDescription": {
+            "header": "50-100 человек",
             "description": [
-                "If you’ve been a part of virtually any workforce for at least 5+ years, then you know how much of a pain and a bumbling bore a corporate party can be…",
-                "Regardless, there is indeed a magic pill, which will swiftly turn the most boring corporate event into a flaming ride of fun and excitement – the magic show! And despite an obvious conflict of interest, I can sincerely tell you that no other magic tricks show even slightly resembles my Grand Show! Filled with both mystery & fun, humor & excitement – my magic shows were loved by tens of thousands and were booked hundreds of times!",
-                "Here’s a short list of my routine tricks I do at the corporate events: Hand Ability Routine; The Smoke Trick; Sawing a Girl in Half; Head Removal Trick; Catching the Bullets Trick; The Crossbow Headshot Trick; Escape Artist; Levitation; Metamorphosis etc…",
-                "Since the times I was just a little boy, I’ve been fascinated with the tricks that my grandfather pulled off to entertain me."
-            ]
+                "Пакет для большого торжества до 100 человек.",
+                "Идеальный набор для корпоратива, свадьбы или выпускного. Азарт и кураж выездного казино создадут на вашем празднике непередаваемый коктейль роскоши и веселья. Развлечение совершенно законно, ведь игра проходит на интерес, а не на деньги!"
+            ],
+            "image": "grand-casino-event.jpg",
+            "list": {
+                "title": "Пакет Casino Royal включает:",
+                "items": [
+                    "Аренду фан-казино на 3 часа",
+                    "4 игровых стола на выбор",
+                    "Необходимые аксессуары",
+                    "Работу профессиональных крупье"
+                ]
+            },
+            "marker": "Возможность проведения в вашем городе уточняйте у менеджера!",
+            "linkPriceTitle": "Узнать стоимость пакета",
+            "linkPriceHref": "/prices"
         },
         "action": {
             "header": "It`s Magic",
