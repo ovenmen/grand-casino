@@ -4,18 +4,18 @@ import { object } from 'prop-types'
 import getDataQueryPage from '../utils/fetch-data-query-page'
 import Breadcrumbs from '../components/breadcrumbs'
 import HeaderPage from '../components/header-page'
-import Info from '../components/info'
+import EventDescription from '../components/event-description'
 import Action from '../components/action'
 
 const EventPage = ({ data }) => {
     const { header, headerImage, breadcrumbs } = data
-    const { info, action } = data.content
+    const { eventDescription, action } = data.content
 
     return (
         <section>
             {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
             {header && headerImage && <HeaderPage header={header} image={headerImage} />}
-            {info && <Info {...info} />}
+            {eventDescription && <EventDescription {...eventDescription} />}
             {action && <Action {...action} />}
         </section>
     )
