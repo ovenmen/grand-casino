@@ -8,7 +8,7 @@ const Info = ({ header, description, list }) => (
             <div className="cell">
                 <h2 className="margin-bottom-2 text-center subheader">{header}</h2>
                 {map(description, (item, index) => (
-                    <p key={uniqueId(index)} className="h5 margin-bottom-2">{item}</p>
+                    <p key={uniqueId(index)} className="h5 margin-bottom-2 text-center">{item}</p>
                 ))}
                 {list &&
                     <Fragment>
