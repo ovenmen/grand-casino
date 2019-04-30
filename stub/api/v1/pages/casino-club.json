@@ -87,6 +87,15 @@
             "linkPriceTitle": "Узнать стоимость пакета",
             "linkPriceHref": "/prices"
         },
+        "photos": {
+            "header": "Фотографии",
+            "items": [
+                {
+                    "header": "",
+                    "image": ""
+                }
+            ]
+        },
         "action": {
             "header": "Loved Magic",
             "description": "People always loved magic.",
