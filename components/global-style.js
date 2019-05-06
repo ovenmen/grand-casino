@@ -8,6 +8,7 @@ const GlobalStyle = () => (
         html,
         body {
             scroll-behavior: smooth;
+            position: relative;
         }
         header {
             position: sticky;

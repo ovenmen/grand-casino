@@ -87,6 +87,19 @@
             "linkPriceTitle": "Узнать стоимость пакета",
             "linkPriceHref": "/prices"
         },
+        "photos": {
+            "header": "Фотогалерея",
+            "items": [
+                "casino-club-1.jpg",
+                "casino-club-2.jpg",
+                "casino-club-3.jpg",
+                "casino-club-4.jpg",
+                "casino-club-2.jpg",
+                "casino-club-3.jpg",
+                "casino-club-6.jpg",
+                "casino-club-5.jpg"
+            ]
+        },
         "action": {
             "header": "People Always Loved Magic",
             "description": "People always loved magic, solely because of how entertaining watching all these tricks is.",
