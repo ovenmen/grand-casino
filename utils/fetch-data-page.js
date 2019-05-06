@@ -1,10 +1,11 @@
 import 'isomorphic-unfetch'
 
-import { API_STUB_URL } from '../config'
+const dev = process.env.NODE_ENV !== 'production'
+const port = dev ? 3000 : 443
 
 const fetchDataPage = (namePage) => async ({ err, res }) => {
     const statusCode = res ? res.statusCode : err ? err.statusCode : null
-    const url = `${API_STUB_URL}/pages/${namePage}`
+    const url = `https://localhost:${port}/api/v1/pages/${namePage}`
     const params = { method: 'POST' }
     const response = await fetch(url, params)
     const json = await response.json()

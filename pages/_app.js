@@ -3,7 +3,6 @@ import App, { Container } from 'next/app'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 
-import { BASE_URL } from '../config'
 import Loader from '../components/loader'
 import GlobalStyle from '../components/global-style'
 
@@ -26,7 +25,6 @@ export default class extends App {
                     <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
                     <meta name="description" content={description} />
                     <meta name="keywords" content={keywords} />
-                    <base href={BASE_URL} />
                     <link rel="stylesheet" href="/static/css/foundation.min.css" />
                     <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700&amp;subset=cyrillic" rel="stylesheet" />
                     <link rel="icon" type="image/ico" sizes="16x16" href="/static/images/favicon.ico" />

@@ -5,8 +5,8 @@ const Router = require('koa-router')
 const json = require('koa-json')
 const bodyParser = require('koa-bodyparser')
 
-const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
+const port = dev ? 3000 : 443
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
