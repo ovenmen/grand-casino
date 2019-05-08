@@ -1,3 +1,4 @@
 {
-    "watch": ["server/**/*.js", "stub"]
+    "watch": ["server", "stub"],
+    "ext": "js, json"
 }

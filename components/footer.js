@@ -22,7 +22,7 @@ const Footer = ({ brand, footer, navigation }) => (
                 </div>
                 <div className="cell small-12 medium-6 large-3">
                     <ul className="color-white list">
-                        {map(navigation, (item, index) => (
+                        {navigation && map(navigation, (item, index) => (
                             <li key={uniqueId(index)} className="list-item">
                                 <Link href={item.value}>
                                     <a className="link color-white">{item.title}
@@ -35,7 +35,7 @@ const Footer = ({ brand, footer, navigation }) => (
                 </div>
                 <div className="cell small-12 medium-6 large-3">
                     <ul className="color-white list">
-                        {map(submenu(navigation).submenu, (item, index) => (
+                        {navigation.submenu && map(submenu(navigation).submenu, (item, index) => (
                             <li key={uniqueId(index)} className="list-item">
                                 <Link href={item.value}>
                                     <a className="link color-white">{item.title}
