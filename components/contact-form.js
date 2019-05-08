@@ -62,8 +62,17 @@ const ContactForm  = (props) => {
 
         if (isValid) {
             sendFormData(API_SEND_FORM_URL, data)
+            resetValues('')
             event.target.reset()
         }
+    }
+
+    const resetValues = (value) => {
+        setName(value)
+        setPhone(value)
+        setCity(value)
+        setDate(value)
+        setMessage(value)
     }
 
     const { header, fields, submitButtonTitle } = props
@@ -86,6 +95,7 @@ const ContactForm  = (props) => {
                                     type={nameInput.type}
                                     placeholder={nameInput.placeholder}
                                     isValid={!nameError}
+                                    value={name}
                                     onChange={handleOnChange}
                                 />}
                             </div>
@@ -95,6 +105,7 @@ const ContactForm  = (props) => {
                                     type={phoneInput.type}
                                     placeholder={phoneInput.placeholder}
                                     isValid={!phoneError}
+                                    value={phone}
                                     onChange={handleOnChange}
                                 />}
                             </div>
@@ -106,6 +117,7 @@ const ContactForm  = (props) => {
                                     type={cityInput.type}
                                     placeholder={cityInput.placeholder}
                                     isValid={!cityError}
+                                    value={city}
                                     onChange={handleOnChange}
                                 />}
                             </div>
@@ -115,6 +127,7 @@ const ContactForm  = (props) => {
                                     type={dateInput.type}
                                     placeholder={dateInput.placeholder}
                                     isValid={!dateError}
+                                    value={date}
                                     onChange={handleOnChange}
                                 />}
                             </div>
@@ -127,6 +140,7 @@ const ContactForm  = (props) => {
                                     placeholder={messageInput.placeholder}
                                     isValid={!messageError}
                                     rows={8}
+                                    value={message}
                                     onChange={handleOnChange}
                                 />}
                             </div>
