@@ -1,4 +1,6 @@
+const fs = require('fs')
 const http = require('http')
+const https = require('https')
 const Koa = require('koa')
 const next = require('next')
 const Router = require('koa-router')
@@ -9,6 +11,11 @@ const dev = process.env.NODE_ENV !== 'production'
 const port = dev ? 3000 : 443
 const app = next({ dev })
 const handle = app.getRequestHandler()
+
+const options = {
+    key: fs.readFileSync('private/rootCA.key'),
+    cert: fs.readFileSync('private/rootCA.pem')
+}
 
 app.prepare().then(() => {
     const server = new Koa()
@@ -49,7 +56,13 @@ app.prepare().then(() => {
     server.use(router.allowedMethods())
     server.use(router.routes())
 
-    http.createServer(server.callback()).listen(port, () => {
-        console.log(`> Сервер запущен на http://localhost:${port}`)
-    })
+    if (!dev) {
+        https.createServer(options, server.callback()).listen(port, () => {
+            console.log(`> Сервер запущен на https://localhost:${port}`)
+        })
+    } else {
+        http.createServer(server.callback()).listen(port, () => {
+            console.log(`> Сервер запущен на http://localhost:${port}`)
+        })
+    }
 })
