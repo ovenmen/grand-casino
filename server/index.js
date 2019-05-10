@@ -53,7 +53,6 @@ app.prepare().then(() => {
         await next()
     })
 
-    server.use(router.allowedMethods())
     server.use(router.routes())
 
     if (!dev) {

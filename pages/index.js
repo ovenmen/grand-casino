@@ -20,45 +20,7 @@ const IndexPage = ({ data }) => {
     )
 }
 
-IndexPage.getInitialProps = async ({ err, res }) => {
-    const mongoose = require('mongoose')
-
-    const username = 'detanton'
-    const password = 'I71%26fyh5'
-    const dbname = 'grand-casino'
-    const url = `mongodb+srv://${username}:${password}@cluster0-zcza4.gcp.mongodb.net/${dbname}?retryWrites=true`
-    const collection = 'pages'
-
-    mongoose.connect(url, { useNewUrlParser: true })
-    const db = mongoose.connection
-    db.once('open', () => {
-        const Schema = mongoose.Schema
-        const model = mongoose.model
-        const schema = new Schema({ title: String })
-        const HomeModel = mongoose.models.Home || model('Home', schema)
-        const result = HomeModel.findOne({ title: 'Grand Casino | Выездные мероприятия' })
-
-        console.log(result)
-    })
-    db.on('error', (err) => { console.log(err) })
-
-    const response = {
-        head: {
-            title: 'Grand Casino | Выездные мероприятия',
-            description: 'Выездные мероприятия',
-            keywords: 'фан казино, фан казино самара, выездное казино, рулетка, покер, блэкджек, корпоратив, сценарий праздника, сценарий юбилея, шоу программы, мальчишник, девичник, сценарий девичника, аренда казино, роскошная вечеринка'
-        },
-        navigation: {},
-        content: {},
-        footer: {}
-    }
-    const json = response
-
-    return {
-        data: json,
-        statusCode: 200
-    }
-}
+IndexPage.getInitialProps = fetchDataPage('index')
 
 IndexPage.propTypes = {
     data: object
