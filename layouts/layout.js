@@ -11,13 +11,13 @@ const Layout = ({ children }) => {
     return (
         <article>
             <header className="shadow">
-                <Navigation navigation={navigation} brand={brand} />
+                {navigation && <Navigation navigation={navigation} brand={brand} />}
             </header>
             <main>
                 {children}
             </main>
             <footer>
-                <Footer footer={footer} brand={brand} navigation={navigation} />
+                {footer && <Footer footer={footer} brand={brand} navigation={navigation} />}
                 <Scroller />
             </footer>
         </article>

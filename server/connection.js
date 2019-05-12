@@ -1,13 +1,7 @@
-const mongoose = require('mongoose')
+const MongoClient = require('mongodb').MongoClient
+const settings = require('./settings')
 
-const username = 'detanton'
-const password = 'I71&fyh5'
-const dbname = 'grand-casino'
-const url = `mongodb+srv://${username}:${password}@cluster0-zcza4.gcp.mongodb.net/${dbname}?retryWrites=true`
-const params = {
-    useNewUrlParser: true
-}
-
-const connectionMongoDB = () => mongoose.connect(url, params)
-
-module.exports = connectionMongoDB()
+module.exports = async () =>
+    await MongoClient.connect(settings.url, settings.params)
+        .then((connection) => connection.db(settings.database))
+        .catch((err) => console.error(err))
