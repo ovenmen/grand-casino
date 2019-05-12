@@ -1,23 +1,14 @@
-const mongoose = require('mongoose')
+const connection = require('../connection')
 const settings = require('../settings')
 
 module.exports = (router) => {
     router.post('/api/v1/pages/index', async ctx => {
-        const data = await mongoose.connect(settings.url, settings.params).then(() => {
-            const Schema = mongoose.Schema
-            const model = mongoose.model
-            const schema = new Schema({}, { collection: settings.collection })
-            const HomeModel = mongoose.models.Home || model('Home', schema)
-            return HomeModel.find({ namePage: 'home' }, (err, docs) => {
-                if (err) throw err
-                mongoose.disconnect()
-                return docs
-            })
-        }, (err) => {
-            throw err
-        })
-
-        ctx.body = { data: data[0] }
+        const db = await connection()
+        const collection = db.collection(settings.collection)
+        const docs = collection.findOne({ pageId: 'index' })
+        const json = await docs
+        
+        ctx.body = { data: json }
         ctx.respond = true
     })
 

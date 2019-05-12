@@ -6,6 +6,7 @@ const next = require('next')
 const Router = require('koa-router')
 const json = require('koa-json')
 const bodyParser = require('koa-bodyparser')
+const logger = require('koa-logger')
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = dev ? 3000 : 443
@@ -31,6 +32,7 @@ app.prepare().then(() => {
     const error = require('./routes/error.js')(router)
 
     // middleware
+    server.use(logger())
     server.use(json())
     server.use(bodyParser())
 
