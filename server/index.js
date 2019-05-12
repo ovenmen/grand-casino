@@ -8,6 +8,9 @@ const json = require('koa-json')
 const bodyParser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
+const connection = require('./connection')
+const settings = require('./settings')
+
 const dev = process.env.NODE_ENV !== 'production'
 const port = dev ? 3000 : 443
 const app = next({ dev })
@@ -22,28 +25,93 @@ app.prepare().then(() => {
     const server = new Koa()
     const router = new Router()
 
-    // import pages
-    const index = require('./routes/index.js')(router)
-    const events = require('./routes/events.js')(router, app)
-    const prices = require('./routes/prices.js')(router)
-    const franchise = require('./routes/franchise.js')(router)
-    const reviews = require('./routes/reviews.js')(router)
-    const contacts = require('./routes/contacts.js')(router)
-    const error = require('./routes/error.js')(router)
-
     // middleware
     server.use(logger())
     server.use(json())
     server.use(bodyParser())
 
-    // use pages
-    server.use(index.routes())
-    server.use(events.routes())
-    server.use(prices.routes())
-    server.use(franchise.routes())
-    server.use(reviews.routes())
-    server.use(contacts.routes())
-    server.use(error.routes())
+    /* API */
+    // index page
+    router.post('/api/v1/pages/index', async ctx => {
+        const db = await connection()
+        const collection = db.collection(settings.collection)
+        const json = await collection.findOne({ pageId: 'index' })
+
+        ctx.body = { data: json }
+        ctx.respond = true
+    })
+
+    // events subpage
+    router.get('/events/:subpage', async ctx => {
+        const subpage = ctx.params.subpage
+        const db = await connection()
+        const collection = db.collection(settings.collection)
+        const json = await collection.findOne({ pageId: subpage })
+        const data = { data: json }
+
+        await app.render(ctx.req, ctx.res, '/event-page', data)
+        ctx.respond = false
+    })
+
+    // events page
+    router.post('/api/v1/pages/events', async ctx => {
+        const db = await connection()
+        const collection = db.collection(settings.collection)
+        const json = await collection.findOne({ pageId: 'events' })
+
+        ctx.body = { data: json }
+        ctx.respond = true
+    })
+
+    // prices events
+    router.post('/api/v1/pages/prices', async ctx => {
+        const db = await connection()
+        const collection = db.collection(settings.collection)
+        const json = await collection.findOne({ pageId: 'prices' })
+
+        ctx.body = { data: json }
+        ctx.respond = true
+    })
+
+    // franchise page
+    router.post('/api/v1/pages/franchise', async ctx => {
+        const db = await connection()
+        const collection = db.collection(settings.collection)
+        const json = await collection.findOne({ pageId: 'franchise' })
+
+        ctx.body = { data: json }
+        ctx.respond = true
+    })
+
+    // reviews page
+    router.post('/api/v1/pages/reviews', async ctx => {
+        const db = await connection()
+        const collection = db.collection(settings.collection)
+        const json = await collection.findOne({ pageId: 'reviews' })
+
+        ctx.body = { data: json }
+        ctx.respond = true
+    })
+
+    // contacts page
+    router.post('/api/v1/pages/contacts', async ctx => {
+        const db = await connection()
+        const collection = db.collection(settings.collection)
+        const json = await collection.findOne({ pageId: 'contacts' })
+
+        ctx.body = { data: json }
+        ctx.respond = true
+    })
+
+    // error page
+    router.post('/api/v1/pages/error', async ctx => {
+        const db = await connection()
+        const collection = db.collection(settings.collection)
+        const json = await collection.findOne({ pageId: 'error' })
+
+        ctx.body = { data: json }
+        ctx.respond = true
+    })
 
     router.get('*', async ctx => {
         await handle(ctx.req, ctx.res)
@@ -56,6 +124,7 @@ app.prepare().then(() => {
     })
 
     server.use(router.routes())
+    server.use(router.allowedMethods())
 
     if (!dev) {
         https.createServer(options, server.callback()).listen(port, () => {
