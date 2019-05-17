@@ -10,6 +10,7 @@ const logger = require('koa-logger')
 
 const connection = require('./connection')
 const settings = require('./settings')
+const sendMail = require('../utils/send-mail')
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = dev ? 3000 : 443
@@ -17,8 +18,8 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 
 const options = {
-    key: fs.readFileSync('private/rootCA.key'),
-    cert: fs.readFileSync('private/rootCA.pem')
+    key: fs.readFileSync('keys/server.key'),
+    cert: fs.readFileSync('keys/server.crt')
 }
 
 app.prepare().then(() => {
@@ -113,6 +114,44 @@ app.prepare().then(() => {
         ctx.respond = true
     })
 
+    // api forms
+    // form review
+    router.post('/api/v1/send-form-review', async ctx => {
+        const { name = '', city = '', date = null, message = '' } = ctx.request.body
+        const json = {
+            subject: 'Новый отзыв с сайта grand-casino.ru',
+            html: `
+                <p><strong>Имя:</strong> ${name}</p>
+                <p><strong>Город:</strong> ${city}</p>
+                <p><strong>Желаемая дата:</strong> ${date}</p>
+                <p><strong>Сообщение:</strong> ${message}</p>
+            `
+        }
+
+        sendMail(json)
+        ctx.body = { data: json }
+        ctx.respond = true
+    })
+
+    // form contacts
+    router.post('/api/v1/send-form-contacts', async ctx => {
+        const { name = '', phone = '', city = '', date = null, message = '' } = ctx.request.body
+        const json = {
+            subject: 'Новый сообщение от клиента с сайта grand-casino.ru',
+            html: `
+                <p><strong>Имя:</strong> ${name}</p>
+                <p><strong>Телефон:<strong> ${phone}</p>
+                <p><strong>Город:</strong> ${city}</p>
+                <p><strong>Желаемая дата:</strong> ${date}</p>
+                <p><strong>Сообщение:</strong> ${message}</p>
+            `
+        }
+
+        sendMail(json)
+        ctx.body = { data: json }
+        ctx.respond = true
+    })
+
     router.get('*', async ctx => {
         await handle(ctx.req, ctx.res)
         ctx.respond = false
@@ -128,10 +167,12 @@ app.prepare().then(() => {
 
     if (!dev) {
         https.createServer(options, server.callback()).listen(port, () => {
+            // eslint-disable-next-line no-console
             console.log(`> Сервер запущен на https://localhost:${port}`)
         })
     } else {
         http.createServer(server.callback()).listen(port, () => {
+            // eslint-disable-next-line no-console
             console.log(`> Сервер запущен на http://localhost:${port}`)
         })
     }
