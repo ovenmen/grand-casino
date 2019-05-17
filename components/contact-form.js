@@ -3,7 +3,7 @@ import { array, string } from 'prop-types'
 import { get } from 'lodash'
 
 import Field from './field'
-import { API_SEND_FORM_URL } from '../config'
+import { API_SEND_FORM_URL_CONTACTS } from '../config'
 import sendFormData from '../utils/send-form-data'
 
 const ContactForm  = (props) => {
@@ -61,7 +61,7 @@ const ContactForm  = (props) => {
         setMessageError(message === '')
 
         if (isValid) {
-            sendFormData(API_SEND_FORM_URL, data)
+            sendFormData(API_SEND_FORM_URL_CONTACTS, data)
             resetValues('')
             event.target.reset()
         }
