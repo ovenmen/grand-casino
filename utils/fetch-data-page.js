@@ -1,8 +1,8 @@
 import 'isomorphic-unfetch'
 
 const dev = process.env.NODE_ENV !== 'production'
-const protocol = dev ? 'http' : 'https'
-const port = dev ? 3000 : 443
+const protocol = 'http'
+const port = dev ? 3000 : 80
 
 const fetchDataPage = (namePage) => async ({ err, res }) => {
     const statusCode = res ? res.statusCode : err ? err.statusCode : null

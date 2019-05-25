@@ -1,33 +1,24 @@
-const fs = require('fs')
 const http = require('http')
-const https = require('https')
 const Koa = require('koa')
 const next = require('next')
 const Router = require('koa-router')
 const json = require('koa-json')
 const bodyParser = require('koa-bodyparser')
-const logger = require('koa-logger')
 
 const connection = require('./connection')
 const settings = require('./settings')
 const sendMail = require('../utils/send-mail')
 
 const dev = process.env.NODE_ENV !== 'production'
-const port = dev ? 3000 : 443
+const port = dev ? 3000 : 80
 const app = next({ dev })
 const handle = app.getRequestHandler()
-
-const options = {
-    key: fs.readFileSync('keys/server.key'),
-    cert: fs.readFileSync('keys/server.crt')
-}
 
 app.prepare().then(() => {
     const server = new Koa()
     const router = new Router()
 
     // middleware
-    server.use(logger())
     server.use(json())
     server.use(bodyParser())
 
@@ -165,15 +156,9 @@ app.prepare().then(() => {
     server.use(router.routes())
     server.use(router.allowedMethods())
 
-    if (!dev) {
-        https.createServer(options, server.callback()).listen(port, () => {
-            // eslint-disable-next-line no-console
-            console.log(`> Сервер запущен на https://localhost:${port}`)
-        })
-    } else {
-        http.createServer(server.callback()).listen(port, () => {
-            // eslint-disable-next-line no-console
-            console.log(`> Сервер запущен на http://localhost:${port}`)
-        })
-    }
+    http.createServer(server.callback()).listen(port, () => {
+        // eslint-disable-next-line no-console
+        console.log(`> Сервер запущен на http://localhost:${port}`)
+    })
+
 })
