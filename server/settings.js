@@ -4,7 +4,8 @@ const DB_NAME = 'grand-casino'
 const COLLECTION = 'pages'
 
 module.exports = {
-    url: `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0-zcza4.gcp.mongodb.net/${DB_NAME}`,
+    // url: `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0-zcza4.gcp.mongodb.net/${DB_NAME}`,
+    url: `mongodb://localhost:27017/${DB_NAME}`,
     host: 'cluster0-zcza4.gcp.mongodb.net',
     database: DB_NAME,
     port: 27017,

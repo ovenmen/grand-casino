@@ -30,7 +30,7 @@ const Scroller = () => {
                     position: fixed;
                     bottom: 5rem;
                     right: 2rem;
-                    z-index: 1000000;
+                    z-index: 10000;
                     visibility: hidden;
                     opacity: 0;
                     transition: all 0.3s ease-in-out;
