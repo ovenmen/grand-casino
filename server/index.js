@@ -15,10 +15,6 @@ const dev = process.env.NODE_ENV !== 'production'
 const port = dev ? 3000 : 443
 const app = next({ dev })
 const handle = app.getRequestHandler()
-const serverModule = dev ? http : https
-const serverOptions = dev ? null : options
-const message = dev ? 'Start development server' : 'Start production server'
-
 const options = {
     hostname: 'grand-casino.com.ru',
     port: 443,
@@ -28,6 +24,9 @@ const options = {
     cert: fs.readFileSync('keys/6472878.crt'),
     ca: fs.readFileSync('keys/ca_bundle_6472878.crt')
 }
+const serverModule = dev ? http : https
+const serverOptions = dev ? null : options
+const message = dev ? 'Start development server' : 'Start production server'
 
 app.prepare().then(() => {
     const server = new Koa()
