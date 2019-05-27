@@ -1,13 +1,9 @@
 import React from 'react'
 import { object } from 'prop-types'
-import dynamic from 'next/dynamic'
 
 import Navigation from '../components/navigation'
 import Footer from '../components/footer'
-
-const ScrollerDynamic = dynamic(() => import('../components/scroller'), {
-    ssr: false
-})
+import Scroller from '../components/scroller'
 
 const Layout = ({ children }) => {
     const { navigation, brand, footer } = children.props.data
@@ -22,7 +18,7 @@ const Layout = ({ children }) => {
             </main>
             <footer>
                 {footer && <Footer footer={footer} brand={brand} navigation={navigation} />}
-                <ScrollerDynamic />
+                <Scroller />
             </footer>
         </article>
     )

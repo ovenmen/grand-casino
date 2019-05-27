@@ -23,7 +23,7 @@ const options = {
     method: 'GET',
     key: fs.readFileSync('keys/6472878.key'),
     cert: fs.readFileSync('keys/6472878.crt'),
-    ca: fs.readFileSync('keys/nginx_bundle_331058b1354.crt')
+    ca: fs.readFileSync('keys/ca_bundle_6472878.crt')
 }
 
 app.prepare().then(() => {
