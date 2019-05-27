@@ -1,6 +1,3 @@
-const getDataQueryPage = async (req) => {
-    const json = await req.query
-    return json
-}
+const getDataQueryPage = async ({ query }) => query
 
 export default getDataQueryPage

@@ -1,4 +1,6 @@
 const http = require('http')
+const https = require('https')
+const fs = require('fs')
 const Koa = require('koa')
 const next = require('next')
 const Router = require('koa-router')
@@ -10,9 +12,19 @@ const settings = require('./settings')
 const sendMail = require('../utils/send-mail')
 
 const dev = process.env.NODE_ENV !== 'production'
-const port = dev ? 3000 : 80
+const port = dev ? 3000 : 443
 const app = next({ dev })
 const handle = app.getRequestHandler()
+
+const options = {
+    hostname: 'grand-casino.com.ru',
+    port: 443,
+    path: '/',
+    method: 'GET',
+    key: fs.readFileSync('keys/6472878.key'),
+    cert: fs.readFileSync('keys/6472878.crt'),
+    ca: fs.readFileSync('keys/nginx_bundle_331058b1354.crt')
+}
 
 app.prepare().then(() => {
     const server = new Koa()
@@ -156,9 +168,15 @@ app.prepare().then(() => {
     server.use(router.routes())
     server.use(router.allowedMethods())
 
-    http.createServer(server.callback()).listen(port, () => {
-        // eslint-disable-next-line no-console
-        console.log(`> Сервер запущен на http://localhost:${port}`)
-    })
-
+    if (dev) {
+        http.createServer(server.callback()).listen(port, () => {
+            // eslint-disable-next-line no-console
+            console.log(`> Сервер запущен на http://localhost:${port}`)
+        })
+    } else {
+        https.createServer(options, server.callback()).listen(port, () => {
+            // eslint-disable-next-line no-console
+            console.log(`> Сервер запущен на https://localhost:${port}`)
+        })
+    }
 })

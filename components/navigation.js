@@ -41,7 +41,7 @@ class Navigation extends React.Component {
                         <ul className="menu">
                             {map(navigation, (menuItem, menuIndex) => (
                                 <li className="menu-item" key={uniqueId(menuIndex)}>
-                                    <Link href={menuItem.value}>
+                                    <Link href={menuItem.value} prefetch>
                                         <a className={classnames('link font-bold h5', menuItem.active && 'active')}>
                                             {menuItem.title}
                                         </a>

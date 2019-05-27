@@ -1,12 +1,16 @@
 import React from 'react'
 import { object } from 'prop-types'
+import dynamic from 'next/dynamic'
 
 import getDataQueryPage from '../utils/fetch-data-query-page'
 import Breadcrumbs from '../components/breadcrumbs'
 import HeaderPage from '../components/header-page'
 import EventDescription from '../components/event-description'
-import Photos from '../components/photos'
 import Action from '../components/action'
+
+const PhotosDynamic = dynamic(() => import('../components/photos'), {
+    ssr: false
+})
 
 const EventPage = ({ data }) => {
     const { header, headerImage, breadcrumbs } = data
@@ -17,7 +21,7 @@ const EventPage = ({ data }) => {
             {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
             {header && headerImage && <HeaderPage header={header} image={headerImage} />}
             {eventDescription && <EventDescription {...eventDescription} />}
-            {photos && <Photos {...photos} />}
+            {photos && <PhotosDynamic {...photos} />}
             {action && <Action {...action} />}
         </section>
     )

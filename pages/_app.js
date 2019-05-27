@@ -1,16 +1,9 @@
 import React from 'react'
 import App, { Container } from 'next/app'
-import dynamic from 'next/dynamic'
 import Head from 'next/head'
 
-import Loader from '../components/loader'
+import Layout from '../layouts/layout' 
 import GlobalStyle from '../components/global-style'
-
-const Layout = dynamic(() => import('../layouts/layout'), {
-    // eslint-disable-next-line react/display-name
-    loading: () => <Loader />,
-    ssr: false
-})
 
 export default class extends App {
     render () {
