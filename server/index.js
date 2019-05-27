@@ -15,6 +15,9 @@ const dev = process.env.NODE_ENV !== 'production'
 const port = dev ? 3000 : 443
 const app = next({ dev })
 const handle = app.getRequestHandler()
+const serverModule = dev ? http : https
+const serverOptions = dev ? null : options
+const message = dev ? 'Start development server' : 'Start production server'
 
 const options = {
     hostname: 'grand-casino.com.ru',
@@ -168,15 +171,8 @@ app.prepare().then(() => {
     server.use(router.routes())
     server.use(router.allowedMethods())
 
-    if (dev) {
-        http.createServer(server.callback()).listen(port, () => {
-            // eslint-disable-next-line no-console
-            console.log(`> Сервер запущен на http://localhost:${port}`)
-        })
-    } else {
-        https.createServer(options, server.callback()).listen(port, () => {
-            // eslint-disable-next-line no-console
-            console.log(`> Сервер запущен на https://localhost:${port}`)
-        })
-    }
+    serverModule.createServer(serverOptions, server.callback()).listen(port, () => {
+        // eslint-disable-next-line no-console
+        console.log(message)
+    })
 })
