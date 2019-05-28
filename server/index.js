@@ -26,7 +26,7 @@ const options = {
 }
 const serverModule = dev ? http : https
 const serverOptions = dev ? null : options
-const message = dev ? 'Start development server' : 'Start production server'
+const message = dev ? 'Starting development server' : 'Starting production server'
 
 app.prepare().then(() => {
     const server = new Koa()
@@ -39,121 +39,118 @@ app.prepare().then(() => {
     /* API */
     // index page
     router.post('/api/v1/pages/index', async ctx => {
-        const db = await connection()
-        const collection = db.collection(settings.collection)
-        const json = await collection.findOne({ pageId: 'index' })
+        ctx.state.db = await connection()
+        ctx.state.collection = ctx.state.db.collection(settings.collection)
+        ctx.state.data = await ctx.state.collection.findOne({ pageId: 'index' })
 
-        ctx.body = { data: json }
+        ctx.body = { data: ctx.state.data }
         ctx.respond = true
     })
 
     // events subpage
     router.get('/events/:subpage', async ctx => {
-        const subpage = ctx.params.subpage
-        const db = await connection()
-        const collection = db.collection(settings.collection)
-        const json = await collection.findOne({ pageId: subpage })
-        const data = { data: json }
+        ctx.state.db = await connection()
+        ctx.state.collection = ctx.state.db.collection(settings.collection)
+        ctx.state.data = await ctx.state.collection.findOne({ pageId: ctx.params.subpage })
+        ctx.state.query = { data: ctx.state.data }
 
-        await app.render(ctx.req, ctx.res, '/event-page', data)
+        await app.render(ctx.req, ctx.res, '/event-page', ctx.state.query)
         ctx.respond = false
     })
 
     // events page
     router.post('/api/v1/pages/events', async ctx => {
-        const db = await connection()
-        const collection = db.collection(settings.collection)
-        const json = await collection.findOne({ pageId: 'events' })
+        ctx.state.db = await connection()
+        ctx.state.collection = ctx.state.db.collection(settings.collection)
+        ctx.state.data = await ctx.state.collection.findOne({ pageId: 'events' })
 
-        ctx.body = { data: json }
+        ctx.body = { data: ctx.state.data }
         ctx.respond = true
     })
 
     // prices events
     router.post('/api/v1/pages/prices', async ctx => {
-        const db = await connection()
-        const collection = db.collection(settings.collection)
-        const json = await collection.findOne({ pageId: 'prices' })
+        ctx.state.db = await connection()
+        ctx.state.collection = ctx.state.db.collection(settings.collection)
+        ctx.state.data = await ctx.state.collection.findOne({ pageId: 'prices' })
 
-        ctx.body = { data: json }
+        ctx.body = { data: ctx.state.data }
         ctx.respond = true
     })
 
     // franchise page
     router.post('/api/v1/pages/franchise', async ctx => {
-        const db = await connection()
-        const collection = db.collection(settings.collection)
-        const json = await collection.findOne({ pageId: 'franchise' })
+        ctx.state.db = await connection()
+        ctx.state.collection = ctx.state.db.collection(settings.collection)
+        ctx.state.data = await ctx.state.collection.findOne({ pageId: 'franchise' })
 
-        ctx.body = { data: json }
+        ctx.body = { data: ctx.state.data }
         ctx.respond = true
     })
 
     // reviews page
     router.post('/api/v1/pages/reviews', async ctx => {
-        const db = await connection()
-        const collection = db.collection(settings.collection)
-        const json = await collection.findOne({ pageId: 'reviews' })
+        ctx.state.db = await connection()
+        ctx.state.collection = ctx.state.db.collection(settings.collection)
+        ctx.state.data = await ctx.state.collection.findOne({ pageId: 'reviews' })
 
-        ctx.body = { data: json }
+        ctx.body = { data: ctx.state.data }
         ctx.respond = true
     })
 
     // contacts page
     router.post('/api/v1/pages/contacts', async ctx => {
-        const db = await connection()
-        const collection = db.collection(settings.collection)
-        const json = await collection.findOne({ pageId: 'contacts' })
+        ctx.state.db = await connection()
+        ctx.state.collection = ctx.state.db.collection(settings.collection)
+        ctx.state.data = await ctx.state.collection.findOne({ pageId: 'contacts' })
 
-        ctx.body = { data: json }
+        ctx.body = { data: ctx.state.data }
         ctx.respond = true
     })
 
     // error page
     router.post('/api/v1/pages/error', async ctx => {
-        const db = await connection()
-        const collection = db.collection(settings.collection)
-        const json = await collection.findOne({ pageId: 'error' })
+        ctx.state.db = await connection()
+        ctx.state.collection = ctx.state.db.collection(settings.collection)
+        ctx.state.data = await ctx.state.collection.findOne({ pageId: 'error' })
 
-        ctx.body = { data: json }
+        ctx.body = { data: ctx.state.data }
         ctx.respond = true
     })
 
     // api forms
     // form review
     router.post('/api/v1/send-form-review', async ctx => {
-        const { name = '', city = '', date = null, message = '' } = ctx.request.body
-        const json = {
+        ctx.state.data = {
             subject: 'Новый отзыв с сайта grand-casino.ru',
             html: `
-                <p><strong>Имя:</strong> ${name}</p>
-                <p><strong>Город:</strong> ${city}</p>
-                <p><strong>Желаемая дата:</strong> ${date}</p>
-                <p><strong>Сообщение:</strong> ${message}</p>
+                <p><strong>Имя:</strong> ${ctx.request.body.name}</p>
+                <p><strong>Город:</strong> ${ctx.request.body.city}</p>
+                <p><strong>Желаемая дата:</strong> ${ctx.request.body.date}</p>
+                <p><strong>Сообщение:</strong> ${ctx.request.body.message}</p>
             `
         }
 
-        sendMail(json)
-        ctx.body = { data: json }
+        sendMail(ctx.state.data)
+        ctx.body = { data: ctx.state.data }
         ctx.respond = true
     })
 
     // form contacts
     router.post('/api/v1/send-form-contacts', async ctx => {
-        const { name = '', phone = '', city = '', date = null, message = '' } = ctx.request.body
-        const json = {
+        ctx.state.data = {
             subject: 'Новый сообщение от клиента с сайта grand-casino.ru',
             html: `
-                <p><strong>Имя:</strong> ${name}</p>
-                <p><strong>Телефон:<strong> ${phone}</p>
-                <p><strong>Город:</strong> ${city}</p>
-                <p><strong>Желаемая дата:</strong> ${date}</p>
-                <p><strong>Сообщение:</strong> ${message}</p>
+                <p><strong>Имя:</strong> ${ctx.request.body.name}</p>
+                <p><strong>Телефон:<strong> ${ctx.request.body.phone}</p>
+                <p><strong>Город:</strong> ${ctx.request.body.city}</p>
+                <p><strong>Желаемая дата:</strong> ${ctx.request.body.date}</p>
+                <p><strong>Сообщение:</strong> ${ctx.request.body.message}</p>
             `
         }
 
-        sendMail(json)
-        ctx.body = { data: json }
+        sendMail(ctx.state.data)
+        ctx.body = { data: ctx.state.data }
         ctx.respond = true
     })
 
@@ -163,10 +160,9 @@ app.prepare().then(() => {
     })
 
     server.use(async (ctx, next) => {
-        ctx.res.statusCode = 200
+        ctx.status = 200
         await next()
     })
-
     server.use(router.routes())
     server.use(router.allowedMethods())
 
