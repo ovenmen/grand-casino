@@ -6,6 +6,7 @@ const next = require('next')
 const Router = require('koa-router')
 const json = require('koa-json')
 const bodyParser = require('koa-bodyparser')
+const forceHTTPS = require('koa-force-https')
 
 const connection = require('./connection')
 const settings = require('./settings')
@@ -33,6 +34,7 @@ app.prepare().then(() => {
     const router = new Router()
 
     // middleware
+    if (!dev) { server.use(forceHTTPS()) }
     server.use(json())
     server.use(bodyParser())
 
@@ -166,6 +168,9 @@ app.prepare().then(() => {
     server.use(router.routes())
     server.use(router.allowedMethods())
 
+    if (!dev) {
+        http.createServer(server.callback()).listen(80)
+    }
     serverModule.createServer(serverOptions, server.callback()).listen(port, () => {
         // eslint-disable-next-line no-console
         console.log(message)
