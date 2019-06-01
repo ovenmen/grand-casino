@@ -2,11 +2,16 @@ import React from 'react'
 
 const GlobalStyle = () => (
     <style global jsx>{`
-        body {
-            font-family: 'PT Serif', serif;
+        :root {
+            --color-white: #ffffff;
+            --color-purple: #372964;
+            --color-grey: #424242;
+            --color-link-hover: #a48eec;
         }
-        html,
         body {
+            font-family: 'PT Serif', Roboto, serif;
+        }
+        html {
             scroll-behavior: smooth;
             position: relative;
         }
@@ -19,29 +24,29 @@ const GlobalStyle = () => (
         .link-not-hover,
         .link-not-hover:focus,
         .link:focus {
-            color: #ffffff;
+            color: var(--color-white);
             transition: all 0.3s ease-in-out;
         }
         .link:hover {
-            color: #a48eec !important;
+            color: var(--color-link-hover) !important;
         }
         .link-not-hover:hover {
-            color: #ffffff;
+            color: var(--color-white);
         }
         .color-white {
-            color: #ffffff;
+            color: var(--color-white);
         }
         .color-purple {
-            color: #372964;
+            color: var(--color-purple);
         }
         .color-grey {
-            color: #424242;
+            color: var(--color-grey);
         }
         .error {
             padding: 5vw;
         }
         .error-header {
-            color: #372964;
+            color: var(--color-purple);
             font-size: 5rem;
         }
         @media screen and (max-width: 39.9375em) {
