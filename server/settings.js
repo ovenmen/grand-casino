@@ -1,16 +1,12 @@
-const USERNAME = 'detanton'
-const PASSWORD = 'I71%26fyh5'
 const DB_NAME = 'grand-casino'
 const COLLECTION = 'pages'
+const HOST = 'localhost'
+const PORT = 27017
+const URL = `mongodb://${HOST}:${PORT}/${DB_NAME}`
 
 module.exports = {
-    // url: `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0-zcza4.gcp.mongodb.net/${DB_NAME}`,
-    url: `mongodb://localhost:27017/${DB_NAME}`,
-    host: 'cluster0-zcza4.gcp.mongodb.net',
-    database: DB_NAME,
-    port: 27017,
+    url: URL,
     collection: COLLECTION,
-    authSource: 'admin',
     params: {
         retryWrites: true,
         useNewUrlParser: true,

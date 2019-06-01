@@ -1,42 +1,32 @@
 const http = require('http')
-const https = require('https')
-const fs = require('fs')
 const Koa = require('koa')
 const next = require('next')
 const Router = require('koa-router')
 const json = require('koa-json')
 const bodyParser = require('koa-bodyparser')
-const forceHTTPS = require('koa-force-https')
 
 const connection = require('./connection')
 const settings = require('./settings')
 const sendMail = require('../utils/send-mail')
 
 const dev = process.env.NODE_ENV !== 'production'
-const port = dev ? 3000 : 443
+const port = 3000
 const app = next({ dev })
 const handle = app.getRequestHandler()
-const options = {
-    hostname: 'grand-casino.com.ru',
-    port: 443,
-    path: '/',
-    method: 'GET',
-    key: fs.readFileSync('keys/6472878.key'),
-    cert: fs.readFileSync('keys/6472878.crt'),
-    ca: fs.readFileSync('keys/ca_bundle_6472878.crt')
-}
-const serverModule = dev ? http : https
-const serverOptions = dev ? null : options
-const message = dev ? 'Starting development server' : 'Starting production server'
 
 app.prepare().then(() => {
     const server = new Koa()
     const router = new Router()
 
     // middleware
-    if (!dev) { server.use(forceHTTPS()) }
     server.use(json())
     server.use(bodyParser())
+    server.use(async (ctx, next) => {
+        ctx.status = 200
+        await next()
+    })
+    server.use(router.routes())
+    server.use(router.allowedMethods())
 
     /* API */
     // index page
@@ -161,18 +151,8 @@ app.prepare().then(() => {
         ctx.respond = false
     })
 
-    server.use(async (ctx, next) => {
-        ctx.status = 200
-        await next()
-    })
-    server.use(router.routes())
-    server.use(router.allowedMethods())
-
-    if (!dev) {
-        http.createServer(server.callback()).listen(80)
-    }
-    serverModule.createServer(serverOptions, server.callback()).listen(port, () => {
+    http.createServer(server.callback()).listen(port, () => {
         // eslint-disable-next-line no-console
-        console.log(message)
+        console.log('Starting development server')
     })
 })
