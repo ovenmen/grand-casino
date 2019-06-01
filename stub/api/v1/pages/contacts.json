@@ -66,7 +66,7 @@
     ],
     "content": {
         "map": {
-            "header": "",
+            "header": "Карта проведения мероприятий",
             "description": "",
             "items": [
                 {
@@ -124,7 +124,7 @@
             "header": "Контактная информация",
             "address": "22 St. Black Road Raleigh, PA 34578",
             "operationMode": "Monday through Sunday, 24/7",
-            "phone": "+7 (927) 725-22-29",
+            "phone": "+7 (937) 209-22-29",
             "email": "questoria.surgut@gmail.com"
         }
     },
@@ -133,7 +133,7 @@
         "address": "22 St. Black Road Raleigh, PA 34578",
         "operationMode": "Monday through Sunday, 24/7",
         "email": "questoria.surgut@gmail.com",
-        "phone": "+7 (927) 725-22-29",
-        "copirated": "© 2019 Magnifio, Inc. All Rights Reserved"
+        "phone": "+7 (937) 209-22-29",
+        "copirated": "© 2019 Grand-casino.com.ru, Inc. All Rights Reserved"
     }
 }
