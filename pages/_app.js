@@ -20,8 +20,9 @@ export default class extends App {
         return (
             <Container>
                 <Head>
+                    <html lang="ru" />
                     <title>{title}</title>
-                    {/* <base href={} /> */}
+                    <meta name="theme-color" content="#258faf" />
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                     <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
                     <meta name="description" content={description} />
