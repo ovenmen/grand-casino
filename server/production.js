@@ -7,7 +7,8 @@ const Router = require('koa-router')
 const json = require('koa-json')
 const bodyParser = require('koa-bodyparser')
 const forceHTTPS = require('koa-force-https')
-const compression = require('compression')  
+const compression = require('compression')
+const koaConnect = require('koa-connect')
 
 const connection = require('./connection')
 const settings = require('./settings')
@@ -32,7 +33,7 @@ app.prepare().then(() => {
     const router = new Router()
 
     // middleware
-    server.use(compression())
+    server.use(koaConnect(compression()))
     server.use(forceHTTPS())
     server.use(json())
     server.use(bodyParser())
