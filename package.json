@@ -4,8 +4,9 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/index.js",
-    "start": "npm run build && cross-env NODE_ENV=production node server/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon server/development.js",
+    "dev:stub": "cross-env NODE_ENV=development nodemon server/stub.js",
+    "start": "npm run build && cross-env NODE_ENV=production node server/production.js",
     "build": "next build"
   },
   "keywords": [],
@@ -16,6 +17,7 @@
     "@fortawesome/free-brands-svg-icons": "5.8.2",
     "@fortawesome/free-solid-svg-icons": "5.8.2",
     "@fortawesome/react-fontawesome": "0.1.4",
+    "compression": "^1.7.4",
     "isomorphic-unfetch": "3.0.0",
     "koa": "2.7.0",
     "koa-bodyparser": "4.2.1",
