@@ -32,8 +32,8 @@ app.prepare().then(() => {
     const router = new Router()
 
     // middleware
-    server.use(forceHTTPS())
     server.use(compression())
+    server.use(forceHTTPS())
     server.use(json())
     server.use(bodyParser())
     server.use(async (ctx, next) => {
