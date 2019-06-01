@@ -102,11 +102,17 @@ const Navigation = ({ navigation, brand }) => {
                 }
                 .toggle-button {
                     position: absolute;
-                    top: 2px;
+                    top: 1rem;
                     right: 1rem;
                     cursor: pointer;
                 }
                 @media screen and (max-width: 39.9375em) {
+                    .navigation {
+                        min-height: 3rem;
+                    }
+                    .brand {
+                        padding: 1rem 0;
+                    }
                     .menu {
                         flex-direction: column;
                     }

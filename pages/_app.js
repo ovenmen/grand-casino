@@ -22,7 +22,7 @@ export default class extends App {
                 <Head>
                     <html lang="ru" />
                     <title>{title}</title>
-                    <meta name="theme-color" content="#258faf" />
+                    <meta name="theme-color" content="#330b6b" />
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                     <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
                     <meta name="description" content={description} />
