@@ -5,7 +5,7 @@ import Navigation from '../components/navigation'
 import Footer from '../components/footer'
 import Scroller from '../components/scroller'
 
-const Layout = ({ children }) => {
+const MainLayout = ({ children }) => {
     const { navigation, brand, footer } = children.props.data
 
     return (
@@ -24,8 +24,8 @@ const Layout = ({ children }) => {
     )
 }
 
-Layout.propTypes = {
+MainLayout.propTypes = {
     children: object
 }
 
-export default Layout
+export default MainLayout

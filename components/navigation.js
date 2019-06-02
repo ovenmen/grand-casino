@@ -36,7 +36,7 @@ const Navigation = ({ navigation, brand }) => {
                     <ul className="menu">
                         {map(navigation, (menuItem, menuIndex) => (
                             <li className="menu-item" key={uniqueId(menuIndex)} onClick={handleClickLink}>
-                                <Link href={menuItem.value}>
+                                <Link href={menuItem.value} passHref>
                                     <a className={classnames('link font-bold h5', menuItem.active && 'active')}>
                                         {menuItem.title}
                                     </a>
@@ -45,7 +45,7 @@ const Navigation = ({ navigation, brand }) => {
                                     <ul className="submenu flex-dir-column">
                                         {map(menuItem.submenu, (submenuItem, submenuIndex) => (
                                             <li className="submenu-item" key={uniqueId(submenuIndex)}>
-                                                <Link href={submenuItem.value}>
+                                                <Link href={submenuItem.value} passHref>
                                                     <a className={classnames('link font-bold h5', submenuItem.active && 'active')}>
                                                         {submenuItem.title}
                                                     </a>
