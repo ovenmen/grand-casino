@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { object, string, array } from 'prop-types'
+import { object, string } from 'prop-types'
 import { map, uniqueId } from 'lodash'
 
 const FranchiseInfo = ({ header, description, profit, advantages }) => (
@@ -71,7 +71,10 @@ const FranchiseInfo = ({ header, description, profit, advantages }) => (
 )
 
 FranchiseInfo.propTypes = {
-
+    header: string,
+    description: string,
+    profit: object,
+    advantages: object
 }
 
 export default FranchiseInfo
