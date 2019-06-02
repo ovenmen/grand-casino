@@ -9,6 +9,7 @@ const bodyParser = require('koa-bodyparser')
 const forceHTTPS = require('koa-force-https')
 const compression = require('compression')
 const koaConnect = require('koa-connect')
+const helmet = require('koa-helmet')
 
 const connection = require('./connection')
 const settings = require('./settings')
@@ -19,10 +20,6 @@ const port = 443
 const app = next({ dev })
 const handle = app.getRequestHandler()
 const options = {
-    hostname: 'grand-casino.com.ru',
-    port: 443,
-    path: '/',
-    method: 'GET',
     key: fs.readFileSync('keys/6472878.key', 'utf8'),
     cert: fs.readFileSync('keys/6472878.crt', 'utf8'),
     ca: fs.readFileSync('keys/ca_bundle_6472878.crt', 'utf8')
@@ -37,6 +34,7 @@ app.prepare().then(() => {
     server.use(forceHTTPS())
     server.use(json())
     server.use(bodyParser())
+    server.use(helmet())
     server.use(async (ctx, next) => {
         ctx.status = 200
         await next()

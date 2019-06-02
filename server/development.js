@@ -4,6 +4,7 @@ const next = require('next')
 const Router = require('koa-router')
 const json = require('koa-json')
 const bodyParser = require('koa-bodyparser')
+const helmet = require('koa-helmet')
 
 const connection = require('./connection')
 const settings = require('./settings')
@@ -21,6 +22,7 @@ app.prepare().then(() => {
     // middleware
     server.use(json())
     server.use(bodyParser())
+    server.use(helmet())
     server.use(async (ctx, next) => {
         ctx.status = 200
         await next()
