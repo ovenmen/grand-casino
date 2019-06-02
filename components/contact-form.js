@@ -6,7 +6,7 @@ import Field from './field'
 import { API_SEND_FORM_URL_CONTACTS } from '../config'
 import sendFormData from '../utils/send-form-data'
 
-const ContactForm  = (props) => {
+const ContactForm  = ({ header, fields, submitButtonTitle }) => {
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [city, setCity] = useState('')
@@ -75,7 +75,6 @@ const ContactForm  = (props) => {
         setMessage(value)
     }
 
-    const { header, fields, submitButtonTitle } = props
     const [ nameInput, phoneInput, cityInput, dateInput, messageInput ] = fields
 
     return (
