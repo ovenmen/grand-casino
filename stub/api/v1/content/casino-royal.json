@@ -1,0 +1,45 @@
+{
+    "componentId": "content",
+    "pageId": "casino-royal",
+    "content": {
+        "eventDescription": {
+            "header": "50-100 человек",
+            "description": [
+                "Пакет для большого торжества до 100 человек.",
+                "Идеальный набор для корпоратива, свадьбы или выпускного. Азарт и кураж выездного казино создадут на вашем празднике непередаваемый коктейль роскоши и веселья. Развлечение совершенно законно, ведь игра проходит на интерес, а не на деньги!"
+            ],
+            "image": "grand-casino-event.jpg",
+            "list": {
+                "title": "Пакет Casino Royal включает:",
+                "items": [
+                    "Аренду фан-казино на 3 часа",
+                    "4 игровых стола на выбор",
+                    "Необходимые аксессуары",
+                    "Работу профессиональных крупье"
+                ]
+            },
+            "marker": "Возможность проведения в вашем городе уточняйте у менеджера!",
+            "linkPriceTitle": "Узнать стоимость пакета",
+            "linkPriceHref": "/prices"
+        },
+        "photos": {
+            "header": "Фотогалерея",
+            "items": [
+                "casino-club-1.jpg",
+                "casino-club-2.jpg",
+                "casino-club-3.jpg",
+                "casino-club-4.jpg",
+                "casino-club-2.jpg",
+                "casino-club-3.jpg",
+                "casino-club-6.jpg",
+                "casino-club-5.jpg"
+            ]
+        },
+        "action": {
+            "header": "It`s Magic",
+            "description": "Solely because of how entertaining watching all",
+            "buttonTitle": "Написать нам",
+            "buttonHref": "/contacts"
+        }
+    }
+}

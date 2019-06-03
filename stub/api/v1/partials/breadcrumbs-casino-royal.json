@@ -1,0 +1,19 @@
+{
+    "componentId": "breadcrumbs",
+    "pageId": "casino-royal",
+    "breadcrumbs": [
+        {
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Мероприятия",
+            "value": "/events"
+        },
+        {
+            "title": "Grand Royal",
+            "value": "/events/casino-royal",
+            "active": true
+        }
+    ]
+}

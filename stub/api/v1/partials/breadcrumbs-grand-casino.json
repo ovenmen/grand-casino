@@ -1,0 +1,19 @@
+{
+    "componentId": "breadcrumbs",
+    "pageId": "grand-casino",
+    "breadcrumbs": [
+        {
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Мероприятия",
+            "value": "/events"
+        },
+        {
+            "title": "Grand Casino",
+            "value": "/events/grand-casino",
+            "active": true
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "componentId": "breadcrumbs",
+    "pageId": "contacts",
+    "breadcrumbs": [
+        {
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Контакты",
+            "value": "/contacts",
+            "active": true
+        }
+    ]
+}

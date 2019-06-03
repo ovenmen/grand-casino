@@ -1,0 +1,15 @@
+{
+    "componentId": "breadcrumbs",
+    "pageId": "prices",
+    "breadcrumbs": [
+        {
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Цены",
+            "value": "/prices",
+            "active": true
+        }
+    ]
+}

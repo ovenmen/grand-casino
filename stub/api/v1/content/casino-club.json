@@ -1,0 +1,44 @@
+{
+    "componentId": "content",
+    "pageId": "casino-club",
+    "content": {
+        "eventDescription": {
+            "header": "10-20 человек",
+            "description": [
+                "Пакет азартных развлечений для кулуарных мероприятий до 20 человек.",
+                "У вас дружеская вечеринка в стиле «Мальчишника в Вегасе» (только для своих), день рождения или встреча с партнерами в узком кругу? Будьте уверены, мы сохраним в тайне, кто сорвал самый «большой куш»."
+            ],
+            "image": "grand-casino-event.jpg",
+            "list": {
+                "title": "Пакет Casino Club включает:",
+                "items": [
+                    "Аренду фан-казино на 3 часа",
+                    "2 стола на выбор",
+                    "Необходимые аксессуары",
+                    "Работу крупье"
+                ]
+            },
+            "linkPriceTitle": "Узнать стоимость пакета",
+            "linkPriceHref": "/prices"
+        },
+        "photos": {
+            "header": "Фотогалерея",
+            "items": [
+                "casino-club-1.jpg",
+                "casino-club-2.jpg",
+                "casino-club-3.jpg",
+                "casino-club-4.jpg",
+                "casino-club-2.jpg",
+                "casino-club-3.jpg",
+                "casino-club-6.jpg",
+                "casino-club-5.jpg"
+            ]
+        },
+        "action": {
+            "header": "Loved Magic",
+            "description": "People always loved magic.",
+            "buttonTitle": "Написать нам",
+            "buttonHref": "/contacts"
+        }
+    }
+}

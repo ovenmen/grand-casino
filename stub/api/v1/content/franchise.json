@@ -1,69 +1,6 @@
 {
+    "componentId": "content",
     "pageId": "franchise",
-    "head": {
-        "title": "Grand Casino | Франшиза",
-        "description": "Франшиза",
-        "keywords": "фан казино, фан казино самара, выездное казино, рулетка, покер, блэкджек, корпоратив, сценарий праздника, сценарий юбилея, шоу программы, мальчишник, девичник, сценарий девичника, аренда казино, роскошная вечеринка"
-    },
-    "header": "Франшиза",
-    "headerImage": "bg-prices-header-page.jpg",
-    "brand": ["G", "C"],
-    "navigation": [
-        {
-            "title": "Главная",
-            "value": "/"
-        },
-        {
-            "title": "Мероприятия",
-            "value": "/events",
-            "submenu": [
-                {
-                    "title": "Casino Club",
-                    "value": "/events/casino-club"
-                },
-                {
-                    "title": "Gold Casino",
-                    "value": "/events/gold-casino"
-                },
-                {
-                    "title": "Casino Royal",
-                    "value": "/events/casino-royal"
-                },
-                {
-                    "title": "Grand Casino",
-                    "value": "/events/grand-casino"
-                }
-            ]
-        },
-        {
-            "title": "Цены",
-            "value": "/prices"
-        },
-        {
-            "title": "Франшиза",
-            "value": "/franchise",
-            "active": true
-        },
-        {
-            "title": "Отзывы и FAQ",
-            "value": "/reviews"
-        },
-        {
-            "title": "Контакты",
-            "value": "/contacts"
-        }
-    ],
-    "breadcrumbs": [
-        {
-            "title": "Главная",
-            "value": "/"
-        },
-        {
-            "title": "Франшиза",
-            "value": "/franchise",
-            "active": true
-        }
-    ],
     "content": {
         "franchise": {
             "header": "Франшиза Grand Casino - зарабатывайте играя",
@@ -205,13 +142,5 @@
             "buttonTitle": "Написать нам",
             "buttonHref": "/contacts"
         }
-    },
-    "footer": {
-        "description": "The world of magic is both intriguing and scary! It can either fascinate and entertain you with some amazing hand or card tricks or up your adrenaline. Whatever the case and the occasion, be sure that I will make your booking well worth it!",
-        "address": "22 St. Black Road Raleigh, PA 34578",
-        "operationMode": "Monday through Sunday, 24/7",
-        "email": "questoria.surgut@gmail.com",
-        "phone": "+7 (937) 209-22-29",
-        "copirated": "© 2019 Grand-casino.com.ru, Inc. All Rights Reserved"
     }
 }

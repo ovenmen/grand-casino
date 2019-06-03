@@ -1,4 +1,5 @@
 import 'isomorphic-unfetch'
+
 import { SITE_NAME } from '../config'
 
 const dev = process.env.NODE_ENV !== 'production'

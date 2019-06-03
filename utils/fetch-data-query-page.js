@@ -1,3 +1,3 @@
-const getDataQueryPage = async ({ query }) => query
+const getDataQueryPage = async ({ query }) => await query
 
 export default getDataQueryPage

@@ -1,0 +1,19 @@
+{
+    "componentId": "breadcrumbs",
+    "pageId": "gold-casino",
+    "breadcrumbs": [
+        {
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Мероприятия",
+            "value": "/events"
+        },
+        {
+            "title": "Gold Casino",
+            "value": "/events/gold-casino",
+            "active": true
+        }
+    ]
+}
