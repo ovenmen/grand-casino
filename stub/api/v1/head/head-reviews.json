@@ -1,12 +1,11 @@
 {
     "componentId": "head",
-    "pageId": "casino-royal",
+    "pageId": "reviews",
     "head": {
-        "title": "Grand Casino | Casino Royal",
-        "description": "Casino Royal",
+        "title": "Grand Casino | Отзывы",
+        "description": "Отзывы",
         "keywords": "фан казино, фан казино самара, выездное казино, рулетка, покер, блэкджек, корпоратив, сценарий праздника, сценарий юбилея, шоу программы, мальчишник, девичник, сценарий девичника, аренда казино, роскошная вечеринка"
     },
-    "header": "Casino Royal",
-    "headerImage": "bg-casino-royal-header-page.jpg",
-    "brand": ["G", "C"]
+    "header": "Отзывы",
+    "headerImage": "bg-contacts-header-page.jpg"
 }

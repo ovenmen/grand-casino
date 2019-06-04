@@ -1,12 +1,11 @@
 {
     "componentId": "head",
-    "pageId": "casino-club",
+    "pageId": "events",
     "head": {
-        "title": "Grand Casino | Casino Club",
-        "description": "Casino Club",
+        "title": "Grand Casino | Мероприятия",
+        "description": "Мероприятия",
         "keywords": "фан казино, фан казино самара, выездное казино, рулетка, покер, блэкджек, корпоратив, сценарий праздника, сценарий юбилея, шоу программы, мальчишник, девичник, сценарий девичника, аренда казино, роскошная вечеринка"
     },
-    "header": "Casino Club",
-    "headerImage": "bg-casino-club-header-page.jpg",
-    "brand": ["G", "C"]
+    "header": "Мероприятия",
+    "headerImage": "bg-prices-header-page.jpg"
 }

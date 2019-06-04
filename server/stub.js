@@ -32,13 +32,15 @@ app.prepare().then(() => {
     /* API */
     // index page
     router.post('/api/v1/pages/index', async ctx => {
-        ctx.state.head = await require('../stub/api/v1/partials/head-index.json')
-        ctx.state.navigation = await require('../stub/api/v1/partials/navigation-index.json')
+        ctx.state.head = await require('../stub/api/v1/head/head-index.json')
+        ctx.state.brand = await require('../stub/api/v1/partials/brand.json')
+        ctx.state.navigation = await require('../stub/api/v1/navigation/navigation-index.json')
         ctx.state.content = await require('../stub/api/v1/content/index.json')
         ctx.state.reviews = require('../stub/api/v1/reviews')
         ctx.state.footer = await require('../stub/api/v1/partials/footer.json')
         ctx.state.data = {
             ...ctx.state.head,
+            ...ctx.state.brand,
             ...ctx.state.navigation,
             ...ctx.state.content,
             reviews: takeRight(ctx.state.reviews, 2),
@@ -50,13 +52,15 @@ app.prepare().then(() => {
 
     // events subpage
     router.get('/events/:subpage', async ctx => {
-        ctx.state.head = await require(`../stub/api/v1/partials/head-${ctx.params.subpage}.json`)
-        ctx.state.navigation = await require(`../stub/api/v1/partials/navigation-${ctx.params.subpage}.json`)
-        ctx.state.breadcrumbs = await require(`../stub/api/v1/partials/breadcrumbs-${ctx.params.subpage}.json`)
+        ctx.state.head = await require(`../stub/api/v1/head/head-${ctx.params.subpage}.json`)
+        ctx.state.brand = await require('../stub/api/v1/partials/brand.json')
+        ctx.state.navigation = await require(`../stub/api/v1/navigation/navigation-${ctx.params.subpage}.json`)
+        ctx.state.breadcrumbs = await require(`../stub/api/v1/breadcrumbs/breadcrumbs-${ctx.params.subpage}.json`)
         ctx.state.content = await require(`../stub/api/v1/content/${ctx.params.subpage}.json`)
         ctx.state.footer = await require('../stub/api/v1/partials/footer.json')
         ctx.state.data = {
             ...ctx.state.head,
+            ...ctx.state.brand,
             ...ctx.state.navigation,
             ...ctx.state.breadcrumbs,
             ...ctx.state.content,
@@ -70,14 +74,16 @@ app.prepare().then(() => {
 
     // events page
     router.post('/api/v1/pages/events', async ctx => {
-        ctx.state.head = await require('../stub/api/v1/partials/head-events.json')
-        ctx.state.navigation = await require('../stub/api/v1/partials/navigation-events.json')
-        ctx.state.breadcrumbs = await require('../stub/api/v1/partials/breadcrumbs-events.json')
+        ctx.state.head = await require('../stub/api/v1/head/head-events.json')
+        ctx.state.brand = await require('../stub/api/v1/partials/brand.json')
+        ctx.state.navigation = await require('../stub/api/v1/navigation/navigation-events.json')
+        ctx.state.breadcrumbs = await require('../stub/api/v1/breadcrumbs/breadcrumbs-events.json')
         ctx.state.content = await require('../stub/api/v1/content/events.json')
         ctx.state.reviews = require('../stub/api/v1/reviews')
         ctx.state.footer = await require('../stub/api/v1/partials/footer.json')
         ctx.state.data = {
             ...ctx.state.head,
+            ...ctx.state.brand,
             ...ctx.state.navigation,
             ...ctx.state.breadcrumbs,
             ...ctx.state.content,
@@ -90,13 +96,15 @@ app.prepare().then(() => {
 
     // prices events
     router.post('/api/v1/pages/prices', async ctx => {
-        ctx.state.head = await require('../stub/api/v1/partials/head-prices.json')
-        ctx.state.navigation = await require('../stub/api/v1/partials/navigation-prices.json')
-        ctx.state.breadcrumbs = await require('../stub/api/v1/partials/breadcrumbs-prices.json')
+        ctx.state.head = await require('../stub/api/v1/head/head-prices.json')
+        ctx.state.brand = await require('../stub/api/v1/partials/brand.json')
+        ctx.state.navigation = await require('../stub/api/v1/navigation/navigation-prices.json')
+        ctx.state.breadcrumbs = await require('../stub/api/v1/breadcrumbs/breadcrumbs-prices.json')
         ctx.state.content = await require('../stub/api/v1/content/prices.json')
         ctx.state.footer = await require('../stub/api/v1/partials/footer.json')
         ctx.state.data = {
             ...ctx.state.head,
+            ...ctx.state.brand,
             ...ctx.state.navigation,
             ...ctx.state.breadcrumbs,
             ...ctx.state.content,
@@ -108,13 +116,15 @@ app.prepare().then(() => {
 
     // franchise page
     router.post('/api/v1/pages/franchise', async ctx => {
-        ctx.state.head = await require('../stub/api/v1/partials/head-franchise.json')
-        ctx.state.navigation = await require('../stub/api/v1/partials/navigation-franchise.json')
-        ctx.state.breadcrumbs = await require('../stub/api/v1/partials/breadcrumbs-franchise.json')
+        ctx.state.head = await require('../stub/api/v1/head/head-franchise.json')
+        ctx.state.brand = await require('../stub/api/v1/partials/brand.json')
+        ctx.state.navigation = await require('../stub/api/v1/navigation/navigation-franchise.json')
+        ctx.state.breadcrumbs = await require('../stub/api/v1/breadcrumbs/breadcrumbs-franchise.json')
         ctx.state.content = await require('../stub/api/v1/content/franchise.json')
         ctx.state.footer = await require('../stub/api/v1/partials/footer.json')
         ctx.state.data = {
             ...ctx.state.head,
+            ...ctx.state.brand,
             ...ctx.state.navigation,
             ...ctx.state.breadcrumbs,
             ...ctx.state.content,
@@ -126,14 +136,16 @@ app.prepare().then(() => {
 
     // reviews page
     router.post('/api/v1/pages/reviews', async ctx => {
-        ctx.state.head = await require('../stub/api/v1/partials/head-reviews.json')
-        ctx.state.navigation = await require('../stub/api/v1/partials/navigation-reviews.json')
-        ctx.state.breadcrumbs = await require('../stub/api/v1/partials/breadcrumbs-reviews.json')
+        ctx.state.head = await require('../stub/api/v1/head/head-reviews.json')
+        ctx.state.brand = await require('../stub/api/v1/partials/brand.json')
+        ctx.state.navigation = await require('../stub/api/v1/navigation/navigation-reviews.json')
+        ctx.state.breadcrumbs = await require('../stub/api/v1/breadcrumbs/breadcrumbs-reviews.json')
         ctx.state.content = await require('../stub/api/v1/content/reviews.json')
         ctx.state.reviews = require('../stub/api/v1/reviews')
         ctx.state.footer = await require('../stub/api/v1/partials/footer.json')
         ctx.state.data = {
             ...ctx.state.head,
+            ...ctx.state.brand,
             ...ctx.state.navigation,
             ...ctx.state.breadcrumbs,
             ...ctx.state.content,
@@ -146,12 +158,14 @@ app.prepare().then(() => {
 
     // contacts page
     router.post('/api/v1/pages/contacts', async ctx => {
-        ctx.state.head = await require('../stub/api/v1/partials/head-contacts.json')
-        ctx.state.navigation = await require('../stub/api/v1/partials/navigation-contacts.json')
+        ctx.state.head = await require('../stub/api/v1/head/head-contacts.json')
+        ctx.state.brand = await require('../stub/api/v1/partials/brand.json')
+        ctx.state.navigation = await require('../stub/api/v1/navigation/navigation-contacts.json')
         ctx.state.content = await require('../stub/api/v1/content/contacts.json')
         ctx.state.footer = await require('../stub/api/v1/partials/footer.json')
         ctx.state.data = {
             ...ctx.state.head,
+            ...ctx.state.brand,
             ...ctx.state.navigation,
             ...ctx.state.content,
             ...ctx.state.footer
@@ -162,12 +176,14 @@ app.prepare().then(() => {
 
     // error page
     router.post('/api/v1/pages/error', async ctx => {
-        ctx.state.head = await require('../stub/api/v1/partials/head-error.json')
-        ctx.state.navigation = await require('../stub/api/v1/partials/navigation-error.json')
+        ctx.state.head = await require('../stub/api/v1/head/head-error.json')
+        ctx.state.brand = await require('../stub/api/v1/partials/brand.json')
+        ctx.state.navigation = await require('../stub/api/v1/navigation/navigation-error.json')
         ctx.state.content = await require('../stub/api/v1/content/error.json')
         ctx.state.footer = await require('../stub/api/v1/partials/footer.json')
         ctx.state.data = {
             ...ctx.state.head,
+            ...ctx.state.brand,
             ...ctx.state.navigation,
             ...ctx.state.content,
             ...ctx.state.footer
