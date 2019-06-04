@@ -1,18 +1,17 @@
+const USERNAME = 'detanton'
+const PASSWORD = 'I71%26fyh5'
 const DB_NAME = 'grand-casino'
-const COLLECTION = 'pages'
-const HOST = 'localhost'
-const PORT = 27017
-const URL = `mongodb://${HOST}:${PORT}/${DB_NAME}`
+const URL = `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0-zcza4.gcp.mongodb.net/${DB_NAME}?retryWrites=true`
 
 module.exports = {
     url: URL,
-    collection: COLLECTION,
+    dbName: DB_NAME,
     params: {
         retryWrites: true,
         useNewUrlParser: true,
         keepAlive: true,
         autoReconnect: true,
         reconnectInterval: 500,
-        connectTimeoutMS: 10000,
+        connectTimeoutMS: 10000
     }
 }

@@ -1,0 +1,48 @@
+{
+    "pageId": "prices",
+    "content": {
+        "tablePrices": {
+            "header": "",
+            "items": [
+                {
+                    "title": "Hand Ability Routine",
+                    "value": "$200"
+                },
+                {
+                    "title": "The Smoke Trick",
+                    "value": "$250"
+                },
+                {
+                    "title": "Roller Coaster Death Trick",
+                    "value": "$300"
+                },
+                {
+                    "title": "SConcrete Drill Entering the Body Trick",
+                    "value": "$50"
+                },
+                {
+                    "title": "Sawing a Girl in Half",
+                    "value": "$500"
+                },
+                {
+                    "title": "Head Removal Trick",
+                    "value": "$450"
+                },
+                {
+                    "title": "Catching the Bullets Trick",
+                    "value": "$3000"
+                },
+                {
+                    "title": "Levitation",
+                    "value": "$2500"
+                }
+            ]
+        },
+        "action": {
+            "header": "People Always Loved Magic, Solely Because Of How Entertaining Watching All These Tricks Is",
+            "description": "",
+            "buttonTitle": "Написать нам",
+            "buttonHref": "/contacts"
+        }
+    }
+}

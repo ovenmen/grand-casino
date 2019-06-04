@@ -8,14 +8,16 @@ import Activity from '../components/activity'
 import Reviews from '../components/reviews'
 
 const IndexPage = ({ data }) => {
-    const { promo, action, activity, reviews } = data.content
+    const { reviews } = data
+    const { promo, action, activity, lastReviews } = data.content
+    const joinReviews = { ...lastReviews, items: reviews }
 
     return (
         <section>
             {promo && <Promo {...promo} />}
             {action && <Action {...action} />}
             {activity && <Activity {...activity} />}
-            {reviews && <Reviews {...reviews} />}
+            {lastReviews && <Reviews {...joinReviews} />}
         </section>
     )
 }

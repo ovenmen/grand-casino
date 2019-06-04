@@ -1,0 +1,18 @@
+{
+    "pageId": "casino-club",
+    "breadcrumbs": [
+        {
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Мероприятия",
+            "value": "/events"
+        },
+        {
+            "title": "Casino Club",
+            "value": "/events/casino-club",
+            "active": true
+        }
+    ]
+}

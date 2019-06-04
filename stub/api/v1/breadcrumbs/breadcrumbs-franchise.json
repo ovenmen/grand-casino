@@ -1,0 +1,14 @@
+{
+    "pageId": "franchise",
+    "breadcrumbs": [
+        {
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Франшиза",
+            "value": "/franchise",
+            "active": true
+        }
+    ]
+}

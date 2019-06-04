@@ -8,8 +8,9 @@ import ReviewsForm from '../components/review-form'
 import AllReviews from '../components/all-reviews'
 
 const ReviewsPage = ({ data }) => {
-    const { header, headerImage, breadcrumbs } = data
+    const { header, headerImage, breadcrumbs, reviews } = data
     const { reviewsForm, allReviews } = data.content
+    const joinReviews = ({...allReviews, items: reviews })
 
     return (
         <section>
@@ -20,7 +21,7 @@ const ReviewsPage = ({ data }) => {
                     {reviewsForm && <ReviewsForm {...reviewsForm} />}
                 </div>
                 <div className="cell small-12 medium-8 large-7">
-                    {allReviews && <AllReviews {...allReviews} />}
+                    <AllReviews {...joinReviews} />
                 </div>
             </div>
         </section>

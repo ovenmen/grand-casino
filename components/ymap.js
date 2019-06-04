@@ -24,8 +24,8 @@ const YMap = ({ header, items }) => {
             <YMaps>
                 {!instance &&
                     <div className="spinner-container">
-                        <span className="icon fa-2x fa-pulse"><FontAwesomeIcon icon={faSpinner} /></span>
-                        <p className="spinner-text text-center">Карта загружается, подождите...</p>
+                        <span className="icon fa-2x fa-pulse color-white"><FontAwesomeIcon icon={faSpinner} /></span>
+                        <p className="spinner-text text-center color-white">Карта загружается, подождите...</p>
                     </div>
                 }
                 <Map

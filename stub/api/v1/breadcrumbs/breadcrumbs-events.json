@@ -1,0 +1,14 @@
+{
+    "pageId": "events",
+    "breadcrumbs": [
+        {
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Мероприятия",
+            "value": "/events",
+            "active": true
+        }
+    ]
+}

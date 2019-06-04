@@ -1,0 +1,9 @@
+{
+    "pageId": "error",
+    "content": {
+        "error": {
+            "header": "404",
+            "description": "Страница не найдена"
+        }
+    }
+}

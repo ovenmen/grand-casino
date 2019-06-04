@@ -9,8 +9,8 @@ import AllEvents from '../components/all-events'
 import Review from '../components/review'
 
 const EventsPage = ({ data }) => {
-    const { header, headerImage, breadcrumbs } = data
-    const { info, events, review } = data.content
+    const { header, headerImage, breadcrumbs, review } = data
+    const { info, events } = data.content
 
     return (
         <section>

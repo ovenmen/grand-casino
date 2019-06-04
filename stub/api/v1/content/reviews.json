@@ -1,0 +1,38 @@
+{
+    "pageId": "reviews",
+    "content": {
+        "reviewsForm": {
+            "header": "Оставьте отзыв",
+            "fields": [
+                {
+                    "name": "name",
+                    "type": "text",
+                    "placeholder": "ИМЯ"
+                },
+                {
+                    "name": "city",
+                    "type": "text",
+                    "placeholder": "ГОРОД"
+                },
+                {
+                    "name": "date",
+                    "type": "date",
+                    "placeholder": "ЖЕЛАЕМАЯ ДАТА"
+                },
+                {
+                    "name": "message",
+                    "type": "textarea",
+                    "placeholder": "КОММЕНТАРИЙ"
+                }
+            ],
+            "submitButtonTitle": "Отправить",
+            "successMessage": "Ваш отзыв успешно отправлен и будет добавлен после проверки"
+        },
+        "allReviews": {
+            "header": "Все отзывы",
+            "items": [],
+            "emptyReviewsMessage": "Отзывов пока нет",
+            "actionReviewsMessage": "Оставте его первым!"
+        }
+    }
+}
