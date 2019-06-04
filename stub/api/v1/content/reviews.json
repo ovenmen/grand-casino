@@ -1,5 +1,4 @@
 {
-    "componentId": "content",
     "pageId": "reviews",
     "content": {
         "reviewsForm": {
@@ -26,7 +25,8 @@
                     "placeholder": "КОММЕНТАРИЙ"
                 }
             ],
-            "submitButtonTitle": "Отправить"
+            "submitButtonTitle": "Отправить",
+            "successMessage": "Ваш отзыв успешно отправлен и будет добавлен после проверки"
         },
         "allReviews": {
             "header": "Все отзывы",

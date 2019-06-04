@@ -1,5 +1,4 @@
 {
-    "componentId": "content",
     "pageId": "contacts",
     "content": {
         "map": {
@@ -55,7 +54,8 @@
                     "placeholder": "КОММЕНТАРИЙ"
                 }
             ],
-            "submitButtonTitle": "Отправить"
+            "submitButtonTitle": "Отправить",
+            "successMessage": "Сообщение успешно отправлено"
         },
         "contactsInformation": {
             "header": "Контактная информация",

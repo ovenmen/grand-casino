@@ -10,16 +10,17 @@ const to = 'detanton@gmail.com'
 
 const sendMail = async (data) => {
     if (data) {
-        const { subject, html } = data
-        const transporter = nodemailer.createTransport({ host, port, secure, auth: { user, pass } })
-        const info = await transporter.sendMail({ from, to, subject, html })
-    
-        // eslint-disable-next-line no-console
-        console.log('Message sent: %s', info.messageId)
+        try {
+            const { subject, html } = data
+            const transporter = await nodemailer.createTransport({ host, port, secure, auth: { user, pass } })
+            const info = await transporter.sendMail({ from, to, subject, html })
+        
+            // eslint-disable-next-line no-console
+            console.log('Message sent: %s', info.messageId)
+        } catch (err) {
+            throw new Error(err)
+        }
     }
 }
-
-// eslint-disable-next-line no-console
-sendMail().catch(console.error)
 
 module.exports = sendMail

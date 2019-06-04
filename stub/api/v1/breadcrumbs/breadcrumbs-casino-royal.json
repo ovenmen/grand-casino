@@ -1,5 +1,4 @@
 {
-    "componentId": "breadcrumbs",
     "pageId": "casino-royal",
     "breadcrumbs": [
         {
@@ -11,7 +10,7 @@
             "value": "/events"
         },
         {
-            "title": "Grand Royal",
+            "title": "Casino Royal",
             "value": "/events/casino-royal",
             "active": true
         }

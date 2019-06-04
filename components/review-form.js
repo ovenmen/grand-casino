@@ -6,7 +6,7 @@ import Field from './field'
 import { API_SEND_FORM_URL_REVIEW } from '../config'
 import sendFormData from '../utils/send-form-data'
 
-const ReviewsForm  = (props) => {
+const ReviewsForm  = ({ header, fields, submitButtonTitle, successMessage }) => {
     const [name, setName] = useState('')
     const [city, setCity] = useState('')
     const [date, setDate] = useState('')
@@ -55,11 +55,11 @@ const ReviewsForm  = (props) => {
 
         if (isValid) {
             sendFormData(API_SEND_FORM_URL_REVIEW, data)
+            window.alert(successMessage)
             event.target.reset()
         }
     }
 
-    const { header, fields, submitButtonTitle } = props
     const [ nameInput, cityInput, dateInput, messageInput ] = fields
 
     return (
@@ -163,7 +163,8 @@ const ReviewsForm  = (props) => {
 ReviewsForm.propTypes = {
     header :string,
     fields: array,
-    submitButtonTitle: string
+    submitButtonTitle: string,
+    successMessage: string
 }
 
 export default ReviewsForm
