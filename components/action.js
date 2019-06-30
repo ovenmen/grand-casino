@@ -29,7 +29,7 @@ const Action = ({ header, description, buttonTitle, buttonHref }) => (
             }
             .headers-actions {
                 padding-left: 3vw;
-                border-left: 4px solid #a8a8aa;
+                border-left: 4px solid #ffffff;
             }
             @media screen and (max-width: 39.9375em) {
                 .headers-actions,

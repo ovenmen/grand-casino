@@ -23,7 +23,7 @@ const Promo = ({ header, description }) => (
                 margin-top: 28vw;
                 margin-bottom: 12vw;
                 padding-right: 3vw;
-                border-right: 4px solid #a8a8aa;
+                border-right: 4px solid var(--color-white);
             }
         `}</style>
     </section>
