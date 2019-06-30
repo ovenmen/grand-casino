@@ -27,7 +27,8 @@ const EventDescription = ({ header, description, list, linkPriceTitle, linkPrice
                         <Link href={linkPriceHref}>
                             <a className="link color-purple text-uppercase font-bold">{linkPriceTitle}
                                 <span className="icon margin-left-1"><FontAwesomeIcon icon={faFileInvoiceDollar} /></span>
-                            </a></Link>
+                            </a>
+                        </Link>
                     </p>
                 </div>
             </div>

@@ -18,9 +18,8 @@ export default class extends App {
         const { title, description, keywords } = pageProps.data.head
 
         return (
-            <Container>
+            <React.Fragment>
                 <Head>
-                    <html lang="ru" />
                     <title>{title}</title>
                     <meta name="theme-color" content="#330b6b" />
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -31,11 +30,13 @@ export default class extends App {
                     <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700&amp;subset=cyrillic" rel="stylesheet" />
                     <link rel="icon" type="image/ico" sizes="16x16" href="/static/images/favicon.ico" />
                 </Head>
-                <LayoutDynamic>
-                    <Component {...pageProps} />
-                </LayoutDynamic>
-                <GlobalStyle />
-            </Container>
+                <Container>
+                    <LayoutDynamic>
+                        <Component {...pageProps} />
+                    </LayoutDynamic>
+                    <GlobalStyle />
+                </Container>
+            </React.Fragment>
         )
     }
 }
