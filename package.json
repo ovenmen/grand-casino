@@ -27,8 +27,8 @@
     "koa-json": "2.0.2",
     "koa-router": "7.4.0",
     "mongodb": "3.2.7",
-    "next": "9.0.1",
-    "nodemailer": "6.2.1",
+    "next": "9.0.2",
+    "nodemailer": "6.3.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-yandex-maps": "4.0.1"
@@ -37,9 +37,9 @@
     "babel-eslint": "10.0.2",
     "classnames": "2.2.6",
     "cross-env": "5.2.0",
-    "eslint": "6.0.1",
-    "eslint-plugin-react": "7.14.2",
-    "lodash": "4.17.14",
+    "eslint": "6.1.0",
+    "eslint-plugin-react": "7.14.3",
+    "lodash": "4.17.15",
     "nodemon": "1.19.1"
   }
 }
