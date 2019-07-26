@@ -25,6 +25,10 @@ const Promo = ({ header, description }) => (
                 padding-right: 3vw;
                 border-right: 4px solid var(--color-white);
             }
+            .hedaers h1,
+            .headers h2 {
+                text-shadow: 0px 0px 10px var(--color-black);
+            }
         `}</style>
     </section>
 )
