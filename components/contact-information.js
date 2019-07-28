@@ -14,8 +14,8 @@ const ContactInformation = ({ header, address, operationMode, phone, email }) =>
             <div className="cell small-12 medium-12 large-12">
                 <p className="lead"><span className="font-bold">Адрес: </span>{address}</p>
                 <p className="lead"><span className="font-bold">Режим работы: </span>{operationMode}</p>
-                <p className="lead"><span className="font-bold">Телефон: </span>{phone}</p>
                 <p className="lead"><span className="font-bold">Email: </span>{email}</p>
+                <p className="lead"><span className="font-bold">Телефон: </span>{phone}</p>
             </div>
         </div>
         <div className="grid-x">
