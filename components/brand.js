@@ -3,7 +3,9 @@ import { array } from 'prop-types'
 import { head, last } from 'lodash'
 import Link from 'next/link'
 
-const Brand = ({ brand }) => (
+const Brand = ({
+    brand
+}) => (
     <Link href="/">
         <a className="h2 link color-white">
             <span className="first-letter font-bold">{head(brand)}</span>

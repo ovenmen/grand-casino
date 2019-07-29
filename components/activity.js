@@ -1,12 +1,18 @@
 import React from 'react'
 import { string, array } from 'prop-types'
-import { map, uniqueId } from 'lodash'
+import { map } from 'lodash'
 import Link from 'next/link'
 
 import Button from './button'
 import { STATIC_IMAGES_URL } from '../config'
 
-const Activity = ({ header, description, buttonTitle, buttonHref, items }) => (
+const Activity = ({
+    header,
+    description,
+    buttonTitle,
+    buttonHref,
+    items
+}) => (
     <section className="activity">
         <div className="grid-x">
             <div className="cell small-12 medium-12 large-6 info">
@@ -18,7 +24,7 @@ const Activity = ({ header, description, buttonTitle, buttonHref, items }) => (
                     </div>
                     <div className="cell">
                         {map(description, (item, index) => (
-                            <p className="text-right color-white margin-bottom-3" key={uniqueId(index)}>{item}</p>
+                            <p className="text-right color-white margin-bottom-3" key={index}>{item}</p>
                         ))}
                     </div>
                     <div className="cell">
@@ -31,7 +37,7 @@ const Activity = ({ header, description, buttonTitle, buttonHref, items }) => (
             <div className="cell small-12 medium-12 large-6">
                 <div className="grid-x">
                     {map(items, (event, index) => (
-                        <div className="cell small-12 medium-6 large-6" key={uniqueId(index)}>
+                        <div className="cell small-12 medium-6 large-6" key={index}>
                             <div className="activity-event">
                                 <img className="activity-image" src={`${STATIC_IMAGES_URL}/${event.image}`} width="480" height="380" />
                                 <Link href={event.buttonHref}>

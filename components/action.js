@@ -3,7 +3,12 @@ import { string } from 'prop-types'
 
 import Button from './button'
 
-const Action = ({ header, description, buttonTitle, buttonHref }) => (
+const Action = ({
+    header,
+    description,
+    buttonTitle,
+    buttonHref
+}) => (
     <section className="action">
         <div className="grid-container fluid">
             <div className="grid-x grid-padding-x align-middle">

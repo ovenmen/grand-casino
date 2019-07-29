@@ -7,7 +7,9 @@ import Breadcrumbs from '../components/breadcrumbs'
 import TablePrices from '../components/table-prices'
 import Action from '../components/action'
 
-const PricesPage = ({ data }) => {
+const PricesPage = ({
+    data 
+}) => {
     const { header, headerImage, breadcrumbs } = data
     const { action, tablePrices } = data.content
 

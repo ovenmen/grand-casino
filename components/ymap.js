@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { array, string } from 'prop-types'
-import { map, uniqueId } from 'lodash'
+import { map } from 'lodash'
 import { YMaps, Map, ZoomControl, GeolocationControl, Placemark } from 'react-yandex-maps'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 const LABEL = '<strong>GC</strong>'
 
-const YMap = ({ header, items }) => {
+const YMap = ({
+    header,
+    items
+}) => {
     const [instance, setInstance] = useState(null)
 
     const handleInstanceRef = (instance) => {
@@ -40,7 +43,7 @@ const YMap = ({ header, items }) => {
                     <GeolocationControl options={{ float: 'left' }} />
                     {map(items, (item, index) => (
                         <Placemark
-                            key={uniqueId(index)}
+                            key={index}
                             defaultGeometry={[item.lat, item.long]}
                             defaultProperties={{ iconContent: item.cooperation && LABEL, hintContent: item.city }}
                             defaultOptions={{ preset: item.cooperation ? 'islands#nightStretchyIcon' : 'islands#nightCircleDotIcon' }}

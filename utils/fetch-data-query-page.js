@@ -1,3 +1,9 @@
-const getDataQueryPage = async ({ query }) => await query
+const getDataQueryPage = async ({ query }) => {
+    try {
+        return await query
+    } catch (error) {
+        throw new Error(error)
+    }
+}
 
 export default getDataQueryPage

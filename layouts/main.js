@@ -5,7 +5,9 @@ import Navigation from '../components/navigation'
 import Footer from '../components/footer'
 import Scroller from '../components/scroller'
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({
+    children
+}) => {
     const { navigation, brand, footer } = children.props.data
 
     return (

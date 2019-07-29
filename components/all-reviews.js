@@ -1,12 +1,17 @@
 import React from 'react'
 import { string, array } from 'prop-types'
-import { map, uniqueId } from 'lodash'
+import { map } from 'lodash'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuoteLeft, faQuoteRight, faFrown } from '@fortawesome/free-solid-svg-icons'
 
 import { STATIC_IMAGES_URL } from '../config'
 
-const AllReviews = ({ header, items, emptyReviewsMessage, actionReviewsMessage }) => (
+const AllReviews = ({
+    header,
+    items,
+    emptyReviewsMessage,
+    actionReviewsMessage
+}) => (
     <section className="all-reviews">
         <div className="grid-x">
             <div className="cell">
@@ -26,7 +31,7 @@ const AllReviews = ({ header, items, emptyReviewsMessage, actionReviewsMessage }
                         </div>
                     }
                     {map(items, (item, index) => (
-                        <div key={uniqueId(index)} className="review margin-bottom-1 bordered round radius">
+                        <div key={index} className="review margin-bottom-1 bordered round radius">
                             <div className="flex-container align-center">
                                 <div className="margin-left-2 margin-right-2 width-30">
                                     <img src={`${STATIC_IMAGES_URL}/${item.image}`} className="float-left" />

@@ -3,7 +3,10 @@ import { string } from 'prop-types'
 
 import { STATIC_IMAGES_URL } from '../config'
 
-const HeaderPage = ({ header, image }) => (
+const HeaderPage = ({
+    header,
+    image
+}) => (
     <div className="header-page">
         <div className="grid-x">
             <div className="cell small-12 medium-12 large-12">

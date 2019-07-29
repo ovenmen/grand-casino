@@ -1,25 +1,33 @@
 import React from 'react'
 import { string, array, object } from 'prop-types'
-import { map, uniqueId } from 'lodash'
+import { map } from 'lodash'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons'
 
 import { STATIC_IMAGES_URL } from '../config'
 
-const EventDescription = ({ header, description, list, linkPriceTitle, linkPriceHref, image, marker }) => (
+const EventDescription = ({
+    header,
+    description,
+    list,
+    linkPriceTitle,
+    linkPriceHref,
+    image,
+    marker
+}) => (
     <section>
         <div className="grid-x">
             <div className="cell small-12 medium-12 large-6">
                 <div className="info">
                     <h2 className="margin-bottom-2 text-center subheader">{header}</h2>
                     {map(description, (item, index) => (
-                        <p key={uniqueId(index)} className="h5 margin-bottom-2">{item}</p>
+                        <p key={index} className="h5 margin-bottom-2">{item}</p>
                     ))}
                     <p className="h5 margin-bottom-2">{list.title}</p>
                     <ul className="margin-left-3">
                         {map(list.items, (item, index) => (
-                            <li key={uniqueId(index)} className="h5 margin-bottom-1">{item}</li>
+                            <li key={index} className="h5 margin-bottom-1">{item}</li>
                         ))}
                     </ul>
                     <p className="h5 font-italic margin-top-3 marker">{marker}</p>

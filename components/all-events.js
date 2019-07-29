@@ -1,17 +1,19 @@
 import React, { Fragment } from 'react'
 import { array } from 'prop-types'
-import { map, uniqueId } from 'lodash'
+import { map } from 'lodash'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages } from '@fortawesome/free-solid-svg-icons'
 
 import { STATIC_IMAGES_URL } from '../config'
 
-const AllEvents = ({ items }) => (
+const AllEvents = ({
+    items
+}) => (
     <section>
         <div className="grid-x">
             {map(items, (event, index) => (
-                <Fragment key={uniqueId(index)}>
+                <Fragment key={index}>
                     <div className="cell small-12 medium-6 large-3">
                         <img src={`${STATIC_IMAGES_URL}/${event.image}`} className="event-image" />
                     </div>

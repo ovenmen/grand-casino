@@ -28,11 +28,11 @@ const sendMail = async (data) => {
                 subject,
                 html
             })
-        
+
             // eslint-disable-next-line no-console
             console.log('Message sent: %s', info.messageId)
-        } catch (err) {
-            throw new Error(err)
+        } catch (error) {
+            throw new Error(error)
         }
     }
 }

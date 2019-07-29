@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { string, array } from 'prop-types'
-import { map, uniqueId, get, toLower, toNumber } from 'lodash'
+import { map, get, toLower, toNumber } from 'lodash'
 import classnames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import { STATIC_IMAGES_URL } from '../config'
 
-const Photos = ({ header, items }) => {
+const Photos = ({
+    header,
+    items
+}) => {
     const [imageIndex, setImageIndex] = useState(0)
     const [modal, setToggleModal] = useState(false)
     const lengthSlides = items.length
@@ -87,7 +90,7 @@ const Photos = ({ header, items }) => {
             </div>
             <div className="grid-x grid-margin-x">
                 {map(items, (item, index) =>
-                    <div className="cell small-6 medium-4 large-2 margin-bottom-2" key={uniqueId(index)}>
+                    <div className="cell small-6 medium-4 large-2 margin-bottom-2" key={index}>
                         <figure className="cover shadow" onClick={handleClickImage}>
                             <img src={`${STATIC_IMAGES_URL}/${item}`} data-index={index} />
                         </figure>

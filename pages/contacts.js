@@ -8,7 +8,9 @@ import Ymap from '../components/ymap'
 import ContactForm from '../components/contact-form'
 import ContactInformation from '../components/contact-information'
 
-const PricesPage = ({ data }) => {
+const PricesPage = ({
+    data
+}) => {
     const { header, headerImage, breadcrumbs } = data
     const { map, contactsForm, contactsInformation } = data.content
 

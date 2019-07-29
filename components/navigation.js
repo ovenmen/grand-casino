@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { array } from 'prop-types'
-import { map, uniqueId } from 'lodash'
+import { map } from 'lodash'
 import classnames from 'classnames'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,7 +8,9 @@ import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import Brand from '../components/brand'
 
-const Navigation = ({ navigation, brand }) => {
+const Navigation = ({
+    navigation, brand
+}) => {
     const [isOpen, setToggleIsOpen] = useState(false)
 
     const handleClickToggleButton = () => {
@@ -35,7 +37,7 @@ const Navigation = ({ navigation, brand }) => {
                 <div className={classnames('cell small-12 medium-12 large-11 hidden', isOpen && 'visible')}>
                     <ul className="menu">
                         {map(navigation, (menuItem, menuIndex) => (
-                            <li className="menu-item" key={uniqueId(menuIndex)} onClick={handleClickLink}>
+                            <li className="menu-item" key={menuIndex} onClick={handleClickLink}>
                                 <Link href={menuItem.value} passHref>
                                     <a className={classnames('link font-bold h5', menuItem.active && 'active')}>
                                         {menuItem.title}
@@ -44,7 +46,7 @@ const Navigation = ({ navigation, brand }) => {
                                 {menuItem.submenu && (
                                     <ul className="submenu flex-dir-column">
                                         {map(menuItem.submenu, (submenuItem, submenuIndex) => (
-                                            <li className="submenu-item" key={uniqueId(submenuIndex)}>
+                                            <li className="submenu-item" key={submenuIndex}>
                                                 <Link href={submenuItem.value} passHref>
                                                     <a className={classnames('link font-bold h5', submenuItem.active && 'active')}>
                                                         {submenuItem.title}
