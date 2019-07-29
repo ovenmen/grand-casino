@@ -7,7 +7,9 @@ import Action from '../components/action'
 import Activity from '../components/activity'
 import Reviews from '../components/reviews'
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({
+    data
+}) => {
     const { reviews } = data
     const { promo, action, activity, lastReviews } = data.content
     const joinReviews = { ...lastReviews, items: reviews }

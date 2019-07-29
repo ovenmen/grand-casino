@@ -6,7 +6,12 @@ import Field from './field'
 import { API_SEND_FORM_URL_CONTACTS } from '../config'
 import sendFormData from '../utils/send-form-data'
 
-const ContactForm  = ({ header, fields, submitButtonTitle, successMessage }) => {
+const ContactForm  = ({
+    header,
+    fields,
+    submitButtonTitle,
+    successMessage
+}) => {
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [city, setCity] = useState('')
@@ -191,7 +196,8 @@ const ContactForm  = ({ header, fields, submitButtonTitle, successMessage }) => 
 ContactForm.propTypes = {
     header :string,
     fields: array,
-    submitButtonTitle: string
+    submitButtonTitle: string,
+    successMessage: string
 }
 
 export default ContactForm

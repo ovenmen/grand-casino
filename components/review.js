@@ -3,7 +3,13 @@ import { string } from 'prop-types'
 
 import { STATIC_IMAGES_URL } from '../config'
 
-const Review = ({ header, image, fullname, city, description }) => (
+const Review = ({
+    header,
+    image,
+    fullname,
+    city,
+    description
+}) => (
     <section className="review">
         <div className="grid-x">
             <div className="cell">

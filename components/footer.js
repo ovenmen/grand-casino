@@ -1,6 +1,6 @@
 import React from 'react'
 import { array, object } from 'prop-types'
-import { map, uniqueId, find } from 'lodash'
+import { map, find } from 'lodash'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink, faMapMarkerAlt, faClock, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
@@ -10,7 +10,11 @@ import Brand from './brand'
 
 const submenu = (navigation) => find(navigation, item => item.submenu)
 
-const Footer = ({ brand, footer, navigation }) => (
+const Footer = ({
+    brand,
+    footer,
+    navigation
+}) => (
     <section className="footer">
         <div className="footer-main-section">
             <div className="grid-x">
@@ -23,7 +27,7 @@ const Footer = ({ brand, footer, navigation }) => (
                 <div className="cell small-12 medium-6 large-3">
                     <ul className="color-white list">
                         {navigation && map(navigation, (item, index) => (
-                            <li key={uniqueId(index)} className="list-item">
+                            <li key={index} className="list-item">
                                 <Link href={item.value} passHref>
                                     <a className="link color-white">{item.title}
                                         <span className="icon"><FontAwesomeIcon icon={faLink} /></span>
@@ -36,7 +40,7 @@ const Footer = ({ brand, footer, navigation }) => (
                 <div className="cell small-12 medium-6 large-3">
                     <ul className="color-white list">
                         {submenu && map(submenu(navigation).submenu, (item, index) => (
-                            <li key={uniqueId(index)} className="list-item">
+                            <li key={index} className="list-item">
                                 <Link href={item.value} passHref>
                                     <a className="link color-white">{item.title}
                                         <span className="icon"><FontAwesomeIcon icon={faLink} /></span>

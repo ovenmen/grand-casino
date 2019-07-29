@@ -1,9 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
 import { object, string } from 'prop-types'
-import { map, uniqueId } from 'lodash'
+import { map } from 'lodash'
 
-const FranchiseInfo = ({ header, description, profit, advantages }) => (
+const FranchiseInfo = ({
+    header,
+    description,
+    profit,
+    advantages
+}) => (
     <section className="franchise-info">
         <div className="grid-x margin-bottom-2">
             <div className="cell">
@@ -16,7 +21,7 @@ const FranchiseInfo = ({ header, description, profit, advantages }) => (
                 <h5 className="font-bold font-italic">{profit.header}</h5>
                 <ul className="padding-left-2">
                     {map(profit.description, (item, index) =>
-                        <li key={uniqueId(index)} className="h5">{item}</li>
+                        <li key={index} className="h5">{item}</li>
                     )}
                 </ul>
                 <h4 className="promo color-purple font-bold margin-top-2">{profit.promo}</h4>
@@ -28,17 +33,17 @@ const FranchiseInfo = ({ header, description, profit, advantages }) => (
             </div>
         </div>
         {map(advantages.items, (advantage, index) => (
-            <div className="grid-x margin-bottom-2" key={uniqueId(index)}>
+            <div className="grid-x margin-bottom-2" key={index}>
                 <div className="cell">
                     <h4 className="text-center font-bold margin-bottom-2">{advantage.header}</h4>
                     {map(advantage.description, (item, index) =>
-                        <p key={uniqueId(index)} className="h5">{item}</p>
+                        <p key={index} className="h5">{item}</p>
                     )}
                     <h4 className="promo color-purple font-bold margin-top-2 margin-bottom-2">{advantage.promo}</h4>
                     {advantage.list && <h5 className="font-bold font-italic">{advantage.list.header}</h5>}
                     {advantage.list && <ul className="padding-left-2 margin-bottom-2">
                         {map(advantage.list.description, (item, index) =>
-                            <li key={uniqueId(index)} className="h5">{item}</li>
+                            <li key={index} className="h5">{item}</li>
                         )}
                     </ul>}
                     <h5 className="font-italic margin-bottom-2">{advantage.note}</h5>

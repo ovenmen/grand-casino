@@ -3,7 +3,9 @@ import { object } from 'prop-types'
 
 import fetchDataPage from '../utils/fetch-data-page'
 
-const Error = ({ data }) => {
+const Error = ({
+    data
+}) => {
     const { header, description } = data.content.error
 
     return (

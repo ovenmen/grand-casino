@@ -1,10 +1,13 @@
 import React from 'react'
 import { string, array } from 'prop-types'
-import { map, uniqueId } from 'lodash'
+import { map } from 'lodash'
 
 import { STATIC_IMAGES_URL } from '../config'
 
-const Reviews = ({ header, items }) => (
+const Reviews = ({
+    header,
+    items
+}) => (
     <section className="reviews">
         <div className="grid-x grid-padding-x">
             <div className="cell small-12">
@@ -13,7 +16,7 @@ const Reviews = ({ header, items }) => (
         </div>
         <div className="grid-x">
             {map(items, (item, index) => (
-                <div className="cell small-12 medium-6 large-6 review-border" key={uniqueId(index)}>
+                <div className="cell small-12 medium-6 large-6 review-border" key={index}>
                     <div className="review text-center">
                         <figure>
                             <img className="reviews-avatar margin-bottom-2" src={`${STATIC_IMAGES_URL}/${item.image}`} />

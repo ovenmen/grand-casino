@@ -8,7 +8,9 @@ import FranchiseInfo from '../components/franchise-info'
 import Ymap from '../components/ymap'
 import Action from '../components/action'
 
-const PricesPage = ({ data }) => {
+const PricesPage = ({
+    data
+}) => {
     const { header, headerImage, breadcrumbs } = data
     const { franchise, action, map } = data.content
 

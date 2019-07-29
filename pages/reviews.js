@@ -7,7 +7,9 @@ import Breadcrumbs from '../components/breadcrumbs'
 import ReviewsForm from '../components/review-form'
 import AllReviews from '../components/all-reviews'
 
-const ReviewsPage = ({ data }) => {
+const ReviewsPage = ({
+    data
+}) => {
     const { header, headerImage, breadcrumbs, reviews } = data
     const { reviewsForm, allReviews } = data.content
     const joinReviews = ({...allReviews, items: reviews })

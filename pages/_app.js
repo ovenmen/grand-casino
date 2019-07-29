@@ -13,6 +13,10 @@ const LayoutDynamic = dynamic(() => import('../layouts/main'), {
 })
 
 export default class extends App {
+    constructor (props) {
+        super(props)
+    }
+
     render () {
         const { Component, pageProps } = this.props
         const { title, description, keywords } = pageProps.data.head

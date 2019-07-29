@@ -12,7 +12,9 @@ const PhotosDynamic = dynamic(() => import('../components/photos'), {
     ssr: false
 })
 
-const EventPage = ({ data }) => {
+const EventPage = ({
+    data
+}) => {
     const { header, headerImage, breadcrumbs } = data
     const { eventDescription, photos, action } = data.content
 

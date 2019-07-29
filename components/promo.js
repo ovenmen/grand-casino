@@ -1,7 +1,10 @@
 import React from  'react'
 import { string } from 'prop-types'
 
-const Promo = ({ header, description }) => (
+const Promo = ({
+    header,
+    description
+}) => (
     <section className="promo">
         <div className="grid-container fluid">
             <div className="grid-x">

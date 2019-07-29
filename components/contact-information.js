@@ -3,7 +3,13 @@ import { string } from 'prop-types'
 
 import Follow from './follow'
 
-const ContactInformation = ({ header, address, operationMode, phone, email }) => (
+const ContactInformation = ({
+    header,
+    address,
+    operationMode,
+    phone,
+    email
+}) => (
     <section className="contact-information">
         <div className="grid-x">
             <div className="cell small-12 medium-12 large-12">

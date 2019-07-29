@@ -3,10 +3,17 @@ import { string, bool } from 'prop-types'
 import classnames from 'classnames'
 import Link from 'next/link'
 
-const Button = ({ href, title, bigSize, invert }) => (
+const Button = ({
+    href,
+    title,
+    bigSize,
+    invert
+}) => (
     <span>
         <Link href={href}>
-            <a className={classnames('link button text-uppercase text-nowrap', bigSize && 'big', invert && 'invert')}>{title}</a>
+            <a className={classnames('link button text-uppercase text-nowrap', bigSize && 'big', invert && 'invert')}>
+                {title}
+            </a>
         </Link>
 
         <style jsx>{`

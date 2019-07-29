@@ -8,7 +8,9 @@ import Info from '../components/info'
 import AllEvents from '../components/all-events'
 import Review from '../components/review'
 
-const EventsPage = ({ data }) => {
+const EventsPage = ({
+    data
+}) => {
     const { header, headerImage, breadcrumbs, review } = data
     const { info, events } = data.content
 
