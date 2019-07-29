@@ -32,208 +32,251 @@ app.prepare().then(() => {
     /* API */
     // index page
     router.post('/api/v1/pages/index', async ctx => {
-        const head = await require('../stub/api/v1/head/head-index.json')
-        const brand = await require('../stub/api/v1/partials/brand.json')
-        const navigation = await require('../stub/api/v1/navigation/navigation-index.json')
-        const content = await require('../stub/api/v1/content/index.json')
-        const reviews = require('../stub/api/v1/reviews')
-        const footer = await require('../stub/api/v1/partials/footer.json')
-        const data = {
-            head,
-            brand,
-            navigation,
-            content,
-            reviews: takeRight(reviews, 2),
-            footer
+        try {
+            const head = await require('../stub/api/v1/head/head-index.json')
+            const brand = await require('../stub/api/v1/partials/brand.json')
+            const navigation = await require('../stub/api/v1/navigation/navigation-index.json')
+            const content = await require('../stub/api/v1/content/index.json')
+            const reviews = require('../stub/api/v1/reviews')
+            const footer = await require('../stub/api/v1/partials/footer.json')
+            const data = {
+                ...head,
+                ...brand,
+                ...navigation,
+                ...content,
+                reviews: takeRight(reviews, 2),
+                ...footer
+            }
+            ctx.body = { data }
+            ctx.respond = true
+        } catch (error) {
+            ctx.throw(500, error)
         }
-        ctx.body = { data }
-        ctx.respond = true
     })
 
     // events subpage
     router.get('/events/:subpage', async ctx => {
-        const head = await require(`../stub/api/v1/head/head-${ctx.params.subpage}.json`)
-        const brand = await require('../stub/api/v1/partials/brand.json')
-        const navigation = await require(`../stub/api/v1/navigation/navigation-${ctx.params.subpage}.json`)
-        const breadcrumbs = await require(`../stub/api/v1/breadcrumbs/breadcrumbs-${ctx.params.subpage}.json`)
-        const content = await require(`../stub/api/v1/content/${ctx.params.subpage}.json`)
-        const footer = await require('../stub/api/v1/partials/footer.json')
-        const data = {
-            head,
-            brand,
-            navigation,
-            breadcrumbs,
-            content,
-            footer
-        }
+        try {
+            const head = await require(`../stub/api/v1/head/head-${ctx.params.subpage}.json`)
+            const brand = await require('../stub/api/v1/partials/brand.json')
+            const navigation = await require(`../stub/api/v1/navigation/navigation-${ctx.params.subpage}.json`)
+            const breadcrumbs = await require(`../stub/api/v1/breadcrumbs/breadcrumbs-${ctx.params.subpage}.json`)
+            const content = await require(`../stub/api/v1/content/${ctx.params.subpage}.json`)
+            const footer = await require('../stub/api/v1/partials/footer.json')
+            const data = {
+                ...head,
+                ...brand,
+                ...navigation,
+                ...breadcrumbs,
+                ...content,
+                ...footer
+            }
 
-        app.render(ctx.req, ctx.res, '/event-page', { data })
+            app.render(ctx.req, ctx.res, '/event-page', { data })
+            ctx.respond = false
+        } catch (error) {
+            ctx.throw(500, error)
+        }
     })
 
     // events page
     router.post('/api/v1/pages/events', async ctx => {
-        const head = await require('../stub/api/v1/head/head-events.json')
-        const brand = await require('../stub/api/v1/partials/brand.json')
-        const navigation = await require('../stub/api/v1/navigation/navigation-events.json')
-        const breadcrumbs = await require('../stub/api/v1/breadcrumbs/breadcrumbs-events.json')
-        const content = await require('../stub/api/v1/content/events.json')
-        const reviews = require('../stub/api/v1/reviews')
-        const footer = await require('../stub/api/v1/partials/footer.json')
-        const data = {
-            head,
-            brand,
-            navigation,
-            breadcrumbs,
-            content,
-            review: last(reviews),
-            footer
-        }
+        try {
+            const head = await require('../stub/api/v1/head/head-events.json')
+            const brand = await require('../stub/api/v1/partials/brand.json')
+            const navigation = await require('../stub/api/v1/navigation/navigation-events.json')
+            const breadcrumbs = await require('../stub/api/v1/breadcrumbs/breadcrumbs-events.json')
+            const content = await require('../stub/api/v1/content/events.json')
+            const reviews = require('../stub/api/v1/reviews')
+            const footer = await require('../stub/api/v1/partials/footer.json')
+            const data = {
+                ...head,
+                ...brand,
+                ...navigation,
+                ...breadcrumbs,
+                ...content,
+                review: last(reviews),
+                ...footer
+            }
 
-        ctx.body = { data }
-        ctx.respond = true
+            ctx.body = { data }
+            ctx.respond = true
+        } catch (error) {
+            ctx.throw(500, error)
+        }
     })
 
     // prices events
     router.post('/api/v1/pages/prices', async ctx => {
-        const head = await require('../stub/api/v1/head/head-prices.json')
-        const brand = await require('../stub/api/v1/partials/brand.json')
-        const navigation = await require('../stub/api/v1/navigation/navigation-prices.json')
-        const breadcrumbs = await require('../stub/api/v1/breadcrumbs/breadcrumbs-prices.json')
-        const content = await require('../stub/api/v1/content/prices.json')
-        const footer = await require('../stub/api/v1/partials/footer.json')
-        const data = {
-            head,
-            brand,
-            navigation,
-            breadcrumbs,
-            content,
-            footer
-        }
+        try {
+            const head = await require('../stub/api/v1/head/head-prices.json')
+            const brand = await require('../stub/api/v1/partials/brand.json')
+            const navigation = await require('../stub/api/v1/navigation/navigation-prices.json')
+            const breadcrumbs = await require('../stub/api/v1/breadcrumbs/breadcrumbs-prices.json')
+            const content = await require('../stub/api/v1/content/prices.json')
+            const footer = await require('../stub/api/v1/partials/footer.json')
+            const data = {
+                ...head,
+                ...brand,
+                ...navigation,
+                ...breadcrumbs,
+                ...content,
+                ...footer
+            }
 
-        ctx.body = { data }
-        ctx.respond = true
+            ctx.body = { data }
+            ctx.respond = true
+        } catch (error) {
+            ctx.throw(500, error)
+        }
+        
     })
 
     // franchise page
     router.post('/api/v1/pages/franchise', async ctx => {
-        const head = await require('../stub/api/v1/head/head-franchise.json')
-        const brand = await require('../stub/api/v1/partials/brand.json')
-        const navigation = await require('../stub/api/v1/navigation/navigation-franchise.json')
-        const breadcrumbs = await require('../stub/api/v1/breadcrumbs/breadcrumbs-franchise.json')
-        const content = await require('../stub/api/v1/content/franchise.json')
-        const footer = await require('../stub/api/v1/partials/footer.json')
-        const data = {
-            head,
-            brand,
-            navigation,
-            breadcrumbs,
-            content,
-            footer
-        }
+        try {
+            const head = await require('../stub/api/v1/head/head-franchise.json')
+            const brand = await require('../stub/api/v1/partials/brand.json')
+            const navigation = await require('../stub/api/v1/navigation/navigation-franchise.json')
+            const breadcrumbs = await require('../stub/api/v1/breadcrumbs/breadcrumbs-franchise.json')
+            const content = await require('../stub/api/v1/content/franchise.json')
+            const footer = await require('../stub/api/v1/partials/footer.json')
+            const data = {
+                ...head,
+                ...brand,
+                ...navigation,
+                ...breadcrumbs,
+                ...content,
+                ...footer
+            }
 
-        ctx.body = { data }
-        ctx.respond = true
+            ctx.body = { data }
+            ctx.respond = true
+        } catch (error) {
+            ctx.throw(500, error)
+        }
     })
 
     // reviews page
     router.post('/api/v1/pages/reviews', async ctx => {
-        const head = await require('../stub/api/v1/head/head-reviews.json')
-        const brand = await require('../stub/api/v1/partials/brand.json')
-        const navigation = await require('../stub/api/v1/navigation/navigation-reviews.json')
-        const breadcrumbs = await require('../stub/api/v1/breadcrumbs/breadcrumbs-reviews.json')
-        const content = await require('../stub/api/v1/content/reviews.json')
-        const reviews = require('../stub/api/v1/reviews')
-        const footer = await require('../stub/api/v1/partials/footer.json')
-        const data = {
-            head,
-            brand,
-            navigation,
-            breadcrumbs,
-            content,
-            reviews,
-            footer
-        }
+        try {
+            const head = await require('../stub/api/v1/head/head-reviews.json')
+            const brand = await require('../stub/api/v1/partials/brand.json')
+            const navigation = await require('../stub/api/v1/navigation/navigation-reviews.json')
+            const breadcrumbs = await require('../stub/api/v1/breadcrumbs/breadcrumbs-reviews.json')
+            const content = await require('../stub/api/v1/content/reviews.json')
+            const reviews = require('../stub/api/v1/reviews')
+            const footer = await require('../stub/api/v1/partials/footer.json')
+            const data = {
+                ...head,
+                ...brand,
+                ...navigation,
+                ...breadcrumbs,
+                ...content,
+                reviews,
+                ...footer
+            }
 
-        ctx.body = { data }
-        ctx.respond = true
+            ctx.body = { data }
+            ctx.respond = true
+        } catch (error) {
+            ctx.throw(500, error)
+        }
     })
 
     // contacts page
     router.post('/api/v1/pages/contacts', async ctx => {
-        const head = await require('../stub/api/v1/head/head-contacts.json')
-        const brand = await require('../stub/api/v1/partials/brand.json')
-        const navigation = await require('../stub/api/v1/navigation/navigation-contacts.json')
-        const content = await require('../stub/api/v1/content/contacts.json')
-        const footer = await require('../stub/api/v1/partials/footer.json')
-        const data = {
-            head,
-            brand,
-            navigation,
-            content,
-            footer
-        }
+        try {
+            const head = await require('../stub/api/v1/head/head-contacts.json')
+            const brand = await require('../stub/api/v1/partials/brand.json')
+            const navigation = await require('../stub/api/v1/navigation/navigation-contacts.json')
+            const content = await require('../stub/api/v1/content/contacts.json')
+            const footer = await require('../stub/api/v1/partials/footer.json')
+            const data = {
+                ...head,
+                ...brand,
+                ...navigation,
+                ...content,
+                ...footer
+            }
 
-        ctx.body = { data }
-        ctx.respond = true
+            ctx.body = { data }
+            ctx.respond = true
+        } catch (error) {
+            ctx.throw(500, error)
+        }
     })
 
     // error page
     router.post('/api/v1/pages/error', async ctx => {
-        const head = await require('../stub/api/v1/head/head-error.json')
-        const brand = await require('../stub/api/v1/partials/brand.json')
-        const navigation = await require('../stub/api/v1/navigation/navigation-error.json')
-        const content = await require('../stub/api/v1/content/error.json')
-        const footer = await require('../stub/api/v1/partials/footer.json')
-        const data = {
-            head,
-            brand,
-            navigation,
-            content,
-            footer
-        }
+        try {
+            const head = await require('../stub/api/v1/head/head-error.json')
+            const brand = await require('../stub/api/v1/partials/brand.json')
+            const navigation = await require('../stub/api/v1/navigation/navigation-error.json')
+            const content = await require('../stub/api/v1/content/error.json')
+            const footer = await require('../stub/api/v1/partials/footer.json')
+            const data = {
+                ...head,
+                ...brand,
+                ...navigation,
+                ...content,
+                ...footer
+            }
 
-        ctx.body = { data }
-        ctx.respond = true
+            ctx.body = { data }
+            ctx.respond = true
+        } catch (error) {
+            ctx.throw(500, error)
+        }
     })
 
     // api forms
     // form review
     router.post('/api/v1/send-form-review', async ctx => {
-        const data = {
-            subject: 'Новый отзыв с сайта grand-casino.ru',
-            html: `
-                <p><strong>Имя:</strong> ${ctx.request.body.name}</p>
-                <p><strong>Город:</strong> ${ctx.request.body.city}</p>
-                <p><strong>Желаемая дата:</strong> ${ctx.request.body.date}</p>
-                <p><strong>Сообщение:</strong> ${ctx.request.body.message}</p>
-            `
+        try {
+            const data = {
+                subject: 'Новый отзыв с сайта grand-casino.ru',
+                html: `
+                    <p><strong>Имя:</strong> ${ctx.request.body.name}</p>
+                    <p><strong>Город:</strong> ${ctx.request.body.city}</p>
+                    <p><strong>Желаемая дата:</strong> ${ctx.request.body.date}</p>
+                    <p><strong>Сообщение:</strong> ${ctx.request.body.message}</p>
+                `
+            }
+    
+            sendMail(data)
+            ctx.body = { data }
+            ctx.respond = true
+        } catch (error) {
+            ctx.throw(500, error)
         }
-
-        sendMail(data)
-        ctx.body = { data }
-        ctx.respond = true
     })
 
     // form contacts
     router.post('/api/v1/send-form-contacts', async ctx => {
-        const data = {
-            subject: 'Новый сообщение от клиента с сайта grand-casino.ru',
-            html: `
-                <p><strong>Имя:</strong> ${ctx.request.body.name}</p>
-                <p><strong>Телефон:<strong> ${ctx.request.body.phone}</p>
-                <p><strong>Город:</strong> ${ctx.request.body.city}</p>
-                <p><strong>Желаемая дата:</strong> ${ctx.request.body.date}</p>
-                <p><strong>Сообщение:</strong> ${ctx.request.body.message}</p>
-            `
+        try {
+            const data = {
+                subject: 'Новый сообщение от клиента с сайта grand-casino.ru',
+                html: `
+                    <p><strong>Имя:</strong> ${ctx.request.body.name}</p>
+                    <p><strong>Телефон:<strong> ${ctx.request.body.phone}</p>
+                    <p><strong>Город:</strong> ${ctx.request.body.city}</p>
+                    <p><strong>Желаемая дата:</strong> ${ctx.request.body.date}</p>
+                    <p><strong>Сообщение:</strong> ${ctx.request.body.message}</p>
+                `
+            }
+    
+            sendMail(data)
+            ctx.body = { data }
+            ctx.respond = true
+        } catch (error) {
+            ctx.throw(500, error)
         }
-
-        sendMail(data)
-        ctx.body = { data }
-        ctx.respond = true
     })
 
     router.get('*', async ctx => {
         await handle(ctx.req, ctx.res)
+        ctx.respond = false
     })
 
     http.createServer(server.callback()).listen(port, () => {
