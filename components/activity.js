@@ -60,10 +60,11 @@ const Activity = ({
             .info {
                 background: url('/static/images/bg-activity.jpg') center center no-repeat;
                 background-size: cover;
-                padding: 5.5vw;
+                align-self: center;
+                padding-right: 5.5vw;
             }
             .activity-event {
-                height: 17rem;
+                height: 100%;
                 position: relative;
                 z-index: 1000;
             }
@@ -124,6 +125,11 @@ const Activity = ({
                 width: 100%;
                 height: 100%;
             }
+            @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+                .info {
+                    padding: 5.5vw;
+                }
+            }
             @media screen and (max-width: 39.9375em) {
                 .activity-event-button {
                     opacity: 1;
@@ -131,6 +137,9 @@ const Activity = ({
                 }
                 .event-header {
                     bottom: 5rem;
+                }
+                .info {
+                    padding: 5.5vw;
                 }
             }
         `}</style>
