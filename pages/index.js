@@ -1,5 +1,6 @@
 import React from 'react'
 import { object } from 'prop-types'
+import { sortBy } from 'lodash'
 
 import fetchDataPage from '../utils/fetch-data-page'
 import Promo from '../components/promo'

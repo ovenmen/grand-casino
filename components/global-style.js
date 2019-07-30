@@ -49,9 +49,6 @@ const GlobalStyle = () => (
         .color-grey {
             color: var(--color-grey);
         }
-        .error {
-            padding: 5vw;
-        }
         .error-header {
             color: var(--color-purple);
             font-size: 5rem;

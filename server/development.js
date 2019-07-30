@@ -352,7 +352,8 @@ app.prepare().then(() => {
                 city: ctx.request.body.city,
                 image: 'no-photo.jpg',
                 date: ctx.request.body.date,
-                description: ctx.request.body.message
+                description: ctx.request.body.message,
+                createdDate: ctx.request.body.createdDate
             })
 
             const data = {
@@ -383,11 +384,12 @@ app.prepare().then(() => {
             const contactsCollection = await db.collection('contacts')
 
             contactsCollection.insertOne({
-                fullname: ctx.request.body.name,
+                name: ctx.request.body.name,
                 phone: ctx.request.body.phone,
                 city: ctx.request.body.city,
                 date: ctx.request.body.date,
-                message: ctx.request.body.message
+                message: ctx.request.body.message,
+                createdDate: ctx.request.body.createdDate
             })
 
             const data = {

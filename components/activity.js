@@ -60,8 +60,7 @@ const Activity = ({
             .info {
                 background: url('/static/images/bg-activity.jpg') center center no-repeat;
                 background-size: cover;
-                align-self: center;
-                padding-right: 5.5vw;
+                padding: 5vw;
             }
             .activity-event {
                 height: 100%;
@@ -70,7 +69,7 @@ const Activity = ({
             }
             .activity-event::before {
                 position: absolute;
-                content: "";
+                content: " ";
                 left: 0;
                 right: 0;
                 bottom: 0;
@@ -81,7 +80,7 @@ const Activity = ({
             }
             .activity-event::after {
                 position: absolute;
-                content: "";
+                content: " ";
                 left: 0;
                 right: 0;
                 bottom: 0;
@@ -125,11 +124,6 @@ const Activity = ({
                 width: 100%;
                 height: 100%;
             }
-            @media screen and (min-width: 40em) and (max-width: 63.9375em) {
-                .info {
-                    padding: 5.5vw;
-                }
-            }
             @media screen and (max-width: 39.9375em) {
                 .activity-event-button {
                     opacity: 1;
@@ -137,9 +131,6 @@ const Activity = ({
                 }
                 .event-header {
                     bottom: 5rem;
-                }
-                .info {
-                    padding: 5.5vw;
                 }
             }
         `}</style>
