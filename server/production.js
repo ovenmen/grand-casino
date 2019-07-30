@@ -364,7 +364,8 @@ app.prepare().then(() => {
                 city: ctx.request.body.city,
                 image: 'no-photo.jpg',
                 date: ctx.request.body.date,
-                description: ctx.request.body.message
+                description: ctx.request.body.message,
+                createdDate: ctx.request.body.createdDate
             })
 
             const data = {
@@ -399,7 +400,8 @@ app.prepare().then(() => {
                 phone: ctx.request.body.phone,
                 city: ctx.request.body.city,
                 date: ctx.request.body.date,
-                message: ctx.request.body.message
+                message: ctx.request.body.message,
+                createdDate: ctx.request.body.createdDate
             })
 
             const data = {
