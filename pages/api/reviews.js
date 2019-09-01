@@ -11,13 +11,13 @@ export default (req, res) => {
     if (req.method === 'POST') {
         res.setHeader('Content-Type', 'application/json')
         res.statusCode = 200
-        res.json({
+        res.json(JSON.stringify({
             ...data,
             ...logo,
             ...navigation,
             reviews: { ...data.reviews, items: _.reverse(reviews.items) },
             footer: { ...footer, ...contacts }
-        })
+        }))
         console.log(req)
     } else {
         res.send('Method not allowed!')
