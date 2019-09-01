@@ -9,6 +9,7 @@ const forceHTTPS = require('koa-force-https')
 const compression = require('compression')
 const koaConnect = require('koa-connect')
 const helmet = require('koa-helmet')
+const serve = require('koa-static')
 const MongoClient = require('mongodb').MongoClient
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -35,13 +36,15 @@ app.prepare().then(() => {
         ctx.status = 200
         await next()
     })
-    server.use(router.routes())
-    server.use(router.allowedMethods())
+    app.use(serve(__dirname + '/.next'))
 
     router.get('*', async ctx => {
         await handle(ctx.req, ctx.res)
         ctx.respond = false
     })
+
+    server.use(router.routes())
+    server.use(router.allowedMethods())
 
     https.createServer(options, server.callback()).listen(port, () => {
         // eslint-disable-next-line no-console
