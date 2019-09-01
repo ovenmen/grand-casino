@@ -1,0 +1,50 @@
+{
+    "pageId": "reviews",
+    "title": "Grand Casino | Отзывы",
+    "description": "Отзывы",
+    "keywords": "фан казино, фан казино самара, выездное казино, рулетка, покер, блэкджек, корпоратив, сценарий праздника, сценарий юбилея, шоу программы, мальчишник, девичник, сценарий девичника, аренда казино, роскошная вечеринка",
+    "header": "Отзывы",
+    "headerImage": "bg-header-page.jpg",
+    "breadcrumbs": [{
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Отзывы и FAQ",
+            "value": "/reviews",
+            "active": true
+        }
+    ],
+    "reviewsForm": {
+        "header": "Оставьте отзыв",
+        "fields": [{
+                "name": "name",
+                "type": "text",
+                "placeholder": "ИМЯ"
+            },
+            {
+                "name": "city",
+                "type": "text",
+                "placeholder": "ГОРОД"
+            },
+            {
+                "name": "date",
+                "type": "date",
+                "placeholder": "ЖЕЛАЕМАЯ ДАТА"
+            },
+            {
+                "name": "message",
+                "type": "textarea",
+                "placeholder": "КОММЕНТАРИЙ"
+            }
+        ],
+        "submitButtonTitle": "Отправить",
+        "successMessage": "Ваш отзыв успешно отправлен и будет добавлен после проверки"
+    },
+    "reviews": {
+        "header": "Все отзывы",
+        "items": [],
+        "emptyReviewsMessage": "Отзывов пока нет",
+        "actionReviewsMessage": "Оставте его первым!"
+    }
+}

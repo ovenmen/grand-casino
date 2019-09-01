@@ -1,5 +1,4 @@
 import React from 'react'
-import { object } from 'prop-types'
 
 import fetchDataPage from '../utils/fetch-data-page'
 import HeaderPage from '../components/header-page'
@@ -8,27 +7,16 @@ import Info from '../components/info'
 import AllEvents from '../components/all-events'
 import Review from '../components/review'
 
-const EventsPage = ({
-    data
-}) => {
-    const { header, headerImage, breadcrumbs, review } = data
-    const { info, events } = data.content
-
-    return (
-        <section>
-            {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} />}
-            {header && headerImage && <HeaderPage header={header} image={headerImage} />}
-            {info && <Info {...info} />}
-            {events && <AllEvents {...events} />}
-            {review && <Review {...review} />}
-        </section>
-    )
-}
+const EventsPage = (props, {...breadcrumbs}) => (
+    <section>
+        {breadcrumbs && <Breadcrumbs {...props} />}
+        <HeaderPage {...props} />
+        <Info {...props} />
+        <AllEvents {...props} />
+        <Review {...props} />
+    </section>
+)
 
 EventsPage.getInitialProps = fetchDataPage('events')
-
-EventsPage.propTypes = {
-    data: object
-}
 
 export default EventsPage

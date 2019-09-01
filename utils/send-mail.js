@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer')
 const host = 'smtp.timeweb.ru'
 const port = 465 // true for 465, false for other ports
 const secure = true
-const user = 'admin'
+const user = 'admin@grand-casino.com.ru'
 const pass = 'zd8WxVUUrfjEr9a'
 const from = '"Grand Casino" <admin@grand-casino.com.ru>'
 const to = 'detanton@gmail.com'
@@ -16,11 +16,7 @@ const sendMail = async (data) => {
                 host,
                 port,
                 secure,
-                auth: { user, pass },
-                tls: {
-                    // do not fail on invalid certs
-                    rejectUnauthorized: false
-                }
+                auth: { user, pass }
             })
             const info = await transporter.sendMail({
                 from,

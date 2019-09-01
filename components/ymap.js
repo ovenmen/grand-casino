@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
-import { array, string } from 'prop-types'
-import { map } from 'lodash'
+import PropTypes from 'prop-types'
+import _ from 'lodash'
 import { YMaps, Map, ZoomControl, GeolocationControl, Placemark } from 'react-yandex-maps'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
-const LABEL = '<strong>GC</strong>'
-
 const YMap = ({
-    header,
-    items
+    map,
+    logo
 }) => {
     const [instance, setInstance] = useState(null)
 
@@ -21,7 +19,7 @@ const YMap = ({
         <section className="map-container">
             <div className="grid-x">
                 <div className="cell">
-                    <h2 className="margin-bottom-2 text-center color-white">{header}</h2>
+                    <h2 className="margin-bottom-2 text-center color-white">{map.header}</h2>
                 </div>
             </div>
             <YMaps>
@@ -41,11 +39,11 @@ const YMap = ({
                 >
                     <ZoomControl options={{ size: 'small', zoomDuration: 200 }} />
                     <GeolocationControl options={{ float: 'left' }} />
-                    {map(items, (item, index) => (
+                    {_.map(map.items, (item, index) => (
                         <Placemark
                             key={index}
                             defaultGeometry={[item.lat, item.long]}
-                            defaultProperties={{ iconContent: item.cooperation && LABEL, hintContent: item.city }}
+                            defaultProperties={{ iconContent: item.cooperation && `<strong>${logo}</strong>`, hintContent: item.city }}
                             defaultOptions={{ preset: item.cooperation ? 'islands#nightStretchyIcon' : 'islands#nightCircleDotIcon' }}
                         />
                     ))}
@@ -56,7 +54,7 @@ const YMap = ({
                 .map-container {
                     max-width: 100%;
                     position: relative;
-                    padding:5vw;
+                    padding: 5vw;
                     min-height: 30rem;
                     background: #38286d;
                 }
@@ -88,9 +86,8 @@ const YMap = ({
 }
 
 YMap.propTypes = {
-    header: string,
-    brand: array,
-    items: array
+    map: PropTypes.object,
+    logo: PropTypes.string
 }
 
 export default YMap

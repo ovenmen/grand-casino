@@ -1,110 +1,112 @@
 import React from 'react'
-import { array, object } from 'prop-types'
+import PropTypes from 'prop-types'
 import { map, find } from 'lodash'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink, faMapMarkerAlt, faClock, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faVk, faFacebook, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
-import Brand from './brand'
+import Logo from './logo'
 
 const submenu = (navigation) => find(navigation, item => item.submenu)
 
 const Footer = ({
-    brand,
+    logo,
     footer,
     navigation
 }) => (
-    <section className="footer">
-        <div className="footer-main-section">
-            <div className="grid-x">
-                <div className="cell small-12 medium-6 large-3">
-                    <div className="description">
-                        <Brand brand={brand} />
-                        <p className="color-white">{footer.description}</p>
+    <footer>
+        <section className="footer">
+            <div className="footer-main-section">
+                <div className="grid-x">
+                    <div className="cell small-12 medium-6 large-3">
+                        <div className="description">
+                            <Logo logo={logo} />
+                            <p className="color-white">{footer.description}</p>
+                        </div>
+                    </div>
+                    <div className="cell small-12 medium-6 large-3">
+                        <ul className="color-white list">
+                            {navigation && map(navigation, (item, index) => (
+                                <li key={index} className="list-item">
+                                    <Link href={item.value} passHref>
+                                        <a className="link color-white">{item.title}
+                                            <span className="icon"><FontAwesomeIcon fixedWidth icon={faLink} height="1rem" /></span>
+                                        </a>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="cell small-12 medium-6 large-3">
+                        <ul className="color-white list">
+                            {submenu && map(submenu(navigation).submenu, (item, index) => (
+                                <li key={index} className="list-item">
+                                    <Link href={item.value} passHref>
+                                        <a className="link color-white">{item.title}
+                                            <span className="icon"><FontAwesomeIcon fixedWidth icon={faLink} height="1rem" /></span>
+                                        </a>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="cell small-12 medium-6 large-3">
+                        <p className="color-white">
+                            <span className="contact-icon"><FontAwesomeIcon fixedWidth icon={faMapMarkerAlt} height="1rem" /></span>
+                            {footer.address}
+                        </p>
+                        <p className="color-white">
+                            <span className="contact-icon"><FontAwesomeIcon fixedWidth icon={faClock} height="1rem" /></span>
+                            {footer.operationMode}
+                        </p>
+                        <p className="color-white">
+                            <span className="contact-icon"><FontAwesomeIcon fixedWidth icon={faEnvelope} height="1rem" /></span>
+                            <a className="color-white link" href={`mailto:${footer.email}`} rel="noopener noreferrer">
+                                {footer.email}
+                            </a>
+                        </p>
+                        <p className="color-white">
+                            <span className="contact-icon"><FontAwesomeIcon fixedWidth icon={faPhone} height="1rem" /></span>
+                            <a className="color-white link" href={`tel:${footer.phone}`} rel="noopener noreferrer">
+                                {footer.phone}
+                            </a>
+                        </p>
                     </div>
                 </div>
-                <div className="cell small-12 medium-6 large-3">
-                    <ul className="color-white list">
-                        {navigation && map(navigation, (item, index) => (
-                            <li key={index} className="list-item">
-                                <Link href={item.value} passHref>
-                                    <a className="link color-white">{item.title}
-                                        <span className="icon"><FontAwesomeIcon icon={faLink} /></span>
-                                    </a>
-                                </Link>
+            </div>
+            <div className="footer-social-section">
+                <div className="grid-x">
+                    <div className="cell small-12 medium-10 large-10">
+                        <p className="color-white">{footer.copirated}</p>
+                    </div>
+                    <div className="cell small-12 medium-2 large-2">
+                        <ul className="social-list no-bullet">
+                            <li>
+                                <a href="https://vk.com/questoria" className="color-white link" rel="noopener noreferrer" target="_blank">
+                                    <FontAwesomeIcon fixedWidth icon={faVk} height="1rem" />
+                                </a>
                             </li>
-                        ))}
-                    </ul>
-                </div>
-                <div className="cell small-12 medium-6 large-3">
-                    <ul className="color-white list">
-                        {submenu && map(submenu(navigation).submenu, (item, index) => (
-                            <li key={index} className="list-item">
-                                <Link href={item.value} passHref>
-                                    <a className="link color-white">{item.title}
-                                        <span className="icon"><FontAwesomeIcon icon={faLink} /></span>
-                                    </a>
-                                </Link>
+                            <li>
+                                <a href="https://www.facebook.com/questoria/" className="color-white link" rel="noopener noreferrer" target="_blank">
+                                    <FontAwesomeIcon fixedWidth icon={faFacebook} height="1rem" />
+                                </a>
                             </li>
-                        ))}
-                    </ul>
-                </div>
-                <div className="cell small-12 medium-6 large-3">
-                    <p className="color-white">
-                        <span className="contact-icon"><FontAwesomeIcon className="fa-fw" icon={faMapMarkerAlt} /></span>
-                        {footer.address}
-                    </p>
-                    <p className="color-white">
-                        <span className="contact-icon"><FontAwesomeIcon className="fa-fw" icon={faClock} /></span>
-                        {footer.operationMode}
-                    </p>
-                    <p className="color-white">
-                        <span className="contact-icon"><FontAwesomeIcon className="fa-fw" icon={faEnvelope} /></span>
-                        <a className="color-white link" href={`mailto:${footer.email}`} rel="noopener noreferrer">
-                            {footer.email}
-                        </a>
-                    </p>
-                    <p className="color-white">
-                        <span className="contact-icon"><FontAwesomeIcon className="fa-fw" icon={faPhone} /></span>
-                        <a className="color-white link" href={`tel:${footer.phone}`} rel="noopener noreferrer">
-                            {footer.phone}
-                        </a>
-                    </p>
+                            <li>
+                                <a href="https://www.instagram.com/questories/" className="color-white link" rel="noopener noreferrer" target="_blank">
+                                    <FontAwesomeIcon fixedWidth icon={faInstagram} height="1rem" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/user/questoriaru" className="color-white link" rel="noopener noreferrer" target="_blank">
+                                    <FontAwesomeIcon fixedWidth icon={faYoutube} height="1rem" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div className="footer-social-section">
-            <div className="grid-x">
-                <div className="cell small-12 medium-10 large-10">
-                    <p className="color-white">{footer.copirated}</p>
-                </div>
-                <div className="cell small-12 medium-2 large-2">
-                    <ul className="social-list no-bullet">
-                        <li>
-                            <a href="https://vk.com/questoria" className="color-white link" rel="noopener noreferrer" target="_blank">
-                                <FontAwesomeIcon className="fa-fw" icon={faVk} />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/questoria/" className="color-white link" rel="noopener noreferrer" target="_blank">
-                                <FontAwesomeIcon className="fa-fw" icon={faFacebook} />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/questories/" className="color-white link" rel="noopener noreferrer" target="_blank">
-                                <FontAwesomeIcon className="fa-fw" icon={faInstagram} />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.youtube.com/user/questoriaru" className="color-white link" rel="noopener noreferrer" target="_blank">
-                                <FontAwesomeIcon className="fa-fw" icon={faYoutube} />
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        </section>
 
         <style jsx>{`
             .footer {
@@ -136,6 +138,9 @@ const Footer = ({
                 opacity: 0;
                 transition: all 0.3s ease-in-out;
                 color: #a48eec;
+                vertical-align: middle;
+                display: inline-block;
+                line-height: initial;
             }
             .link:hover .icon {
                 visibility: visible;
@@ -143,6 +148,9 @@ const Footer = ({
             }
             .contact-icon {
                 margin-right: 1rem;
+                vertical-align: middle;
+                display: inline-block;
+                line-height: initial;
             }
             .footer-social-section {
                 padding: 1rem 3%;
@@ -155,13 +163,13 @@ const Footer = ({
                 justify-content: space-around;
             }
         `}</style>
-    </section>
+    </footer>
 )
 
 Footer.propTypes = {
-    brand: array,
-    footer: object,
-    navigation: array
+    logo: PropTypes.string,
+    footer: PropTypes.object,
+    navigation: PropTypes.array
 }
 
 export default Footer

@@ -1,13 +1,13 @@
 import React from 'react'
-import { array } from 'prop-types'
-import { map } from 'lodash'
+import PropTypes from 'prop-types'
+import _ from 'lodash'
 
 const TablePrices = ({
-    items
+    prices
 }) => (
     <section className="table-prices">
         <div className="grid-container fluid">
-            {map(items, (item, index) => (
+            {_.map(prices.items, (item, index) => (
                 <div className="grid-x grid-padding-x price-row" key={index}>
                     <div className="cell small-7 medium-8 large-10">
                         <p className="price-item h5">{item.title}</p>
@@ -35,7 +35,7 @@ const TablePrices = ({
 )
 
 TablePrices.propTypes = {
-    items: array
+    prices: PropTypes.object
 }
 
 export default TablePrices

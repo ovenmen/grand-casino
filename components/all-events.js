@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import { array } from 'prop-types'
-import { map } from 'lodash'
+import PropTypes from 'prop-types'
+import _ from 'lodash'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages } from '@fortawesome/free-solid-svg-icons'
@@ -8,11 +8,11 @@ import { faImages } from '@fortawesome/free-solid-svg-icons'
 import { STATIC_IMAGES_URL } from '../config'
 
 const AllEvents = ({
-    items
+    events
 }) => (
     <section>
         <div className="grid-x">
-            {map(items, (event, index) => (
+            {_.map(events.items, (event, index) => (
                 <Fragment key={index}>
                     <div className="cell small-12 medium-6 large-3">
                         <img src={`${STATIC_IMAGES_URL}/${event.image}`} className="event-image" />
@@ -29,7 +29,9 @@ const AllEvents = ({
                             <p className="gallary-button">
                                 <Link href={event.buttonHref}>
                                     <a className="link color-purple text-uppercase font-bold">
-                                        <span>{event.buttonTitle}</span><span className="margin-left-1"><FontAwesomeIcon icon={faImages} /></span>
+                                        <span>{event.buttonTitle}</span><span className="icon margin-left-1">
+                                            <FontAwesomeIcon fixedWidth icon={faImages} height="1rem" />
+                                        </span>
                                     </a>
                                 </Link>
                             </p>
@@ -49,12 +51,16 @@ const AllEvents = ({
                 padding: 2rem;
                 border-top: 1px solid #d3d3d3;
             }
+            .icon {
+                display: inline-block;
+                vertical-align: middle;
+            }
         `}</style>
     </section>
 )
 
 AllEvents.propTypes = {
-    items: array
+    events: PropTypes.object
 }
 
 export default AllEvents

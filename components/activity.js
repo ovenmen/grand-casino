@@ -1,5 +1,5 @@
 import React from 'react'
-import { string, array } from 'prop-types'
+import PropTypes from 'prop-types'
 import { map } from 'lodash'
 import Link from 'next/link'
 
@@ -7,11 +7,7 @@ import Button from './button'
 import { STATIC_IMAGES_URL } from '../config'
 
 const Activity = ({
-    header,
-    description,
-    buttonTitle,
-    buttonHref,
-    items
+    activity
 }) => (
     <section className="activity">
         <div className="grid-x">
@@ -19,24 +15,24 @@ const Activity = ({
                 <div className="grid-x grid-padding-x flex-dir-column">
                     <div className="cell">
                         <h2 className="text-uppercase text-right color-white margin-bottom-3">
-                            <strong>{header}</strong>
+                            <strong>{activity.header}</strong>
                         </h2>
                     </div>
                     <div className="cell">
-                        {map(description, (item, index) => (
+                        {map(activity.description, (item, index) => (
                             <p className="text-right color-white margin-bottom-3" key={index}>{item}</p>
                         ))}
                     </div>
                     <div className="cell">
                         <div className="button-activity text-right margin-bottom-1">
-                            <Button title={buttonTitle} href={buttonHref} />
+                            <Button title={activity.buttonTitle} href={activity.buttonHref} />
                         </div>
                     </div>
                 </div>
             </div>
             <div className="cell small-12 medium-12 large-6">
                 <div className="grid-x">
-                    {map(items, (event, index) => (
+                    {map(activity.items, (event, index) => (
                         <div className="cell small-12 medium-6 large-6" key={index}>
                             <div className="activity-event">
                                 <img className="activity-image" src={`${STATIC_IMAGES_URL}/${event.image}`} width="480" height="380" />
@@ -101,6 +97,7 @@ const Activity = ({
                 bottom: 2rem;
                 transition: all .3s ease-in-out;
                 z-index: 1;
+                text-shadow: 0px 0px 10px var(--color-black);
             }
             .activity-event:hover .event-header {
                 bottom: 5rem;
@@ -138,11 +135,7 @@ const Activity = ({
 )
 
 Activity.propTypes = {
-    header: string,
-    description: array,
-    buttonTitle: string,
-    buttonHref: string,
-    items: array
+    activity: PropTypes.object,
 }
 
 export default Activity

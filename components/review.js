@@ -1,19 +1,15 @@
 import React from 'react'
-import { string } from 'prop-types'
+import PropTypes from 'prop-types'
 
 import { STATIC_IMAGES_URL } from '../config'
 
 const Review = ({
-    header,
-    image,
-    fullname,
-    city,
-    description
+    review
 }) => (
     <section className="review">
         <div className="grid-x">
             <div className="cell">
-                <h2 className="h1 text-center font-bold color-white margin-bottom-3">{header}</h2>
+                <h2 className="h1 text-center font-bold color-white margin-bottom-3">{review.header}</h2>
             </div>
         </div>
         <div className="grid-x">
@@ -21,11 +17,11 @@ const Review = ({
             <div className="cell small-12 medium-8 large-6">
                 <div className="review-description text-center radius bordered shadow">
                     <figure>
-                        <img src={`${STATIC_IMAGES_URL}/${image}`} />
+                        <img src={`${STATIC_IMAGES_URL}/${review.description.image}`} />
                         <figcaption className="margin-top-2">
-                            <h5 className="color-purple font-bold margin-bottom-1">{fullname}</h5>
-                            <h6 className="lead color-grey margin-bottom-1">{city}</h6>
-                            <p className="lead">{description}</p>
+                            <h5 className="color-purple font-bold margin-bottom-1">{review.description.fullname}</h5>
+                            <h6 className="lead color-grey margin-bottom-1">{review.description.city}</h6>
+                            <p className="lead">{review.description.description}</p>
                         </figcaption>
                     </figure>
                 </div>
@@ -53,11 +49,7 @@ const Review = ({
 )
 
 Review.propTypes = {
-    header: string,
-    image: string,
-    fullname: string,
-    city: string,
-    description: string
+    review: PropTypes.object
 }
 
 export default Review

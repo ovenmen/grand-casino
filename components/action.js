@@ -1,26 +1,23 @@
 import React from 'react'
-import { string } from 'prop-types'
+import PropTypes from 'prop-types'
 
 import Button from './button'
 
 const Action = ({
-    header,
-    description,
-    buttonTitle,
-    buttonHref
+    action
 }) => (
     <section className="action">
         <div className="grid-container fluid">
             <div className="grid-x grid-padding-x align-middle">
                 <div className="cell small-12 medium-12 large-8">
                     <div className="headers-actions color-white font-bold">
-                        <h2><strong>{header}</strong></h2>
-                        <h4><strong>{description}</strong></h4>
+                        <h2><strong>{action.header}</strong></h2>
+                        <h4><strong>{action.description}</strong></h4>
                     </div>
                 </div>
                 <div className="cell small-12 medium-12 large-4">
                     <p className="button-action color-white text-right">
-                        <Button title={buttonTitle} href={buttonHref} bigSize />
+                        <Button title={action.buttonTitle} href={action.buttonHref} bigSize />
                     </p>
                 </div>
             </div>
@@ -68,10 +65,7 @@ const Action = ({
 )
 
 Action.propTypes = {
-    header: string,
-    description: string,
-    buttonTitle: string,
-    buttonHref: string
+    action: PropTypes.object,
 }
 
 export default Action

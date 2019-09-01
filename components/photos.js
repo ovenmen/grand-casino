@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { string, array } from 'prop-types'
-import { map, get, toLower, toNumber } from 'lodash'
+import PropTypes from 'prop-types'
+import _ from 'lodash'
 import classnames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -8,15 +8,14 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { STATIC_IMAGES_URL } from '../config'
 
 const Photos = ({
-    header,
-    items
+    photos
 }) => {
     const [imageIndex, setImageIndex] = useState(0)
     const [modal, setToggleModal] = useState(false)
-    const lengthSlides = items.length
+    const lengthSlides = photos.items.length
 
     const handleKeyDown = (event) => {
-        const keyCode = get(event, 'keyCode', null)
+        const keyCode = _.get(event, 'keyCode', null)
 
         if (keyCode === 39) {
             nextSlide()
@@ -32,15 +31,15 @@ const Photos = ({
     }
 
     const handleClickImage = (event) => {
-        const index = get(event, 'target.children[0].dataset.index', null)
+        const index = _.get(event, 'target.children[0].dataset.index', null)
         setToggleModal(true)
-        setImageIndex(toNumber(index))
+        setImageIndex(_.toNumber(index))
     }
 
     const handleClickCloseModal = (event) => {
-        const tagName = get(event, 'target.tagName', null)
+        const tagName = _.get(event, 'target.tagName', null)
 
-        if (toLower(tagName) !== 'img') {
+        if (_.toLower(tagName) !== 'img') {
             setToggleModal(false)
         }
     }
@@ -56,8 +55,8 @@ const Photos = ({
     }
 
     const handleClickBigImage = (event) => {
-        const currentSlide = get(event, 'target', null)
-        const clickSlidePlaceX = get(event, 'pageX', 0)
+        const currentSlide = _.get(event, 'target', null)
+        const clickSlidePlaceX = _.get(event, 'pageX', 0)
         const width = currentSlide.width
         const prevElem = clickSlidePlaceX < width / 2
         const nextElem = clickSlidePlaceX > width / 2
@@ -77,22 +76,22 @@ const Photos = ({
         <section className="photos">
             <div className="grid-x">
                 <div className="cell">
-                    <h2 className="h1 text-center color-white font-bold margin-bottom-3">{header}</h2>
+                    <h2 className="h1 text-center color-white font-bold margin-bottom-3">{photos.header}</h2>
                 </div>
             </div>
             <div className={classnames('grid-x modal align-middle', modal && 'show')} onClick={handleClickCloseModal}>
                 <div className="cell">
                     <span className="close-icon"><FontAwesomeIcon className="fa-fw fa-lg color-white" icon={faTimes} /></span>
                     <figure>
-                        <img src={`${STATIC_IMAGES_URL}/${items[imageIndex]}`} onClick={handleClickBigImage} />
+                        <img src={`${STATIC_IMAGES_URL}/photos/${photos.items[imageIndex]}`} onClick={handleClickBigImage} />
                     </figure>
                 </div>
             </div>
             <div className="grid-x grid-margin-x">
-                {map(items, (item, index) =>
+                {_.map(photos.items, (item, index) =>
                     <div className="cell small-6 medium-4 large-2 margin-bottom-2" key={index}>
                         <figure className="cover shadow" onClick={handleClickImage}>
-                            <img src={`${STATIC_IMAGES_URL}/${item}`} data-index={index} />
+                            <img src={`${STATIC_IMAGES_URL}/photos/${item}`} data-index={index} />
                         </figure>
                     </div>
                 )}
@@ -181,8 +180,7 @@ const Photos = ({
 }
 
 Photos.propTypes = {
-    header: string,
-    items: array
+    photos: PropTypes.object
 }
 
 export default Photos

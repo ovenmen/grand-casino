@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons'
 
-import { SHOW_SCROLL_POSITION} from '../config'
+const SHOW_SCROLL_POSITION = 150
 
 const Scroller = () => {
     const [showScroller, setShowScroller] = useState(false)
@@ -22,7 +22,7 @@ const Scroller = () => {
     return (
         <div className={classnames('scroller', showScroller && 'show')}>
             <div className="scroller-link" onClick={handleClick}>
-                <span className="icon"><FontAwesomeIcon icon={faCaretUp} /></span>
+                <span className="icon"><FontAwesomeIcon fixedWidth icon={faCaretUp} height="1rem" /></span>
             </div>
 
             <style jsx>{`
@@ -37,12 +37,14 @@ const Scroller = () => {
                 }
                 .scroller-link {
                     background: #6047af;
-                    padding: 1rem 1.4rem;
+                    padding: 0.5rem 1rem;
                     border-radius: 50%;
                     cursor: pointer;
                 }
                 .scroller-link .icon {
                     color: #ffffff;
+                    display: inline-block;
+                    vertical-align: middle;
                 }
                 .scroller.show {
                     visibility: visible !important;

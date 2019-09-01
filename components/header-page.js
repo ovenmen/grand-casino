@@ -1,16 +1,16 @@
 import React from 'react'
-import { string } from 'prop-types'
+import PropTypes from 'prop-types'
 
 import { STATIC_IMAGES_URL } from '../config'
 
 const HeaderPage = ({
     header,
-    image
+    headerImage
 }) => (
     <div className="header-page">
         <div className="grid-x">
             <div className="cell small-12 medium-12 large-12">
-                <img className="header-page-image" src={`${STATIC_IMAGES_URL}/${image}`} />
+                <img className="header-page-image" src={`${STATIC_IMAGES_URL}/${headerImage}`} />
                 <h1 className="text-center color-white font-bold">{header}</h1>
             </div>
         </div>
@@ -36,8 +36,8 @@ const HeaderPage = ({
 )
 
 HeaderPage.propTypes = {
-    header: string,
-    image: string
+    header: PropTypes.string,
+    headerImage: PropTypes.string
 }
 
 export default HeaderPage

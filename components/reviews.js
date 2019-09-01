@@ -1,21 +1,20 @@
 import React from 'react'
-import { string, array } from 'prop-types'
-import { map } from 'lodash'
+import PropTypes from 'prop-types'
+import _ from 'lodash'
 
 import { STATIC_IMAGES_URL } from '../config'
 
 const Reviews = ({
-    header,
-    items
+    reviews
 }) => (
     <section className="reviews">
         <div className="grid-x grid-padding-x">
             <div className="cell small-12">
-                <h2 className="text-center text-uppercase color-white margin-bottom-3">{header}</h2>
+                <h2 className="text-center text-uppercase color-white margin-bottom-3">{reviews.header}</h2>
             </div>
         </div>
         <div className="grid-x">
-            {map(items, (item, index) => (
+            {_.map(reviews.items, (item, index) => (
                 <div className="cell small-12 medium-6 large-6 review-border" key={index}>
                     <div className="review text-center">
                         <figure>
@@ -62,8 +61,7 @@ const Reviews = ({
 )
 
 Reviews.propTypes = {
-    header: string,
-    items: array
+    reviews: PropTypes.object
 }
 
 export default Reviews
