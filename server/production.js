@@ -9,8 +9,8 @@ const forceHTTPS = require('koa-force-https')
 const compression = require('compression')
 const koaConnect = require('koa-connect')
 const helmet = require('koa-helmet')
-const serve = require('koa-static')
 const MongoClient = require('mongodb').MongoClient
+const _ = require('lodash')
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = 443
@@ -36,11 +36,242 @@ app.prepare().then(() => {
         ctx.status = 200
         await next()
     })
-    app.use(serve(__dirname + '/.next'))
+
+    router.post('/api/index', async ctx => {
+        const data = await require('../stub/api/index.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const reviews = await require('../stub/api/data/reviews.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
+
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            reviews: { ...data.reviews, items: _.takeRight(_.shuffle(reviews.items), 2) },
+            footer: { ...footer, ...contacts }
+        }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
+    })
+
+    router.post('/api/events', async ctx => {
+        const data = await require('../stub/api/index.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
+
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            footer: { ...footer, ...contacts }
+        }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
+    })
+
+    router.post('/api/prices', async ctx => {
+        const data = await require('../stub/api/index.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
+
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            footer: { ...footer, ...contacts }
+        }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
+    })
+
+    router.post('/api/franchise', async ctx => {
+        const data = await require('../stub/api/index.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
+
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            footer: { ...footer, ...contacts }
+        }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
+    })
+
+    router.post('/api/prices', async ctx => {
+        const data = await require('../stub/api/index.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
+
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            footer: { ...footer, ...contacts }
+        }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
+    })
+
+    router.post('/api/reviews', async ctx => {
+        const data = await require('../stub/api/index.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const reviews = require('../stub/api/data/reviews.json')
+        const footer = await require('../stub/api/data/footer.json')
+
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            reviews: { ...data.reviews, items: _.reverse(reviews.items) },
+            footer: { ...footer, ...contacts }
+        }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
+    })
+
+    router.post('/api/contacts', async ctx => {
+        const data = await require('../stub/api/index.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
+
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            footer: { ...footer, ...contacts }
+        }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
+    })
+
+    router.post('/api/events/casino-club', async ctx => {
+        const data = await require('../stub/api/index.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
+
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            footer: { ...footer, ...contacts }
+        }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
+    })
+
+    router.post('/api/events/casino-royal', async ctx => {
+        const data = await require('../stub/api/index.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
+
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            footer: { ...footer, ...contacts }
+        }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
+    })
+
+    router.post('/api/events/gold-casino', async ctx => {
+        const data = await require('../stub/api/index.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
+
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            footer: { ...footer, ...contacts }
+        }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
+    })
+
+    router.post('/api/events/grand-casino', async ctx => {
+        const data = await require('../stub/api/index.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
+
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            footer: { ...footer, ...contacts }
+        }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
+    })
+
+    router.post('/api/error', async ctx => {
+        const data = await require('../stub/api/index.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
+
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            footer: { ...footer, ...contacts }
+        }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
+    })
 
     router.get('*', async ctx => {
         await handle(ctx.req, ctx.res)
-        ctx.respond = false
+        // ctx.respond = false
     })
 
     server.use(router.routes())

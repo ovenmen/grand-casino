@@ -1,4 +1,10 @@
 {
-    "watch": ["server", "stub"],
-    "ext": "js, json"
+    "watch": [
+        "server/",
+        "stub/api/"
+    ],
+    "env": {
+        "NODE_ENV": "development"
+    },
+    "ext": "js,json"
 }
