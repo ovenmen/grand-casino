@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 
 import fetchDataPage from '../utils/fetch-data-page'
 
-const Error = ({ error, statusCode }) => (
+const Error = ({ statusCode, errorMessage }) => (
     <section className="error">
         <div className="grid-x grid-padding-x">
             <div className="cell small-12 medium-12 large-12">
                 <h1 className="text-center font-bold error-header">{statusCode}</h1>
-                <h2 className="text-center">{error}</h2>
+                <h2 className="text-center">{errorMessage}</h2>
             </div>
         </div>
 
@@ -23,7 +23,7 @@ const Error = ({ error, statusCode }) => (
 Error.getInitialProps = fetchDataPage('error')
 
 Error.propTypes = {
-    error: PropTypes.string,
+    errorMessage: PropTypes.string,
     statusCode: PropTypes.number
 }
 

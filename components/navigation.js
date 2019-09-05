@@ -26,7 +26,7 @@ const Navigation = ({
             <nav className="navigation grid-container fluid">
                 <div className="toggle-button show-for-small-only">
                     <span className="color-white" onClick={handleClickToggleButton}>
-                        <FontAwesomeIcon fixedWidth icon={isOpen ? faTimes : faBars} height="1rem" />
+                        <FontAwesomeIcon fixedWidth icon={isOpen ? faTimes : faBars} height="1em" />
                     </span>
                 </div>
                 <div className="grid-x grid-padding-x align-middle">

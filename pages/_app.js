@@ -15,6 +15,7 @@ export default class extends App {
         // calls page's `getInitialProps` and fills `appProps.pageProps`
         const appProps = await App.getInitialProps(appContext)
         const pathname = appContext.ctx.pathname
+
         return { ...appProps, pathname }
     }
 

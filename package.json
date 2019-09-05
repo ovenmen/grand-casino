@@ -17,7 +17,6 @@
     "@fortawesome/free-solid-svg-icons": "5.10.2",
     "@fortawesome/react-fontawesome": "0.1.4",
     "compression": "1.7.4",
-    "date-fns": "2.0.1",
     "formik": "1.5.8",
     "isomorphic-unfetch": "3.0.0",
     "koa": "2.8.1",
@@ -43,7 +42,7 @@
     "eslint": "6.3.0",
     "eslint-plugin-react": "7.14.3",
     "lodash": "4.17.15",
-    "nodemon": "1.19.1",
+    "nodemon": "1.19.2",
     "prop-types": "15.7.2"
   }
 }

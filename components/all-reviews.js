@@ -21,7 +21,7 @@ const AllReviews = ({
                     {reviews.items.length === 0 &&
                         <div className="grid-x grid-padding-x margin-top-3">
                             <div className="cell small-12">
-                                <span className="frown color-white text-center"><FontAwesomeIcon fixedWidth icon={faFrown} height="5rem" /></span>
+                                <span className="frown color-white text-center"><FontAwesomeIcon fixedWidth icon={faFrown} height="5em" /></span>
                                 <p className="text-center color-white h5">{reviews.emptyReviewsMessage}</p>
                                 <p className="text-center color-white h5">{reviews.actionReviewsMessage}</p>
                             </div>
@@ -39,9 +39,9 @@ const AllReviews = ({
                                 </div>
                             </div>
                             <hr />
-                            <span className="quote-left"><FontAwesomeIcon icon={faQuoteLeft} /></span>
+                            <span className="quote-left"><FontAwesomeIcon icon={faQuoteLeft} height="1em" /></span>
                             <p className="margin-top-2 margin-bottom-2 description">{item.description}</p>
-                            <span className="quote-right"><FontAwesomeIcon icon={faQuoteRight} /></span>
+                            <span className="quote-right"><FontAwesomeIcon icon={faQuoteRight} height="1em" /></span>
                         </div>
                     ))}
                 </div>

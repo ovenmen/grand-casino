@@ -30,7 +30,7 @@ const AllEvents = ({
                                 <Link href={event.buttonHref}>
                                     <a className="link color-purple text-uppercase font-bold">
                                         <span>{event.buttonTitle}</span><span className="icon margin-left-1">
-                                            <FontAwesomeIcon fixedWidth icon={faImages} height="1rem" />
+                                            <FontAwesomeIcon fixedWidth icon={faImages} height="1em" />
                                         </span>
                                     </a>
                                 </Link>

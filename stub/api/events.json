@@ -65,13 +65,6 @@
         ]
     },
     "review": {
-        "header": "Лучший отзыв",
-        "description": {
-            "isPublic": true,
-            "fullname": "Елена",
-            "city": "Москва",
-            "image": "uploads/default-photo.jpg",
-            "description": "Тестирую где появится отзыв. И в какое место нужно добавить фото чтобы отзыв был с фото? :-)"
-        }
+        "header": "Лучший отзыв"
     }
 }

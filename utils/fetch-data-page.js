@@ -8,7 +8,6 @@ const port = dev ? 3000 : 443
 export default (namePage) => async ({ res, err }) => {
     const statusCode = res ? res.statusCode : err ? err.statusCode : null
     const url = `${protocol}://${siteName}:${port}/api/${namePage}`
-
     const params = {
         method: 'POST',
         timeout: 5000,
@@ -16,8 +15,19 @@ export default (namePage) => async ({ res, err }) => {
     }
     const response = await fetch(url, params)
     const data = await response.json()
+    let errorMessage = ''
+
+    if (statusCode === 404) {
+        errorMessage = 'Страница не найдена'
+    }
+
+    if (statusCode === 500) {
+        errorMessage = 'Что-то пошло не так :('
+    }
+
     return {
         ...data,
-        statusCode
+        statusCode,
+        errorMessage
     }
 }

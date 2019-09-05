@@ -12,8 +12,8 @@ const PricesPage = (props, {...breadcrumbs}) => (
         {breadcrumbs && <Breadcrumbs {...props} />}
         <HeaderPage {...props} />
         <FranchiseInfo {...props} />
-        <Ymap {...props} />
         <Action {...props} />
+        <Ymap {...props} />
     </section>
 )
 

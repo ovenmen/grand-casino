@@ -31,7 +31,7 @@ const Footer = ({
                                 <li key={index} className="list-item">
                                     <Link href={item.value} passHref>
                                         <a className="link color-white">{item.title}
-                                            <span className="icon"><FontAwesomeIcon fixedWidth icon={faLink} height="1rem" /></span>
+                                            <span className="icon"><FontAwesomeIcon fixedWidth icon={faLink} height="1em" /></span>
                                         </a>
                                     </Link>
                                 </li>
@@ -44,7 +44,7 @@ const Footer = ({
                                 <li key={index} className="list-item">
                                     <Link href={item.value} passHref>
                                         <a className="link color-white">{item.title}
-                                            <span className="icon"><FontAwesomeIcon fixedWidth icon={faLink} height="1rem" /></span>
+                                            <span className="icon"><FontAwesomeIcon fixedWidth icon={faLink} height="1em" /></span>
                                         </a>
                                     </Link>
                                 </li>
@@ -53,21 +53,21 @@ const Footer = ({
                     </div>
                     <div className="cell small-12 medium-6 large-3">
                         <p className="color-white">
-                            <span className="contact-icon"><FontAwesomeIcon fixedWidth icon={faMapMarkerAlt} height="1rem" /></span>
+                            <span className="contact-icon"><FontAwesomeIcon fixedWidth icon={faMapMarkerAlt} height="1em" /></span>
                             {footer.address}
                         </p>
                         <p className="color-white">
-                            <span className="contact-icon"><FontAwesomeIcon fixedWidth icon={faClock} height="1rem" /></span>
+                            <span className="contact-icon"><FontAwesomeIcon fixedWidth icon={faClock} height="1em" /></span>
                             {footer.operationMode}
                         </p>
                         <p className="color-white">
-                            <span className="contact-icon"><FontAwesomeIcon fixedWidth icon={faEnvelope} height="1rem" /></span>
+                            <span className="contact-icon"><FontAwesomeIcon fixedWidth icon={faEnvelope} height="1em" /></span>
                             <a className="color-white link" href={`mailto:${footer.email}`} rel="noopener noreferrer">
                                 {footer.email}
                             </a>
                         </p>
                         <p className="color-white">
-                            <span className="contact-icon"><FontAwesomeIcon fixedWidth icon={faPhone} height="1rem" /></span>
+                            <span className="contact-icon"><FontAwesomeIcon fixedWidth icon={faPhone} height="1em" /></span>
                             <a className="color-white link" href={`tel:${footer.phone}`} rel="noopener noreferrer">
                                 {footer.phone}
                             </a>
@@ -84,22 +84,22 @@ const Footer = ({
                         <ul className="social-list no-bullet">
                             <li>
                                 <a href="https://vk.com/questoria" className="color-white link" rel="noopener noreferrer" target="_blank">
-                                    <FontAwesomeIcon fixedWidth icon={faVk} height="1rem" />
+                                    <FontAwesomeIcon fixedWidth icon={faVk} height="1em" />
                                 </a>
                             </li>
                             <li>
                                 <a href="https://www.facebook.com/questoria/" className="color-white link" rel="noopener noreferrer" target="_blank">
-                                    <FontAwesomeIcon fixedWidth icon={faFacebook} height="1rem" />
+                                    <FontAwesomeIcon fixedWidth icon={faFacebook} height="1em" />
                                 </a>
                             </li>
                             <li>
                                 <a href="https://www.instagram.com/questories/" className="color-white link" rel="noopener noreferrer" target="_blank">
-                                    <FontAwesomeIcon fixedWidth icon={faInstagram} height="1rem" />
+                                    <FontAwesomeIcon fixedWidth icon={faInstagram} height="1em" />
                                 </a>
                             </li>
                             <li>
                                 <a href="https://www.youtube.com/user/questoriaru" className="color-white link" rel="noopener noreferrer" target="_blank">
-                                    <FontAwesomeIcon fixedWidth icon={faYoutube} height="1rem" />
+                                    <FontAwesomeIcon fixedWidth icon={faYoutube} height="1em" />
                                 </a>
                             </li>
                         </ul>

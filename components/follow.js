@@ -8,22 +8,22 @@ const Follow = () => (
         <ul className="social-list no-bullet">
             <li>
                 <a href="https://vk.com/questoria" className="link color-purple lead" rel="noopener noreferrer" target="_blank">
-                    <span className="icon"><FontAwesomeIcon fixedWidth icon={faVk} height="1rem" /></span>
+                    <span className="icon"><FontAwesomeIcon fixedWidth icon={faVk} height="1.5em" /></span>
                 </a>
             </li>
             <li>
                 <a href="https://www.facebook.com/questoria/" className="link color-purple lead" rel="noopener noreferrer" target="_blank">
-                    <span className="icon"><FontAwesomeIcon fixedWidth icon={faFacebook} height="1rem" /></span>
+                    <span className="icon"><FontAwesomeIcon fixedWidth icon={faFacebook} height="1.5em" /></span>
                 </a>
             </li>
             <li>
                 <a href="https://www.instagram.com/questories/" className="link color-purple lead" rel="noopener noreferrer" target="_blank">
-                    <span className="icon"><FontAwesomeIcon fixedWidth icon={faInstagram} height="1rem" /></span>
+                    <span className="icon"><FontAwesomeIcon fixedWidth icon={faInstagram} height="1.5em" /></span>
                 </a>
             </li>
             <li>
                 <a href="https://www.youtube.com/user/questoriaru" className="link color-purple lead" rel="noopener noreferrer" target="_blank">
-                    <span className="icon"><FontAwesomeIcon fixedWidth icon={faYoutube} height="1rem" /></span>
+                    <span className="icon"><FontAwesomeIcon fixedWidth icon={faYoutube} height="1.5em" /></span>
                 </a>
             </li>
         </ul>
@@ -37,7 +37,7 @@ const Follow = () => (
             }
             .social-list {
                 display: flex;
-                width: 10rem;
+                width: 15rem;
                 justify-content: space-around;
                 margin: 0;
             }

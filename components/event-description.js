@@ -28,7 +28,7 @@ const EventDescription = ({
                     <p className="margin-top-3">
                         <Link href={event.linkPriceHref}>
                             <a className="link color-purple text-uppercase font-bold">{event.linkPriceTitle}
-                                <span className="icon margin-left-1"><FontAwesomeIcon fixedWidth icon={faFileInvoiceDollar} height="1rem" /></span>
+                                <span className="icon margin-left-1"><FontAwesomeIcon fixedWidth icon={faFileInvoiceDollar} height="1em" /></span>
                             </a>
                         </Link>
                     </p>

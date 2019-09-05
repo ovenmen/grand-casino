@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react'
 import dynamic from 'next/dynamic'
 
@@ -6,8 +7,10 @@ import Breadcrumbs from '../../components/breadcrumbs'
 import HeaderPage from '../../components/header-page'
 import EventDescription from '../../components/event-description'
 import Action from '../../components/action'
+import Loader from '../../components/loader'
 
 const PhotosDynamic = dynamic(() => import('../../components/photos'), {
+    loading: () => <Loader />,
     ssr: false
 })
 

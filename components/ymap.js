@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import { YMaps, Map, ZoomControl, GeolocationControl, Placemark } from 'react-yandex-maps'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+
+import Loader from '../components/loader'
 
 const YMap = ({
     map,
@@ -25,8 +25,10 @@ const YMap = ({
             <YMaps>
                 {!instance &&
                     <div className="spinner-container">
-                        <span className="icon fa-2x fa-pulse color-white"><FontAwesomeIcon icon={faSpinner} /></span>
-                        <p className="spinner-text text-center color-white">Карта загружается, подождите...</p>
+                        <span className="loader">
+                            <Loader />
+                            <p className="text-center color-white">Карта загружается, подождите...</p>
+                        </span>
                     </div>
                 }
                 <Map
@@ -65,20 +67,15 @@ const YMap = ({
                     left: 0;
                     right: 0;
                     height: 30rem;
+                    padding: 5vw;
                 }
-                .map-container .icon {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    margin-top: -3rem;
-                    margin-left: -1.5rem;
-                }
-                .map-container .spinner-text {
-                    position: absolute;
-                    top: 50%;
-                    left: 0;
-                    right: 0;
-                    margin-top: 2rem;
+                .map-container .loader {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
                 }
             `}</style>
         </section>
