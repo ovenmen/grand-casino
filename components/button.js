@@ -1,5 +1,5 @@
 import React from 'react'
-import { string, bool } from 'prop-types'
+import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import Link from 'next/link'
 
@@ -49,10 +49,10 @@ const Button = ({
 )
 
 Button.propTypes = {
-    href: string,
-    title: string,
-    bigSize: bool,
-    invert: bool
+    href: PropTypes.string,
+    title: PropTypes.string,
+    bigSize: PropTypes.bool,
+    invert: PropTypes.bool
 }
 
 export default Button

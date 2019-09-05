@@ -1,6 +1,6 @@
 import React from 'react'
-import { array } from 'prop-types'
-import { map } from 'lodash'
+import PropTypes from 'prop-types'
+import _ from 'lodash'
 import Link from 'next/link'
 
 const Breadcrumbs = ({
@@ -11,7 +11,7 @@ const Breadcrumbs = ({
             <div className="grid-x">
                 <div className="cell small-12 medium-12 large-12">
                     <ul className="breadcrumbs-nav flex-container">
-                        {map(breadcrumbs, (item, index) => item.active
+                        {_.map(breadcrumbs, (item, index) => item.active
                             ? (
                                 <li key={index} className="nav-item font-bold text-uppercase">{item.title}</li>
                             ) : (
@@ -55,7 +55,7 @@ const Breadcrumbs = ({
 )
 
 Breadcrumbs.propTypes = {
-    breadcrumbs: array
+    breadcrumbs: PropTypes.array
 }
 
 export default Breadcrumbs

@@ -1,10 +1,8 @@
 import React from 'react'
-import { array, string } from 'prop-types'
+import PropTypes from 'prop-types'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
-import { format } from 'date-fns'
 
-import { API_SEND_FORM_URL_CONTACTS } from '../config'
 import sendFormData from '../utils/send-form-data'
 import Input from './input'
 import Textarea from './textarea'
@@ -26,18 +24,18 @@ class ContactForm extends React.PureComponent {
     handleSubmit = (values, actions) => {
         const data = {
             ...values,
-            date: format(values.date, 'DD/MM/YYYY'),
-            createdDate: format(new Date(), 'DD/MM/YYYY H:m:s Z')
+            date: values.date,
+            createdDate: new Date().toLocaleDateString()
         }
         actions.setSubmitting(false)
-        sendFormData(API_SEND_FORM_URL_CONTACTS, data)
-        window.alert(this.props.successMessage)
+        sendFormData('/api/send-contacts-form', data)
+        window.alert('Заявка отправлена!')
         actions.resetForm()
     }
 
     render () {
-        const { header, fields, submitButtonTitle } = this.props
-        const [ nameInput, phoneInput, cityInput, dateInput, messageInput ] = fields
+        const { contactsForm } = this.props
+        const [ nameInput, phoneInput, cityInput, dateInput, messageInput ] = contactsForm.fields
         const initialValues={
             name: '',
             phone: '',
@@ -52,7 +50,7 @@ class ContactForm extends React.PureComponent {
                     <div className="cell small-12 medium-12 large-12">
                         <div className="grid-x">
                             <div className="cell small-12 medium-12 large-12">
-                                <h3 className="font-bold margin-bottom-3">{header}</h3>
+                                <h3 className="font-bold margin-bottom-3">{contactsForm.header}</h3>
                             </div>
                         </div>
                         <Formik
@@ -111,7 +109,7 @@ class ContactForm extends React.PureComponent {
                                     <div className="grid-x margin-top-1">
                                         <div className="cell small-12 medium-12 large-12 text-right">
                                             <div className="submit-button">
-                                                <input type="submit" value={submitButtonTitle} className="color-white h5" />
+                                                <input type="submit" value={contactsForm.submitButtonTitle} className="color-white h5" />
                                             </div>
                                         </div>
                                     </div>
@@ -155,10 +153,8 @@ class ContactForm extends React.PureComponent {
 }
 
 ContactForm.propTypes = {
-    header :string,
-    fields: array,
-    submitButtonTitle: string,
-    successMessage: string
+    contactsForm: PropTypes.object,
+    successMessage: PropTypes.string
 }
 
 export default ContactForm

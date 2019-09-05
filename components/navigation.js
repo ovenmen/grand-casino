@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import { array } from 'prop-types'
-import { map } from 'lodash'
+import PropTypes from 'prop-types'
+import _ from 'lodash'
 import classnames from 'classnames'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-import Brand from '../components/brand'
+import Logo from '../components/logo'
 
 const Navigation = ({
-    navigation, brand
+    navigation, logo, pathname
 }) => {
     const [isOpen, setToggleIsOpen] = useState(false)
 
@@ -22,45 +22,47 @@ const Navigation = ({
     }
 
     return (
-        <nav className="navigation grid-container fluid">
-            <div className="toggle-button show-for-small-only">
-                <span className="color-white" onClick={handleClickToggleButton}>
-                    <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
-                </span>
-            </div>
-            <div className="grid-x grid-padding-x align-middle">
-                <div className="cell small-12 medium-12 large-1">
-                    <div className="brand">
-                        <Brand brand={brand} />
+        <header className="shadow">
+            <nav className="navigation grid-container fluid">
+                <div className="toggle-button show-for-small-only">
+                    <span className="color-white" onClick={handleClickToggleButton}>
+                        <FontAwesomeIcon fixedWidth icon={isOpen ? faTimes : faBars} height="1em" />
+                    </span>
+                </div>
+                <div className="grid-x grid-padding-x align-middle">
+                    <div className="cell small-12 medium-12 large-1">
+                        <div className="brand">
+                            <Logo logo={logo} />
+                        </div>
+                    </div>
+                    <div className={classnames('cell small-12 medium-12 large-11 hidden', isOpen && 'visible')}>
+                        <ul className="menu">
+                            {_.map(navigation, (menuItem, menuIndex) => (
+                                <li className="menu-item" key={menuIndex} onClick={handleClickLink}>
+                                    <Link href={menuItem.value}>
+                                        <a className={classnames('link font-bold h5', menuItem.value === pathname && 'active')}>
+                                            {menuItem.title}
+                                        </a>
+                                    </Link>
+                                    {menuItem.submenu && (
+                                        <ul className="submenu flex-dir-column">
+                                            {_.map(menuItem.submenu, (submenuItem, submenuIndex) => (
+                                                <li className="submenu-item" key={submenuIndex}>
+                                                    <Link href={submenuItem.value}>
+                                                        <a className={classnames('link font-bold h5', submenuItem.value === pathname && 'active')}>
+                                                            {submenuItem.title}
+                                                        </a>
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
-                <div className={classnames('cell small-12 medium-12 large-11 hidden', isOpen && 'visible')}>
-                    <ul className="menu">
-                        {map(navigation, (menuItem, menuIndex) => (
-                            <li className="menu-item" key={menuIndex} onClick={handleClickLink}>
-                                <Link href={menuItem.value} passHref>
-                                    <a className={classnames('link font-bold h5', menuItem.active && 'active')}>
-                                        {menuItem.title}
-                                    </a>
-                                </Link>
-                                {menuItem.submenu && (
-                                    <ul className="submenu flex-dir-column">
-                                        {map(menuItem.submenu, (submenuItem, submenuIndex) => (
-                                            <li className="submenu-item" key={submenuIndex}>
-                                                <Link href={submenuItem.value} passHref>
-                                                    <a className={classnames('link font-bold h5', submenuItem.active && 'active')}>
-                                                        {submenuItem.title}
-                                                    </a>
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
+            </nav>
 
             <style jsx>{`
                 .navigation {
@@ -126,13 +128,13 @@ const Navigation = ({
                     }
                     .hidden {
                         visibility: hidden;
-                        max-height: 0;
+                        height: 0;
                         overflow: hidden;
                         transition: all 0.4s ease-in-out;
                     }
                     .visible {
                         visibility: visible;
-                        max-height: 20rem;
+                        height: 17rem;
                     }
                 }
                 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
@@ -147,13 +149,14 @@ const Navigation = ({
                     }
                 }
             `}</style>
-        </nav>
+        </header>
     )
 }
 
 Navigation.propTypes = {
-    navigation: array,
-    brand: array
+    navigation: PropTypes.array,
+    logo: PropTypes.string,
+    pathname: PropTypes.string
 }
 
 export default Navigation

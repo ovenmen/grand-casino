@@ -1,5 +1,5 @@
 import React from 'react'
-import { object, string } from 'prop-types'
+import PropTypes from 'prop-types'
 
 const Input = ({
     field, // { name, value, onChange, onBlur }
@@ -38,10 +38,10 @@ const Input = ({
 )
 
 Input.propTypes = {
-    field: object.isRequired,
-    form: object.isRequired,
-    type: string,
-    label: string
+    field: PropTypes.object.isRequired,
+    form: PropTypes.object.isRequired,
+    type: PropTypes.string,
+    label: PropTypes.string
 }
 
 export default Input

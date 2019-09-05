@@ -8,22 +8,22 @@ const Follow = () => (
         <ul className="social-list no-bullet">
             <li>
                 <a href="https://vk.com/questoria" className="link color-purple lead" rel="noopener noreferrer" target="_blank">
-                    <FontAwesomeIcon className="fa-fw" icon={faVk} />
+                    <span className="icon"><FontAwesomeIcon fixedWidth icon={faVk} height="1.5em" /></span>
                 </a>
             </li>
             <li>
                 <a href="https://www.facebook.com/questoria/" className="link color-purple lead" rel="noopener noreferrer" target="_blank">
-                    <FontAwesomeIcon className="fa-fw" icon={faFacebook} />
+                    <span className="icon"><FontAwesomeIcon fixedWidth icon={faFacebook} height="1.5em" /></span>
                 </a>
             </li>
             <li>
                 <a href="https://www.instagram.com/questories/" className="link color-purple lead" rel="noopener noreferrer" target="_blank">
-                    <FontAwesomeIcon className="fa-fw" icon={faInstagram} />
+                    <span className="icon"><FontAwesomeIcon fixedWidth icon={faInstagram} height="1.5em" /></span>
                 </a>
             </li>
             <li>
                 <a href="https://www.youtube.com/user/questoriaru" className="link color-purple lead" rel="noopener noreferrer" target="_blank">
-                    <FontAwesomeIcon className="fa-fw" icon={faYoutube} />
+                    <span className="icon"><FontAwesomeIcon fixedWidth icon={faYoutube} height="1.5em" /></span>
                 </a>
             </li>
         </ul>
@@ -37,12 +37,16 @@ const Follow = () => (
             }
             .social-list {
                 display: flex;
-                width: 10rem;
+                width: 15rem;
                 justify-content: space-around;
                 margin: 0;
             }
             li a:visited {
                 color: #372964;
+            }
+            .icon {
+                display: inline-block;
+                vertical-align: middle;
             }
         `}</style>
     </div>

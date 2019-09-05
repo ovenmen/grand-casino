@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
-import { array, string } from 'prop-types'
-import { map } from 'lodash'
+import PropTypes from 'prop-types'
+import _ from 'lodash'
 import { YMaps, Map, ZoomControl, GeolocationControl, Placemark } from 'react-yandex-maps'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
-const LABEL = '<strong>GC</strong>'
+import Loader from '../components/loader'
 
 const YMap = ({
-    header,
-    items
+    map,
+    logo
 }) => {
     const [instance, setInstance] = useState(null)
 
@@ -21,14 +19,16 @@ const YMap = ({
         <section className="map-container">
             <div className="grid-x">
                 <div className="cell">
-                    <h2 className="margin-bottom-2 text-center color-white">{header}</h2>
+                    <h2 className="margin-bottom-2 text-center color-white">{map.header}</h2>
                 </div>
             </div>
             <YMaps>
                 {!instance &&
                     <div className="spinner-container">
-                        <span className="icon fa-2x fa-pulse color-white"><FontAwesomeIcon icon={faSpinner} /></span>
-                        <p className="spinner-text text-center color-white">Карта загружается, подождите...</p>
+                        <span className="loader">
+                            <Loader />
+                            <p className="text-center color-white">Карта загружается, подождите...</p>
+                        </span>
                     </div>
                 }
                 <Map
@@ -41,11 +41,11 @@ const YMap = ({
                 >
                     <ZoomControl options={{ size: 'small', zoomDuration: 200 }} />
                     <GeolocationControl options={{ float: 'left' }} />
-                    {map(items, (item, index) => (
+                    {_.map(map.items, (item, index) => (
                         <Placemark
                             key={index}
                             defaultGeometry={[item.lat, item.long]}
-                            defaultProperties={{ iconContent: item.cooperation && LABEL, hintContent: item.city }}
+                            defaultProperties={{ iconContent: item.cooperation && `<strong>${logo}</strong>`, hintContent: item.city }}
                             defaultOptions={{ preset: item.cooperation ? 'islands#nightStretchyIcon' : 'islands#nightCircleDotIcon' }}
                         />
                     ))}
@@ -56,7 +56,7 @@ const YMap = ({
                 .map-container {
                     max-width: 100%;
                     position: relative;
-                    padding:5vw;
+                    padding: 5vw;
                     min-height: 30rem;
                     background: #38286d;
                 }
@@ -67,20 +67,15 @@ const YMap = ({
                     left: 0;
                     right: 0;
                     height: 30rem;
+                    padding: 5vw;
                 }
-                .map-container .icon {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    margin-top: -3rem;
-                    margin-left: -1.5rem;
-                }
-                .map-container .spinner-text {
-                    position: absolute;
-                    top: 50%;
-                    left: 0;
-                    right: 0;
-                    margin-top: 2rem;
+                .map-container .loader {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
                 }
             `}</style>
         </section>
@@ -88,9 +83,8 @@ const YMap = ({
 }
 
 YMap.propTypes = {
-    header: string,
-    brand: array,
-    items: array
+    map: PropTypes.object,
+    logo: PropTypes.string
 }
 
 export default YMap

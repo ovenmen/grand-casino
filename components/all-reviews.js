@@ -1,38 +1,35 @@
 import React from 'react'
-import { string, array } from 'prop-types'
-import { map } from 'lodash'
+import PropTypes from 'prop-types'
+import _ from 'lodash'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuoteLeft, faQuoteRight, faFrown } from '@fortawesome/free-solid-svg-icons'
 
 import { STATIC_IMAGES_URL } from '../config'
 
 const AllReviews = ({
-    header,
-    items,
-    emptyReviewsMessage,
-    actionReviewsMessage
+    reviews
 }) => (
     <section className="all-reviews">
         <div className="grid-x">
             <div className="cell">
-                <h3 className="text-center font-bold margin-bottom-1 color-white">{header}</h3>
+                <h3 className="text-center font-bold margin-bottom-1 color-white">{reviews.header}</h3>
             </div>
         </div>
         <div className="grid-x">
             <div className="cell">
                 <div className="reviews-container">
-                    {items.length === 0 &&
+                    {reviews.items.length === 0 &&
                         <div className="grid-x grid-padding-x margin-top-3">
                             <div className="cell small-12">
-                                <span className="frown color-white text-center fa-fw fa-5x"><FontAwesomeIcon icon={faFrown} /></span>
-                                <p className="text-center color-white h5">{emptyReviewsMessage}</p>
-                                <p className="text-center color-white h5">{actionReviewsMessage}</p>
+                                <span className="frown color-white text-center"><FontAwesomeIcon fixedWidth icon={faFrown} height="5em" /></span>
+                                <p className="text-center color-white h5">{reviews.emptyReviewsMessage}</p>
+                                <p className="text-center color-white h5">{reviews.actionReviewsMessage}</p>
                             </div>
                         </div>
                     }
-                    {map(items, (item, index) => (
+                    {_.map(reviews.items, (item, index) => (
                         <div key={index} className="review margin-bottom-1 bordered round radius">
-                            <div className="flex-container align-center">
+                            <div className="flex-container align-left">
                                 <div className="margin-left-2 margin-right-2 width-30">
                                     <img src={`${STATIC_IMAGES_URL}/${item.image}`} className="float-left" />
                                 </div>
@@ -42,9 +39,9 @@ const AllReviews = ({
                                 </div>
                             </div>
                             <hr />
-                            <span className="quote-left"><FontAwesomeIcon icon={faQuoteLeft} /></span>
+                            <span className="quote-left"><FontAwesomeIcon icon={faQuoteLeft} height="1em" /></span>
                             <p className="margin-top-2 margin-bottom-2 description">{item.description}</p>
-                            <span className="quote-right"><FontAwesomeIcon icon={faQuoteRight} /></span>
+                            <span className="quote-right"><FontAwesomeIcon icon={faQuoteRight} height="1em" /></span>
                         </div>
                     ))}
                 </div>
@@ -65,6 +62,8 @@ const AllReviews = ({
             .frown {
                 display: block;
                 margin: 0 auto;
+                display: block;
+                vertical-align: middle;
             }
             .review {
                 background: #ffffff;
@@ -96,10 +95,7 @@ const AllReviews = ({
 )
 
 AllReviews.propTypes  = {
-    header: string,
-    items: array,
-    emptyReviewsMessage: string,
-    actionReviewsMessage: string
+    reviews: PropTypes.object
 }
 
 export default AllReviews

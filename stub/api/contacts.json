@@ -1,0 +1,78 @@
+{
+    "pageId": "contacts",
+    "title": "Grand Casino | Контакты",
+    "description": "Контакты",
+    "keywords": "фан казино, фан казино самара, выездное казино, рулетка, покер, блэкджек, корпоратив, сценарий праздника, сценарий юбилея, шоу программы, мальчишник, девичник, сценарий девичника, аренда казино, роскошная вечеринка",
+    "header": "Контакты",
+    "headerImage": "bg-header-page.jpg",
+    "breadcrumbs": [
+        {
+            "title": "Главная",
+            "value": "/"
+        },
+        {
+            "title": "Контакты",
+            "value": "/contacts",
+            "active": true
+        }
+    ],
+    "map": {
+        "header": "Карта проведения мероприятий",
+        "description": "",
+        "items": [
+            {
+                "city": "Самара",
+                "cooperation": true,
+                "lat": "53.195534",
+                "long": "50.102240"
+            },
+            {
+                "city": "Москва",
+                "cooperation": true,
+                "lat": "55.753203",
+                "long": "37.622976"
+            },
+            {
+                "city": "Томск",
+                "cooperation": false,
+                "lat": "56.484622",
+                "long": "84.948122"
+            }
+        ]
+    },
+    "contactsForm": {
+        "header": "Свяжитесь с нами",
+        "fields": [
+            {
+                "name": "name",
+                "type": "text",
+                "placeholder": "ИМЯ"
+            },
+            {
+                "name": "phone",
+                "type": "tel",
+                "placeholder": "ТЕЛЕФОН"
+            },
+            {
+                "name": "city",
+                "type": "text",
+                "placeholder": "ГОРОД"
+            },
+            {
+                "name": "date",
+                "type": "date",
+                "placeholder": "ЖЕЛАЕМАЯ ДАТА"
+            },
+            {
+                "name": "message",
+                "type": "textarea",
+                "placeholder": "КОММЕНТАРИЙ"
+            }
+        ],
+        "submitButtonTitle": "Отправить",
+        "successMessage": "Сообщение успешно отправлено"
+    },
+    "contacts": {
+        "header": "Контактная информация"
+    }
+}

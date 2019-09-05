@@ -1,17 +1,16 @@
 import React from  'react'
-import { string } from 'prop-types'
+import PropTypes from 'prop-types'
 
 const Promo = ({
-    header,
-    description
+    promo
 }) => (
     <section className="promo">
         <div className="grid-container fluid">
             <div className="grid-x">
                 <div className="cell large-8 large-offset-4">
                     <div className="headers text-right color-white font-bold">
-                        <h1><strong>{header}</strong></h1>
-                        <h2><strong>{description}</strong></h2>
+                        <h1><strong>{promo.header}</strong></h1>
+                        <h2><strong>{promo.description}</strong></h2>
                     </div>
                 </div>
             </div>
@@ -37,9 +36,7 @@ const Promo = ({
 )
 
 Promo.propTypes = {
-    header: string,
-    description: string,
-    subheader: string
+    promo: PropTypes.object,
 }
 
 export default Promo

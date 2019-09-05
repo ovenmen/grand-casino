@@ -1,31 +1,33 @@
 import 'isomorphic-unfetch'
 
-import { SITE_NAME } from '../config'
-
 const dev = process.env.NODE_ENV !== 'production'
-const protocol = dev ? 'http': 'https'
+const protocol = dev ? 'http' : 'https'
+const siteName = dev ? 'localhost' : 'grand-casino.com.ru'
 const port = dev ? 3000 : 443
-const host = dev ? 'localhost' : SITE_NAME
 
-const fetchDataPage = (namePage) => async ({ err, res }) => {
-    try {
-        const statusCode = res ? res.statusCode : err ? err.statusCode : null
-        const url = `${protocol}://${host}:${port}/api/v1/pages/${namePage}`
-        const params = {
-            method: 'POST',
-            timeout: 3000,
-            compress: true
-        }
-        const response = await fetch(url, params)
-        const json = await response.json()
+export default (namePage) => async ({ res, err }) => {
+    const statusCode = res ? res.statusCode : err ? err.statusCode : null
+    const url = `${protocol}://${siteName}:${port}/api/${namePage}`
+    const params = {
+        method: 'POST',
+        timeout: 5000,
+        compress: true
+    }
+    const response = await fetch(url, params)
+    const data = await response.json()
+    let errorMessage = ''
 
-        return {
-            data: json.data,
-            statusCode
-        }
-    } catch (error) {
-        throw new Error(error)
+    if (statusCode === 404) {
+        errorMessage = 'Страница не найдена'
+    }
+
+    if (statusCode === 500) {
+        errorMessage = 'Что-то пошло не так :('
+    }
+
+    return {
+        ...data,
+        statusCode,
+        errorMessage
     }
 }
-
-export default fetchDataPage

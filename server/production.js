@@ -1,4 +1,3 @@
-const http = require('http')
 const https = require('https')
 const fs = require('fs')
 const Koa = require('koa')
@@ -11,9 +10,8 @@ const compression = require('compression')
 const koaConnect = require('koa-connect')
 const helmet = require('koa-helmet')
 const MongoClient = require('mongodb').MongoClient
-const { takeRight, last } = require('lodash')
+const _ = require('lodash')
 
-const settings = require('./settings')
 const sendMail = require('../utils/send-mail')
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -40,336 +38,304 @@ app.prepare().then(() => {
         ctx.status = 200
         await next()
     })
-    server.use(router.routes())
-    server.use(router.allowedMethods())
 
-    /* API */
-    // index page
-    router.post('/api/v1/pages/index', async ctx => {
-        try {
-            const connection = await MongoClient.connect(settings.url, settings.params)
-            const db = await connection.db(settings.dbName)
-            const pageId = 'index'
+    // Главная
+    router.post('/api/index', async ctx => {
+        const data = await require('../stub/api/index.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const reviews = await require('../stub/api/data/reviews.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
 
-            const headCollection = await db.collection('head')
-            const partialsCollection = await db.collection('partials')
-            const navigationCollection = await db.collection('navigation')
-            const contentCollection = await db.collection('content')
-            const reviewsCollection = await db.collection('reviews')
-
-            const dataHead = await headCollection.findOne({ pageId })
-            const dataBrand = await partialsCollection.findOne({ componentId: 'brand' })
-            const dataNavigation = await navigationCollection.findOne({ pageId })
-            const dataContent = await contentCollection.findOne({ pageId })
-            const dataReviews = await reviewsCollection.find({ show: true }).toArray()
-            const dataFooter = await partialsCollection.findOne({ componentId: 'footer' })
-
-            const data = {
-                ...dataHead,
-                ...dataBrand,
-                ...dataNavigation,
-                ...dataContent,
-                reviews: takeRight(dataReviews, 2), 
-                ...dataFooter
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            reviews: {
+                ...data.reviews,
+                items: _.takeRight(_.shuffle(reviews.items), 2)
+            },
+            footer: {
+                ...footer,
+                ...contacts
             }
-
-            connection.close()
-
-            ctx.body = { data }
-            ctx.respond = true
-        } catch (error) {
-            ctx.throw(500, error)
         }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
     })
 
-    // events subpage
-    router.get('/events/:subpage', async ctx => {
-        try {
-            const connection = await MongoClient.connect(settings.url, settings.params)
-            const db = await connection.db(settings.dbName)
+    // Мероприятия
+    router.post('/api/events', async ctx => {
+        const data = await require('../stub/api/events.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const reviews = await require('../stub/api/data/reviews.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
 
-            const headCollection = await db.collection('head')
-            const partialsCollection = await db.collection('partials')
-            const breadcrumbsCollection = await db.collection('breadcrumbs')
-            const navigationCollection = await db.collection('navigation')
-            const contentCollection = await db.collection('content')
-
-            const dataHead = await headCollection.findOne({ pageId: ctx.params.subpage })
-            const dataBrand = await partialsCollection.findOne({ componentId: 'brand' })
-            const dataNavigation = await navigationCollection.findOne({ pageId: ctx.params.subpage })
-            const dataBreadcrumbs = await breadcrumbsCollection.findOne({ pageId: ctx.params.subpage })
-            const dataContent = await contentCollection.findOne({ pageId: ctx.params.subpage })
-            const dataFooter = await partialsCollection.findOne({ componentId: 'footer' })
-
-            const data = {
-                ...dataHead,
-                ...dataBrand,
-                ...dataNavigation,
-                ...dataBreadcrumbs,
-                ...dataContent,
-                ...dataFooter
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            review: {
+                ...data.review,
+                description: _.head(_.shuffle(reviews.items))
+            },
+            footer: {
+                ...footer,
+                ...contacts
             }
-
-            connection.close()
-
-            app.render(ctx.req, ctx.res, '/event-page', { data })
-            ctx.respond = false
-        } catch (error) {
-            ctx.throw(500, error)
         }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
     })
 
-    // events page
-    router.post('/api/v1/pages/events', async ctx => {
-        try {
-            const connection = await MongoClient.connect(settings.url, settings.params)
-            const db = await connection.db(settings.dbName)
-            const pageId = 'events'
+    // Цены
+    router.post('/api/prices', async ctx => {
+        const data = await require('../stub/api/prices.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
 
-            const headCollection = await db.collection('head')
-            const partialsCollection = await db.collection('partials')
-            const navigationCollection = await db.collection('navigation')
-            const breadcrumbsCollection = await db.collection('breadcrumbs')
-            const contentCollection = await db.collection('content')
-            const reviewsCollection = await db.collection('reviews')
-
-            const dataHead = await headCollection.findOne({ pageId })
-            const dataBrand = await partialsCollection.findOne({ componentId: 'brand' })
-            const dataNavigation = await navigationCollection.findOne({ pageId })
-            const dataBreadcrumbs = await breadcrumbsCollection.findOne({ pageId })
-            const dataContent = await contentCollection.findOne({ pageId })
-            const dataReviews = await reviewsCollection.find({ show: true }).toArray()
-            const dataFooter = await partialsCollection.findOne({ componentId: 'footer' })
-
-            const data = {
-                ...dataHead,
-                ...dataBrand,
-                ...dataNavigation,
-                ...dataBreadcrumbs,
-                ...dataContent,
-                review: last(dataReviews), 
-                ...dataFooter
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            footer: {
+                ...footer,
+                ...contacts
             }
-
-            connection.close()
-
-            ctx.body = { data }
-            ctx.respond = true
-        } catch (error) {
-            ctx.throw(500, error)
         }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
     })
 
-    // prices events
-    router.post('/api/v1/pages/prices', async ctx => {
-        try {
-            const connection = await MongoClient.connect(settings.url, settings.params)
-            const db = await connection.db(settings.dbName)
-            const pageId = 'prices'
+    // Франшиза
+    router.post('/api/franchise', async ctx => {
+        const data = await require('../stub/api/franchise.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
 
-            const headCollection = await db.collection('head')
-            const partialsCollection = await db.collection('partials')
-            const navigationCollection = await db.collection('navigation')
-            const breadcrumbsCollection = await db.collection('breadcrumbs')
-            const contentCollection = await db.collection('content')
-
-            const dataHead = await headCollection.findOne({ pageId })
-            const dataBrand = await partialsCollection.findOne({ componentId: 'brand' })
-            const dataNavigation = await navigationCollection.findOne({ pageId })
-            const dataBreadcrumbs = await breadcrumbsCollection.findOne({ pageId })
-            const dataContent = await contentCollection.findOne({ pageId })
-            const dataFooter = await partialsCollection.findOne({ componentId: 'footer' })
-
-            const data = {
-                ...dataHead,
-                ...dataBrand,
-                ...dataNavigation,
-                ...dataBreadcrumbs,
-                ...dataContent,
-                ...dataFooter
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            footer: {
+                ...footer,
+                ...contacts
             }
-
-            connection.close()
-
-            ctx.body = { data }
-            ctx.respond = true
-        } catch (error) {
-            ctx.throw(500, error)
         }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
     })
 
-    // franchise page
-    router.post('/api/v1/pages/franchise', async ctx => {
-        try {
-            const connection = await MongoClient.connect(settings.url, settings.params)
-            const db = await connection.db(settings.dbName)
-            const pageId = 'franchise'
+    // Отзывы
+    router.post('/api/reviews', async ctx => {
+        const data = await require('../stub/api/reviews.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const reviews = await require('../stub/api/data/reviews.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
 
-            const headCollection = await db.collection('head')
-            const partialsCollection = await db.collection('partials')
-            const navigationCollection = await db.collection('navigation')
-            const breadcrumbsCollection = await db.collection('breadcrumbs')
-            const contentCollection = await db.collection('content')
-
-            const dataHead = await headCollection.findOne({ pageId })
-            const dataBrand = await partialsCollection.findOne({ componentId: 'brand' })
-            const dataNavigation = await navigationCollection.findOne({ pageId })
-            const dataBreadcrumbs = await breadcrumbsCollection.findOne({ pageId })
-            const dataContent = await contentCollection.findOne({ pageId })
-            const dataFooter = await partialsCollection.findOne({ componentId: 'footer' })
-
-            const data = {
-                ...dataHead,
-                ...dataBrand,
-                ...dataNavigation,
-                ...dataBreadcrumbs,
-                ...dataContent,
-                ...dataFooter
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            reviews: {
+                ...data.reviews,
+                items: _.reverse(reviews.items)
+            },
+            footer: {
+                ...footer,
+                ...contacts
             }
-
-            connection.close()
-
-            ctx.body = { data }
-            ctx.respond = true
-        } catch (error) {
-            ctx.throw(500, error)
         }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
     })
 
-    // reviews page
-    router.post('/api/v1/pages/reviews', async ctx => {
-        try {
-            const connection = await MongoClient.connect(settings.url, settings.params)
-            const db = await connection.db(settings.dbName)
-            const pageId = 'reviews'
+    // Контакты
+    router.post('/api/contacts', async ctx => {
+        const data = await require('../stub/api/contacts.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
 
-            const headCollection = await db.collection('head')
-            const partialsCollection = await db.collection('partials')
-            const navigationCollection = await db.collection('navigation')
-            const breadcrumbsCollection = await db.collection('breadcrumbs')
-            const contentCollection = await db.collection('content')
-            const reviewsCollection = await db.collection('reviews')
-
-            const dataHead = await headCollection.findOne({ pageId })
-            const dataBrand = await partialsCollection.findOne({ componentId: 'brand' })
-            const dataNavigation = await navigationCollection.findOne({ pageId })
-            const dataBreadcrumbs = await breadcrumbsCollection.findOne({ pageId })
-            const dataContent = await contentCollection.findOne({ pageId })
-            const dataReviews = await reviewsCollection.find({ show: true }).toArray()
-            const dataFooter = await partialsCollection.findOne({ componentId: 'footer' })
-
-            const data = {
-                ...dataHead,
-                ...dataBrand,
-                ...dataNavigation,
-                ...dataBreadcrumbs,
-                ...dataContent,
-                reviews: dataReviews,
-                ...dataFooter
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            contacts: {
+                ...data.contacts,
+                ...contacts
+            },
+            footer: {
+                ...footer,
+                ...contacts
             }
-
-            connection.close()
-
-            ctx.body = { data }
-            ctx.respond = true
-        } catch (error) {
-            ctx.throw(500, error)
         }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
     })
 
-    // contacts page
-    router.post('/api/v1/pages/contacts', async ctx => {
-        try {
-            const connection = await MongoClient.connect(settings.url, settings.params)
-            const db = await connection.db(settings.dbName)
-            const pageId = 'contacts'
+    // Casino Club
+    router.post('/api/casino-club', async ctx => {
+        const data = await require('../stub/api/casino-club.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const photos = await require('../stub/api/data/photos.json')
+        const footer = await require('../stub/api/data/footer.json')
 
-            const headCollection = await db.collection('head')
-            const partialsCollection = await db.collection('partials')
-            const navigationCollection = await db.collection('navigation')
-            const breadcrumbsCollection = await db.collection('breadcrumbs')
-            const contentCollection = await db.collection('content')
-
-            const dataHead = await headCollection.findOne({ pageId })
-            const dataBrand = await partialsCollection.findOne({ componentId: 'brand' })
-            const dataNavigation = await navigationCollection.findOne({ pageId })
-            const dataBreadcrumbs = await breadcrumbsCollection.findOne({ pageId })
-            const dataContent = await contentCollection.findOne({ pageId })
-            const dataFooter = await partialsCollection.findOne({ componentId: 'footer' })
-
-            const data = {
-                ...dataHead,
-                ...dataBrand,
-                ...dataNavigation,
-                ...dataBreadcrumbs,
-                ...dataContent,
-                ...dataFooter
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            photos: {
+                ...data.photos,
+                ...photos
+            },
+            footer: {
+                ...footer,
+                ...contacts
             }
-
-            connection.close()
-
-            ctx.body = { data }
-            ctx.respond = true
-        } catch (error) {
-            ctx.throw(500, error)
         }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
     })
 
-    // error page
-    router.post('/api/v1/pages/error', async ctx => {
-        try {
-            const connection = await MongoClient.connect(settings.url, settings.params)
-            const db = await connection.db(settings.dbName)
-            const pageId = 'error'
+    // Gold Casino
+    router.post('/api/gold-casino', async ctx => {
+        const data = await require('../stub/api/gold-casino.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const photos = await require('../stub/api/data/photos.json')
+        const footer = await require('../stub/api/data/footer.json')
 
-            const headCollection = await db.collection('head')
-            const partialsCollection = await db.collection('partials')
-            const navigationCollection = await db.collection('navigation')
-            const contentCollection = await db.collection('content')
-
-            const dataHead = await headCollection.findOne({ pageId })
-            const dataBrand = await partialsCollection.findOne({ componentId: 'brand' })
-            const dataNavigation = await navigationCollection.findOne({ pageId })
-            const dataContent = await contentCollection.findOne({ pageId })
-            const dataFooter = await partialsCollection.findOne({ componentId: 'footer' })
-
-            const data = {
-                ...dataHead,
-                ...dataBrand,
-                ...dataNavigation,
-                ...dataContent,
-                ...dataFooter
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            photos: {
+                ...data.photos,
+                ...photos
+            },
+            footer: {
+                ...footer,
+                ...contacts
             }
-
-            connection.close()
-
-            ctx.body = { data }
-            ctx.respond = true
-        } catch (error) {
-            ctx.throw(500, error)
         }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
     })
 
-    // api forms
+    // Casino Royal
+    router.post('/api/casino-royal', async ctx => {
+        const data = await require('../stub/api/casino-royal.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const photos = await require('../stub/api/data/photos.json')
+        const footer = await require('../stub/api/data/footer.json')
+
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            photos: {
+                ...data.photos,
+                ...photos
+            },
+            footer: {
+                ...footer,
+                ...contacts
+            }
+        }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
+    })
+
+    // Grand Casino
+    router.post('/api/grand-casino', async ctx => {
+        const data = await require('../stub/api/grand-casino.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const photos = await require('../stub/api/data/photos.json')
+        const footer = await require('../stub/api/data/footer.json')
+
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            photos: {
+                ...data.photos,
+                ...photos
+            },
+            footer: {
+                ...footer,
+                ...contacts
+            }
+        }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
+    })
+
+    // Error
+    router.post('/api/error', async ctx => {
+        const data = await require('../stub/api/error.json')
+        const logo = await require('../stub/api/data/logo.json')
+        const navigation = await require('../stub/api/data/navigation.json')
+        const contacts = await require('../stub/api/data/contacts.json')
+        const footer = await require('../stub/api/data/footer.json')
+
+        const response = {
+            ...data,
+            ...logo,
+            ...navigation,
+            footer: {
+                ...footer,
+                ...contacts
+            }
+        }
+
+        ctx.statusCode = 200
+        ctx.body = response
+        ctx.respond = true
+    })
+
     // form review
-    router.post('/api/v1/send-form-review', async ctx => {
+    router.post('/api/send-review-form', async ctx => {
         try {
-            const connection = await MongoClient.connect(settings.url, settings.params)
-            const db = await connection.db(settings.dbName)
-            const reviewsCollection = await db.collection('reviews')
-
-            reviewsCollection.insertOne({
-                show: false,
-                fullname: ctx.request.body.name,
-                city: ctx.request.body.city,
-                image: 'no-photo.jpg',
-                date: ctx.request.body.date,
-                description: ctx.request.body.message,
-                createdDate: ctx.request.body.createdDate
-            })
-
             const data = {
-                subject: 'Новый отзыв с сайта grand-casino.ru',
+                subject: 'Новый сообщение от клиента с сайта grand-casino.ru',
                 html: `
                     <p><strong>Имя:</strong> ${ctx.request.body.name}</p>
                     <p><strong>Город:</strong> ${ctx.request.body.city}</p>
@@ -378,34 +344,17 @@ app.prepare().then(() => {
                 `
             }
 
-            connection.close()
             sendMail(data)
-
-            ctx.body = { data }
-            ctx.respond = true
         } catch (error) {
-            ctx.throw(500, error)
+            ctx.throw(500, 'Не удалось отправить отзыв', { error })
         }
     })
 
     // form contacts
-    router.post('/api/v1/send-form-contacts', async ctx => {
+    router.post('/api/send-contacts-form', async ctx => {
         try {
-            const connection = await MongoClient.connect(settings.url, settings.params)
-            const db = await connection.db(settings.dbName)
-            const contactsCollection = await db.collection('contacts')
-
-            contactsCollection.insertOne({
-                fullname: ctx.request.body.name,
-                phone: ctx.request.body.phone,
-                city: ctx.request.body.city,
-                date: ctx.request.body.date,
-                message: ctx.request.body.message,
-                createdDate: ctx.request.body.createdDate
-            })
-
             const data = {
-                subject: 'Новое сообщение от клиента с сайта grand-casino.ru',
+                subject: 'Новый сообщение от клиента с сайта grand-casino.ru',
                 html: `
                     <p><strong>Имя:</strong> ${ctx.request.body.name}</p>
                     <p><strong>Телефон:<strong> ${ctx.request.body.phone}</p>
@@ -415,22 +364,20 @@ app.prepare().then(() => {
                 `
             }
 
-            connection.close()
             sendMail(data)
-
-            ctx.body = { data }
-            ctx.respond = true
         } catch (error) {
-            ctx.throw(500, error)
+            ctx.throw(500, 'Не удалось отправить заявку', { error })
         }
     })
 
     router.get('*', async ctx => {
         await handle(ctx.req, ctx.res)
-        ctx.respond = false
+        // ctx.respond = false
     })
 
-    http.createServer(server.callback()).listen(80)
+    server.use(router.routes())
+    server.use(router.allowedMethods())
+
     https.createServer(options, server.callback()).listen(port, () => {
         // eslint-disable-next-line no-console
         console.log('Starting production server')

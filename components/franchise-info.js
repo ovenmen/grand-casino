@@ -1,48 +1,45 @@
 import React from 'react'
 import Link from 'next/link'
-import { object, string } from 'prop-types'
-import { map } from 'lodash'
+import PropTypes from 'prop-types'
+import _ from 'lodash'
 
 const FranchiseInfo = ({
-    header,
-    description,
-    profit,
-    advantages
+    franchise
 }) => (
     <section className="franchise-info">
         <div className="grid-x margin-bottom-2">
             <div className="cell">
-                <h2 className="text-center">{header}</h2>
-                <h3 className="text-center subheader">{description}</h3>
+                <h2 className="text-center">{franchise.header}</h2>
+                <h3 className="text-center subheader">{franchise.description}</h3>
             </div>
         </div>
         <div className="grid-x margin-bottom-2">
             <div className="cell">
-                <h5 className="font-bold font-italic">{profit.header}</h5>
+                <h5 className="font-bold font-italic">{franchise.profit.header}</h5>
                 <ul className="padding-left-2">
-                    {map(profit.description, (item, index) =>
+                    {_.map(franchise.profit.description, (item, index) =>
                         <li key={index} className="h5">{item}</li>
                     )}
                 </ul>
-                <h4 className="promo color-purple font-bold margin-top-2">{profit.promo}</h4>
+                <h4 className="promo color-purple font-bold margin-top-2">{franchise.profit.promo}</h4>
             </div>
         </div>
         <div className="grid-x">
             <div className="cell">
-                <h3 className="text-center margin-bottom-2">{advantages.header}</h3>
+                <h3 className="text-center margin-bottom-2">{franchise.advantages.header}</h3>
             </div>
         </div>
-        {map(advantages.items, (advantage, index) => (
+        {_.map(franchise.advantages.items, (advantage, index) => (
             <div className="grid-x margin-bottom-2" key={index}>
                 <div className="cell">
                     <h4 className="text-center font-bold margin-bottom-2">{advantage.header}</h4>
-                    {map(advantage.description, (item, index) =>
+                    {_.map(advantage.description, (item, index) =>
                         <p key={index} className="h5">{item}</p>
                     )}
                     <h4 className="promo color-purple font-bold margin-top-2 margin-bottom-2">{advantage.promo}</h4>
                     {advantage.list && <h5 className="font-bold font-italic">{advantage.list.header}</h5>}
                     {advantage.list && <ul className="padding-left-2 margin-bottom-2">
-                        {map(advantage.list.description, (item, index) =>
+                        {_.map(advantage.list.description, (item, index) =>
                             <li key={index} className="h5">{item}</li>
                         )}
                     </ul>}
@@ -52,13 +49,13 @@ const FranchiseInfo = ({
         ))}
         <div className="grid-x">
             <div className="cell">
-                <p className="font-bold text-center h4">{advantages.queston}</p>
-                <p className="font-bold text-center h4">{advantages.action}</p>
+                <p className="font-bold text-center h4">{franchise.advantages.queston}</p>
+                <p className="font-bold text-center h4">{franchise.advantages.action}</p>
                 <p className="text-center h4">
-                    <Link href={advantages.linkHref}>
-                        <a className="link color-purple">{advantages.linkTitle}</a>
+                    <Link href={franchise.advantages.linkHref}>
+                        <a className="link color-purple">{franchise.advantages.linkTitle}</a>
                     </Link>
-                    {advantages.answer}
+                    {franchise.advantages.answer}
                 </p>
             </div>
         </div>
@@ -76,10 +73,7 @@ const FranchiseInfo = ({
 )
 
 FranchiseInfo.propTypes = {
-    header: string,
-    description: string,
-    profit: object,
-    advantages: object
+    franchise: PropTypes.object
 }
 
 export default FranchiseInfo
