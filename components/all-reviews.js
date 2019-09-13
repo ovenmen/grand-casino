@@ -36,6 +36,7 @@ const AllReviews = ({
                                 <div className="align-self-middle">
                                     <h4>{item.fullname}</h4>
                                     <h5 className="color-purple">{item.city}</h5>
+                                    <p>{item.date}</p>
                                 </div>
                             </div>
                             <hr />

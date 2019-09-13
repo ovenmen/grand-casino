@@ -1,28 +1,18 @@
+/* eslint-disable react/display-name */
 import React from 'react'
 import App from 'next/app'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 
-import Navigation from '../components/navigation'
-import Footer from '../components/footer'
+import Loader from '../components/loader'
 
-const ScrollerDynamic = dynamic(() => import('../components/scroller'), {
-    ssr: false
+const LayoutDynamic = dynamic(() => import('../layout/main'), {
+    loading: () => <Loader />
 })
 
 export default class extends App {
-    static async getInitialProps(appContext) {
-        // calls page's `getInitialProps` and fills `appProps.pageProps`
-        const appProps = await App.getInitialProps(appContext)
-        const pathname = appContext.ctx.pathname
-
-        return { ...appProps, pathname }
-    }
-
     render () {
-        const {
-            Component, pageProps, pathname
-        } = this.props
+        const { pageProps } = this.props
 
         return (
             <React.Fragment>
@@ -33,16 +23,14 @@ export default class extends App {
                     <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
                     <meta name="description" content={pageProps.description || ''} />
                     <meta name="keywords" content={pageProps.keywords || ''} />
-                    <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700&amp;subset=cyrillic" rel="stylesheet" />
+                    <link href="https://fonts.googleapis.com/css?family=Pattaya&display=swap" rel="stylesheet"></link>
                     <link rel="icon" type="image/ico" sizes="16x16" href="/static/images/favicon.ico" />
                     <link rel="stylesheet" href="/static/css/foundation.min.css" />
                 </Head>
-                <article>
-                    <Navigation {...pageProps} pathname={pathname} />
-                    <Component {...pageProps} />
-                    <Footer {...pageProps} />
-                    <ScrollerDynamic />
-                </article>
+                <LayoutDynamic
+                    { ...pageProps }
+                    {...this.props}
+                />
 
                 <style global jsx>{`
                     :root {
@@ -52,12 +40,16 @@ export default class extends App {
                         --color-grey: #424242;
                         --color-link-hover: #a48eec;
                     }
-                    body {
-                        font-family: 'PT Serif', Roboto, serif;
-                    }
                     html {
                         scroll-behavior: smooth;
                         position: relative;
+                    }
+                    html, body {
+                        font-family: 'Pattaya', sans-serif;
+                    }
+                    h1, h2, h3, h4, h5, h6,
+                    .h1, .h2, .h3, .h4, .h5, .h6 {
+                        font-family: 'Pattaya', sans-serif;
                     }
                     header {
                         position: sticky;

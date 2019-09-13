@@ -23,8 +23,7 @@ class ReviewsForm extends React.PureComponent {
     handleSubmit = (values, actions) => {
         const data = {
             ...values,
-            date: values.date,
-            createdDate: new Date().toLocaleDateString()
+            date: values.date
         }
         actions.setSubmitting(false)
         sendFormData('/api/send-review-form', data)
