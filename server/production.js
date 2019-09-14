@@ -9,10 +9,20 @@ const forceHTTPS = require('koa-force-https')
 const compression = require('compression')
 const koaConnect = require('koa-connect')
 const helmet = require('koa-helmet')
-const MongoClient = require('mongodb').MongoClient
-const _ = require('lodash')
 
-const sendMail = require('../utils/send-mail')
+const index = require('./routes/api/index')
+const events = require('./routes/api/events')
+const prices = require('./routes/api/prices')
+const franchise = require('./routes/api/franchise')
+const reviews = require('./routes/api/reviews')
+const contacts = require('./routes/api/contacts')
+const casinoClub = require('./routes/api/casino-club')
+const goldCasino = require('./routes/api/gold-casino')
+const casinoRoyal = require('./routes/api/casino-royal')
+const grandCasino = require('./routes/api/grand-casino')
+const error = require('./routes/api/error')
+const sendReviewForm = require('./routes/api/send-review-form')
+const sendContactForm = require('./routes/api/send-contact-form')
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = 443
@@ -39,336 +49,19 @@ app.prepare().then(() => {
         await next()
     })
 
-    // Главная
-    router.post('/api/index', async ctx => {
-        const data = await require('../stub/api/index.json')
-        const logo = await require('../stub/api/data/logo.json')
-        const navigation = await require('../stub/api/data/navigation.json')
-        const reviews = await require('../stub/api/data/reviews.json')
-        const contacts = await require('../stub/api/data/contacts.json')
-        const footer = await require('../stub/api/data/footer.json')
-
-        const response = {
-            ...data,
-            ...logo,
-            ...navigation,
-            reviews: {
-                ...data.reviews,
-                items: _.takeRight(_.shuffle(reviews.items), 2)
-            },
-            footer: {
-                ...footer,
-                ...contacts
-            }
-        }
-
-        ctx.statusCode = 200
-        ctx.body = response
-        ctx.respond = true
-    })
-
-    // Мероприятия
-    router.post('/api/events', async ctx => {
-        const data = await require('../stub/api/events.json')
-        const logo = await require('../stub/api/data/logo.json')
-        const navigation = await require('../stub/api/data/navigation.json')
-        const reviews = await require('../stub/api/data/reviews.json')
-        const contacts = await require('../stub/api/data/contacts.json')
-        const footer = await require('../stub/api/data/footer.json')
-
-        const response = {
-            ...data,
-            ...logo,
-            ...navigation,
-            review: {
-                ...data.review,
-                description: _.head(_.shuffle(reviews.items))
-            },
-            footer: {
-                ...footer,
-                ...contacts
-            }
-        }
-
-        ctx.statusCode = 200
-        ctx.body = response
-        ctx.respond = true
-    })
-
-    // Цены
-    router.post('/api/prices', async ctx => {
-        const data = await require('../stub/api/prices.json')
-        const logo = await require('../stub/api/data/logo.json')
-        const navigation = await require('../stub/api/data/navigation.json')
-        const contacts = await require('../stub/api/data/contacts.json')
-        const footer = await require('../stub/api/data/footer.json')
-
-        const response = {
-            ...data,
-            ...logo,
-            ...navigation,
-            footer: {
-                ...footer,
-                ...contacts
-            }
-        }
-
-        ctx.statusCode = 200
-        ctx.body = response
-        ctx.respond = true
-    })
-
-    // Франшиза
-    router.post('/api/franchise', async ctx => {
-        const data = await require('../stub/api/franchise.json')
-        const logo = await require('../stub/api/data/logo.json')
-        const navigation = await require('../stub/api/data/navigation.json')
-        const contacts = await require('../stub/api/data/contacts.json')
-        const footer = await require('../stub/api/data/footer.json')
-
-        const response = {
-            ...data,
-            ...logo,
-            ...navigation,
-            footer: {
-                ...footer,
-                ...contacts
-            }
-        }
-
-        ctx.statusCode = 200
-        ctx.body = response
-        ctx.respond = true
-    })
-
-    // Отзывы
-    router.post('/api/reviews', async ctx => {
-        const data = await require('../stub/api/reviews.json')
-        const logo = await require('../stub/api/data/logo.json')
-        const navigation = await require('../stub/api/data/navigation.json')
-        const reviews = await require('../stub/api/data/reviews.json')
-        const contacts = await require('../stub/api/data/contacts.json')
-        const footer = await require('../stub/api/data/footer.json')
-
-        const response = {
-            ...data,
-            ...logo,
-            ...navigation,
-            reviews: {
-                ...data.reviews,
-                items: _.reverse(reviews.items)
-            },
-            footer: {
-                ...footer,
-                ...contacts
-            }
-        }
-
-        ctx.statusCode = 200
-        ctx.body = response
-        ctx.respond = true
-    })
-
-    // Контакты
-    router.post('/api/contacts', async ctx => {
-        const data = await require('../stub/api/contacts.json')
-        const logo = await require('../stub/api/data/logo.json')
-        const navigation = await require('../stub/api/data/navigation.json')
-        const contacts = await require('../stub/api/data/contacts.json')
-        const footer = await require('../stub/api/data/footer.json')
-
-        const response = {
-            ...data,
-            ...logo,
-            ...navigation,
-            contacts: {
-                ...data.contacts,
-                ...contacts
-            },
-            footer: {
-                ...footer,
-                ...contacts
-            }
-        }
-
-        ctx.statusCode = 200
-        ctx.body = response
-        ctx.respond = true
-    })
-
-    // Casino Club
-    router.post('/api/casino-club', async ctx => {
-        const data = await require('../stub/api/casino-club.json')
-        const logo = await require('../stub/api/data/logo.json')
-        const navigation = await require('../stub/api/data/navigation.json')
-        const contacts = await require('../stub/api/data/contacts.json')
-        const photos = await require('../stub/api/data/photos.json')
-        const footer = await require('../stub/api/data/footer.json')
-
-        const response = {
-            ...data,
-            ...logo,
-            ...navigation,
-            photos: {
-                ...data.photos,
-                ...photos
-            },
-            footer: {
-                ...footer,
-                ...contacts
-            }
-        }
-
-        ctx.statusCode = 200
-        ctx.body = response
-        ctx.respond = true
-    })
-
-    // Gold Casino
-    router.post('/api/gold-casino', async ctx => {
-        const data = await require('../stub/api/gold-casino.json')
-        const logo = await require('../stub/api/data/logo.json')
-        const navigation = await require('../stub/api/data/navigation.json')
-        const contacts = await require('../stub/api/data/contacts.json')
-        const photos = await require('../stub/api/data/photos.json')
-        const footer = await require('../stub/api/data/footer.json')
-
-        const response = {
-            ...data,
-            ...logo,
-            ...navigation,
-            photos: {
-                ...data.photos,
-                ...photos
-            },
-            footer: {
-                ...footer,
-                ...contacts
-            }
-        }
-
-        ctx.statusCode = 200
-        ctx.body = response
-        ctx.respond = true
-    })
-
-    // Casino Royal
-    router.post('/api/casino-royal', async ctx => {
-        const data = await require('../stub/api/casino-royal.json')
-        const logo = await require('../stub/api/data/logo.json')
-        const navigation = await require('../stub/api/data/navigation.json')
-        const contacts = await require('../stub/api/data/contacts.json')
-        const photos = await require('../stub/api/data/photos.json')
-        const footer = await require('../stub/api/data/footer.json')
-
-        const response = {
-            ...data,
-            ...logo,
-            ...navigation,
-            photos: {
-                ...data.photos,
-                ...photos
-            },
-            footer: {
-                ...footer,
-                ...contacts
-            }
-        }
-
-        ctx.statusCode = 200
-        ctx.body = response
-        ctx.respond = true
-    })
-
-    // Grand Casino
-    router.post('/api/grand-casino', async ctx => {
-        const data = await require('../stub/api/grand-casino.json')
-        const logo = await require('../stub/api/data/logo.json')
-        const navigation = await require('../stub/api/data/navigation.json')
-        const contacts = await require('../stub/api/data/contacts.json')
-        const photos = await require('../stub/api/data/photos.json')
-        const footer = await require('../stub/api/data/footer.json')
-
-        const response = {
-            ...data,
-            ...logo,
-            ...navigation,
-            photos: {
-                ...data.photos,
-                ...photos
-            },
-            footer: {
-                ...footer,
-                ...contacts
-            }
-        }
-
-        ctx.statusCode = 200
-        ctx.body = response
-        ctx.respond = true
-    })
-
-    // Error
-    router.post('/api/error', async ctx => {
-        const data = await require('../stub/api/error.json')
-        const logo = await require('../stub/api/data/logo.json')
-        const navigation = await require('../stub/api/data/navigation.json')
-        const contacts = await require('../stub/api/data/contacts.json')
-        const footer = await require('../stub/api/data/footer.json')
-
-        const response = {
-            ...data,
-            ...logo,
-            ...navigation,
-            footer: {
-                ...footer,
-                ...contacts
-            }
-        }
-
-        ctx.statusCode = 200
-        ctx.body = response
-        ctx.respond = true
-    })
-
-    // form review
-    router.post('/api/send-review-form', async ctx => {
-        try {
-            const data = {
-                subject: 'Новый сообщение от клиента с сайта grand-casino.ru',
-                html: `
-                    <p><strong>Имя:</strong> ${ctx.request.body.name}</p>
-                    <p><strong>Город:</strong> ${ctx.request.body.city}</p>
-                    <p><strong>Желаемая дата:</strong> ${ctx.request.body.date}</p>
-                    <p><strong>Сообщение:</strong> ${ctx.request.body.message}</p>
-                `
-            }
-
-            sendMail(data)
-        } catch (error) {
-            ctx.throw(500, 'Не удалось отправить отзыв', { error })
-        }
-    })
-
-    // form contacts
-    router.post('/api/send-contacts-form', async ctx => {
-        try {
-            const data = {
-                subject: 'Новый сообщение от клиента с сайта grand-casino.ru',
-                html: `
-                    <p><strong>Имя:</strong> ${ctx.request.body.name}</p>
-                    <p><strong>Телефон:<strong> ${ctx.request.body.phone}</p>
-                    <p><strong>Город:</strong> ${ctx.request.body.city}</p>
-                    <p><strong>Желаемая дата:</strong> ${ctx.request.body.date}</p>
-                    <p><strong>Сообщение:</strong> ${ctx.request.body.message}</p>
-                `
-            }
-
-            sendMail(data)
-        } catch (error) {
-            ctx.throw(500, 'Не удалось отправить заявку', { error })
-        }
-    })
+    server.use(index.routes())
+    server.use(events.routes())
+    server.use(prices.routes())
+    server.use(franchise.routes())
+    server.use(reviews.routes())
+    server.use(contacts.routes())
+    server.use(casinoClub.routes())
+    server.use(goldCasino.routes())
+    server.use(casinoRoyal.routes())
+    server.use(grandCasino.routes())
+    server.use(error.routes())
+    server.use(sendReviewForm.routes())
+    server.use(sendContactForm.routes())
 
     router.get('*', async ctx => {
         await handle(ctx.req, ctx.res)
