@@ -10,7 +10,8 @@ import Action from '../../components/action'
 import Loader from '../../components/loader'
 
 const PhotosDynamic = dynamic(() => import('../../components/photo-carousel'), {
-    loading: () => <Loader />
+    loading: () => <Loader />,
+    ssr: false
 })
 
 const GoldCasino = (props, {...breadcrumbs}) => (
