@@ -13,7 +13,7 @@ router.post('/api/send-review-form', async ctx => {
         await connection.open()
 
         const data = {
-            subject: 'Новый сообщение от клиента с сайта grand-casino.ru',
+            subject: 'Новый отзыв с сайта grand-casino.ru',
             html: `
                 <p><strong>Имя:</strong> ${ctx.request.body.name}</p>
                 <p><strong>Город:</strong> ${ctx.request.body.city}</p>

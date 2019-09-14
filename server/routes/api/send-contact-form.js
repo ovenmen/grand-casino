@@ -12,7 +12,7 @@ router.post('/api/send-contacts-form', async ctx => {
         await connection.open()
 
         const data = {
-            subject: 'Новый сообщение от клиента с сайта grand-casino.ru',
+            subject: 'Новая заявка с сайта grand-casino.ru',
             html: `
                 <p><strong>Имя:</strong> ${ctx.request.body.name}</p>
                 <p><strong>Телефон:<strong> ${ctx.request.body.phone}</p>
