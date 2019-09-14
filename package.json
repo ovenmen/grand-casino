@@ -29,6 +29,7 @@
     "mongoose": "5.7.1",
     "next": "9.0.5",
     "nodemailer": "6.3.0",
+    "nuka-carousel": "4.5.12",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-yandex-maps": "4.0.1",

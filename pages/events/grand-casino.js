@@ -9,9 +9,8 @@ import EventDescription from '../../components/event-description'
 import Action from '../../components/action'
 import Loader from '../../components/loader'
 
-const PhotosDynamic = dynamic(() => import('../../components/photos'), {
-    loading: () => <Loader />,
-    ssr: false
+const PhotosDynamic = dynamic(() => import('../../components/photo-carousel'), {
+    loading: () => <Loader />
 })
 
 const GrandCasino = (props, {...breadcrumbs}) => (

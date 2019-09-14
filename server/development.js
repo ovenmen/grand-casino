@@ -65,6 +65,6 @@ app.prepare().then(() => {
 
     http.createServer(server.callback()).listen(port, () => {
         // eslint-disable-next-line no-console
-        console.log('Starting production server')
+        console.log('Starting development server')
     })
 })

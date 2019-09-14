@@ -88,6 +88,10 @@ export default class extends App {
                         color: var(--color-purple);
                         font-size: 5rem;
                     }
+                    .paging-dot {
+                        background-color: var(--color-white) !important;
+                        margin: 0 5px;
+                    }
                     @media screen and (max-width: 39.9375em) {
                         .error-header {
                             font-size: 3.5rem;
