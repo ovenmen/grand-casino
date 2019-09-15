@@ -8,7 +8,7 @@ const PhotoCarousel = ({
 }) => (
     <section className="photo-carousel">
         <Carousel
-            heightMode="current"
+            heightMode="first"
             autoplay
             enableKeyboardControls
         >
@@ -20,7 +20,7 @@ const PhotoCarousel = ({
         <style jsx>{`
             .photo-carousel {
                 background-color: var(--color-purple);
-                height: 50rem;
+                max-height: 50rem;
             }
         `}</style>
     </section>
