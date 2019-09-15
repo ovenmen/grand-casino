@@ -8,10 +8,9 @@ const PhotoCarousel = ({
 }) => (
     <section className="photo-carousel">
         <Carousel
-            heightMode="first"
+            heightMode="current"
             autoplay
             enableKeyboardControls
-            slidesToShow={2}
         >
             {_.map(photos.items, (photo, index) => (
                 <img src={`/static/images/photos/${photo}`} alt={photo} key={index} height={100 * (index + 1)} />
@@ -21,6 +20,7 @@ const PhotoCarousel = ({
         <style jsx>{`
             .photo-carousel {
                 background-color: var(--color-purple);
+                height: 50rem;
             }
         `}</style>
     </section>
