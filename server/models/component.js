@@ -10,7 +10,8 @@ const componentScheme = new mongoose.Schema({
     phone: String,
     copirated: String,
     logo: String,
-    items: Array
+    items: Array,
+    list: Array
 }, {
     collection: 'components'
 })

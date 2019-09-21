@@ -41,7 +41,12 @@ const pageScheme = new mongoose.Schema({
     },
     prices: {
         header: String,
-        items: Array
+        items: Array,
+        description: Array,
+        list: {
+            title: String,
+            items: Array
+        }
     },
     franchise: Object,
     map: {

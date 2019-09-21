@@ -13,14 +13,13 @@ const PhotoCarousel = ({
             enableKeyboardControls
         >
             {_.map(photos.items, (photo, index) => (
-                <img src={`/static/images/photos/${photo}`} alt={photo} key={index} height={100 * (index + 1)} />
+                <img src={`/static/images/photos/${photo}`} alt={photo} key={index}  />
             ))}
         </Carousel>
 
         <style jsx>{`
             .photo-carousel {
                 background-color: var(--color-purple);
-                max-height: 50rem;
             }
         `}</style>
     </section>

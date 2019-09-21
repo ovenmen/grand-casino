@@ -38,7 +38,7 @@ const Reviews = ({
             }
             .reviews-avatar {
                 border-radius: 50%;
-                width: 15vh;
+                width: 15.5vh;
                 height: 15vh;
             }
             .review-border:nth-child(odd) .review {
