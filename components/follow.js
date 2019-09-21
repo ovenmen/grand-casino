@@ -31,6 +31,7 @@ const Follow = () => (
         <style jsx>{`
             .follow {
                 border: 2px solid #372964;
+                padding: 0 0.5rem
             }
             .follow .lead {
                 margin: 0;
