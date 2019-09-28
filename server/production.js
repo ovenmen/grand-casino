@@ -2,13 +2,15 @@ const https = require('https')
 const fs = require('fs')
 const Koa = require('koa')
 const next = require('next')
-const Router = require('koa-router')
+const Router = require('@koa/router')
 const json = require('koa-json')
 const bodyParser = require('koa-bodyparser')
 const forceHTTPS = require('koa-force-https')
 const compression = require('compression')
 const koaConnect = require('koa-connect')
 const helmet = require('koa-helmet')
+const cors = require('@koa/cors')
+const favicon = require('koa-favicon')
 
 const index = require('./routes/api/index')
 const events = require('./routes/api/events')
@@ -39,11 +41,13 @@ app.prepare().then(() => {
     const router = new Router()
 
     // middleware
-    server.use(koaConnect(compression()))
     server.use(forceHTTPS())
+    server.use(koaConnect(compression()))
     server.use(json())
     server.use(bodyParser())
     server.use(helmet())
+    server.use(cors())
+    server.use(favicon(__dirname + '/static/images/favicon.ico'))
     server.use(async (ctx, next) => {
         ctx.status = 200
         await next()

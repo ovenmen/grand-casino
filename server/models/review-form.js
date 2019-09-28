@@ -7,7 +7,8 @@ const reviewFormScheme = new mongoose.Schema({
     city: String,
     image: String,
     date: String,
-    description: String
+    description: String,
+    formData: Object
 }, {
     collection: 'reviews'
 })

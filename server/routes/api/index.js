@@ -1,4 +1,4 @@
-const Router = require('koa-router')
+const Router = require('@koa/router')
 const _ = require('lodash')
 
 const connection = require('../../connection')

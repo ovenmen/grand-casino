@@ -1,11 +1,11 @@
 import 'isomorphic-unfetch'
 
-const sendFormData = async (url, data) => {
+const sendFormData = async (url, data, contentType) => {
     try {
         const params = {
             method: 'POST',
             headers: {
-                'Content-type': 'application/json; charset=UTF-8'
+                'Content-type': contentType || 'application/json; charset=UTF-8'
             },
             body: JSON.stringify(data)
         }

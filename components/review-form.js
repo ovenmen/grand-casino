@@ -5,6 +5,7 @@ import * as Yup from 'yup'
 
 import Input from './input'
 import Textarea from './textarea'
+import UploadButton from './upload-button'
 
 import sendFormData from '../utils/send-form-data'
 
@@ -21,12 +22,23 @@ const SignupSchema = Yup.object().shape({
 
 class ReviewsForm extends React.PureComponent {
     handleSubmit = (values, actions) => {
-        const data = {
-            ...values,
-            date: values.date
-        }
-        actions.setSubmitting(false)
-        sendFormData('/api/send-review-form', data)
+        const { photo, name, city, date, message } = values
+        let formData = new FormData()
+        formData.append('photo', photo)
+        formData.append('name', name)
+        formData.append('city', city)
+        formData.append('date', date)
+        formData.append('message', message)
+        // const data = {
+        //     ...values,
+        //     date: values.date,
+        //     photo: formData.get('photo')
+        // }
+const form = document.querySelector('form')
+const o = new FormData(form)
+console.log(form, o)
+        actions.setSubmitting(true)
+        sendFormData('/api/send-review-form', formData)
         window.alert('Отзыв отправлен!')
         actions.resetForm()
     }
@@ -35,6 +47,7 @@ class ReviewsForm extends React.PureComponent {
         const { reviewsForm } = this.props
         const [ nameInput, cityInput, dateInput, messageInput ] = reviewsForm.fields
         const initialValues = {
+            photo: '',
             name: '',
             city: '',
             date: '',
@@ -55,7 +68,16 @@ class ReviewsForm extends React.PureComponent {
                             validationSchema={SignupSchema}
                             onSubmit={this.handleSubmit}
                             render={() => (
-                                <Form>
+                                <Form >
+                                    <div className="grid-x">
+                                        <div className="cell margin-bottom-1">
+                                            <Field
+                                                name="photo"
+                                                type="file"
+                                                component={UploadButton}
+                                            />
+                                        </div>
+                                    </div>
                                     <div className="grid-x">
                                         <div className="cell margin-bottom-1">
                                             {nameInput && <Field
