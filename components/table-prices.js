@@ -14,7 +14,7 @@ const TablePrices = ({
 }) => (
     <section className="table-prices">
         <div className="grid-container fluid">
-            <Accordion allowZeroExpanded allowMultipleExpanded preExpanded={[0]}>
+            <Accordion allowZeroExpanded preExpanded={[0]}>
                 {_.map(prices.items, (item, index) => (
                     <AccordionItem key={index}>
                         <AccordionItemHeading >
@@ -31,7 +31,7 @@ const TablePrices = ({
                         </AccordionItemHeading>
                         <AccordionItemPanel>
                             <div className="grid-x grid-padding-x">
-                                <div className="cell padding-1 small-7 medium-8 large-10">
+                                <div className="cell padding-1 small-12 medium-12 large-12">
                                     {_.map(item.description, (itemDescription, indexDescription) =>(
                                         <p key={indexDescription}>{itemDescription}</p>
                                     ))}
@@ -52,6 +52,34 @@ const TablePrices = ({
                 ))}
             </Accordion>
         </div>
+
+        <style global jsx>{`
+            .accordion__button {
+                outline: none;
+            }
+            .accordion__button[aria-expanded='true'] {
+                background-color: #372964;
+                color: var(--color-white);
+            }
+             .accordion__button:hover {
+                background-color: #372964;
+                color: var(--color-white);
+             }
+             .accordion__panel {
+                border: 1px solid #372964;
+                border-top: none;
+                padding: 20px;
+                animation: fadein 0.35s ease-in;
+             }
+             @keyframes fadein {
+                 0% {
+                     opacity: 0;
+                 }
+                 100% {
+                     opacity: 1;
+                 }
+             }
+        `}</style>
 
         <style jsx>{`
             .table-prices {

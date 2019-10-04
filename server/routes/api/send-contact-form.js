@@ -1,4 +1,5 @@
-const Router = require('koa-router')
+const Router = require('@koa/router')
+const _ = require('lodash')
 
 const sendMail = require('../../../utils/send-mail')
 const connection = require('../../connection')
@@ -11,23 +12,32 @@ router.post('/api/send-contacts-form', async ctx => {
     try {
         await connection.open()
 
+        const { name, city, date, phone, message } = ctx.request.body
+
+        const modifyName = _.upperFirst(name)
+        const modifyCity = _.upperFirst(city)
+        const modifyMessage = _.upperFirst(message)
+
         const data = {
             subject: 'Новая заявка с сайта grand-casino.ru',
             html: `
-                <p><strong>Имя:</strong> ${ctx.request.body.name}</p>
-                <p><strong>Телефон:<strong> ${ctx.request.body.phone}</p>
-                <p><strong>Город:</strong> ${ctx.request.body.city}</p>
-                <p><strong>Желаемая дата:</strong> ${ctx.request.body.date}</p>
-                <p><strong>Сообщение:</strong> ${ctx.request.body.message}</p>
+                <p><strong>Имя:</strong> ${modifyName}</p>
+                <p><strong>Телефон:<strong> ${phone}</p>
+                <p><strong>Город:</strong> ${modifyCity}</p>
+                <p><strong>Желаемая дата:</strong> ${date}</p>
+                <p><strong>Сообщение:</strong> ${modifyMessage}</p>
             `
         }
+
         const contact = new ContactForm({
-            name: ctx.request.body.name,
-            phone: ctx.request.body.phone,
-            city: ctx.request.body.city,
-            date: ctx.request.body.date,
-            message: ctx.request.body.message
+            name: modifyName,
+            phone,
+            city: modifyCity,
+            date,
+            message: modifyMessage
         })
+
+        ctx.status = 200
 
         sendMail(data)
         await contact.save()

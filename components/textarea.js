@@ -1,21 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import _ from 'lodash'
 
-const Textarea = ({
-    field, // { name, value, onChange, onBlur }
-    form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-    type,
-    label,
-    ...props
-}) => (
+const Textarea = (props) => (
     <div className="field">
-        <label htmlFor={field.name}>{label}
-            <textarea
-                {...field}
-                {...props}
-                type={type}
-                className={(touched[field.name] && errors[field.name]) && 'error'}
-            ></textarea>
+        <label htmlFor={props.name}>{props.label}
+            <textarea {..._.omit(props, 'error')} className={props.error && 'error'}></textarea>
         </label>
 
         <style jsx>{`
@@ -38,10 +28,12 @@ const Textarea = ({
 )
 
 Textarea.propTypes = {
-    field: PropTypes.object.isRequired,
-    form: PropTypes.object.isRequired,
+    name: PropTypes.string.isRequired,
+    label: PropTypes.string,
     type: PropTypes.string,
-    label: PropTypes.string
+    placeholder: PropTypes.string,
+    rows: PropTypes.number,
+    error: PropTypes.bool
 }
 
 export default Textarea
