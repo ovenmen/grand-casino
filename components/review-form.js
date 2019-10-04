@@ -1,58 +1,55 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Formik, Form, Field } from 'formik'
-import * as Yup from 'yup'
 
 import Input from './input'
 import Textarea from './textarea'
 import UploadButton from './upload-button'
 
-import sendFormData from '../utils/send-form-data'
-
-const SignupSchema = Yup.object().shape({
-    name: Yup.string()
-        .required('Required'),
-    city: Yup.string()
-        .required('Required'),
-    date: Yup.string()
-        .required('Required'),
-    message: Yup.string()
-        .required('Required')
-})
-
 class ReviewsForm extends React.PureComponent {
-    handleSubmit = (values, actions) => {
-        const { photo, name, city, date, message } = values
-        let formData = new FormData()
-        formData.append('photo', photo)
-        formData.append('name', name)
-        formData.append('city', city)
-        formData.append('date', date)
-        formData.append('message', message)
-        // const data = {
-        //     ...values,
-        //     date: values.date,
-        //     photo: formData.get('photo')
-        // }
-const form = document.querySelector('form')
-const o = new FormData(form)
-console.log(form, o)
-        actions.setSubmitting(true)
-        sendFormData('/api/send-review-form', formData)
-        window.alert('Отзыв отправлен!')
-        actions.resetForm()
+    state = {
+        name: '',
+        city: '',
+        date: '',
+        message: '',
+        errors: {}
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        const { name, city, date, message } = this.state
+        const isFormValid = name !== '' && city !== '' && date !== '' && message !== ''
+
+        this.setState({
+            errors: {
+                name: name === '',
+                city: city === '',
+                date: date === '',
+                message: message === ''
+            }
+        })
+
+        if (isFormValid) {
+            window.alert('Отзыв отправлен!')
+            event.target.submit()
+        }
+    }
+
+    handleChange = (event) => {
+        const fieldName = event.target.name
+        const fieldValue = event.target.value
+        this.setState((prevState) => ({
+            [fieldName]: fieldValue,
+            errors: {
+                ...prevState.errors,
+                [fieldName]: fieldValue === ''
+            }
+        }))
     }
 
     render () {
         const { reviewsForm } = this.props
-        const [ nameInput, cityInput, dateInput, messageInput ] = reviewsForm.fields
-        const initialValues = {
-            photo: '',
-            name: '',
-            city: '',
-            date: '',
-            message: ''
-        }
+        const [ nameInput, cityInput, dateInput, messageInput ] = this.props.reviewsForm.fields
+        const { errors } = this.state
 
         return (
             <section className="review-form">
@@ -63,72 +60,65 @@ console.log(form, o)
                                 <h3 className="font-bold margin-bottom-3">{reviewsForm.header}</h3>
                             </div>
                         </div>
-                        <Formik
-                            initialValues={initialValues}
-                            validationSchema={SignupSchema}
-                            onSubmit={this.handleSubmit}
-                            render={() => (
-                                <Form >
-                                    <div className="grid-x">
-                                        <div className="cell margin-bottom-1">
-                                            <Field
-                                                name="photo"
-                                                type="file"
-                                                component={UploadButton}
-                                            />
-                                        </div>
+                        <form encType="multipart/form-data" onSubmit={this.handleSubmit} method="post" action="/api/send-review-form">
+                            <div className="grid-x">
+                                <div className="cell margin-bottom-1">
+                                    <UploadButton />
+                                </div>
+                            </div>
+                            <div className="grid-x">
+                                <div className="cell margin-bottom-1">
+                                    {nameInput && <Input
+                                        name={nameInput.name}
+                                        type={nameInput.type}
+                                        placeholder={nameInput.placeholder}
+                                        onChange={this.handleChange}
+                                        error={errors.name}
+                                    />}
+                                </div>
+                            </div>
+                            <div className="grid-x">
+                                <div className="cell margin-bottom-1">
+                                    {cityInput && <Input
+                                        name={cityInput.name}
+                                        type={cityInput.type}
+                                        placeholder={cityInput.placeholder}
+                                        onChange={this.handleChange}
+                                        error={errors.city}
+                                    />}
+                                </div>
+                            </div>
+                            <div className="grid-x">
+                                <div className="cell margin-bottom-1">
+                                    {dateInput && <Input
+                                        name={dateInput.name}
+                                        type={dateInput.type}
+                                        placeholder={dateInput.placeholder}
+                                        onChange={this.handleChange}
+                                        error={errors.date}
+                                    />}
+                                </div>
+                            </div>
+                            <div className="grid-x">
+                                <div className="cell margin-bottom-1">
+                                    {messageInput && <Textarea
+                                        name={messageInput.name}
+                                        type={messageInput.type}
+                                        placeholder={messageInput.placeholder}
+                                        rows={8}
+                                        onChange={this.handleChange}
+                                        error={errors.message}
+                                    />}
+                                </div>
+                            </div>
+                            <div className="grid-x margin-top-1">
+                                <div className="cell text-right">
+                                    <div className="submit-button">
+                                        <input type="submit" value={reviewsForm.submitButtonTitle} className="color-white h5" />
                                     </div>
-                                    <div className="grid-x">
-                                        <div className="cell margin-bottom-1">
-                                            {nameInput && <Field
-                                                name={nameInput.name}
-                                                type={nameInput.type}
-                                                placeholder={nameInput.placeholder}
-                                                component={Input}
-                                            />}
-                                        </div>
-                                    </div>
-                                    <div className="grid-x">
-                                        <div className="cell margin-bottom-1">
-                                            {cityInput && <Field
-                                                name={cityInput.name}
-                                                type={cityInput.type}
-                                                placeholder={cityInput.placeholder}
-                                                component={Input}
-                                            />}
-                                        </div>
-                                    </div>
-                                    <div className="grid-x">
-                                        <div className="cell margin-bottom-1">
-                                            {dateInput && <Field
-                                                name={dateInput.name}
-                                                type={dateInput.type}
-                                                placeholder={dateInput.placeholder}
-                                                component={Input}
-                                            />}
-                                        </div>
-                                    </div>
-                                    <div className="grid-x">
-                                        <div className="cell margin-bottom-1">
-                                            {messageInput && <Field
-                                                name={messageInput.name}
-                                                type={messageInput.type}
-                                                placeholder={messageInput.placeholder}
-                                                component={Textarea}
-                                                rows={8}
-                                            />}
-                                        </div>
-                                    </div>
-                                    <div className="grid-x margin-top-1">
-                                        <div className="cell text-right">
-                                            <div className="submit-button">
-                                                <input type="submit" value={reviewsForm.submitButtonTitle} className="color-white h5" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Form>
-                            )}
-                        />
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 

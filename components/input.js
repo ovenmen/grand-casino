@@ -1,21 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import _ from 'lodash'
 
-const Input = ({
-    field, // { name, value, onChange, onBlur }
-    form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-    type,
-    label,
-    ...props
-}) => (
+const Input = (props) => (
     <div className="field">
-        <label htmlFor={field.name}>{label}
-            <input
-                {...field}
-                {...props}
-                type={type}
-                className={(touched[field.name] && errors[field.name]) && 'error'}
-            />
+        <label htmlFor={props.name}>{props.label}
+            <input {..._.omit(props, 'error')} className={props.error && 'error'} />
         </label>
 
         <style jsx>{`
@@ -38,10 +28,11 @@ const Input = ({
 )
 
 Input.propTypes = {
-    field: PropTypes.object.isRequired,
-    form: PropTypes.object.isRequired,
+    name: PropTypes.string.isRequired,
+    label: PropTypes.string,
     type: PropTypes.string,
-    label: PropTypes.string
+    placeholder: PropTypes.string,
+    error: PropTypes.bool
 }
 
 export default Input

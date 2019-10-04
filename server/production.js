@@ -2,15 +2,13 @@ const https = require('https')
 const fs = require('fs')
 const Koa = require('koa')
 const next = require('next')
-const Router = require('@koa/router')
-const json = require('koa-json')
-const bodyParser = require('koa-bodyparser')
 const forceHTTPS = require('koa-force-https')
-const compression = require('compression')
-const koaConnect = require('koa-connect')
-const helmet = require('koa-helmet')
+const Router = require('@koa/router')
 const cors = require('@koa/cors')
+const multer = require('@koa/multer')
+const helmet = require('koa-helmet')
 const favicon = require('koa-favicon')
+const bodyParser = require('koa-bodyparser')
 
 const index = require('./routes/api/index')
 const events = require('./routes/api/events')
@@ -35,6 +33,14 @@ const options = {
     cert: fs.readFileSync('keys/6472878.crt', 'utf8'),
     ca: fs.readFileSync('keys/ca_bundle_6472878.crt', 'utf8')
 }
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'static/images/uploads/')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname)
+    }
+})
 
 app.prepare().then(() => {
     const server = new Koa()
@@ -42,16 +48,11 @@ app.prepare().then(() => {
 
     // middleware
     server.use(forceHTTPS())
-    server.use(koaConnect(compression()))
-    server.use(json())
     server.use(bodyParser())
+    server.use(favicon(__dirname + '/static/images/favicon.ico'))
     server.use(helmet())
     server.use(cors())
-    server.use(favicon(__dirname + '/static/images/favicon.ico'))
-    server.use(async (ctx, next) => {
-        ctx.status = 200
-        await next()
-    })
+    server.use(multer({ storage: storage }).single('photo'))
 
     server.use(index.routes())
     server.use(events.routes())
@@ -66,14 +67,17 @@ app.prepare().then(() => {
     server.use(error.routes())
     server.use(sendReviewForm.routes())
     server.use(sendContactForm.routes())
+    server.use(router.routes())
+    server.use(router.allowedMethods())
+    server.use(async (ctx, next) => {
+        ctx.status = 200
+        await next()
+    })
 
     router.get('*', async ctx => {
         await handle(ctx.req, ctx.res)
-        // ctx.respond = false
+        ctx.respond = false
     })
-
-    server.use(router.routes())
-    server.use(router.allowedMethods())
 
     https.createServer(options, server.callback()).listen(port, () => {
         // eslint-disable-next-line no-console

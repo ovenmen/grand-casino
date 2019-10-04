@@ -1,5 +1,4 @@
 const Router = require('@koa/router')
-const multer = require('@koa/multer')
 const _ = require('lodash')
 
 const sendMail = require('../../../utils/send-mail')
@@ -8,24 +7,13 @@ const ReviewForm = require('../../models/review-form')
 
 const router = new Router()
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'static/images/uploads')
-    },
-    filename: function (req, file, cb) {
-        console.log(file)
-        cb(null, file.originalname)
-    }
-})
-
 // Send review form
-router.post('/api/send-review-form', multer({ storage: storage }).single('photo'), async ctx => {
+router.post('/api/send-review-form', async ctx => {
     try {
         await connection.open()
 
-        const {
-            name, city, date, message, photo
-        } = ctx.request.body
+        const { name, city, date, message } = ctx.request.body
+        const { originalname } = ctx.request.file
 
         const modifyName = _.upperFirst(name)
         const modifyCity = _.upperFirst(city)
@@ -46,13 +34,18 @@ router.post('/api/send-review-form', multer({ storage: storage }).single('photo'
             best: false,
             fullname: modifyName,
             city: modifyCity,
-            image: photo || 'uploads/default-photo.jpg',
+            image: originalname ? `uploads/${originalname}` : 'uploads/default-photo.jpg',
             date,
             description: modifyMessage
         })
 
-        // await sendMail(data)
-        // await review.save()
+        ctx.status = 200
+
+        await sendMail(data)
+        await review.save()
+        await connection.close()
+
+        ctx.redirect('/reviews')
     } catch (error) {
         ctx.throw(500, 'Не удалось отправить отзыв', { error })
     }

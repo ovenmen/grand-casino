@@ -1,22 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-const UploadButton = ({
-    field, // { name, value, onChange, onBlur }
-    form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-    type,
-    label,
-    ...props
-}) => (
+const UploadButton = () => (
     <div className="field">
-        <label htmlFor={field.name}>{label}
-            <input
-                {...field}
-                {...props}
-                type={type}
-                className={(touched[field.name] && errors[field.name]) && 'error'}
-            />
-        </label>
+        <input name = "photo" type="file" />
 
         <style jsx>{`
             .field .error {
@@ -25,12 +11,5 @@ const UploadButton = ({
         `}</style>
     </div>
 )
-
-UploadButton.propTypes = {
-    field: PropTypes.object.isRequired,
-    form: PropTypes.object.isRequired,
-    type: PropTypes.string,
-    label: PropTypes.string
-}
 
 export default UploadButton

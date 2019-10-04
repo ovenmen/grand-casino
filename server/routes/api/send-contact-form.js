@@ -12,9 +12,7 @@ router.post('/api/send-contacts-form', async ctx => {
     try {
         await connection.open()
 
-        const {
-            name, city, date, phone, message
-        } = ctx.request.body
+        const { name, city, date, phone, message } = ctx.request.body
 
         const modifyName = _.upperFirst(name)
         const modifyCity = _.upperFirst(city)
@@ -38,6 +36,8 @@ router.post('/api/send-contacts-form', async ctx => {
             date,
             message: modifyMessage
         })
+
+        ctx.status = 200
 
         sendMail(data)
         await contact.save()
