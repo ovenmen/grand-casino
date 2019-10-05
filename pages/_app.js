@@ -4,18 +4,19 @@ import App from 'next/app'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 
-import Loader from '../components/loader'
+import Navigation from '../components/navigation'
+import Footer from '../components/footer'
 
-const LayoutDynamic = dynamic(() => import('../layout/main'), {
-    loading: () => <Loader />
+const ScrollerDynamic = dynamic(() => import('../components/scroller'), {
+    ssr: false
 })
 
 export default class extends App {
     render () {
-        const { pageProps } = this.props
+        const { Component, pageProps } = this.props
 
         return (
-            <React.Fragment>
+            <article>
                 <Head>
                     <title>{pageProps.title || ''}</title>
                     <meta name="theme-color" content="#330b6b" />
@@ -27,10 +28,13 @@ export default class extends App {
                     <link rel="icon" type="image/ico" sizes="16x16" href="/static/images/favicon.ico" />
                     <link rel="stylesheet" href="/static/css/foundation.min.css" />
                 </Head>
-                <LayoutDynamic
-                    { ...pageProps }
-                    {...this.props}
-                />
+                <Navigation {...pageProps} />
+                <main>
+                    <Component {...pageProps} />
+                </main>
+                <Footer {...pageProps} />
+                <ScrollerDynamic />
+
 
                 <style global jsx>{`
                     :root {
@@ -98,7 +102,7 @@ export default class extends App {
                         }
                     }
                 `}</style>
-            </React.Fragment>
+            </article>
         )
     }
 }

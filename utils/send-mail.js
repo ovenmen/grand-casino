@@ -6,7 +6,7 @@ const secure = true
 const user = 'admin@grand-casino.com.ru'
 const pass = 'zd8WxVUUrfjEr9a'
 const from = '"Grand Casino" <admin@grand-casino.com.ru>'
-const to = 'det-anton@yandex.ru, questoria.surgut@gmail.com'
+const to = 'detanton@gmail.com, questoria.surgut@gmail.com'
 
 const sendMail = async (data) => {
     try {

@@ -13,7 +13,7 @@ const PhotoCarousel = ({
             enableKeyboardControls
         >
             {_.map(photos.items, (photo, index) => (
-                <img src={`/static/images/photos/${photo}`} alt={photo} key={index}  />
+                <img src={`/static/images/photos/${photo}`} alt={photo} key={index}/>
             ))}
         </Carousel>
 
