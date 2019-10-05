@@ -5,8 +5,8 @@ const Router = require('@koa/router')
 const cors = require('@koa/cors')
 const multer = require('@koa/multer')
 const helmet = require('koa-helmet')
-const favicon = require('koa-favicon')
 const bodyParser = require('koa-bodyparser')
+const json = require('koa-json')
 
 const index = require('./routes/api/index')
 const events = require('./routes/api/events')
@@ -40,8 +40,8 @@ app.prepare().then(() => {
     const router = new Router()
 
     // middleware
+    server.use(json())
     server.use(bodyParser())
-    server.use(favicon(__dirname + '/static/images/favicon.ico'))
     server.use(helmet())
     server.use(cors())
     server.use(multer({ storage: storage }).single('photo'))
@@ -59,8 +59,10 @@ app.prepare().then(() => {
     server.use(error.routes())
     server.use(sendReviewForm.routes())
     server.use(sendContactForm.routes())
+
     server.use(router.routes())
     server.use(router.allowedMethods())
+
     server.use(async (ctx, next) => {
         ctx.status = 200
         await next()

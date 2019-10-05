@@ -19,12 +19,13 @@
     "@koa/cors": "3.0.0",
     "@koa/multer": "2.0.0",
     "@koa/router": "8.0.1",
+    "blazy": "^1.8.2",
     "isomorphic-unfetch": "3.0.0",
     "koa": "2.8.2",
     "koa-bodyparser": "4.2.1",
-    "koa-favicon": "2.0.1",
     "koa-force-https": "2.0.1",
     "koa-helmet": "5.1.0",
+    "koa-json": "2.0.2",
     "mongoose": "5.7.3",
     "multer": "1.4.2",
     "next": "9.0.7",
@@ -33,7 +34,8 @@
     "react": "16.10.2",
     "react-accessible-accordion": "3.0.0",
     "react-dom": "16.10.2",
-    "react-yandex-maps": "4.0.1"
+    "react-yandex-maps": "4.0.1",
+    "swiper": "5.0.4"
   },
   "devDependencies": {
     "babel-eslint": "10.0.3",
