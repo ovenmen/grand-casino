@@ -1,5 +1,6 @@
 const Router = require('@koa/router')
 const _ = require('lodash')
+const format = require('date-fns').format
 
 const sendMail = require('../../../utils/send-mail')
 const connection = require('../../connection')
@@ -17,6 +18,7 @@ router.post('/api/send-contacts-form', async ctx => {
         const modifyName = _.upperFirst(name)
         const modifyCity = _.upperFirst(city)
         const modifyMessage = _.upperFirst(message)
+        const modifyDate = format(new Date(date), 'dd.MM.yyyy')
 
         const data = {
             subject: 'Новая заявка с сайта grand-casino.ru',
@@ -24,7 +26,7 @@ router.post('/api/send-contacts-form', async ctx => {
                 <p><strong>Имя:</strong> ${modifyName}</p>
                 <p><strong>Телефон:<strong> ${phone}</p>
                 <p><strong>Город:</strong> ${modifyCity}</p>
-                <p><strong>Желаемая дата:</strong> ${date}</p>
+                <p><strong>Желаемая дата:</strong> ${modifyDate}</p>
                 <p><strong>Сообщение:</strong> ${modifyMessage}</p>
             `
         }
@@ -33,7 +35,7 @@ router.post('/api/send-contacts-form', async ctx => {
             name: modifyName,
             phone,
             city: modifyCity,
-            date,
+            date: modifyDate,
             message: modifyMessage
         })
 

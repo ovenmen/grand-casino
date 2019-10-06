@@ -22,6 +22,7 @@ const Reviews = ({
                             <figcaption>
                                 <p className="h5 color-white font-bold">{item.fullname}</p>
                                 <p className="h5 color-white font-bold">{item.city}</p>
+                                <p className="h6 color-white font-bold">{item.date}</p>
                             </figcaption>
                             <p className="color-white margin-top-2">{item.description}</p>
                         </figure>

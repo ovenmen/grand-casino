@@ -1,29 +1,60 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import Carousel from 'nuka-carousel'
+import FsLightbox from 'fslightbox-react'
 import _ from 'lodash'
 
 const PhotoCarousel = ({
     photos
-}) => (
-    <section className="photo-carousel">
-        <Carousel
-            heightMode="first"
-            autoplay
-            enableKeyboardControls
-        >
-            {_.map(photos.items, (photo, index) => (
-                <img src={`/static/images/photos/${photo}`} alt={photo} key={index}/>
-            ))}
-        </Carousel>
+}) => {
+    const [lightboxController, setLightboxController] = useState({
+        toggler: false,
+        slide: 0
+    })
 
-        <style jsx>{`
-            .photo-carousel {
-                background-color: var(--color-purple);
-            }
-        `}</style>
-    </section>
-)
+    const openLightboxOnSlide = (number) => {
+        setLightboxController({
+            toggler: !lightboxController.toggler,
+            slide: number
+        })
+    }
+
+    return (
+        <section className="photo-carousel">
+            <div className="grid-x">
+                {_.map(photos.items, (photo, index) => (
+                    <div className="cell small-12 medium-3 large-2" key={index}>
+                        <img src={photo} alt={photo} className="thumbnail" onClick={() => openLightboxOnSlide(index + 1)} />
+                    </div>
+                ))}
+            </div>
+            <FsLightbox
+                toggler={lightboxController.toggler}
+                type="image"
+                slide={lightboxController.slide}
+                sources={photos.items}
+            />
+
+            <style jsx>{`
+                .photo-carousel {
+                    background-color: var(--color-purple);
+                    padding: 5rem;
+                }
+                .thumbnail {
+                    background: var(--color-white);
+                    padding: 0.5rem;
+                    margin-top: 1rem;
+                    border: 1px solid;
+                    height: 16rem;
+                    width: 16rem;
+                    object-fit: cover;
+                }
+                .thumbnail:hover {
+                    cursor: pointer;
+                }
+            `}</style>
+        </section>
+    )
+}
 
 PhotoCarousel.propTypes = {
     photos: PropTypes.object
