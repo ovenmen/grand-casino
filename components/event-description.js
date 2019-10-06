@@ -27,7 +27,7 @@ const EventDescription = ({
                     <p className="h5 font-italic margin-top-3 marker">{event.marker}</p>
                     <p className="margin-top-3">
                         <Link href={event.linkPriceHref}>
-                            <a className="link color-purple text-uppercase font-bold">{event.linkPriceTitle}
+                            <a className="link color-purple text-uppercase font-bold" aria-label={event.linkPriceTitle}>{event.linkPriceTitle}
                                 <span className="icon margin-left-1"><FontAwesomeIcon fixedWidth icon={faFileInvoiceDollar} height="1em" /></span>
                             </a>
                         </Link>
@@ -35,7 +35,7 @@ const EventDescription = ({
                 </div>
             </div>
             <div className="cell small-12 medium-12 large-6">
-                <img src={`${STATIC_IMAGES_URL}/${event.image}`} className="image" />
+                <img src={`${STATIC_IMAGES_URL}/${event.image}`} className="image" alt={event.image} />
             </div>
         </div>
 

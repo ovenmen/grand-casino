@@ -11,7 +11,10 @@ const Button = ({
 }) => (
     <span>
         <Link href={href}>
-            <a className={classnames('link button text-uppercase text-nowrap', bigSize && 'big', invert && 'invert')}>
+            <a
+                className={classnames('link button text-uppercase text-nowrap', bigSize && 'big', invert && 'invert')}
+                aria-label={title}
+            >
                 {title}
             </a>
         </Link>

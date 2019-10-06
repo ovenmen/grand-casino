@@ -10,7 +10,7 @@ const HeaderPage = ({
     <div className="header-page">
         <div className="grid-x">
             <div className="cell small-12 medium-12 large-12">
-                <img className="header-page-image" src={`${STATIC_IMAGES_URL}/${headerImage}`} />
+                <img className="header-page-image" src={`${STATIC_IMAGES_URL}/${headerImage}`} alt={headerImage} />
                 <h1 className="text-center color-white font-bold">{header}</h1>
             </div>
         </div>

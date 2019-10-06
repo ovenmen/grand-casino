@@ -35,7 +35,7 @@ const Activity = ({
                     {map(activity.items, (event, index) => (
                         <div className="cell small-12 medium-6 large-6" key={index}>
                             <div className="activity-event">
-                                <img className="activity-image" src={`${STATIC_IMAGES_URL}/${event.image}`} width="480" height="380" />
+                                <img className="activity-image" src={`${STATIC_IMAGES_URL}/${event.image}`} width="480" height="380" alt={event.image} />
                                 <Link href={event.buttonHref}>
                                     <a><p className="color-white h4 font-bold text-uppercase event-header">{event.header}</p></a>
                                 </Link>

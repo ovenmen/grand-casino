@@ -23,7 +23,9 @@ const PhotoCarousel = ({
             <div className="grid-x">
                 {_.map(photos.items, (photo, index) => (
                     <div className="cell small-12 medium-3 large-2" key={index}>
-                        <img src={photo} alt={photo} className="thumbnail" onClick={() => openLightboxOnSlide(index + 1)} />
+                        <figure>
+                            <img src={photo} alt={photo} className="thumbnail" onClick={() => openLightboxOnSlide(index + 1)} />
+                        </figure>
                     </div>
                 ))}
             </div>
