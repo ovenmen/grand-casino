@@ -40,7 +40,7 @@ const Navigation = ({
                             {_.map(navigation, (menuItem, menuIndex) => (
                                 <li className="menu-item" key={menuIndex} onClick={handleClickLink}>
                                     <Link href={menuItem.value}>
-                                        <a className={classnames('link font-bold h5', menuItem.value === pathname && 'active')}>
+                                        <a className={classnames('link font-bold h5', menuItem.value === pathname && 'active')} aria-label={menuItem.title}>
                                             {menuItem.title}
                                         </a>
                                     </Link>
@@ -49,7 +49,7 @@ const Navigation = ({
                                             {_.map(menuItem.submenu, (submenuItem, submenuIndex) => (
                                                 <li className="submenu-item" key={submenuIndex}>
                                                     <Link href={submenuItem.value}>
-                                                        <a className={classnames('link font-bold h5', submenuItem.value === pathname && 'active')}>
+                                                        <a className={classnames('link font-bold h5', submenuItem.value === pathname && 'active')} aria-label={submenuItem.title}>
                                                             {submenuItem.title}
                                                         </a>
                                                     </Link>

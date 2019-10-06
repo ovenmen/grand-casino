@@ -20,12 +20,14 @@ export default class extends App {
                 <Head>
                     <title>{pageProps.title || ''}</title>
                     <meta name="theme-color" content="#330b6b" />
+                    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                     <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
                     <meta name="description" content={pageProps.description || ''} />
                     <meta name="keywords" content={pageProps.keywords || ''} />
                     <link href="https://fonts.googleapis.com/css?family=Pattaya&display=swap" rel="stylesheet"></link>
                     <link rel="icon" type="image/ico" sizes="16x16" href="/static/images/favicon.ico" />
+                    <link rel="apple-touch-icon" type="image/ico" href="/static/images/favicon.ico"></link>
                     <link rel="stylesheet" href="/static/css/foundation.min.css" />
                 </Head>
                 <Navigation {...pageProps} />

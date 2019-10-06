@@ -7,22 +7,22 @@ const Follow = () => (
         <p className="lead font-bold">Следить</p>
         <ul className="social-list no-bullet">
             <li>
-                <a href="https://vk.com/questoria" className="link color-purple lead" rel="noopener noreferrer" target="_blank">
+                <a href="https://vk.com/questoria" className="link color-purple lead" rel="noopener noreferrer" target="_blank" aria-label="Vk">
                     <span className="icon"><FontAwesomeIcon fixedWidth icon={faVk} height="1.5em" /></span>
                 </a>
             </li>
             <li>
-                <a href="https://www.facebook.com/questoria/" className="link color-purple lead" rel="noopener noreferrer" target="_blank">
+                <a href="https://www.facebook.com/questoria/" className="link color-purple lead" rel="noopener noreferrer" target="_blank" aria-label="Facebook">
                     <span className="icon"><FontAwesomeIcon fixedWidth icon={faFacebook} height="1.5em" /></span>
                 </a>
             </li>
             <li>
-                <a href="https://www.instagram.com/questories/" className="link color-purple lead" rel="noopener noreferrer" target="_blank">
+                <a href="https://www.instagram.com/questories/" className="link color-purple lead" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
                     <span className="icon"><FontAwesomeIcon fixedWidth icon={faInstagram} height="1.5em" /></span>
                 </a>
             </li>
             <li>
-                <a href="https://www.youtube.com/user/questoriaru" className="link color-purple lead" rel="noopener noreferrer" target="_blank">
+                <a href="https://www.youtube.com/user/questoriaru" className="link color-purple lead" rel="noopener noreferrer" target="_blank" aria-label="Youtube">
                     <span className="icon"><FontAwesomeIcon fixedWidth icon={faYoutube} height="1.5em" /></span>
                 </a>
             </li>

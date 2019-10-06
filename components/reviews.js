@@ -18,7 +18,7 @@ const Reviews = ({
                 <div className="cell small-12 medium-6 large-6 review-border" key={index}>
                     <div className="review text-center">
                         <figure>
-                            <img className="reviews-avatar margin-bottom-2" src={`${STATIC_IMAGES_URL}/${item.image}`} />
+                            <img className="reviews-avatar margin-bottom-2" src={`${STATIC_IMAGES_URL}/${item.image}`} alt={item.image} />
                             <figcaption>
                                 <p className="h5 color-white font-bold">{item.fullname}</p>
                                 <p className="h5 color-white font-bold">{item.city}</p>
@@ -39,8 +39,7 @@ const Reviews = ({
             }
             .reviews-avatar {
                 border-radius: 50%;
-                width: 15.5vh;
-                height: 15vh;
+                width: 15vh;
             }
             .review-border:nth-child(odd) .review {
                 border-right: 1px solid #e3eff3;

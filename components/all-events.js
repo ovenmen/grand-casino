@@ -15,7 +15,7 @@ const AllEvents = ({
             {_.map(events.items, (event, index) => (
                 <Fragment key={index}>
                     <div className="cell small-12 medium-6 large-3">
-                        <img src={`${STATIC_IMAGES_URL}/${event.image}`} className="event-image" />
+                        <img src={`${STATIC_IMAGES_URL}/${event.image}`} className="event-image" alt={event.image} />
                     </div>
                     <div className="cell small-12 medium-6 large-3">
                         <div className="event-description">
@@ -28,7 +28,7 @@ const AllEvents = ({
                             <p>{event.description}</p>
                             <p className="gallary-button">
                                 <Link href={event.buttonHref}>
-                                    <a className="link color-purple text-uppercase font-bold">
+                                    <a className="link color-purple text-uppercase font-bold" aria-label={event.buttonTitle}>
                                         <span>{event.buttonTitle}</span><span className="icon margin-left-1">
                                             <FontAwesomeIcon fixedWidth icon={faImages} height="1em" />
                                         </span>

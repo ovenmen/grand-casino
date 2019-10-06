@@ -31,7 +31,7 @@ const AllReviews = ({
                         <div key={index} className="review margin-bottom-1 bordered round radius">
                             <div className="flex-container align-left">
                                 <div className="margin-left-2 margin-right-2 width-30">
-                                    <img src={`${STATIC_IMAGES_URL}/${item.image}`} className="float-left" />
+                                    <img src={`${STATIC_IMAGES_URL}/${item.image}`} className="float-left" alt={item.image} />
                                 </div>
                                 <div className="align-self-middle">
                                     <h4>{item.fullname}</h4>
@@ -73,7 +73,6 @@ const AllReviews = ({
             }
             .review img {
                 width: 15vh;
-                height: 15vh;
                 border-radius: 50%;
             }
             .quote-left,

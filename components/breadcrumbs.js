@@ -16,7 +16,7 @@ const Breadcrumbs = ({
                                 <li key={index} className="nav-item font-bold text-uppercase">{item.title}</li>
                             ) : (
                                 <li key={index} className="nav-item font-bold text-uppercase">
-                                    <Link href={item.value}><a className="link color-purple">{item.title}</a></Link>
+                                    <Link href={item.value}><a className="link color-purple" aria-label={item.title}>{item.title}</a></Link>
                                     <span className="breadcrumbs-separate">{'/'}</span>
                                 </li>
                             )

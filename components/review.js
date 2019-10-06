@@ -17,7 +17,7 @@ const Review = ({
             <div className="cell small-12 medium-8 large-6">
                 <div className="review-description text-center radius bordered shadow">
                     <figure>
-                        <img src={`${STATIC_IMAGES_URL}/${review.description.image}`} />
+                        <img src={`${STATIC_IMAGES_URL}/${review.description.image}`} alt={review.description.image} />
                         <figcaption className="margin-top-2">
                             <h5 className="color-purple font-bold margin-bottom-1">{review.description.fullname}</h5>
                             <h6 className="lead color-grey margin-bottom-1">{review.description.city}</h6>

@@ -30,7 +30,7 @@ const Footer = ({
                             {navigation && map(navigation, (item, index) => (
                                 <li key={index} className="list-item">
                                     <Link href={item.value} passHref>
-                                        <a className="link color-white">{item.title}
+                                        <a className="link color-white" aria-label={item.title}>{item.title}
                                             <span className="icon"><FontAwesomeIcon fixedWidth icon={faLink} height="1em" /></span>
                                         </a>
                                     </Link>
@@ -43,7 +43,7 @@ const Footer = ({
                             {submenu && map(submenu(navigation).submenu, (item, index) => (
                                 <li key={index} className="list-item">
                                     <Link href={item.value} passHref>
-                                        <a className="link color-white">{item.title}
+                                        <a className="link color-white" aria-label={item.title}>{item.title}
                                             <span className="icon"><FontAwesomeIcon fixedWidth icon={faLink} height="1em" /></span>
                                         </a>
                                     </Link>
