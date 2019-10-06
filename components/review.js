@@ -21,6 +21,7 @@ const Review = ({
                         <figcaption className="margin-top-2">
                             <h5 className="color-purple font-bold margin-bottom-1">{review.description.fullname}</h5>
                             <h6 className="lead color-grey margin-bottom-1">{review.description.city}</h6>
+                            <h6 className="color-grey margin-bottom-2">{review.description.date}</h6>
                             <p className="lead">{review.description.description}</p>
                         </figcaption>
                     </figure>

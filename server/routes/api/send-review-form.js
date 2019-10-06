@@ -1,5 +1,6 @@
 const Router = require('@koa/router')
 const _ = require('lodash')
+const format = require('date-fns').format
 
 const sendMail = require('../../../utils/send-mail')
 const connection = require('../../connection')
@@ -13,18 +14,19 @@ router.post('/api/send-review-form', async ctx => {
         await connection.open()
 
         const { name, city, date, message } = ctx.request.body
-        const { originalname } = ctx.request.file
+        const { file } = ctx.request
 
         const modifyName = _.upperFirst(name)
         const modifyCity = _.upperFirst(city)
         const modifyMessage = _.upperFirst(message)
+        const modifyDate = format(new Date(date), 'dd.MM.yyyy')
 
         const data = {
             subject: 'Новый отзыв с сайта grand-casino.ru',
             html: `
                 <p><strong>Имя:</strong> ${modifyName}</p>
                 <p><strong>Город:</strong> ${modifyCity}</p>
-                <p><strong>Желаемая дата:</strong> ${date}</p>
+                <p><strong>Желаемая дата:</strong> ${modifyDate}</p>
                 <p><strong>Сообщение:</strong> ${modifyMessage}</p>
             `
         }
@@ -34,8 +36,8 @@ router.post('/api/send-review-form', async ctx => {
             best: false,
             fullname: modifyName,
             city: modifyCity,
-            image: originalname ? `uploads/${originalname}` : 'uploads/default-photo.jpg',
-            date,
+            image: file ? `uploads/${file.originalname}` : 'uploads/default-photo.jpg',
+            date: modifyDate,
             description: modifyMessage
         })
 
