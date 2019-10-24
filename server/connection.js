@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 const settings = require('./settings')
 
-const open = async () => mongoose.connect(settings.url, settings.params)
-const close = async () => mongoose.disconnect()
+const open = () => mongoose.connect(settings.url, settings.params)
+const close = () => mongoose.disconnect()
 
 module.exports = {
     open,

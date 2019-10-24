@@ -110,7 +110,7 @@ const Footer = ({
 
         <style jsx>{`
             .footer {
-                background: url('/static/images/bg-footer.jpg') center center;
+                background: url('/images/bg-footer.jpg') center center;
                 background-size: cover;
             }
             .footer-main-section {
