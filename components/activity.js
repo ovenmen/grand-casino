@@ -54,7 +54,7 @@ const Activity = ({
                 background: #2d224d;
             }
             .info {
-                background: url('/static/images/bg-activity.jpg') center center no-repeat;
+                background: url('/images/bg-activity.jpg') center center no-repeat;
                 background-size: cover;
                 padding: 5vw;
             }

@@ -33,7 +33,7 @@ const Review = ({
         <style jsx>{`
             .review {
                 padding: 5vw;
-                background: url('/static/images/bg-review.jpg') center center no-repeat;
+                background: url('/images/bg-review.jpg') center center no-repeat;
                 background-size: cover;
             }
             .review-description {

@@ -1,1 +1,1 @@
-export const STATIC_IMAGES_URL = '/static/images'
+export const STATIC_IMAGES_URL = '/images'

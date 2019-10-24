@@ -26,9 +26,9 @@ export default class extends App {
                     <meta name="description" content={pageProps.description || ''} />
                     <meta name="keywords" content={pageProps.keywords || ''} />
                     <link href="https://fonts.googleapis.com/css?family=Pattaya&display=swap" rel="stylesheet"></link>
-                    <link rel="icon" type="image/ico" sizes="16x16" href="/static/images/favicon.ico" />
-                    <link rel="apple-touch-icon" type="image/ico" href="/static/images/favicon.ico"></link>
-                    <link rel="stylesheet" href="/static/css/foundation.min.css" />
+                    <link rel="icon" type="image/ico" sizes="16x16" href="/images/favicon.ico" />
+                    <link rel="apple-touch-icon" type="image/ico" href="/images/favicon.ico"></link>
+                    <link rel="stylesheet" href="/css/foundation.min.css" />
                 </Head>
                 <Navigation {...pageProps} />
                 <main>

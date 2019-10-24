@@ -25,7 +25,7 @@ const Action = ({
 
         <style jsx>{`
             .action {
-                background: url('/static/images/bg-action.jpg') center center no-repeat;
+                background: url('/images/bg-action.jpg') center center no-repeat;
                 background-size: cover;
                 padding: 5vw;
             }

@@ -18,7 +18,7 @@ const Promo = ({
 
         <style jsx>{`
             .promo {
-                background: url('/static/images/bg-promo.jpg') center center no-repeat;
+                background: url('/images/bg-promo.jpg') center center no-repeat;
                 background-size: cover;
             }
             .headers {

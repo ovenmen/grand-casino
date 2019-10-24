@@ -28,7 +28,7 @@ const Scroller = () => {
             <style jsx>{`
                 .scroller {
                     position: fixed;
-                    bottom: 5rem;
+                    bottom: 2rem;
                     right: 2rem;
                     z-index: 10000;
                     visibility: hidden;
