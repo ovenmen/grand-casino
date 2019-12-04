@@ -11,10 +11,7 @@ module.exports = {
         retryWrites: true,
         useNewUrlParser: true,
         keepAlive: true,
-        autoReconnect: true,
-        reconnectInterval: 500,
         connectTimeoutMS: 30000,
-        reconnectTries: 30,
         useUnifiedTopology: true
     }
 }
