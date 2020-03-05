@@ -1,7 +1,6 @@
 const Router = require('@koa/router')
 const _ = require('lodash')
 
-const connection = require('../../connection')
 const Page = require('../../models/page')
 const Component = require('../../models/component')
 const Reviews = require('../../models/reviews')
@@ -11,8 +10,6 @@ const router = new Router()
 // Отзывы
 router.post('/api/reviews', async ctx => {
     try {
-        await connection.open()
-
         ctx.state.page = await Page.findOne({ pageId: 'reviews' })
         ctx.state.logo = await Component.findOne({ componentId: 'logo' })
         ctx.state.navigation = await Component.findOne({ componentId: 'navigation' })
@@ -54,7 +51,6 @@ router.post('/api/reviews', async ctx => {
         ctx.statusCode = 200
         ctx.body = response
         ctx.respond = true
-        await connection.close()
     } catch (error) {
         ctx.throw(500, error)
     }

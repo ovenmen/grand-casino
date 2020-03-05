@@ -1,6 +1,5 @@
 const Router = require('@koa/router')
 
-const connection = require('../../connection')
 const Page = require('../../models/page')
 const Component = require('../../models/component')
 
@@ -9,8 +8,6 @@ const router = new Router()
 // Grand Casino
 router.post('/api/grand-casino', async ctx => {
     try {
-        await connection.open()
-
         ctx.state.page = await Page.findOne({ pageId: 'grand-casino' })
         ctx.state.logo = await Component.findOne({ componentId: 'logo' })
         ctx.state.navigation = await Component.findOne({ componentId: 'navigation' })
@@ -51,7 +48,6 @@ router.post('/api/grand-casino', async ctx => {
         ctx.statusCode = 200
         ctx.body = response
         ctx.respond = true
-        await connection.close()
     } catch (error) {
         ctx.throw(500, error)
     }

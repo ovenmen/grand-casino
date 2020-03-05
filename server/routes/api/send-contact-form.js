@@ -3,7 +3,6 @@ const _ = require('lodash')
 const format = require('date-fns').format
 
 const sendMail = require('../../../utils/send-mail')
-const connection = require('../../connection')
 const ContactForm = require('../../models/contact-form')
 
 const router = new Router()
@@ -11,15 +10,11 @@ const router = new Router()
 // Send contact form
 router.post('/api/send-contacts-form', async ctx => {
     try {
-        await connection.open()
-
         const { name, city, date, phone, message } = ctx.request.body
-
         const modifyName = _.upperFirst(name)
         const modifyCity = _.upperFirst(city)
         const modifyMessage = _.upperFirst(message)
         const modifyDate = format(new Date(date), 'dd.MM.yyyy')
-
         const data = {
             subject: 'Новая заявка с сайта grand-casino.ru',
             html: `
@@ -30,7 +25,6 @@ router.post('/api/send-contacts-form', async ctx => {
                 <p><strong>Сообщение:</strong> ${modifyMessage}</p>
             `
         }
-
         const contact = new ContactForm({
             name: modifyName,
             phone,
@@ -43,7 +37,6 @@ router.post('/api/send-contacts-form', async ctx => {
 
         sendMail(data)
         await contact.save()
-        await connection.close()
     } catch (error) {
         ctx.throw(500, 'Не удалось отправить отзыв', { error })
     }

@@ -3,7 +3,6 @@ const _ = require('lodash')
 const format = require('date-fns').format
 
 const sendMail = require('../../../utils/send-mail')
-const connection = require('../../connection')
 const ReviewForm = require('../../models/review-form')
 
 const router = new Router()
@@ -11,8 +10,6 @@ const router = new Router()
 // Send review form
 router.post('/api/send-review-form', async ctx => {
     try {
-        await connection.open()
-
         const { name, city, date, message } = ctx.request.body
         const { file } = ctx.request
 
@@ -45,7 +42,6 @@ router.post('/api/send-review-form', async ctx => {
 
         await sendMail(data)
         await review.save()
-        await connection.close()
 
         ctx.redirect('/reviews')
     } catch (error) {

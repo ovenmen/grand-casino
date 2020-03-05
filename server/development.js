@@ -7,20 +7,8 @@ const multer = require('@koa/multer')
 const helmet = require('koa-helmet')
 const bodyParser = require('koa-bodyparser')
 const json = require('koa-json')
-
-const index = require('./routes/api/index')
-const events = require('./routes/api/events')
-const prices = require('./routes/api/prices')
-const franchise = require('./routes/api/franchise')
-const reviews = require('./routes/api/reviews')
-const contacts = require('./routes/api/contacts')
-const casinoClub = require('./routes/api/casino-club')
-const goldCasino = require('./routes/api/gold-casino')
-const casinoRoyal = require('./routes/api/casino-royal')
-const grandCasino = require('./routes/api/grand-casino')
-const error = require('./routes/api/error')
-const sendReviewForm = require('./routes/api/send-review-form')
-const sendContactForm = require('./routes/api/send-contact-form')
+const mongoose = require('mongoose')
+const config = require('config')
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = 3000
@@ -31,50 +19,64 @@ const storage = multer.diskStorage({
         cb(null, 'static/images/uploads/')
     },
     filename: (req, file, cb) => {
-        cb(null, file.originalname)
+        cb(null, file.originalname) 
     }
 })
 
-app.prepare().then(() => {
-    const server = new Koa()
-    const router = new Router()
+const init = async () => {
+    const url = config.get('db.url')
+    const params = config.get('db.params')
 
-    // middleware
-    server.use(json())
-    server.use(bodyParser())
-    server.use(helmet())
-    server.use(cors())
-    server.use(multer({ storage: storage }).single('photo'))
+    try {
+        await mongoose.connect(url, params)
+        console.log('Connection DB')
 
-    server.use(index.routes())
-    server.use(events.routes())
-    server.use(prices.routes())
-    server.use(franchise.routes())
-    server.use(reviews.routes())
-    server.use(contacts.routes())
-    server.use(casinoClub.routes())
-    server.use(goldCasino.routes())
-    server.use(casinoRoyal.routes())
-    server.use(grandCasino.routes())
-    server.use(error.routes())
-    server.use(sendReviewForm.routes())
-    server.use(sendContactForm.routes())
+        app.prepare().then(() => {
+            const server = new Koa()
+            const router = new Router()
 
-    server.use(router.routes())
-    server.use(router.allowedMethods())
+            // middleware
+            server.use(json())
+            server.use(bodyParser())
+            server.use(helmet())
+            server.use(cors())
+            server.use(multer({ storage: storage }).single('photo'))
 
-    server.use(async (ctx, next) => {
-        ctx.status = 200
-        await next()
-    })
+            server.use(require('./routes/api/index').routes())
+            server.use(require('./routes/api/events').routes())
+            server.use(require('./routes/api/prices').routes())
+            server.use(require('./routes/api/franchise').routes())
+            server.use(require('./routes/api/reviews').routes())
+            server.use(require('./routes/api/contacts').routes())
+            server.use(require('./routes/api/casino-club').routes())
+            server.use(require('./routes/api/gold-casino').routes())
+            server.use(require('./routes/api/casino-royal').routes())
+            server.use(require('./routes/api/grand-casino').routes())
+            server.use(require('./routes/api/error').routes())
+            server.use(require('./routes/api/send-review-form').routes())
+            server.use(require('./routes/api/send-contact-form').routes())
 
-    router.get('*', async ctx => {
-        await handle(ctx.req, ctx.res)
-        ctx.respond = false
-    })
+            server.use(router.routes())
+            server.use(router.allowedMethods())
 
-    http.createServer(server.callback()).listen(port, () => {
-        // eslint-disable-next-line no-console
-        console.log('Starting development server')
-    })
-})
+            server.use(async (ctx, next) => {
+                ctx.status = 200
+                await next()
+            })
+
+            router.get('*', async ctx => {
+                await handle(ctx.req, ctx.res)
+                ctx.respond = false
+            })
+
+            http.createServer(server.callback()).listen(port, () => {
+                // eslint-disable-next-line no-console
+                console.log('Starting development server')
+            })
+        })
+    } catch (error) {
+        console.log('error', error.message)
+    }
+}
+
+init()
