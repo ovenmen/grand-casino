@@ -1,0 +1,12 @@
+{
+    "db": {
+        "username": "admin",
+        "password": "IXXXUB3RPvkqJQwB5rkq",
+        "name": "grand-casino",
+        "url": "mongodb+srv://admin:IXXXUB3RPvkqJQwB5rkq@cluster0-r5zev.gcp.mongodb.net/grand-casino?retryWrites=true&w=majority",
+        "params": {
+            "useNewUrlParser": true,
+            "useUnifiedTopology": true
+        } 
+    }
+}
