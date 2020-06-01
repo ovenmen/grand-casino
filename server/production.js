@@ -17,9 +17,9 @@ const port = 443
 const app = next({ dev })
 const handle = app.getRequestHandler()
 const options = {
-    key: fs.readFileSync('keys/6472878.key', 'utf8'),
-    cert: fs.readFileSync('keys/6472878.crt', 'utf8'),
-    ca: fs.readFileSync('keys/ca_bundle_6472878.crt', 'utf8')
+    key: fs.readFileSync('keys/private_key.key', 'utf8'),
+    cert: fs.readFileSync('keys/grand-casino_com_ru.crt', 'utf8'),
+    ca: fs.readFileSync('keys/My_CA_Bundle.ca-bundle', 'utf8')
 }
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
