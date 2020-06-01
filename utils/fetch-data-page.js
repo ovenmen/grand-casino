@@ -1,9 +1,16 @@
 import 'isomorphic-unfetch'
 
 const dev = process.env.NODE_ENV !== 'production'
-const protocol = dev ? 'http' : 'https'
-const siteName = dev ? 'localhost' : 'grand-casino.com.ru'
-const port = dev ? 3000 : 443
+const mode = process.env.MODE === 'no-certificate'
+let protocol = dev ? 'http' : 'https'
+let siteName = dev ? 'localhost' : 'grand-casino.com.ru'
+let port = dev ? 3000 : 443
+
+if (mode) {
+    protocol = 'http'
+    siteName = 'grand-casino.com.ru'
+    port = 80
+}
 
 export default (namePage) => async ({ res, err, pathname }) => {
     try {

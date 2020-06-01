@@ -4,14 +4,13 @@ const next = require('next')
 const Router = require('@koa/router')
 const cors = require('@koa/cors')
 const multer = require('@koa/multer')
-const helmet = require('koa-helmet')
 const bodyParser = require('koa-bodyparser')
 const json = require('koa-json')
 const mongoose = require('mongoose')
 const config = require('config')
 
 const dev = process.env.NODE_ENV !== 'production'
-const port = 3000
+const port = 80
 const app = next({ dev })
 const handle = app.getRequestHandler()
 const storage = multer.diskStorage({
@@ -19,7 +18,7 @@ const storage = multer.diskStorage({
         cb(null, 'public/images/uploads/')
     },
     filename: (req, file, cb) => {
-        cb(null, file.originalname) 
+        cb(null, file.originalname)
     }
 })
 
@@ -38,7 +37,6 @@ const init = async () => {
             // middleware
             server.use(json())
             server.use(bodyParser())
-            server.use(helmet())
             server.use(cors())
             server.use(multer({ storage: storage }).single('photo'))
 
@@ -71,7 +69,7 @@ const init = async () => {
 
             http.createServer(server.callback()).listen(port, () => {
                 // eslint-disable-next-line no-console
-                console.log('Starting development server')
+                console.log('Starting production server')
             })
         })
     } catch (error) {
