@@ -44,7 +44,7 @@
     "cross-env": "7.0.2",
     "eslint": "7.0.0",
     "eslint-plugin-react": "7.20.0",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "nodemon": "2.0.3",
     "prop-types": "15.7.2"
   }
