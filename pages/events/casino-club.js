@@ -24,6 +24,6 @@ const CasinoClub = (props, {...breadcrumbs}) => (
     </section>
 )
 
-CasinoClub.getInitialProps = fetchDataPage('casino-club')
+export const getStaticProps = fetchDataPage('casino-club')
 
 export default CasinoClub

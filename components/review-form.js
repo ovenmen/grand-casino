@@ -1,128 +1,142 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import Input from './input'
 import Textarea from './textarea'
 import UploadButton from './upload-button'
 
-class ReviewsForm extends React.PureComponent {
-    state = {
+const ReviewsForm = ({
+    reviewsForm: {
+        header,
+        submitButtonTitle,
+        fields: [
+            nameInput,
+            cityInput,
+            dateInput,
+            messageInput
+        ]
+    }
+}) => {
+    const [fields, setFields] = useState({
         name: '',
         city: '',
         date: '',
-        message: '',
-        errors: {}
-    }
+        message: ''
+    })
+    const [errors, setErrors] = useState({})
 
-    handleSubmit = (event) => {
+    const { name, city, date, message } = fields
+
+    const handleSubmit = useCallback(event => {
         event.preventDefault()
-        const { name, city, date, message } = this.state
         const isFormValid = name !== '' && city !== '' && date !== '' && message !== ''
 
-        this.setState({
-            errors: {
-                name: name === '',
-                city: city === '',
-                date: date === '',
-                message: message === ''
-            }
+        setErrors({
+            ...errors,
+            name: name === '',
+            city: city === '',
+            date: date === '',
+            message: message === ''
         })
 
         if (isFormValid) {
             window.alert('Отзыв отправлен!')
             event.target.submit()
+            setFields({
+                name: '',
+                city: '',
+                date: '',
+                message: ''
+            })
         }
-    }
+    }, [name, city, date, message])
 
-    handleChange = (event) => {
+    const handleChange = useCallback(event => {
         const fieldName = event.target.name
         const fieldValue = event.target.value
-        this.setState((prevState) => ({
-            [fieldName]: fieldValue,
-            errors: {
-                ...prevState.errors,
-                [fieldName]: fieldValue === ''
-            }
-        }))
-    }
 
-    render () {
-        const { reviewsForm } = this.props
-        const [ nameInput, cityInput, dateInput, messageInput ] = this.props.reviewsForm.fields
-        const { errors } = this.state
+        setFields({
+            ...fields,
+            [fieldName]: fieldValue
+        })
+        setErrors({
+            ...errors,
+            [fieldName]: fieldValue === ''
+        })
+    })
 
-        return (
-            <section className="review-form">
-                <div className="grid-x">
-                    <div className="cell small-12 medium-12 large-12">
+    return (
+        <section className="review-form">
+            <div className="grid-x">
+                <div className="cell small-12 medium-12 large-12">
+                    <div className="grid-x">
+                        <div className="cell">
+                            <h3 className="font-bold margin-bottom-3">{header}</h3>
+                        </div>
+                    </div>
+                    <form encType="multipart/form-data" onSubmit={handleSubmit} method="post" action="/api/send-review-form">
                         <div className="grid-x">
-                            <div className="cell">
-                                <h3 className="font-bold margin-bottom-3">{reviewsForm.header}</h3>
+                            <div className="cell margin-bottom-1">
+                                <UploadButton />
                             </div>
                         </div>
-                        <form encType="multipart/form-data" onSubmit={this.handleSubmit} method="post" action="/api/send-review-form">
-                            <div className="grid-x">
-                                <div className="cell margin-bottom-1">
-                                    <UploadButton />
+                        <div className="grid-x">
+                            <div className="cell margin-bottom-1">
+                                {nameInput && <Input
+                                    name={nameInput.name}
+                                    type={nameInput.type}
+                                    placeholder={nameInput.placeholder}
+                                    onChange={handleChange}
+                                    error={errors.name}
+                                />}
+                            </div>
+                        </div>
+                        <div className="grid-x">
+                            <div className="cell margin-bottom-1">
+                                {cityInput && <Input
+                                    name={cityInput.name}
+                                    type={cityInput.type}
+                                    placeholder={cityInput.placeholder}
+                                    onChange={handleChange}
+                                    error={errors.city}
+                                />}
+                            </div>
+                        </div>
+                        <div className="grid-x">
+                            <div className="cell margin-bottom-1">
+                                {dateInput && <Input
+                                    name={dateInput.name}
+                                    type={dateInput.type}
+                                    placeholder={dateInput.placeholder}
+                                    onChange={handleChange}
+                                    error={errors.date}
+                                />}
+                            </div>
+                        </div>
+                        <div className="grid-x">
+                            <div className="cell margin-bottom-1">
+                                {messageInput && <Textarea
+                                    name={messageInput.name}
+                                    type={messageInput.type}
+                                    placeholder={messageInput.placeholder}
+                                    rows={8}
+                                    onChange={handleChange}
+                                    error={errors.message}
+                                />}
+                            </div>
+                        </div>
+                        <div className="grid-x margin-top-1">
+                            <div className="cell text-right">
+                                <div className="submit-button">
+                                    <input type="submit" value={submitButtonTitle} className="color-white h5" />
                                 </div>
                             </div>
-                            <div className="grid-x">
-                                <div className="cell margin-bottom-1">
-                                    {nameInput && <Input
-                                        name={nameInput.name}
-                                        type={nameInput.type}
-                                        placeholder={nameInput.placeholder}
-                                        onChange={this.handleChange}
-                                        error={errors.name}
-                                    />}
-                                </div>
-                            </div>
-                            <div className="grid-x">
-                                <div className="cell margin-bottom-1">
-                                    {cityInput && <Input
-                                        name={cityInput.name}
-                                        type={cityInput.type}
-                                        placeholder={cityInput.placeholder}
-                                        onChange={this.handleChange}
-                                        error={errors.city}
-                                    />}
-                                </div>
-                            </div>
-                            <div className="grid-x">
-                                <div className="cell margin-bottom-1">
-                                    {dateInput && <Input
-                                        name={dateInput.name}
-                                        type={dateInput.type}
-                                        placeholder={dateInput.placeholder}
-                                        onChange={this.handleChange}
-                                        error={errors.date}
-                                    />}
-                                </div>
-                            </div>
-                            <div className="grid-x">
-                                <div className="cell margin-bottom-1">
-                                    {messageInput && <Textarea
-                                        name={messageInput.name}
-                                        type={messageInput.type}
-                                        placeholder={messageInput.placeholder}
-                                        rows={8}
-                                        onChange={this.handleChange}
-                                        error={errors.message}
-                                    />}
-                                </div>
-                            </div>
-                            <div className="grid-x margin-top-1">
-                                <div className="cell text-right">
-                                    <div className="submit-button">
-                                        <input type="submit" value={reviewsForm.submitButtonTitle} className="color-white h5" />
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
+            </div>
 
-                <style jsx>{`
+            <style jsx>{`
                     .review-form {
                         padding: 5vw;
                     }
@@ -150,9 +164,8 @@ class ReviewsForm extends React.PureComponent {
                         cursor: pointer;
                     }
                 `}</style>
-            </section>
-        )
-    }
+        </section>
+    )
 }
 
 ReviewsForm.propTypes = {

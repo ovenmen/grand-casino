@@ -1,13 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { map } from 'lodash'
 import Link from 'next/link'
 
 import Button from './button'
 import { STATIC_IMAGES_URL } from '../config'
 
 const Activity = ({
-    activity
+    activity: {
+        header,
+        buttonTitle,
+        buttonHref,
+        items = [],
+        description = []
+    }
 }) => (
     <section className="activity">
         <div className="grid-x">
@@ -15,32 +20,32 @@ const Activity = ({
                 <div className="grid-x grid-padding-x flex-dir-column">
                     <div className="cell">
                         <h2 className="text-uppercase text-right color-white margin-bottom-3">
-                            <strong>{activity.header}</strong>
+                            <strong>{header}</strong>
                         </h2>
                     </div>
                     <div className="cell">
-                        {map(activity.description, (item, index) => (
+                        {description.map((item, index) => (
                             <p className="text-right color-white margin-bottom-3" key={index}>{item}</p>
                         ))}
                     </div>
                     <div className="cell">
                         <div className="button-activity text-right margin-bottom-1">
-                            <Button title={activity.buttonTitle} href={activity.buttonHref} />
+                            <Button title={buttonTitle} href={buttonHref} />
                         </div>
                     </div>
                 </div>
             </div>
             <div className="cell small-12 medium-12 large-6">
                 <div className="grid-x">
-                    {map(activity.items, (event, index) => (
-                        <div className="cell small-12 medium-6 large-6" key={index}>
+                    {items.map(item => (
+                        <div className="cell small-12 medium-6 large-6" key={item.header}>
                             <div className="activity-event">
-                                <img className="activity-image" src={`${STATIC_IMAGES_URL}/${event.image}`} width="480" height="380" alt={event.image} />
-                                <Link href={event.buttonHref}>
-                                    <a><p className="color-white h4 font-bold text-uppercase event-header">{event.header}</p></a>
+                                <img className="activity-image" src={`${STATIC_IMAGES_URL}/${item.image}`} width="480" height="380" alt={item.image} loading="lazy" />
+                                <Link href={item.buttonHref}>
+                                    <a><p className="color-white h4 font-bold text-uppercase event-header">{item.header}</p></a>
                                 </Link>
                                 <div className="activity-event-button">
-                                    <Button title={event.buttonTitle} href={event.buttonHref} invert />
+                                    <Button title={item.buttonTitle} href={item.buttonHref} invert />
                                 </div>
                             </div>
                         </div>

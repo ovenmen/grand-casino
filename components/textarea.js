@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import omit from 'lodash/omit'
 
 const Textarea = (props) => (
     <div className="field">
         <label htmlFor={props.name}>{props.label}
-            <textarea {..._.omit(props, 'error')} className={props.error && 'error'}></textarea>
+            <textarea {...omit(props, 'error')} className={props.error && 'error'}></textarea>
         </label>
 
         <style jsx>{`

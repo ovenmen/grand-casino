@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
 import Link from 'next/link'
 
 const Breadcrumbs = ({
@@ -11,12 +10,14 @@ const Breadcrumbs = ({
             <div className="grid-x">
                 <div className="cell small-12 medium-12 large-12">
                     <ul className="breadcrumbs-nav flex-container">
-                        {_.map(breadcrumbs, (item, index) => item.active
+                        {breadcrumbs.map(item => item.active
                             ? (
-                                <li key={index} className="nav-item font-bold text-uppercase">{item.title}</li>
+                                <li key={item.title} className="nav-item font-bold text-uppercase">{item.title}</li>
                             ) : (
-                                <li key={index} className="nav-item font-bold text-uppercase">
-                                    <Link href={item.value}><a className="link color-purple" aria-label={item.title}>{item.title}</a></Link>
+                                <li key={item.title} className="nav-item font-bold text-uppercase">
+                                    <Link href={item.value}>
+                                        <a className="link color-purple" aria-label={item.title}>{item.title}</a>
+                                    </Link>
                                     <span className="breadcrumbs-separate">{'/'}</span>
                                 </li>
                             )

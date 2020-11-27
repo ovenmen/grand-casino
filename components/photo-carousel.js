@@ -1,39 +1,46 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, useCallback } from 'react'
+import PropTypes, { number } from 'prop-types'
 import FsLightbox from 'fslightbox-react'
-import _ from 'lodash'
+import Image from 'next/image'
 
 const PhotoCarousel = ({
-    photos
-}) => {
-    const [lightboxController, setLightboxController] = useState({
-        toggler: false,
-        slide: 0
-    })
-
-    const openLightboxOnSlide = (number) => {
-        setLightboxController({
-            toggler: !lightboxController.toggler,
-            slide: number
-        })
+    photos: {
+        items = []
     }
+}) => {
+    const [toggler, setToggler] = useState(false)
+    const [slide, setSlide] = useState(0)
+
+    const openLightboxOnSlide = useCallback(number => {
+        setToggler(!toggler)
+        setSlide(number)
+    }, [toggler, number])
 
     return (
         <section className="photo-carousel">
-            <div className="grid-x">
-                {_.map(photos.items, (photo, index) => (
-                    <div className="cell small-12 medium-3 large-2" key={index}>
+            <div className="grid-x align-center">
+                {items.map((photo, index) => (
+                    <div className="cell small-12 medium-3 large-2 thumbnail" key={index}>
                         <figure>
-                            <img src={photo} alt={photo} className="thumbnail" onClick={() => openLightboxOnSlide(index + 1)} />
+                            <Image
+                                src={photo}
+                                alt={photo}
+                                onClick={() => openLightboxOnSlide(index + 1)}
+                                loading="lazy"
+                                objectFit="cover"
+                                layout="responsive"
+                                width="auto"
+                                height={235}
+                            />
                         </figure>
                     </div>
                 ))}
             </div>
             <FsLightbox
-                toggler={lightboxController.toggler}
+                toggler={toggler}
                 type="image"
-                slide={lightboxController.slide}
-                sources={photos.items}
+                slide={slide}
+                sources={items}
             />
 
             <style jsx>{`
@@ -48,7 +55,6 @@ const PhotoCarousel = ({
                     border: 1px solid;
                     height: 16rem;
                     width: 16rem;
-                    object-fit: cover;
                 }
                 .thumbnail:hover {
                     cursor: pointer;

@@ -1,24 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
 
 import { STATIC_IMAGES_URL } from '../config'
 
 const Reviews = ({
-    reviews
+    reviews: {
+        header,
+        items = []
+    }
 }) => (
     <section className="reviews">
         <div className="grid-x grid-padding-x">
             <div className="cell small-12">
-                <h2 className="text-center text-uppercase color-white margin-bottom-3">{reviews.header}</h2>
+                <h2 className="text-center text-uppercase color-white margin-bottom-3">{header}</h2>
             </div>
         </div>
         <div className="grid-x">
-            {_.map(reviews.items, (item, index) => (
-                <div className="cell small-12 medium-6 large-6 review-border" key={index}>
+            {items.map(item => (
+                <div className="cell small-12 medium-6 large-6 review-border" key={item._id}>
                     <div className="review text-center">
                         <figure>
-                            <img className="reviews-avatar margin-bottom-2" src={`${STATIC_IMAGES_URL}/${item.image}`} alt={item.image} />
+                            <img className="reviews-avatar margin-bottom-2" src={`${STATIC_IMAGES_URL}/${item.image}`} alt={item.image} loading="lazy" />
                             <figcaption>
                                 <p className="h5 color-white font-bold">{item.fullname}</p>
                                 <p className="h5 color-white font-bold">{item.city}</p>

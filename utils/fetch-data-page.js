@@ -1,10 +1,8 @@
-import 'isomorphic-unfetch'
-
 const dev = process.env.NODE_ENV !== 'production'
 const mode = process.env.MODE === 'no-certificate'
-let protocol = dev ? 'http' : 'https'
-let siteName = dev ? 'localhost' : 'grand-casino.com.ru'
-let port = dev ? 3000 : 443
+export let protocol = dev ? 'http' : 'https'
+export let siteName = dev ? 'localhost' : 'grand-casino.com.ru'
+export let port = dev ? 3000 : 443
 
 if (mode) {
     protocol = 'http'
@@ -12,9 +10,9 @@ if (mode) {
     port = 80
 }
 
-export default (namePage) => async ({ res, err, pathname }) => {
+const fetchDataPage = (namePage) => async (context) => {
     try {
-        const statusCode = res ? res.statusCode : err ? err.statusCode : null
+        const statusCode = context.res ? context.res.statusCode : null
         const url = `${protocol}://${siteName}:${port}/api/${namePage}`
         const params = {
             method: 'POST',
@@ -34,12 +32,15 @@ export default (namePage) => async ({ res, err, pathname }) => {
         }
 
         return {
-            ...data,
-            pathname,
-            statusCode,
-            errorMessage
+            props: {
+                ...data,
+                statusCode,
+                errorMessage
+            }
         }
     } catch (error) {
         throw new Error(error)
     }
 }
+
+export default fetchDataPage

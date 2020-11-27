@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { map, find } from 'lodash'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink, faMapMarkerAlt, faClock, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
@@ -8,7 +7,7 @@ import { faVk, faFacebook, faInstagram, faYoutube } from '@fortawesome/free-bran
 
 import Logo from './logo'
 
-const submenu = (navigation) => find(navigation, item => item.submenu)
+const submenu = (navigation) => navigation.find(item => item.submenu)
 
 const Footer = ({
     logo,
@@ -27,8 +26,8 @@ const Footer = ({
                     </div>
                     <div className="cell small-12 medium-6 large-3">
                         <ul className="color-white list">
-                            {navigation && map(navigation, (item, index) => (
-                                <li key={index} className="list-item">
+                            {navigation && navigation.map(item => (
+                                <li key={item.title} className="list-item">
                                     <Link href={item.value} passHref>
                                         <a className="link color-white" aria-label={item.title}>{item.title}
                                             <span className="icon"><FontAwesomeIcon fixedWidth icon={faLink} height="1em" /></span>
@@ -40,8 +39,8 @@ const Footer = ({
                     </div>
                     <div className="cell small-12 medium-6 large-3">
                         <ul className="color-white list">
-                            {submenu && map(submenu(navigation).submenu, (item, index) => (
-                                <li key={index} className="list-item">
+                            {submenu(navigation)?.submenu?.map(item => (
+                                <li key={item.title} className="list-item">
                                     <Link href={item.value} passHref>
                                         <a className="link color-white" aria-label={item.title}>{item.title}
                                             <span className="icon"><FontAwesomeIcon fixedWidth icon={faLink} height="1em" /></span>

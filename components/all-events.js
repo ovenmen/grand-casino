@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages } from '@fortawesome/free-solid-svg-icons'
@@ -8,28 +7,30 @@ import { faImages } from '@fortawesome/free-solid-svg-icons'
 import { STATIC_IMAGES_URL } from '../config'
 
 const AllEvents = ({
-    events
+    events: {
+        items = []
+    }
 }) => (
     <section>
         <div className="grid-x">
-            {_.map(events.items, (event, index) => (
-                <Fragment key={index}>
+            {items.map(item => (
+                <Fragment key={item.header}>
                     <div className="cell small-12 medium-6 large-3">
-                        <img src={`${STATIC_IMAGES_URL}/${event.image}`} className="event-image" alt={event.image} />
+                        <img src={`${STATIC_IMAGES_URL}/${item.image}`} className="event-image" alt={item.image} loading="lazy" />
                     </div>
                     <div className="cell small-12 medium-6 large-3">
                         <div className="event-description">
                             <h4 className="text-uppercase font-bold">
-                                <Link href={event.headerHref}>
-                                    <a className="link color-grey">{event.header}</a>
+                                <Link href={item.headerHref}>
+                                    <a className="link color-grey">{item.header}</a>
                                 </Link>
                             </h4>
-                            <h4 className="subheader">{event.subheader}</h4>
-                            <p>{event.description}</p>
+                            <h4 className="subheader">{item.subheader}</h4>
+                            <p>{item.description}</p>
                             <p className="gallary-button">
-                                <Link href={event.buttonHref}>
-                                    <a className="link color-purple text-uppercase font-bold" aria-label={event.buttonTitle}>
-                                        <span>{event.buttonTitle}</span><span className="icon margin-left-1">
+                                <Link href={item.buttonHref}>
+                                    <a className="link color-purple text-uppercase font-bold" aria-label={item.buttonTitle}>
+                                        <span>{item.buttonTitle}</span><span className="icon margin-left-1">
                                             <FontAwesomeIcon fixedWidth icon={faImages} height="1em" />
                                         </span>
                                     </a>

@@ -1,37 +1,41 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuoteLeft, faQuoteRight, faFrown } from '@fortawesome/free-solid-svg-icons'
 
 import { STATIC_IMAGES_URL } from '../config'
 
 const AllReviews = ({
-    reviews
+    reviews: {
+        header,
+        emptyReviewsMessage,
+        actionReviewsMessage,
+        items = []
+    }
 }) => (
     <section className="all-reviews">
         <div className="grid-x">
             <div className="cell">
-                <h3 className="text-center font-bold margin-bottom-1 color-white">{reviews.header}</h3>
+                <h3 className="text-center font-bold margin-bottom-1 color-white">{header}</h3>
             </div>
         </div>
         <div className="grid-x">
             <div className="cell">
                 <div className="reviews-container">
-                    {reviews.items.length === 0 &&
+                    {items.length === 0 &&
                         <div className="grid-x grid-padding-x margin-top-3">
                             <div className="cell small-12">
                                 <span className="frown color-white text-center"><FontAwesomeIcon fixedWidth icon={faFrown} height="5em" /></span>
-                                <p className="text-center color-white h5">{reviews.emptyReviewsMessage}</p>
-                                <p className="text-center color-white h5">{reviews.actionReviewsMessage}</p>
+                                <p className="text-center color-white h5">{emptyReviewsMessage}</p>
+                                <p className="text-center color-white h5">{actionReviewsMessage}</p>
                             </div>
                         </div>
                     }
-                    {_.map(reviews.items, (item, index) => (
-                        <div key={index} className="review margin-bottom-1 bordered round radius">
+                    {items.map(item => (
+                        <div key={item._id} className="review margin-bottom-1 bordered round radius">
                             <div className="flex-container align-left">
                                 <div className="margin-left-2 margin-right-2 width-30">
-                                    <img src={`${STATIC_IMAGES_URL}/${item.image}`} className="float-left" alt={item.image} />
+                                    <img src={`${STATIC_IMAGES_URL}/${item.image}`} className="float-left" alt={item.image} loading="lazy" />
                                 </div>
                                 <div className="align-self-middle">
                                     <h4>{item.fullname}</h4>

@@ -17,6 +17,6 @@ const PricesPage = (props, {...breadcrumbs}) => (
     </section>
 )
 
-PricesPage.getInitialProps = fetchDataPage('franchise')
+export const getStaticProps = fetchDataPage('franchise')
 
 export default PricesPage

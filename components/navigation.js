@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
 import classnames from 'classnames'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,17 +8,19 @@ import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import Logo from '../components/logo'
 
 const Navigation = ({
-    navigation, logo, pathname
+    navigation,
+    logo,
+    pathname
 }) => {
     const [isOpen, setToggleIsOpen] = useState(false)
 
-    const handleClickToggleButton = () => {
+    const handleClickToggleButton = useCallback(() => {
         setToggleIsOpen(!isOpen)
-    }
+    }, [isOpen])
 
-    const handleClickLink = () => {
+    const handleClickLink = useCallback(() => {
         setToggleIsOpen(false)
-    }
+    })
 
     return (
         <header className="shadow">
@@ -37,8 +38,8 @@ const Navigation = ({
                     </div>
                     <div className={classnames('cell small-12 medium-12 large-11 hidden', isOpen && 'visible')}>
                         <ul className="menu">
-                            {_.map(navigation, (menuItem, menuIndex) => (
-                                <li className="menu-item" key={menuIndex} onClick={handleClickLink}>
+                            {navigation.map(menuItem => (
+                                <li className="menu-item" key={menuItem.title} onClick={handleClickLink}>
                                     <Link href={menuItem.value}>
                                         <a className={classnames('link font-bold h5', menuItem.value === pathname && 'active')} aria-label={menuItem.title}>
                                             {menuItem.title}
@@ -46,8 +47,8 @@ const Navigation = ({
                                     </Link>
                                     {menuItem.submenu && (
                                         <ul className="submenu flex-dir-column">
-                                            {_.map(menuItem.submenu, (submenuItem, submenuIndex) => (
-                                                <li className="submenu-item" key={submenuIndex}>
+                                            {menuItem.submenu.map(submenuItem => (
+                                                <li className="submenu-item" key={submenuItem.title}>
                                                     <Link href={submenuItem.value}>
                                                         <a className={classnames('link font-bold h5', submenuItem.value === pathname && 'active')} aria-label={submenuItem.title}>
                                                             {submenuItem.title}
