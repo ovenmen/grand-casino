@@ -7,7 +7,8 @@
     "dev": "cross-env NODE_ENV=development nodemon server/development.js",
     "start": "npm run build && cross-env NODE_ENV=production node server/production.js",
     "start:no-certificate": "npm run build && cross-env NODE_ENV=production MODE=no-certificate node server/no-certificate.js",
-    "build": "next build"
+    "build": "next build",
+    "export": "npm run build && npx next export"
   },
   "keywords": [],
   "author": "",
