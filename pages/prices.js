@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react'
 import dynamic from 'next/dynamic'
 
@@ -9,7 +10,7 @@ import Loader from '../components/loader'
 
 const TablePricesDynamic = dynamic(() => import('../components/table-prices'), {
     loading: () => <Loader />,
-    ssr: false
+    ssr: true
 })
 
 const PricesPage = (props, {...breadcrumbs}) => (
@@ -21,6 +22,6 @@ const PricesPage = (props, {...breadcrumbs}) => (
     </section>
 )
 
-PricesPage.getInitialProps = fetchDataPage('prices')
+export const getStaticProps = fetchDataPage('prices')
 
 export default PricesPage

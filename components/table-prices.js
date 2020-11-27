@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
 import {
     Accordion,
     AccordionItem,
@@ -10,12 +9,14 @@ import {
 } from 'react-accessible-accordion'
 
 const TablePrices = ({
-    prices
+    prices: {
+        items = []
+    }
 }) => (
     <section className="table-prices">
         <div className="grid-container fluid">
             <Accordion allowZeroExpanded preExpanded={[0]}>
-                {_.map(prices.items, (item, index) => (
+                {items.map((item, index) => (
                     <AccordionItem key={index}>
                         <AccordionItemHeading >
                             <AccordionItemButton>
@@ -32,19 +33,17 @@ const TablePrices = ({
                         <AccordionItemPanel>
                             <div className="grid-x grid-padding-x">
                                 <div className="cell padding-1 small-12 medium-12 large-12">
-                                    {_.map(item.description, (itemDescription, indexDescription) =>(
+                                    {item?.description?.map((itemDescription, indexDescription) =>(
                                         <p key={indexDescription}>{itemDescription}</p>
                                     ))}
-                                    {item.list && (
-                                        <div>
-                                            <p>{item.list.title}</p>
-                                            <ul>
-                                                {_.map(item.list.items, (itemList, indexList) => (
-                                                    <li key={indexList}>{itemList}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )}
+                                    <div>
+                                        <p>{item?.list?.title}</p>
+                                        <ul>
+                                            {item?.list?.items?.map((itemList, indexList) => (
+                                                <li key={indexList}>{itemList}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </AccordionItemPanel>

@@ -1,26 +1,18 @@
-const https = require('https')
-const fs = require('fs')
+const http = require('http')
 const Koa = require('koa')
 const next = require('next')
-const forceHTTPS = require('koa-force-https')
 const Router = require('@koa/router')
 const cors = require('@koa/cors')
 const multer = require('@koa/multer')
-const helmet = require('koa-helmet')
 const bodyParser = require('koa-bodyparser')
 const json = require('koa-json')
 const mongoose = require('mongoose')
 const config = require('config')
 
 const dev = process.env.NODE_ENV !== 'production'
-const port = 443
+const port = 80
 const app = next({ dev })
 const handle = app.getRequestHandler()
-const options = {
-    key: fs.readFileSync('keys/private_key.key', 'utf8'),
-    cert: fs.readFileSync('keys/grand-casino_com_ru.crt', 'utf8'),
-    ca: fs.readFileSync('keys/My_CA_Bundle.ca-bundle', 'utf8')
-}
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'public/images/uploads/')
@@ -43,10 +35,8 @@ const init = async () => {
             const router = new Router()
 
             // middleware
-            server.use(forceHTTPS())
             server.use(json())
             server.use(bodyParser())
-            server.use(helmet())
             server.use(cors())
             server.use(multer({ storage: storage }).single('photo'))
 
@@ -77,7 +67,7 @@ const init = async () => {
                 ctx.respond = false
             })
 
-            https.createServer(options, server.callback()).listen(port, () => {
+            http.createServer(server.callback()).listen(port, () => {
                 // eslint-disable-next-line no-console
                 console.log('Starting production server')
             })

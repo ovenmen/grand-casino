@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import omit from 'lodash/omit'
 
 const Input = (props) => (
     <div className="field">
         <label htmlFor={props.name}>{props.label}
-            <input {..._.omit(props, 'error')} className={props.error && 'error'} />
+            <input {...omit(props, 'error')} className={props.error && 'error'} />
         </label>
 
         <style jsx>{`

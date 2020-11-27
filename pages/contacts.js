@@ -23,6 +23,6 @@ const PricesPage = (props, {...breadcrumbs}) => (
     </section>
 )
 
-PricesPage.getInitialProps = fetchDataPage('contacts')
+export const getStaticProps = fetchDataPage('contacts')
 
 export default PricesPage

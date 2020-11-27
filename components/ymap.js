@@ -1,25 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
-import { YMaps, Map, ZoomControl, GeolocationControl, Placemark } from 'react-yandex-maps'
+import {
+    YMaps,
+    Map,
+    ZoomControl,
+    GeolocationControl,
+    Placemark
+} from 'react-yandex-maps'
 
 import Loader from '../components/loader'
 
 const YMap = ({
-    map,
+    map: {
+        header,
+        items = []
+    },
     logo
 }) => {
     const [instance, setInstance] = useState(null)
 
-    const handleInstanceRef = (instance) => {
+    const handleInstanceRef = useCallback(instance => {
         setInstance(instance)
-    }
+    }, [instance])
 
     return (
         <section className="map-container">
             <div className="grid-x">
                 <div className="cell">
-                    <h2 className="margin-bottom-2 text-center color-white">{map.header}</h2>
+                    <h2 className="margin-bottom-2 text-center color-white">{header}</h2>
                 </div>
             </div>
             <YMaps>
@@ -41,9 +49,9 @@ const YMap = ({
                 >
                     <ZoomControl options={{ size: 'small', zoomDuration: 200 }} />
                     <GeolocationControl options={{ float: 'left' }} />
-                    {_.map(map.items, (item, index) => (
+                    {items.map(item => (
                         <Placemark
-                            key={index}
+                            key={item.city}
                             defaultGeometry={[item.lat, item.long]}
                             defaultProperties={{ iconContent: item.cooperation && `<strong>${logo}</strong>`, hintContent: item.city }}
                             defaultOptions={{ preset: item.cooperation ? 'islands#nightStretchyIcon' : 'islands#nightCircleDotIcon' }}

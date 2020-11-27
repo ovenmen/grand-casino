@@ -1,5 +1,3 @@
-import 'isomorphic-unfetch'
-
 const sendFormData = async (url, data) => {
     try {
         const params = {

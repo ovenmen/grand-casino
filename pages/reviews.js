@@ -21,6 +21,6 @@ const ReviewsPage = (props, {...breadcrumbs}) => (
     </section>
 )
 
-ReviewsPage.getInitialProps = fetchDataPage('reviews')
+export const getStaticProps = fetchDataPage('reviews')
 
 export default ReviewsPage

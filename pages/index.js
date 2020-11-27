@@ -15,6 +15,6 @@ const IndexPage = (props) => (
     </section>
 )
 
-IndexPage.getInitialProps = fetchDataPage('index')
+export const getStaticProps = fetchDataPage('index')
 
 export default IndexPage

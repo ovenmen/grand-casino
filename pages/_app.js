@@ -11,7 +11,7 @@ const ScrollerDynamic = dynamic(() => import('../components/scroller'), {
     ssr: false
 })
 
-export default class extends App {
+export class GrandCasino extends App {
     render () {
         const { Component, pageProps } = this.props
 
@@ -36,7 +36,6 @@ export default class extends App {
                 </main>
                 <Footer {...pageProps} />
                 <ScrollerDynamic />
-
 
                 <style global jsx>{`
                     :root {
@@ -108,3 +107,5 @@ export default class extends App {
         )
     }
 }
+
+export default GrandCasino

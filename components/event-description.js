@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons'
@@ -8,26 +7,37 @@ import { faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons'
 import { STATIC_IMAGES_URL } from '../config'
 
 const EventDescription = ({
-    event
+    event: {
+        header,
+        description = [],
+        list: {
+            title,
+            items = []
+        },
+        linkPriceHref,
+        marker,
+        linkPriceTitle,
+        image
+    }
 }) => (
     <section>
         <div className="grid-x">
             <div className="cell small-12 medium-12 large-6">
                 <div className="info">
-                    <h2 className="margin-bottom-2 text-center subheader">{event.header}</h2>
-                    {_.map(event.description, (item, index) => (
+                    <h2 className="margin-bottom-2 text-center subheader">{header}</h2>
+                    {description.map((item, index) => (
                         <p key={index} className="h5 margin-bottom-2">{item}</p>
                     ))}
-                    <p className="h5 margin-bottom-2">{event.list.title}</p>
+                    <p className="h5 margin-bottom-2">{title}</p>
                     <ul className="margin-left-3">
-                        {_.map(event.list.items, (item, index) => (
+                        {items.map((item, index) => (
                             <li key={index} className="h5 margin-bottom-1">{item}</li>
                         ))}
                     </ul>
-                    <p className="h5 font-italic margin-top-3 marker">{event.marker}</p>
+                    <p className="h5 font-italic margin-top-3 marker">{marker}</p>
                     <p className="margin-top-3">
-                        <Link href={event.linkPriceHref}>
-                            <a className="link color-purple text-uppercase font-bold" aria-label={event.linkPriceTitle}>{event.linkPriceTitle}
+                        <Link href={linkPriceHref}>
+                            <a className="link color-purple text-uppercase font-bold" aria-label={linkPriceTitle}>{linkPriceTitle}
                                 <span className="icon margin-left-1"><FontAwesomeIcon fixedWidth icon={faFileInvoiceDollar} height="1em" /></span>
                             </a>
                         </Link>
@@ -35,7 +45,7 @@ const EventDescription = ({
                 </div>
             </div>
             <div className="cell small-12 medium-12 large-6">
-                <img src={`${STATIC_IMAGES_URL}/${event.image}`} className="image" alt={event.image} />
+                <img src={`${STATIC_IMAGES_URL}/${image}`} className="image" alt={image} loading="lazy" />
             </div>
         </div>
 

@@ -17,6 +17,6 @@ const EventsPage = (props, {...breadcrumbs}) => (
     </section>
 )
 
-EventsPage.getInitialProps = fetchDataPage('events')
+export const getStaticProps = fetchDataPage('events')
 
 export default EventsPage

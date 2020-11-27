@@ -16,7 +16,7 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'static/images/uploads/')
+        cb(null, 'public/images/uploads/')
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname) 
@@ -64,7 +64,7 @@ const init = async () => {
                 await next()
             })
 
-            router.get('*', async ctx => {
+            router.get('(.*)', async ctx => {
                 await handle(ctx.req, ctx.res)
                 ctx.respond = false
             })
