@@ -1,64 +1,14 @@
 {
-  "../../components/photo-carousel": [
-    {
-      "id": "8OQS",
-      "file": "static/chunks/6.5e7c7eb9ab977326a397.js"
-    },
-    {
-      "id": "Aiso",
-      "file": "static/chunks/6.5e7c7eb9ab977326a397.js"
-    },
-    {
-      "id": "Bnag",
-      "file": "static/chunks/6.5e7c7eb9ab977326a397.js"
-    },
-    {
-      "id": "EbDI",
-      "file": "static/chunks/6.5e7c7eb9ab977326a397.js"
-    },
-    {
-      "id": "Ijbi",
-      "file": "static/chunks/6.5e7c7eb9ab977326a397.js"
-    },
-    {
-      "id": "RIqP",
-      "file": "static/chunks/6.5e7c7eb9ab977326a397.js"
-    },
-    {
-      "id": "UWYU",
-      "file": "static/chunks/6.5e7c7eb9ab977326a397.js"
-    },
-    {
-      "id": "dEHY",
-      "file": "static/chunks/6.5e7c7eb9ab977326a397.js"
-    },
-    {
-      "id": "dQHF",
-      "file": "static/chunks/6.5e7c7eb9ab977326a397.js"
-    },
-    {
-      "id": "iJGD",
-      "file": "static/chunks/6.5e7c7eb9ab977326a397.js"
-    },
-    {
-      "id": "o8uI",
-      "file": "static/chunks/6.5e7c7eb9ab977326a397.js"
-    },
-    {
-      "id": "pVnL",
-      "file": "static/chunks/6.5e7c7eb9ab977326a397.js"
-    }
-  ],
   "../components/scroller": [
     {
-      "id": "nQb/",
-      "file": "static/chunks/24.1223bc20de43639cd106.js"
+      "id": "./components/scroller.js",
+      "file": "static/chunks/0.js"
     }
   ],
-  "../components/table-prices": [
+  "./dev/noop": [
     {
-      "id": "iTKA",
-      "file": "static/chunks/25.cb2f03311d084f79e28e.js"
+      "id": "./node_modules/next/dist/client/dev/noop.js",
+      "file": "static/chunks/1.js"
     }
   ]
 }

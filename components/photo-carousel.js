@@ -20,17 +20,14 @@ const PhotoCarousel = ({
         <section className="photo-carousel">
             <div className="grid-x align-center">
                 {items.map((photo, index) => (
-                    <div className="cell small-12 medium-3 large-2 thumbnail" key={index}>
+                    <div className="cell small-12 medium-3 large-2" key={index}>
                         <figure>
-                            <Image
+                            <img
+                                className="thumbnail"
                                 src={photo}
                                 alt={photo}
                                 onClick={() => openLightboxOnSlide(index + 1)}
                                 loading="lazy"
-                                objectFit="cover"
-                                layout="responsive"
-                                width="auto"
-                                height={235}
                             />
                         </figure>
                     </div>
@@ -55,6 +52,7 @@ const PhotoCarousel = ({
                     border: 1px solid;
                     height: 16rem;
                     width: 16rem;
+                    object-fit: cover;
                 }
                 .thumbnail:hover {
                     cursor: pointer;
