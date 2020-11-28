@@ -1,1 +1,0 @@
-self.__SSG_MANIFEST=new Set(["\u002Fevents","\u002Fevents\u002Fcasino-club","\u002Fevents\u002Fgold-casino","\u002Fevents\u002Fcasino-royal","\u002Fevents\u002Fgrand-casino","\u002F","\u002Fprices","\u002Ffranchise","\u002Fcontacts","\u002Freviews"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
