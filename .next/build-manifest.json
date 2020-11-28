@@ -1,28 +1,122 @@
 {
   "polyfillFiles": [
-    "static/chunks/polyfills.js"
+    "static/chunks/polyfills-05d6b25b3c33d28a7267.js"
   ],
-  "devFiles": [
-    "static/chunks/react-refresh.js"
-  ],
-  "ampDevFiles": [
-    "static/chunks/webpack.js",
-    "static/chunks/amp.js"
-  ],
+  "devFiles": [],
+  "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/development/_buildManifest.js",
-    "static/development/_ssgManifest.js"
+    "static/j8MyCnt-pxUf0PJEPX5bM/_buildManifest.js",
+    "static/j8MyCnt-pxUf0PJEPX5bM/_ssgManifest.js"
   ],
   "pages": {
+    "/": [
+      "static/chunks/main-312ce93fc3fbfbd5bcee.js",
+      "static/chunks/webpack-2e1682a30f133cffaa2e.js",
+      "static/chunks/framework.837f263e003a477231fb.js",
+      "static/chunks/commons.dff64a0be768b14cb2be.js",
+      "static/chunks/pages/index-a666d2d071cbde0ad05e.js"
+    ],
     "/_app": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/_app.js"
+      "static/chunks/main-312ce93fc3fbfbd5bcee.js",
+      "static/chunks/webpack-2e1682a30f133cffaa2e.js",
+      "static/chunks/framework.837f263e003a477231fb.js",
+      "static/chunks/cb1608f2.01b8ff3285844d3f1bc7.js",
+      "static/chunks/a9a7754c.93623c21c82a745fe43f.js",
+      "static/chunks/commons.dff64a0be768b14cb2be.js",
+      "static/chunks/2b91ab3d53b104b80279f7f91c68ba5f5d42c41c.3634f4764184ea7e0bdc.js",
+      "static/chunks/pages/_app-15c550682d5262e4b709.js"
     ],
     "/_error": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/_error.js"
+      "static/chunks/main-312ce93fc3fbfbd5bcee.js",
+      "static/chunks/webpack-2e1682a30f133cffaa2e.js",
+      "static/chunks/framework.837f263e003a477231fb.js",
+      "static/chunks/commons.dff64a0be768b14cb2be.js",
+      "static/chunks/pages/_error-204f8643ba02e6881cbb.js"
+    ],
+    "/contacts": [
+      "static/chunks/main-312ce93fc3fbfbd5bcee.js",
+      "static/chunks/webpack-2e1682a30f133cffaa2e.js",
+      "static/chunks/framework.837f263e003a477231fb.js",
+      "static/chunks/a9a7754c.93623c21c82a745fe43f.js",
+      "static/chunks/commons.dff64a0be768b14cb2be.js",
+      "static/chunks/2b91ab3d53b104b80279f7f91c68ba5f5d42c41c.3634f4764184ea7e0bdc.js",
+      "static/chunks/e50bc372bdc3f5190936bab816292c60c9583de4.5d1483cd79d12605b7ed.js",
+      "static/chunks/398118b2e93e269bec752c0299a18f94917c68b0.a7860a1152d6de9f893e.js",
+      "static/chunks/pages/contacts-b1bf5f3fbd1cb264d402.js"
+    ],
+    "/events": [
+      "static/chunks/main-312ce93fc3fbfbd5bcee.js",
+      "static/chunks/webpack-2e1682a30f133cffaa2e.js",
+      "static/chunks/framework.837f263e003a477231fb.js",
+      "static/chunks/cb1608f2.01b8ff3285844d3f1bc7.js",
+      "static/chunks/commons.dff64a0be768b14cb2be.js",
+      "static/chunks/2b91ab3d53b104b80279f7f91c68ba5f5d42c41c.3634f4764184ea7e0bdc.js",
+      "static/chunks/pages/events-c7e4c6aeb56e338e6a5a.js"
+    ],
+    "/events/casino-club": [
+      "static/chunks/main-312ce93fc3fbfbd5bcee.js",
+      "static/chunks/webpack-2e1682a30f133cffaa2e.js",
+      "static/chunks/framework.837f263e003a477231fb.js",
+      "static/chunks/cb1608f2.01b8ff3285844d3f1bc7.js",
+      "static/chunks/commons.dff64a0be768b14cb2be.js",
+      "static/chunks/2b91ab3d53b104b80279f7f91c68ba5f5d42c41c.3634f4764184ea7e0bdc.js",
+      "static/chunks/3298edb7cdf7c10edfbe06ab8ce55d6a9bc797c3.1aad65f38e34e498821a.js",
+      "static/chunks/pages/events/casino-club-004b997e9d7a4f9b41f4.js"
+    ],
+    "/events/casino-royal": [
+      "static/chunks/main-312ce93fc3fbfbd5bcee.js",
+      "static/chunks/webpack-2e1682a30f133cffaa2e.js",
+      "static/chunks/framework.837f263e003a477231fb.js",
+      "static/chunks/cb1608f2.01b8ff3285844d3f1bc7.js",
+      "static/chunks/commons.dff64a0be768b14cb2be.js",
+      "static/chunks/2b91ab3d53b104b80279f7f91c68ba5f5d42c41c.3634f4764184ea7e0bdc.js",
+      "static/chunks/3298edb7cdf7c10edfbe06ab8ce55d6a9bc797c3.1aad65f38e34e498821a.js",
+      "static/chunks/pages/events/casino-royal-1fa7b77f03a17ab0562c.js"
+    ],
+    "/events/gold-casino": [
+      "static/chunks/main-312ce93fc3fbfbd5bcee.js",
+      "static/chunks/webpack-2e1682a30f133cffaa2e.js",
+      "static/chunks/framework.837f263e003a477231fb.js",
+      "static/chunks/cb1608f2.01b8ff3285844d3f1bc7.js",
+      "static/chunks/commons.dff64a0be768b14cb2be.js",
+      "static/chunks/2b91ab3d53b104b80279f7f91c68ba5f5d42c41c.3634f4764184ea7e0bdc.js",
+      "static/chunks/3298edb7cdf7c10edfbe06ab8ce55d6a9bc797c3.1aad65f38e34e498821a.js",
+      "static/chunks/pages/events/gold-casino-48c62a6709a30b01f9e6.js"
+    ],
+    "/events/grand-casino": [
+      "static/chunks/main-312ce93fc3fbfbd5bcee.js",
+      "static/chunks/webpack-2e1682a30f133cffaa2e.js",
+      "static/chunks/framework.837f263e003a477231fb.js",
+      "static/chunks/cb1608f2.01b8ff3285844d3f1bc7.js",
+      "static/chunks/commons.dff64a0be768b14cb2be.js",
+      "static/chunks/2b91ab3d53b104b80279f7f91c68ba5f5d42c41c.3634f4764184ea7e0bdc.js",
+      "static/chunks/3298edb7cdf7c10edfbe06ab8ce55d6a9bc797c3.1aad65f38e34e498821a.js",
+      "static/chunks/pages/events/grand-casino-e3f787308e698e264619.js"
+    ],
+    "/franchise": [
+      "static/chunks/main-312ce93fc3fbfbd5bcee.js",
+      "static/chunks/webpack-2e1682a30f133cffaa2e.js",
+      "static/chunks/framework.837f263e003a477231fb.js",
+      "static/chunks/commons.dff64a0be768b14cb2be.js",
+      "static/chunks/398118b2e93e269bec752c0299a18f94917c68b0.a7860a1152d6de9f893e.js",
+      "static/chunks/pages/franchise-bafe7b6517ac2f66d0fc.js"
+    ],
+    "/prices": [
+      "static/chunks/main-312ce93fc3fbfbd5bcee.js",
+      "static/chunks/webpack-2e1682a30f133cffaa2e.js",
+      "static/chunks/framework.837f263e003a477231fb.js",
+      "static/chunks/commons.dff64a0be768b14cb2be.js",
+      "static/chunks/pages/prices-99d38d562cc5e1a91c09.js"
+    ],
+    "/reviews": [
+      "static/chunks/main-312ce93fc3fbfbd5bcee.js",
+      "static/chunks/webpack-2e1682a30f133cffaa2e.js",
+      "static/chunks/framework.837f263e003a477231fb.js",
+      "static/chunks/cb1608f2.01b8ff3285844d3f1bc7.js",
+      "static/chunks/commons.dff64a0be768b14cb2be.js",
+      "static/chunks/2b91ab3d53b104b80279f7f91c68ba5f5d42c41c.3634f4764184ea7e0bdc.js",
+      "static/chunks/e50bc372bdc3f5190936bab816292c60c9583de4.5d1483cd79d12605b7ed.js",
+      "static/chunks/pages/reviews-e49328d36cc94738380d.js"
     ]
   },
   "ampFirstPages": []

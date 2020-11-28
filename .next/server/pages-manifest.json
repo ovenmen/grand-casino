@@ -1,5 +1,15 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
+  "/contacts": "pages/contacts.js",
+  "/events": "pages/events.js",
+  "/events/casino-club": "pages/events/casino-club.js",
+  "/events/casino-royal": "pages/events/casino-royal.js",
+  "/events/gold-casino": "pages/events/gold-casino.js",
+  "/events/grand-casino": "pages/events/grand-casino.js",
+  "/franchise": "pages/franchise.js",
+  "/": "pages/index.js",
+  "/prices": "pages/prices.js",
+  "/reviews": "pages/reviews.js",
   "/_document": "pages/_document.js"
 }
