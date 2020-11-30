@@ -29,7 +29,7 @@
     "koa-force-https": "2.0.1",
     "koa-helmet": "6.0.0",
     "koa-json": "2.0.2",
-    "mongoose": "5.10.17",
+    "mongoose": "5.10.18",
     "multer": "1.4.2",
     "next": "10.0.3",
     "nodemailer": "6.4.16",
