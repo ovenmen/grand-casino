@@ -1,9 +1,0 @@
-{
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/events": "pages/events.js",
-  "/events/casino-club": "pages/events/casino-club.js",
-  "/events/gold-casino": "pages/events/gold-casino.js",
-  "/events/grand-casino": "pages/events/grand-casino.js"
-}
