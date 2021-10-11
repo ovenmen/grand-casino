@@ -2,14 +2,14 @@ import React from 'react'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 
-import Navigation from '../components/navigation'
-import Footer from '../components/footer'
-
 const ScrollerDynamic = dynamic(() => import('../components/scroller'), {
     ssr: false
 })
 
-const GrandCasino = ({ Component, pageProps }) => (
+const GrandCasino = ({
+    Component,
+    pageProps
+}) => (
     <article>
         <Head>
             <title>{pageProps.title || ''}</title>
@@ -24,10 +24,9 @@ const GrandCasino = ({ Component, pageProps }) => (
             <link rel="apple-touch-icon" type="image/ico" href="/images/favicon.ico"></link>
             <link rel="stylesheet" href="/css/foundation.min.css" />
         </Head>
-        <Navigation {...pageProps} />
-        <Component {...pageProps} />
-        <Footer {...pageProps} />
-        <ScrollerDynamic />
+        <main>
+            <Component {...pageProps} />
+        </main>
 
         <style global jsx>{`
             :root {

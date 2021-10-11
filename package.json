@@ -28,7 +28,7 @@
     "@types/fslightbox-react": "1.4.2",
     "@types/mongodb": "4.0.7",
     "@types/next": "9.0.0",
-    "@types/node": "16.9.6",
+    "@types/node": "16.10.1",
     "@types/nodemailer": "6.4.4",
     "@types/react": "17.0.24",
     "eslint": "7.32.0",

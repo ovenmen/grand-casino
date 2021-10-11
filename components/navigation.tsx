@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import Link from 'next/link'
@@ -7,20 +7,37 @@ import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import Logo from '../components/logo'
 
-const Navigation = ({
+interface NavigationProps {
+    navigation?: [
+        {
+            title: string,
+            value: string,
+            submenu?: [
+                {
+                    title: string,
+                    value: string,
+                }
+            ]
+        },
+    ],
+    logo?: string,
+    pathname?: string
+}
+
+const Navigation: FC<NavigationProps> = ({
     navigation,
     logo,
     pathname
 }) => {
     const [isOpen, setToggleIsOpen] = useState(false)
 
-    const handleClickToggleButton = () => {
+    const handleClickToggleButton = useCallback(() => {
         setToggleIsOpen(!isOpen)
-    }
+    }, [setToggleIsOpen, isOpen])
 
-    const handleClickLink = () => {
+    const handleClickLink = useCallback(() => {
         setToggleIsOpen(false)
-    }
+    }, [setToggleIsOpen])
 
     return (
         <header className="shadow">
@@ -31,35 +48,41 @@ const Navigation = ({
                     </span>
                 </div>
                 <div className="grid-x grid-padding-x align-middle">
-                    <div className="cell small-12 medium-12 large-1">
-                        <div className="brand">
-                            <Logo logo={logo} />
+                    {logo && (
+                        <div className="cell small-12 medium-12 large-1">
+                            <div className="brand">
+                                <Logo logo={logo} />
+                            </div>
                         </div>
-                    </div>
+                    )}
                     <div className={classnames('cell small-12 medium-12 large-11 hidden', isOpen && 'visible')}>
                         <ul className="menu">
-                            {navigation.map((menuItem, menuIndex) => (
-                                <li className="menu-item" key={menuIndex} onClick={handleClickLink}>
-                                    <Link href={menuItem.value}>
-                                        <a className={classnames('link font-bold h5', menuItem.value === pathname && 'active')} aria-label={menuItem.title}>
-                                            {menuItem.title}
-                                        </a>
-                                    </Link>
-                                    {menuItem.submenu && (
-                                        <ul className="submenu flex-dir-column">
-                                            {menuItem.submenu.map((submenuItem, submenuIndex) => (
-                                                <li className="submenu-item" key={submenuIndex}>
-                                                    <Link href={submenuItem.value}>
-                                                        <a className={classnames('link font-bold h5', submenuItem.value === pathname && 'active')} aria-label={submenuItem.title}>
-                                                            {submenuItem.title}
-                                                        </a>
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    )}
-                                </li>
-                            ))}
+                            {navigation && 
+                                (navigation.map(menuItem => (
+                                    <li className="menu-item" key={menuItem.value} onClick={handleClickLink}>
+                                        <Link href={menuItem.value}>
+                                            <a className={classnames('link font-bold h5', menuItem.value === pathname && 'active')} aria-label={menuItem.title}>
+                                                {menuItem.title}
+                                            </a>
+                                        </Link>
+                                        {menuItem &&
+                                            (menuItem.submenu && (
+                                                <ul className="submenu flex-dir-column">
+                                                    {menuItem.submenu.map(submenuItem => (
+                                                        <li className="submenu-item" key={submenuItem.value}>
+                                                            <Link href={submenuItem.value}>
+                                                                <a className={classnames('link font-bold h5', submenuItem.value === pathname && 'active')} aria-label={submenuItem.title}>
+                                                                    {submenuItem.title}
+                                                                </a>
+                                                            </Link>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            ))
+                                        }
+                                    </li>
+                                )))
+                            }
                         </ul>
                     </div>
                 </div>

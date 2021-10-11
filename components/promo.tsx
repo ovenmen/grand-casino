@@ -1,16 +1,26 @@
-import React from  'react'
-import PropTypes from 'prop-types'
+import React, { FC } from  'react'
 
-const Promo = ({
+interface PromoProps {
+    promo?: {
+        header: string,
+        description: string
+    }
+}
+
+const Promo: FC<PromoProps> = ({
     promo
 }) => (
-    <section className="promo">
+    <div className="promo">
         <div className="grid-container fluid">
             <div className="grid-x">
                 <div className="cell large-8 large-offset-4">
                     <div className="headers text-right color-white font-bold">
-                        <h1><strong>{promo.header}</strong></h1>
-                        <h2><strong>{promo.description}</strong></h2>
+                        {promo?.header && (
+                            <h1><strong>{promo.header}</strong></h1>
+                        )}
+                        {promo?.description && (
+                            <h2><strong>{promo.description}</strong></h2>
+                        )}
                     </div>
                 </div>
             </div>
@@ -32,11 +42,7 @@ const Promo = ({
                 text-shadow: 0px 0px 10px var(--color-black);
             }
         `}</style>
-    </section>
+    </div>
 )
-
-Promo.propTypes = {
-    promo: PropTypes.object,
-}
 
 export default Promo

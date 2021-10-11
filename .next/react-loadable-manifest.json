@@ -4,5 +4,17 @@
     "files": [
       "static/chunks/node_modules_next_dist_client_dev_noop_js.js"
     ]
+  },
+  "_app.tsx -> ../components/scroller": {
+    "id": "./components/scroller.tsx",
+    "files": [
+      "static/chunks/components_scroller_tsx-_88491.js"
+    ]
+  },
+  "index.tsx -> ../components/scroller": {
+    "id": "./components/scroller.tsx",
+    "files": [
+      "static/chunks/components_scroller_tsx-_88490.js"
+    ]
   }
 }

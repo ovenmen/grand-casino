@@ -1,50 +1,77 @@
-import React from 'react'
+import React, { FC } from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
+import Image from 'next/image'
 
 import Button from './button'
+import EventDescription from './event-description'
 
-const Activity = ({
+interface ActivityProps {
+    activity?: {
+        header: string,
+        description: string[],
+        buttonTitle: string,
+        buttonHref: string,
+        items: [
+            {
+                header: string,
+                buttonTitle: string
+                buttonHref: string
+                image: string
+            }
+        ]
+    }
+}
+
+const Activity: FC<ActivityProps> = ({
     activity
 }) => (
     <section className="activity">
         <div className="grid-x">
             <div className="cell small-12 medium-12 large-6 info">
                 <div className="grid-x grid-padding-x flex-dir-column">
-                    <div className="cell">
-                        <h2 className="text-uppercase text-right color-white margin-bottom-3">
-                            <strong>{activity.header}</strong>
-                        </h2>
-                    </div>
-                    <div className="cell">
-                        {activity.description.map((item, index) => (
-                            <p className="text-right color-white margin-bottom-3" key={index}>{item}</p>
-                        ))}
-                    </div>
-                    <div className="cell">
-                        <div className="button-activity text-right margin-bottom-1">
-                            <Button title={activity.buttonTitle} href={activity.buttonHref} />
+                    {activity?.header && (
+                        <div className="cell">
+                            <h2 className="text-uppercase text-right color-white margin-bottom-3">
+                                <strong>{activity.header}</strong>
+                            </h2>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div className="cell small-12 medium-12 large-6">
-                <div className="grid-x">
-                    {activity.items.map((event, index) => (
-                        <div className="cell small-12 medium-6 large-6" key={index}>
-                            <div className="activity-event">
-                                <img className="activity-image" src={`/images/${event.image}`} width="480" height="380" alt={event.image} />
-                                <Link href={event.buttonHref}>
-                                    <a><p className="color-white h4 font-bold text-uppercase event-header">{event.header}</p></a>
-                                </Link>
-                                <div className="activity-event-button">
-                                    <Button title={event.buttonTitle} href={event.buttonHref} invert />
-                                </div>
+                    )}
+                    {activity?.description && (
+                        <div className="cell">
+                            {activity.description.map(item => (
+                                <p className="text-right color-white margin-bottom-3" key={item}>{item}</p>
+                            ))}
+                        </div>
+                    )}
+                    {activity?.buttonTitle && (
+                        <div className="cell">
+                            <div className="button-activity text-right margin-bottom-1">
+                                <Button title={activity.buttonTitle} href={activity.buttonHref} />
                             </div>
                         </div>
-                    ))}
+                    )}
                 </div>
             </div>
+            {activity?.items && (
+                <div className="cell small-12 medium-12 large-6">
+                    <div className="grid-x">
+                        {activity.items.map((event, index) => (
+                            <div className="cell small-12 medium-6 large-6" key={index}>
+                                <div className="activity-event">
+                                    <Image className="activity-image" src={`/images/${event.image}`} width="480" height="380" alt={event.image} />
+                                    <Link href={event.buttonHref}>
+                                        <a><p className="color-white h4 font-bold text-uppercase event-header">{event.header}</p></a>
+                                    </Link>
+                                    <div className="activity-event-button">
+                                        <Button title={event.buttonTitle} href={event.buttonHref} invert />
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
 
         <style jsx>{`

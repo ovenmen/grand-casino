@@ -1,18 +1,30 @@
 import React, { FC } from 'react'
 import { GetServerSideProps } from 'next'
+import dynamic from 'next/dynamic'
+
 import clientPromise from '../lib/mongodb'
 import Promo from '../components/promo'
-import Action from '../components/actions'
+import Action from '../components/action'
 import Activity from '../components/activity'
 import Reviews from '../components/reviews'
+import Navigation from '../components/navigation'
+import Footer from '../components/footer'
+
+
+const ScrollerDynamic = dynamic(() => import('../components/scroller'), {
+    ssr: false
+})
 
 const Home: FC = (props) => (
-    <main>
+    <>
+        <Navigation {...props} />
         <Promo {...props} />
         <Action {...props} />
         <Activity {...props} />
         <Reviews {...props} />
-    </main>
+        <Footer {...props} />
+        <ScrollerDynamic />
+    </>
 )
 
 export const getServerSideProps: GetServerSideProps = async () => {
