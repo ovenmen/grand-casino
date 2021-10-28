@@ -16,18 +16,20 @@ interface IFooterProps {
         phone: string,
         copirated: string
     },
-    navigation: [
-        {
-            title: string,
-            value: string,
-            submenu?: [
-                {
-                    title: string,
-                    value: string
-                }
-            ]
-        }
-    ] 
+    navigation: {
+         items: [
+            {
+                title: string,
+                value: string,
+                submenu?: [
+                    {
+                        title: string,
+                        value: string,
+                    }
+                ]
+            }
+        ]
+    }
 }
 
 const Footer: FC<IFooterProps> = ({
@@ -35,7 +37,7 @@ const Footer: FC<IFooterProps> = ({
     footer,
     navigation
 }) => {
-    const subNavigation = navigation.find(item => item.submenu)
+    const subNavigation = navigation.items.find(item => item.submenu)
     const submenu = subNavigation && subNavigation.submenu
 
     return (
@@ -53,7 +55,7 @@ const Footer: FC<IFooterProps> = ({
                         )}
                         <div className="cell small-12 medium-6 large-3">
                             <ul className="color-white list">
-                                {navigation && navigation.map((item, index) => (
+                                {navigation && navigation.items.map((item, index) => (
                                     <li key={index} className="list-item">
                                         <Link href={item.value} passHref>
                                             <a className="link color-white" aria-label={item.title}>{item.title}

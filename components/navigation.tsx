@@ -7,7 +7,7 @@ import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import Logo from '../components/logo'
 
 interface INavigationProps {
-    navigation:{
+    navigation: {
         items: [
             {
                 title: string,

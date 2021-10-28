@@ -1,21 +1,35 @@
-import React, { FC } from 'react'
+import React, { BaseSyntheticEvent, FC } from 'react'
 
 interface ITextAreaProps {
     name: string,
     label: string,
-    error: string,
-    placeholder: string
+    error: boolean,
+    placeholder: string,
+    rows?: number,
+    cols?: number,
+    onChange: (event: BaseSyntheticEvent) => void
 }
 
 const Textarea: FC<ITextAreaProps> = ({
     name,
     label,
     error,
-    placeholder
-}, ...props) => (
+    placeholder,
+    cols,
+    rows,
+    onChange
+}) => (
     <div className="field">
         <label htmlFor={name}>{label}
-            <textarea {...props} error={error} placeholder={placeholder} className={error ? 'error' : ''}></textarea>
+            <textarea
+                cols={cols}
+                rows={rows}
+                name={name}
+                placeholder={placeholder}
+                className={error ? 'error' : ''}
+                onChange={onChange}
+            >
+            </textarea>
         </label>
 
         <style jsx>{`

@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import Image from 'next/image'
 
 interface ReviewsProps {
-    reviews?: {
+    reviews: {
         header: string,
         items: [
             {
@@ -32,8 +32,16 @@ const Reviews: FC<ReviewsProps> = ({
                 {reviews.items.map(item => (
                     <div className="cell small-12 medium-6 large-6 review-border" key={item.image + Math.random()}>
                         <div className="review text-center">
-                            <figure>
-                                <Image className="reviews-avatar margin-bottom-1" src={`/images/${item.image}`} alt={item.image} width="150" height="150" />
+                            <figure className="reviews-avatar margin-bottom-1">
+                                <Image
+                                    src={`/images/${item.image}`}
+                                    alt={item.image}
+                                    width="150"
+                                    height="150"
+                                    loading="lazy"
+                                    objectFit="cover"
+                                    layout="intrinsic"
+                                />
                                 <figcaption>
                                     <p className="h5 color-white font-bold">{item.fullname}</p>
                                     <p className="h5 color-white font-bold">{item.city}</p>

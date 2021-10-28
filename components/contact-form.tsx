@@ -61,14 +61,14 @@ const ContactForm: FC<IContactFormProps> = ({
     const handleSubmit = (event: BaseSyntheticEvent) => {
         event.preventDefault()
         const { name, phone, city, date, message } = formValues
-        const isFormValid = (name !== '') && (phone !== '') && (city !== '') && (date !== '') && (message !== '')
+        const isFormValid = name && phone && city && date && message
 
         setErrors({
-            name: name === '',
-            phone: phone === '',
-            city: city === '',
-            date: date === '',
-            message: message === ''
+            name: !name,
+            phone: !phone,
+            city: !city,
+            date: !date,
+            message: !message
         })
 
         if (isFormValid) {
@@ -160,7 +160,6 @@ const ContactForm: FC<IContactFormProps> = ({
                                     <Textarea
                                         name={messageInput.name}
                                         label={messageInput.name}
-                                        type={messageInput.type}
                                         placeholder={messageInput.placeholder}
                                         onChange={handleChange}
                                         rows={8}

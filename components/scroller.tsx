@@ -22,7 +22,9 @@ const Scroller: FC = () => {
     return (
         <div className={classnames('scroller', showScroller && 'show')}>
             <div className="scroller-link" onClick={handleClick}>
-                <span className="icon"><FontAwesomeIcon fixedWidth icon={faCaretUp} height="1em" /></span>
+                <span className="icon">
+                    <FontAwesomeIcon fixedWidth icon={faCaretUp} height="1em" />
+                </span>
             </div>
 
             <style jsx>{`

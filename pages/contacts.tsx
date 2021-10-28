@@ -3,15 +3,18 @@ import { GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic'
 
 import clientPromise from '../lib/mongodb'
-import Promo from '../components/promo'
-import Action from '../components/action'
-import Activity from '../components/activity'
-import Reviews from '../components/reviews'
 import Navigation from '../components/navigation'
 import Footer from '../components/footer'
+import Breadcrumbs from '../components/breadcrumbs'
+import HeaderPage from '../components/header-page'
+import YMap from '../components/ymaps'
+import ContactInformation from '../components/contact-information'
+import ContactForm from '../components/contact-form'
 
-interface IHomeProps {
+interface IContactsProps {
     resolvedUrl: string,
+    header: string,
+    headerImage: string,
     navigation: {
         items: [
             {
@@ -27,39 +30,59 @@ interface IHomeProps {
         ]
     },
     logo: string,
-    promo: {
+    breadcrumbs: [
+        {
+            active: boolean,
+            title: string,
+            value: string
+        }
+    ],
+    map: {
         header: string,
-        description: string
-    },
-    action: {
-        header: string,
-        description: string,
-        buttonTitle: string
-        buttonHref: string
-    },
-    activity: {
-        header: string,
-        description: string[],
-        buttonTitle: string,
-        buttonHref: string,
         items: [
             {
-                header: string,
-                buttonTitle: string,
-                buttonHref: string
-                image: string
+                long: number,
+                lat: number,
+                cooperation: string,
+                city: string
             }
         ]
     },
-    reviews: {
+    contacts: {
         header: string,
-        items: [
+        address: string,
+        operationMode: string,
+        email: string,
+        phone: string
+    },
+    contactsForm: {
+        header:string,
+        submitButtonTitle: string,
+        fields: [
             {
-                image: string,
-                fullname: string,
-                city: string,
-                date: string,
-                description: string
+                name: string,
+                type: string,
+                placeholder: string
+            },
+            {
+                name: string,
+                type: string,
+                placeholder: string
+            },
+            {
+                name: string,
+                type: string,
+                placeholder: string
+            },
+            {
+                name: string,
+                type: string,
+                placeholder: string
+            },
+            {
+                name: string,
+                type: string,
+                placeholder: string
             }
         ]
     },
@@ -77,15 +100,17 @@ const ScrollerDynamic = dynamic(() => import('../components/scroller'), {
     ssr: false
 })
 
-const Home: FC<IHomeProps> = ({
-    resolvedUrl = '',
+const Contacts: FC<IContactsProps> = ({
+    resolvedUrl,
+    header,
+    headerImage,
     logo,
     navigation,
-    promo,
-    action,
-    activity,
-    reviews,
-    footer
+    footer,
+    breadcrumbs,
+    map,
+    contacts,
+    contactsForm
 }) => (
     <>
         {navigation && (
@@ -95,24 +120,37 @@ const Home: FC<IHomeProps> = ({
                 resolvedUrl={resolvedUrl}
             />
         )}
-        {promo && (
-            <Promo
-                promo={promo}
+        {breadcrumbs && (
+            <Breadcrumbs
+                breadcrumbs={breadcrumbs}
             />
         )}
-        {action && (
-            <Action
-                action={action}
+        {header && (
+            <HeaderPage
+                header={header}
+                headerImage={headerImage}
             />
         )}
-        {activity && (
-            <Activity
-                activity={activity}
-            />
-        )}
-        {reviews && (
-            <Reviews
-                reviews={reviews}
+        <div className="grid-x">
+            <div className="cell small-12 medium-6 large-6">
+                {contactsForm && (
+                    <ContactForm
+                        contactsForm={contactsForm}
+                    />
+                )}
+            </div>
+            <div className="cell small-12 medium-6 large-6">
+                {contacts && (
+                    <ContactInformation
+                        contacts={contacts}
+                    />
+                )}
+            </div>
+        </div>
+        {map && (
+            <YMap
+                map={map}
+                logo={logo}
             />
         )}
         {footer && (
@@ -141,13 +179,9 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
 
     try {
         data = {
-            page: await db.collection('pages').findOne({ pageId: 'index' }),
+            page: await db.collection('pages').findOne({ pageId: 'contacts' }),
             logo: await db.collection('components').findOne({ componentId: 'logo' }),
             navigation: await db.collection('components').findOne({ componentId: 'navigation' }),
-            reviews: await db.collection('reviews').aggregate([
-                { $match: { show: true }},
-                { $sample: { size: 2 }}
-            ]).toArray(),
             contacts: await db.collection('components').findOne({ componentId: 'contacts' }),
             footer: await db.collection('components').findOne({ componentId: 'footer' })
         }
@@ -159,7 +193,6 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
         page: JSON.parse(JSON.stringify(data.page)),
         logo: JSON.parse(JSON.stringify(data.logo)),
         navigation: JSON.parse(JSON.stringify(data.navigation)),
-        reviews: JSON.parse(JSON.stringify(data.reviews)),
         contacts: JSON.parse(JSON.stringify(data.contacts)),
         footer: JSON.parse(JSON.stringify(data.footer))
     }
@@ -173,14 +206,11 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
             logo: data.logo.title,
             header: data.page.header,
             headerImage: data.page.headerImage,
-            promo: data.page.promo,
-            action: data.page.action,
-            activity: data.page.activity,
+            breadcrumbs: data.page.breadcrumbs,
             navigation: data.navigation,
-            reviews: {
-                header: data.page.reviews.header,
-                items: data.reviews
-            },
+            contacts: { ...data.contacts, header: data.page.contacts.header },
+            contactsForm: data.page.contactsForm,
+            map: data.page.map,
             footer: {
                 description: data.footer.description,
                 copirated: data.footer.copirated,
@@ -194,4 +224,4 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
     }
 }
 
-export default Home
+export default Contacts

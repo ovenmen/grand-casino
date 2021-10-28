@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import Link from 'next/link'
 
 interface IBreadcrumbsProps {
-    breadcrumbs?: [
+    breadcrumbs: [
         {
             active: boolean,
             title: string,
@@ -12,7 +12,7 @@ interface IBreadcrumbsProps {
 }
 
 const Breadcrumbs: FC<IBreadcrumbsProps> = ({
-    breadcrumbs = []
+    breadcrumbs
 }) => (
     <section className="breadcrumbs">
         <div className="grid-container fluid">

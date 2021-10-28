@@ -2,10 +2,12 @@ import React, { FC } from 'react'
 import Head from 'next/head'
 import type { AppProps } from 'next/app'
 
-const GrandCasino: FC = ({
+import '../public/css/foundation.min.css'
+
+const GrandCasino: FC<AppProps> = ({
     Component,
     pageProps
-}: AppProps) => (
+}) => (
     <article>
         <Head>
             <title>{pageProps.title || ''}</title>
@@ -18,7 +20,6 @@ const GrandCasino: FC = ({
             <link href="https://fonts.googleapis.com/css?family=Pattaya&display=swap" rel="stylesheet" />
             <link rel="icon" type="image/ico" sizes="16x16" href="/images/favicon.ico" />
             <link rel="apple-touch-icon" type="image/ico" href="/images/favicon.ico"></link>
-            <link rel="stylesheet" href="/css/foundation.min.css" />
         </Head>
         <Component {...pageProps} />
 

@@ -2,16 +2,21 @@ import React, { FC } from 'react'
 import { GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic'
 
-import clientPromise from '../lib/mongodb'
-import Promo from '../components/promo'
-import Action from '../components/action'
-import Activity from '../components/activity'
-import Reviews from '../components/reviews'
-import Navigation from '../components/navigation'
-import Footer from '../components/footer'
+import clientPromise from '../../lib/mongodb'
+import Breadcrumbs from '../../components/breadcrumbs'
+import HeaderPage from '../../components/header-page'
+import Navigation from '../../components/navigation'
+import Info from '../../components/info'
+import AllEvents from '../../components/all-events'
+import Review from '../../components/review'
+import Footer from '../../components/footer'
 
-interface IHomeProps {
+
+interface IEventsProps {
+    header: string,
+    headerImage: string,
     resolvedUrl: string,
+    logo: string,
     navigation: {
         items: [
             {
@@ -26,42 +31,43 @@ interface IHomeProps {
             }
         ]
     },
-    logo: string,
-    promo: {
-        header: string,
-        description: string
-    },
-    action: {
-        header: string,
-        description: string,
-        buttonTitle: string
-        buttonHref: string
-    },
-    activity: {
+    breadcrumbs: [
+        {
+            active: boolean,
+            title: string,
+            value: string
+        }
+    ],
+    info: {
         header: string,
         description: string[],
-        buttonTitle: string,
-        buttonHref: string,
-        items: [
-            {
-                header: string,
-                buttonTitle: string,
-                buttonHref: string
-                image: string
-            }
-        ]
+        list: {
+            title: string,
+            items: string[]
+        }
     },
-    reviews: {
-        header: string,
+    events: {
         items: [
             {
                 image: string,
-                fullname: string,
-                city: string,
-                date: string,
-                description: string
+                headerHref: string,
+                header: string,
+                subheader: string,
+                description: string,
+                buttonHref: string,
+                buttonTitle: string
             }
         ]
+    },
+    review: {
+        header: string,
+        description: {
+            image: string,
+            fullname: string,
+            city: string,
+            date: string,
+            description: string
+        }
     },
     footer: {
         description: string,
@@ -73,18 +79,20 @@ interface IHomeProps {
     }
 }
 
-const ScrollerDynamic = dynamic(() => import('../components/scroller'), {
+const ScrollerDynamic = dynamic(() => import('../../components/scroller'), {
     ssr: false
 })
 
-const Home: FC<IHomeProps> = ({
-    resolvedUrl = '',
+const Events: FC<IEventsProps> = ({
+    header,
     logo,
     navigation,
-    promo,
-    action,
-    activity,
-    reviews,
+    resolvedUrl,
+    breadcrumbs,
+    headerImage,
+    info,
+    events,
+    review,
     footer
 }) => (
     <>
@@ -95,24 +103,29 @@ const Home: FC<IHomeProps> = ({
                 resolvedUrl={resolvedUrl}
             />
         )}
-        {promo && (
-            <Promo
-                promo={promo}
+        {breadcrumbs && (
+            <Breadcrumbs
+                breadcrumbs={breadcrumbs}
             />
         )}
-        {action && (
-            <Action
-                action={action}
+        {header && (
+            <HeaderPage
+                header={header}
+                headerImage={headerImage}
             />
         )}
-        {activity && (
-            <Activity
-                activity={activity}
+        {info && (
+            <Info
+                info={info}
             />
         )}
-        {reviews && (
-            <Reviews
-                reviews={reviews}
+        {events && (
+            <AllEvents events={events}
+            />
+        )}
+        {review && (
+            <Review
+                review={review}
             />
         )}
         {footer && (
@@ -141,15 +154,12 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
 
     try {
         data = {
-            page: await db.collection('pages').findOne({ pageId: 'index' }),
+            page: await db.collection('pages').findOne({ pageId: 'events' }),
             logo: await db.collection('components').findOne({ componentId: 'logo' }),
             navigation: await db.collection('components').findOne({ componentId: 'navigation' }),
-            reviews: await db.collection('reviews').aggregate([
-                { $match: { show: true }},
-                { $sample: { size: 2 }}
-            ]).toArray(),
             contacts: await db.collection('components').findOne({ componentId: 'contacts' }),
-            footer: await db.collection('components').findOne({ componentId: 'footer' })
+            footer: await db.collection('components').findOne({ componentId: 'footer' }),
+            review: await db.collection('reviews').findOne({ best: true, show: true })
         }
     } catch (error) {
         throw new Error('Неудалось получить данные!')
@@ -159,9 +169,9 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
         page: JSON.parse(JSON.stringify(data.page)),
         logo: JSON.parse(JSON.stringify(data.logo)),
         navigation: JSON.parse(JSON.stringify(data.navigation)),
-        reviews: JSON.parse(JSON.stringify(data.reviews)),
         contacts: JSON.parse(JSON.stringify(data.contacts)),
-        footer: JSON.parse(JSON.stringify(data.footer))
+        footer: JSON.parse(JSON.stringify(data.footer)),
+        review: JSON.parse(JSON.stringify(data.review))
     }
 
     return {
@@ -173,14 +183,11 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
             logo: data.logo.title,
             header: data.page.header,
             headerImage: data.page.headerImage,
-            promo: data.page.promo,
-            action: data.page.action,
-            activity: data.page.activity,
+            breadcrumbs: data.page.breadcrumbs,
             navigation: data.navigation,
-            reviews: {
-                header: data.page.reviews.header,
-                items: data.reviews
-            },
+            info: data.page.info,
+            events: data.page.events,
+            review: { description: data.review, header: data.page.review.header },
             footer: {
                 description: data.footer.description,
                 copirated: data.footer.copirated,
@@ -188,10 +195,10 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
                 operationMode: data.contacts.operationMode,
                 email: data.contacts.email,
                 phone: data.contacts.phone,
-                navigation: data.navigation
+                navigation: data.navigation.items
             }
         }
     }
 }
 
-export default Home
+export default Events

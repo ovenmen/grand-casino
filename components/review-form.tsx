@@ -54,13 +54,13 @@ const ReviewsForm: FC<IReviesFormProps> = ({
     const handleSubmit = (event: BaseSyntheticEvent) => {
         event.preventDefault()
         const { name, city, date, message } = formValues
-        const isFormValid = (name !== '') && (city !== '') && (date !== '') && (message !== '')
+        const isFormValid = name && city && date && message
 
         setErrors({
-            name: name === '',
-            city: city === '',
-            date: date === '',
-            message: message === ''
+            name: !name,
+            city: !city,
+            date: !date,
+            message: !message
         })
 
         if (isFormValid) {
@@ -146,7 +146,6 @@ const ReviewsForm: FC<IReviesFormProps> = ({
                                     <Textarea
                                         name={messageInput.name}
                                         label={messageInput.name}
-                                        type={messageInput.type}
                                         placeholder={messageInput.placeholder}
                                         rows={8}
                                         onChange={handleChange}

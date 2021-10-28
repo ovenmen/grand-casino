@@ -1,5 +1,6 @@
 import React, { FC, Fragment } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages } from '@fortawesome/free-solid-svg-icons'
 
@@ -27,7 +28,15 @@ const AllEvents: FC<IAllEventsProps> = ({
             {events.items.map((event, index) => (
                 <Fragment key={index}>
                     <div className="cell small-12 medium-6 large-3">
-                        <img src={`/images/${event.image}`} className="event-image" alt={event.image} />
+                        <Image
+                            src={`/images/${event.image}`}
+                            className="event-image"
+                            alt={event.image}
+                            width="100%"
+                            height="100%"
+                            layout="responsive"
+                            objectFit="cover"
+                        />
                     </div>
                     <div className="cell small-12 medium-6 large-3">
                         <div className="event-description">
@@ -61,7 +70,8 @@ const AllEvents: FC<IAllEventsProps> = ({
             }
             .event-description {
                 padding: 2rem;
-                border-top: 1px solid #d3d3d3;
+                border: 1px solid #d3d3d3;
+                border-bottom: 0;
             }
             .icon {
                 display: inline-block;

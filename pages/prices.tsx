@@ -3,15 +3,17 @@ import { GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic'
 
 import clientPromise from '../lib/mongodb'
-import Promo from '../components/promo'
 import Action from '../components/action'
-import Activity from '../components/activity'
-import Reviews from '../components/reviews'
 import Navigation from '../components/navigation'
 import Footer from '../components/footer'
+import Breadcrumbs from '../components/breadcrumbs'
+import TablePrices from '../components/table-prices'
+import HeaderPage from '../components/header-page'
 
-interface IHomeProps {
+interface IPricesProps {
     resolvedUrl: string,
+    header: string,
+    headerImage: string,
     navigation: {
         items: [
             {
@@ -27,41 +29,31 @@ interface IHomeProps {
         ]
     },
     logo: string,
-    promo: {
-        header: string,
-        description: string
+    breadcrumbs: [
+        {
+            active: boolean,
+            title: string,
+            value: string
+        }
+    ],
+    prices: {
+        items: [
+            {
+                title: string,
+                value: string,
+                description: string[],
+                list: {
+                    title: string,
+                    items: string[]
+                }
+            }
+        ]
     },
     action: {
         header: string,
         description: string,
         buttonTitle: string
         buttonHref: string
-    },
-    activity: {
-        header: string,
-        description: string[],
-        buttonTitle: string,
-        buttonHref: string,
-        items: [
-            {
-                header: string,
-                buttonTitle: string,
-                buttonHref: string
-                image: string
-            }
-        ]
-    },
-    reviews: {
-        header: string,
-        items: [
-            {
-                image: string,
-                fullname: string,
-                city: string,
-                date: string,
-                description: string
-            }
-        ]
     },
     footer: {
         description: string,
@@ -77,15 +69,16 @@ const ScrollerDynamic = dynamic(() => import('../components/scroller'), {
     ssr: false
 })
 
-const Home: FC<IHomeProps> = ({
-    resolvedUrl = '',
+const Prices: FC<IPricesProps> = ({
+    resolvedUrl,
+    header,
+    headerImage,
     logo,
     navigation,
-    promo,
     action,
-    activity,
-    reviews,
-    footer
+    footer,
+    breadcrumbs,
+    prices
 }) => (
     <>
         {navigation && (
@@ -95,24 +88,25 @@ const Home: FC<IHomeProps> = ({
                 resolvedUrl={resolvedUrl}
             />
         )}
-        {promo && (
-            <Promo
-                promo={promo}
+        {breadcrumbs && (
+            <Breadcrumbs
+                breadcrumbs={breadcrumbs}
+            />
+        )}
+        {header && (
+            <HeaderPage
+                header={header}
+                headerImage={headerImage}
+            />
+        )}
+        {prices && (
+            <TablePrices
+                prices={prices}
             />
         )}
         {action && (
             <Action
                 action={action}
-            />
-        )}
-        {activity && (
-            <Activity
-                activity={activity}
-            />
-        )}
-        {reviews && (
-            <Reviews
-                reviews={reviews}
             />
         )}
         {footer && (
@@ -141,13 +135,9 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
 
     try {
         data = {
-            page: await db.collection('pages').findOne({ pageId: 'index' }),
+            page: await db.collection('pages').findOne({ pageId: 'prices' }),
             logo: await db.collection('components').findOne({ componentId: 'logo' }),
             navigation: await db.collection('components').findOne({ componentId: 'navigation' }),
-            reviews: await db.collection('reviews').aggregate([
-                { $match: { show: true }},
-                { $sample: { size: 2 }}
-            ]).toArray(),
             contacts: await db.collection('components').findOne({ componentId: 'contacts' }),
             footer: await db.collection('components').findOne({ componentId: 'footer' })
         }
@@ -159,7 +149,6 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
         page: JSON.parse(JSON.stringify(data.page)),
         logo: JSON.parse(JSON.stringify(data.logo)),
         navigation: JSON.parse(JSON.stringify(data.navigation)),
-        reviews: JSON.parse(JSON.stringify(data.reviews)),
         contacts: JSON.parse(JSON.stringify(data.contacts)),
         footer: JSON.parse(JSON.stringify(data.footer))
     }
@@ -173,14 +162,10 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
             logo: data.logo.title,
             header: data.page.header,
             headerImage: data.page.headerImage,
-            promo: data.page.promo,
+            breadcrumbs: data.page.breadcrumbs,
             action: data.page.action,
-            activity: data.page.activity,
             navigation: data.navigation,
-            reviews: {
-                header: data.page.reviews.header,
-                items: data.reviews
-            },
+            prices: data.page.prices,
             footer: {
                 description: data.footer.description,
                 copirated: data.footer.copirated,
@@ -194,4 +179,4 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
     }
 }
 
-export default Home
+export default Prices

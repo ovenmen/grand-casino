@@ -16,10 +16,16 @@ const Input: FC<IInputProps> = ({
     type,
     placeholder,
     onChange
-}, ...props) => (
+}) => (
     <div className="field">
         <label htmlFor={name}>{label}
-            <input {...props} type={type} placeholder={placeholder} error={error} className={error ? 'error' : ''} />
+            <input
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                className={error ? 'error' : ''}
+                onChange={onChange}
+            />
         </label>
 
         <style jsx>{`

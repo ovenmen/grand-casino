@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import Image from 'next/image'
 
 interface IReviewProps {
     review: {
@@ -22,23 +23,31 @@ const Review: FC<IReviewProps> = ({
                 <h2 className="h1 text-center font-bold color-white margin-bottom-3">{review.header}</h2>
             </div>
         </div>
-        <div className="grid-x">
-            <div className="cell auto" />
-            <div className="cell small-12 medium-8 large-6">
-                <div className="review-description text-center radius bordered shadow">
-                    <figure>
-                        <img src={`/images/${review.description.image}`} alt={review.description.image} />
-                        <figcaption className="margin-top-2">
-                            <h5 className="color-purple font-bold margin-bottom-1">{review.description.fullname}</h5>
-                            <h6 className="lead color-grey margin-bottom-1">{review.description.city}</h6>
-                            <h6 className="color-grey margin-bottom-2">{review.description.date}</h6>
-                            <p className="lead">{review.description.description}</p>
-                        </figcaption>
-                    </figure>
+        {review.description && (
+            <div className="grid-x">
+                <div className="cell auto" />
+                <div className="cell small-12 medium-8 large-6">
+                    <div className="review-description text-center radius bordered shadow">
+                        <figure>
+                            {/* <img src={`/images/${review.description.image}`} alt={review.description.image} /> */}
+                            <Image
+                                src={`/images/${review.description.image}`}
+                                alt={review.description.image}
+                                width="150"
+                                height="150"
+                            />
+                            <figcaption className="margin-top-2">
+                                <h5 className="color-purple font-bold margin-bottom-1">{review.description.fullname}</h5>
+                                <h6 className="lead color-grey margin-bottom-1">{review.description.city}</h6>
+                                <h6 className="color-grey margin-bottom-2">{review.description.date}</h6>
+                                <p className="lead">{review.description.description}</p>
+                            </figcaption>
+                        </figure>
+                    </div>
                 </div>
+                <div className="cell auto" />
             </div>
-            <div className="cell auto" />
-        </div>
+        )}
 
         <style jsx>{`
             .review {

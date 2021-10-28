@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import Image from 'next/image'
 
 interface IHeaderPageProps {
     header: string,
@@ -12,7 +13,13 @@ const HeaderPage: FC<IHeaderPageProps> = ({
     <div className="header-page">
         <div className="grid-x">
             <div className="cell small-12 medium-12 large-12">
-                <img className="header-page-image" src={`/images/${headerImage}`} alt={headerImage} />
+                <Image
+                    src={`/images/${headerImage}`}
+                    className="header-page-image"
+                    alt={headerImage}
+                    layout="fill"
+                    objectFit="cover"
+                />
                 <h1 className="text-center color-white font-bold">{header}</h1>
             </div>
         </div>
@@ -32,6 +39,10 @@ const HeaderPage: FC<IHeaderPageProps> = ({
                 right: 0;
                 z-index: -1;
                 object-fit: cover;
+            }
+            h1 {
+                position: relative;
+                z-index: 1000;
             }
         `}</style>
     </div>

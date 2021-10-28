@@ -1,11 +1,13 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons'
 
 interface IEventDescriptionProps {
     event: {
         header: string,
+        image?: string,
         list: {
             title: string,
             items: string[]
@@ -45,7 +47,15 @@ const EventDescription: FC<IEventDescriptionProps> = ({
                 </div>
             </div>
             <div className="cell small-12 medium-12 large-6">
-                <img src={`/images/${event.image}`} className="image" alt={event.image} />
+                <Image
+                    src={`/images/${event.image}`}
+                    className="image"
+                    alt={event.image}
+                    width="100%"
+                    height="100%"
+                    layout="responsive"
+                    objectFit="cover"
+                />
             </div>
         </div>
 

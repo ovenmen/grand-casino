@@ -11,8 +11,61 @@ import Navigation from '../../components/navigation'
 import Footer from '../../components/footer'
 import HeaderPage from '../../components/header-page'
 
-interface ICasinoClub {
-    photos: {}
+interface ICasinoClubProps {
+    header: string,
+    headerImage: string,
+    resolvedUrl: string,
+    logo: string,
+    navigation: {
+        items: [
+            {
+                title: string,
+                value: string,
+                submenu?: [
+                   {
+                       title: string,
+                       value: string
+                   }
+                ]
+            }
+        ]
+    },
+    breadcrumbs: [
+        {
+            active: boolean,
+            title: string,
+            value: string
+        }
+    ],
+    event: {
+        header: string,
+        list: {
+            title: string,
+            items: string[]
+        },
+        description: string[],
+        marker: string,
+        linkPriceHref: string,
+        linkPriceTitle: string
+    },
+    photos: {
+        header: string,
+        items: string[]
+    },
+    action: {
+        header: string,
+        description: string,
+        buttonTitle: string
+        buttonHref: string
+    },
+    footer: {
+        description: string,
+        address: string,
+        operationMode: string,
+        email: string,
+        phone: string,
+        copirated: string
+    }
 }
 
 const PhotosDynamic = dynamic(() => import('../../components/photo-carousel'), {
@@ -24,11 +77,17 @@ const ScrollerDynamic = dynamic(() => import('../../components/scroller'), {
     ssr: false
 })
 
-const CasinoClub: FC<ICasinoClub> = ({
+const CasinoClub: FC<ICasinoClubProps> = ({
     resolvedUrl,
     logo,
     navigation,
-    breadcrumbs
+    breadcrumbs,
+    header,
+    headerImage,
+    event,
+    photos,
+    action,
+    footer
 }) => (
     <>
         {navigation && (
@@ -38,12 +97,37 @@ const CasinoClub: FC<ICasinoClub> = ({
                 resolvedUrl={resolvedUrl}
             />
         )}
-        {/* {breadcrumbs && <Breadcrumbs {...props} />} */}
-        {/* <HeaderPage {...props} /> */}
-        {/* <EventDescription {...props} /> */}
-        {/* <PhotosDynamic photos={props.photos} />
-        <Action {...props} />
-        <Footer {...props} /> */}
+        {breadcrumbs && (
+            <Breadcrumbs
+                breadcrumbs={breadcrumbs}
+            />
+        )}
+        {header && (
+            <HeaderPage
+                header={header}
+                headerImage={headerImage}
+            />
+        )}
+        {event && (
+            <EventDescription
+                event={event}
+            />)}
+        {photos && (
+            <PhotosDynamic
+                photos={photos}
+            />
+        )}
+        {action && (
+            <Action action={action}
+            />
+        )}
+        {footer && (
+            <Footer
+                footer={footer}
+                logo={logo}
+                navigation={navigation}
+            />
+        )}
         <ScrollerDynamic />
     </>
 )
@@ -94,6 +178,7 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
             action: data.page.action,
             navigation: data.navigation,
             photos: data.page.photos,
+            event: data.page.event,
             footer: {
                 description: data.footer.description,
                 copirated: data.footer.copirated,

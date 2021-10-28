@@ -3,15 +3,17 @@ import { GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic'
 
 import clientPromise from '../lib/mongodb'
-import Promo from '../components/promo'
-import Action from '../components/action'
-import Activity from '../components/activity'
-import Reviews from '../components/reviews'
 import Navigation from '../components/navigation'
 import Footer from '../components/footer'
+import Breadcrumbs from '../components/breadcrumbs'
+import HeaderPage from '../components/header-page'
+import AllReviews from '../components/all-reviews'
+import ReviewsForm from '../components/review-form'
 
-interface IHomeProps {
+interface IReviewsProps {
     resolvedUrl: string,
+    header: string,
+    headerImage: string,
     navigation: {
         items: [
             {
@@ -27,32 +29,17 @@ interface IHomeProps {
         ]
     },
     logo: string,
-    promo: {
-        header: string,
-        description: string
-    },
-    action: {
-        header: string,
-        description: string,
-        buttonTitle: string
-        buttonHref: string
-    },
-    activity: {
-        header: string,
-        description: string[],
-        buttonTitle: string,
-        buttonHref: string,
-        items: [
-            {
-                header: string,
-                buttonTitle: string,
-                buttonHref: string
-                image: string
-            }
-        ]
-    },
+    breadcrumbs: [
+        {
+            active: boolean,
+            title: string,
+            value: string
+        }
+    ],
     reviews: {
         header: string,
+        emptyReviewsMessage: string,
+        actionReviewsMessage: string,
         items: [
             {
                 image: string,
@@ -62,6 +49,33 @@ interface IHomeProps {
                 description: string
             }
         ]
+
+    },
+    reviewsForm: {
+        header: string,
+        fields: [
+            {
+                name: string,
+                type: string,
+                placeholder: string
+            },
+            {
+                name: string,
+                type: string,
+                placeholder: string
+            },
+            {
+                name: string,
+                type: string,
+                placeholder: string
+            },
+            {
+                name: string,
+                type: string,
+                placeholder: string
+            }
+        ],
+        submitButtonTitle: string
     },
     footer: {
         description: string,
@@ -77,15 +91,16 @@ const ScrollerDynamic = dynamic(() => import('../components/scroller'), {
     ssr: false
 })
 
-const Home: FC<IHomeProps> = ({
-    resolvedUrl = '',
+const Reviews: FC<IReviewsProps> = ({
+    resolvedUrl,
+    header,
+    headerImage,
     logo,
     navigation,
-    promo,
-    action,
-    activity,
+    footer,
+    breadcrumbs,
     reviews,
-    footer
+    reviewsForm
 }) => (
     <>
         {navigation && (
@@ -95,26 +110,33 @@ const Home: FC<IHomeProps> = ({
                 resolvedUrl={resolvedUrl}
             />
         )}
-        {promo && (
-            <Promo
-                promo={promo}
+        {breadcrumbs && (
+            <Breadcrumbs
+                breadcrumbs={breadcrumbs}
             />
         )}
-        {action && (
-            <Action
-                action={action}
+        {header && (
+            <HeaderPage
+                header={header}
+                headerImage={headerImage}
             />
         )}
-        {activity && (
-            <Activity
-                activity={activity}
-            />
-        )}
-        {reviews && (
-            <Reviews
-                reviews={reviews}
-            />
-        )}
+        <div className="grid-x">
+            <div className="cell small-12 medium-4 large-5">
+                {reviewsForm && (
+                    <ReviewsForm
+                        reviewsForm={reviewsForm}
+                    />
+                )}
+            </div>
+            <div className="cell small-12 medium-8 large-7">
+                {reviews && (
+                    <AllReviews
+                        reviews={reviews}
+                    />
+                )}
+            </div>
+        </div>
         {footer && (
             <Footer
                 footer={footer}
@@ -141,14 +163,11 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
 
     try {
         data = {
-            page: await db.collection('pages').findOne({ pageId: 'index' }),
+            page: await db.collection('pages').findOne({ pageId: 'reviews' }),
             logo: await db.collection('components').findOne({ componentId: 'logo' }),
             navigation: await db.collection('components').findOne({ componentId: 'navigation' }),
-            reviews: await db.collection('reviews').aggregate([
-                { $match: { show: true }},
-                { $sample: { size: 2 }}
-            ]).toArray(),
             contacts: await db.collection('components').findOne({ componentId: 'contacts' }),
+            reviews: await db.collection('reviews').find({}).toArray(),
             footer: await db.collection('components').findOne({ componentId: 'footer' })
         }
     } catch (error) {
@@ -159,8 +178,8 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
         page: JSON.parse(JSON.stringify(data.page)),
         logo: JSON.parse(JSON.stringify(data.logo)),
         navigation: JSON.parse(JSON.stringify(data.navigation)),
-        reviews: JSON.parse(JSON.stringify(data.reviews)),
         contacts: JSON.parse(JSON.stringify(data.contacts)),
+        reviews: JSON.parse(JSON.stringify(data.reviews)),
         footer: JSON.parse(JSON.stringify(data.footer))
     }
 
@@ -173,14 +192,10 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
             logo: data.logo.title,
             header: data.page.header,
             headerImage: data.page.headerImage,
-            promo: data.page.promo,
-            action: data.page.action,
-            activity: data.page.activity,
+            breadcrumbs: data.page.breadcrumbs,
             navigation: data.navigation,
-            reviews: {
-                header: data.page.reviews.header,
-                items: data.reviews
-            },
+            reviews: { header: data.page.reviews.header, items: data.reviews },
+            reviewsForm: data.page.reviewsForm,
             footer: {
                 description: data.footer.description,
                 copirated: data.footer.copirated,
@@ -194,4 +209,4 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
     }
 }
 
-export default Home
+export default Reviews

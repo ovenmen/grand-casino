@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuoteLeft, faQuoteRight, faFrown } from '@fortawesome/free-solid-svg-icons'
 
@@ -16,7 +17,6 @@ interface IAllReviewsProps {
                 description: string
             }
         ]
-
     }
 }
 
@@ -36,7 +36,14 @@ const AllReviews: FC<IAllReviewsProps> = ({
                         <div key={index} className="review margin-bottom-1 bordered round radius">
                             <div className="flex-container align-left">
                                 <div className="margin-left-2 margin-right-2 width-30">
-                                    <img src={`/images/${item.image}`} className="float-left" alt={item.image} />
+                                    <Image
+                                        src={`/images/${item.image}`}
+                                        className="float-left"
+                                        alt={item.image}
+                                        width="130"
+                                        height="120"
+                                        objectFit="cover"
+                                    />
                                 </div>
                                 <div className="align-self-middle">
                                     <h4>{item.fullname}</h4>

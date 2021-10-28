@@ -5,8 +5,8 @@ import Link from 'next/link'
 interface IButtonProps {
     href: string,
     title: string,
-    bigSize: boolean,
-    invert: boolean
+    bigSize?: boolean,
+    invert?: boolean
 }
 
 const Button: FC<IButtonProps> = ({

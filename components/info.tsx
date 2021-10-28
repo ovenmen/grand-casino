@@ -1,10 +1,10 @@
-import React, { FC, Fragment } from 'react'
+import React, { FC } from 'react'
 
 interface IInfoProps {
     info: {
         header: string,
-        description: string[],
-        list: {
+        description?: string[],
+        list?: {
             title: string,
             items: string[]
         }
@@ -18,19 +18,19 @@ const Info: FC<IInfoProps> = ({
         <div className="grid-x">
             <div className="cell">
                 <h2 className="margin-bottom-2 subheader">{info.header}</h2>
-                {info.description.map((item, index) => (
-                    <p key={index} className="h5 margin-bottom-2">{item}</p>
+                {info?.description?.map(item => (
+                    <p key={item} className="h5 margin-bottom-2">{item}</p>
                 ))}
-                {info.list &&
-                    <Fragment>
+                {info.list && (
+                    <>
                         <p className="h5 margin-bottom-2">{info.list.title}</p>
                         <ul className="margin-left-3">
-                            {info.list.items.map((item, index) => (
-                                <li key={index} className="h5 margin-bottom-1">{item}</li>
+                            {info.list.items.map(item => (
+                                <li key={item} className="h5 margin-bottom-1">{item}</li>
                             ))}
                         </ul>
-                    </Fragment>
-                }
+                    </>
+                )}
             </div>
         </div>
 

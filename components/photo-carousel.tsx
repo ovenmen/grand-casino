@@ -1,10 +1,11 @@
 import React, { FC, useState } from 'react'
 import FsLightbox from 'fslightbox-react'
+import Image from 'next/image'
 
 interface IPhotoCarouselProps {
   photos: {
-    header: string;
-    items: string[];
+    header: string,
+    items: string[]
   };
 }
 
@@ -38,8 +39,17 @@ const PhotoCarousel: FC<IPhotoCarouselProps> = ({
             <div className="grid-x">
                 {targetPhotos.map((photo, index) => (
                     <div className="cell small-12 medium-3 large-2" key={index}>
-                        <figure>
-                            <img src={photo} alt={photo} className="thumbnail" onClick={() => openLightboxOnSlide(index + 1)} />
+                        <figure className="thumbnail">
+                            <Image
+                                src={photo}
+                                alt={photo}
+                                width="200"
+                                height="200"
+                                onClick={() => openLightboxOnSlide(index + 1)}
+                                objectFit="cover"
+                                layout="responsive"
+                                loading="lazy"
+                            />
                         </figure>
                     </div>
                 ))}
@@ -52,27 +62,23 @@ const PhotoCarousel: FC<IPhotoCarouselProps> = ({
             />
 
             <style jsx>{`
-        .photo-carousel {
-          background-color: var(--color-purple);
-          padding: 5rem;
-          padding-top: 0;
-        }
-        .thumbnail {
-          background: var(--color-white);
-          padding: 0.5rem;
-          margin-top: 1rem;
-          border: 1px solid;
-          height: 16rem;
-          width: 16rem;
-          object-fit: cover;
-        }
-        .thumbnail:hover {
-          cursor: pointer;
-        }
-        .header {
-          margin-top: 2rem;
-        }
-      `}</style>
+                .photo-carousel {
+                background-color: var(--color-purple);
+                padding: 5rem;
+                padding-top: 0;
+                }
+                .thumbnail {
+                background: var(--color-white);
+                padding: 0.5rem;
+                border: 1px solid;
+                }
+                .thumbnail:hover {
+                cursor: pointer;
+                }
+                .header {
+                margin-top: 2rem;
+                }
+            `}</style>
         </section>
     )
 }
