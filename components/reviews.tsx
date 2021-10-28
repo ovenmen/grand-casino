@@ -30,7 +30,7 @@ const Reviews: FC<ReviewsProps> = ({
         {reviews?.items && (
             <div className="grid-x">
                 {reviews.items.map(item => (
-                    <div className="cell small-12 medium-6 large-6 review-border" key={item.image}>
+                    <div className="cell small-12 medium-6 large-6 review-border" key={item.image + Math.random()}>
                         <div className="review text-center">
                             <figure>
                                 <Image className="reviews-avatar margin-bottom-1" src={`/images/${item.image}`} alt={item.image} width="150" height="150" />

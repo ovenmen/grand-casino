@@ -1,15 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 import Head from 'next/head'
-import dynamic from 'next/dynamic'
+import type { AppProps } from 'next/app'
 
-const ScrollerDynamic = dynamic(() => import('../components/scroller'), {
-    ssr: false
-})
-
-const GrandCasino = ({
+const GrandCasino: FC = ({
     Component,
     pageProps
-}) => (
+}: AppProps) => (
     <article>
         <Head>
             <title>{pageProps.title || ''}</title>
@@ -19,14 +15,12 @@ const GrandCasino = ({
             <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
             <meta name="description" content={pageProps.description || ''} />
             <meta name="keywords" content={pageProps.keywords || ''} />
-            <link href="https://fonts.googleapis.com/css?family=Pattaya&display=swap" rel="stylesheet"></link>
+            <link href="https://fonts.googleapis.com/css?family=Pattaya&display=swap" rel="stylesheet" />
             <link rel="icon" type="image/ico" sizes="16x16" href="/images/favicon.ico" />
             <link rel="apple-touch-icon" type="image/ico" href="/images/favicon.ico"></link>
             <link rel="stylesheet" href="/css/foundation.min.css" />
         </Head>
-        <main>
-            <Component {...pageProps} />
-        </main>
+        <Component {...pageProps} />
 
         <style global jsx>{`
             :root {

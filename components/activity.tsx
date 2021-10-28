@@ -1,13 +1,11 @@
 import React, { FC } from 'react'
-import PropTypes from 'prop-types'
 import Link from 'next/link'
 import Image from 'next/image'
 
 import Button from './button'
-import EventDescription from './event-description'
 
-interface ActivityProps {
-    activity?: {
+interface IActivityProps {
+    activity: {
         header: string,
         description: string[],
         buttonTitle: string,
@@ -23,7 +21,7 @@ interface ActivityProps {
     }
 }
 
-const Activity: FC<ActivityProps> = ({
+const Activity: FC<IActivityProps> = ({
     activity
 }) => (
     <section className="activity">
@@ -158,9 +156,5 @@ const Activity: FC<ActivityProps> = ({
         `}</style>
     </section>
 )
-
-Activity.propTypes = {
-    activity: PropTypes.object,
-}
 
 export default Activity

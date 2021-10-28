@@ -1,5 +1,4 @@
 import React, { FC, useCallback, useState } from 'react'
-import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,27 +6,31 @@ import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import Logo from '../components/logo'
 
-interface NavigationProps {
-    navigation?: [
-        {
-            title: string,
-            value: string,
-            submenu?: [
-                {
-                    title: string,
-                    value: string,
-                }
-            ]
-        },
-    ],
-    logo?: string,
-    pathname?: string
+interface INavigationProps {
+    navigation:{
+        items: [
+            {
+                title: string,
+                value: string,
+                submenu?: [
+                    {
+                        title: string,
+                        value: string,
+                    }
+                ]
+            }
+        ]
+    },
+    logo: string,
+    resolvedUrl: string
 }
 
-const Navigation: FC<NavigationProps> = ({
-    navigation,
-    logo,
-    pathname
+const Navigation: FC<INavigationProps> = ({
+    navigation = {
+        items: []
+    },
+    logo = '',
+    resolvedUrl = ''
 }) => {
     const [isOpen, setToggleIsOpen] = useState(false)
 
@@ -57,32 +60,28 @@ const Navigation: FC<NavigationProps> = ({
                     )}
                     <div className={classnames('cell small-12 medium-12 large-11 hidden', isOpen && 'visible')}>
                         <ul className="menu">
-                            {navigation && 
-                                (navigation.map(menuItem => (
-                                    <li className="menu-item" key={menuItem.value} onClick={handleClickLink}>
-                                        <Link href={menuItem.value}>
-                                            <a className={classnames('link font-bold h5', menuItem.value === pathname && 'active')} aria-label={menuItem.title}>
-                                                {menuItem.title}
-                                            </a>
-                                        </Link>
-                                        {menuItem &&
-                                            (menuItem.submenu && (
-                                                <ul className="submenu flex-dir-column">
-                                                    {menuItem.submenu.map(submenuItem => (
-                                                        <li className="submenu-item" key={submenuItem.value}>
-                                                            <Link href={submenuItem.value}>
-                                                                <a className={classnames('link font-bold h5', submenuItem.value === pathname && 'active')} aria-label={submenuItem.title}>
-                                                                    {submenuItem.title}
-                                                                </a>
-                                                            </Link>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            ))
-                                        }
-                                    </li>
-                                )))
-                            }
+                            {navigation.items.map(menuItem => (
+                                <li className="menu-item" key={menuItem.value} onClick={handleClickLink}>
+                                    <Link href={menuItem.value}>
+                                        <a className={classnames('link font-bold h5', menuItem.value === resolvedUrl && 'active')} aria-label={menuItem.title}>
+                                            {menuItem.title}
+                                        </a>
+                                    </Link>
+                                    {menuItem.submenu && (
+                                        <ul className="submenu flex-dir-column">
+                                            {menuItem.submenu.map(submenuItem => (
+                                                <li className="submenu-item" key={submenuItem.value}>
+                                                    <Link href={submenuItem.value}>
+                                                        <a className={classnames('link font-bold h5', submenuItem.value === resolvedUrl && 'active')} aria-label={submenuItem.title}>
+                                                            {submenuItem.title}
+                                                        </a>
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
@@ -175,12 +174,6 @@ const Navigation: FC<NavigationProps> = ({
             `}</style>
         </header>
     )
-}
-
-Navigation.propTypes = {
-    navigation: PropTypes.array,
-    logo: PropTypes.string,
-    pathname: PropTypes.string
 }
 
 export default Navigation

@@ -1,7 +1,17 @@
-import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
+import React, { FC, Fragment } from 'react'
 
-const Info = ({
+interface IInfoProps {
+    info: {
+        header: string,
+        description: string[],
+        list: {
+            title: string,
+            items: string[]
+        }
+    }
+}
+
+const Info: FC<IInfoProps> = ({
     info
 }) => (
     <section className="info">
@@ -31,9 +41,5 @@ const Info = ({
         `}</style>
     </section>
 )
-
-Info.propTypes = {
-    info: PropTypes.object
-}
 
 export default Info

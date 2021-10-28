@@ -1,10 +1,25 @@
-import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
+import React, { FC, Fragment } from 'react'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages } from '@fortawesome/free-solid-svg-icons'
 
-const AllEvents = ({
+interface IAllEventsProps {
+    events: {
+        items: [
+            {
+                image: string,
+                headerHref: string,
+                header: string,
+                subheader: string,
+                description: string,
+                buttonHref: string,
+                buttonTitle: string
+            }
+        ]
+    }
+}
+
+const AllEvents: FC<IAllEventsProps> = ({
     events
 }) => (
     <section>
@@ -55,9 +70,5 @@ const AllEvents = ({
         `}</style>
     </section>
 )
-
-AllEvents.propTypes = {
-    events: PropTypes.object
-}
 
 export default AllEvents

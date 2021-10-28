@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 import {
     Accordion,
     AccordionItem,
@@ -8,7 +7,23 @@ import {
     AccordionItemPanel,
 } from 'react-accessible-accordion'
 
-const TablePrices = ({
+interface ITablePricesProps {
+    prices: {
+        items: [
+            {
+                title: string,
+                value: string,
+                description: string[],
+                list: {
+                    title: string,
+                    items: string[]
+                }
+            }
+        ]
+    }
+}
+
+const TablePrices: FC<ITablePricesProps> = ({
     prices
 }) => (
     <section className="table-prices">
@@ -95,9 +110,5 @@ const TablePrices = ({
         `}</style>
     </section>
 )
-
-TablePrices.propTypes = {
-    prices: PropTypes.object
-}
 
 export default TablePrices

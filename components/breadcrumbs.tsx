@@ -1,98 +1,65 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faQuoteLeft, faQuoteRight, faFrown } from '@fortawesome/free-solid-svg-icons'
+import React, { FC } from 'react'
+import Link from 'next/link'
 
-const AllReviews = ({
-    reviews
+interface IBreadcrumbsProps {
+    breadcrumbs?: [
+        {
+            active: boolean,
+            title: string,
+            value: string
+        }
+    ]
+}
+
+const Breadcrumbs: FC<IBreadcrumbsProps> = ({
+    breadcrumbs = []
 }) => (
-    <section className="all-reviews">
-        <div className="grid-x">
-            <div className="cell">
-                <h3 className="text-center font-bold margin-bottom-1 color-white">{reviews.header}</h3>
-            </div>
-        </div>
-        <div className="grid-x">
-            <div className="cell">
-                <div className="reviews-container">
-                    {reviews.items.length === 0 &&
-                        <div className="grid-x grid-padding-x margin-top-3">
-                            <div className="cell small-12">
-                                <span className="frown color-white text-center"><FontAwesomeIcon fixedWidth icon={faFrown} height="5em" /></span>
-                                <p className="text-center color-white h5">{reviews.emptyReviewsMessage}</p>
-                                <p className="text-center color-white h5">{reviews.actionReviewsMessage}</p>
-                            </div>
-                        </div>
-                    }
-                    {reviews.items.map((item, index) => (
-                        <div key={index} className="review margin-bottom-1 bordered round radius">
-                            <div className="flex-container align-left">
-                                <div className="margin-left-2 margin-right-2 width-30">
-                                    <img src={`/images/${item.image}`} className="float-left" alt={item.image} />
-                                </div>
-                                <div className="align-self-middle">
-                                    <h4>{item.fullname}</h4>
-                                    <h5 className="color-purple">{item.city}</h5>
-                                    <p>{item.date}</p>
-                                </div>
-                            </div>
-                            <hr />
-                            <span className="quote-left"><FontAwesomeIcon icon={faQuoteLeft} height="1em" /></span>
-                            <p className="margin-top-2 margin-bottom-2 description">{item.description}</p>
-                            <span className="quote-right"><FontAwesomeIcon icon={faQuoteRight} height="1em" /></span>
-                        </div>
-                    ))}
+    <section className="breadcrumbs">
+        <div className="grid-container fluid">
+            <div className="grid-x">
+                <div className="cell small-12 medium-12 large-12">
+                    <ul className="breadcrumbs-nav flex-container">
+                        {breadcrumbs.map((item, index) => item.active
+                            ? (
+                                <li key={index} className="nav-item font-bold text-uppercase">{item.title}</li>
+                            ) : (
+                                <li key={index} className="nav-item font-bold text-uppercase">
+                                    <Link href={item.value}><a className="link color-purple" aria-label={item.title}>{item.title}</a></Link>
+                                    <span className="breadcrumbs-separate">{'/'}</span>
+                                </li>
+                            )
+                        )}
+                    </ul>
                 </div>
             </div>
         </div>
 
         <style jsx>{`
-            .all-reviews {
-                background: #272439;
-                padding: 5vw;
-                height: 100%;
+            .breadcrumbs {
+                padding: 1vw 0;
             }
-            .reviews-container {
-                min-height: 25rem;
-                max-height: 35rem;
-                overflow: auto;
+            .breadcrumbs-nav {
+                list-style: none;
+                padding: 0;
+                margin: 0;
             }
-            .frown {
-                display: block;
-                margin: 0 auto;
-                display: block;
-                vertical-align: middle;
+            .breadcrumbs-nav .nav-item {
+                cursor: pointer;
             }
-            .review {
-                background: #ffffff;
-                padding: 1rem 1.5rem;
-                position: relative;
+            .breadcrumbs-separate {
+                padding: 1rem 0.25rem;
             }
-            .review img {
-                width: 15vh;
-                border-radius: 50%;
+            .breadcrumbs-nav .nav-item:last-child {
+                cursor: auto;
+                color: #9c9c9c;
             }
-            .quote-left,
-            .quote-right {
-                color: #797979;
-                position: absolute;
-            }
-            .quote-left {
-                left: 1rem;
-            }
-            .quote-right {
-                right: 1rem;
-                bottom: 1rem;
-            }
-            .description {
-                margin: 0 2rem;
+            @media screen and (max-width: 39.9375em) {
+                .breadcrumbs-nav .nav-item {
+                    font-size: 0.8rem;
+                }
             }
         `}</style>
     </section>
 )
 
-AllReviews.propTypes  = {
-    reviews: PropTypes.object
-}
-
-export default AllReviews
+export default Breadcrumbs

@@ -1,10 +1,23 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons'
 
-const EventDescription = ({
+interface IEventDescriptionProps {
+    event: {
+        header: string,
+        list: {
+            title: string,
+            items: string[]
+        },
+        description: string[],
+        marker: string,
+        linkPriceHref: string,
+        linkPriceTitle: string
+    }
+}
+
+const EventDescription: FC<IEventDescriptionProps> = ({
     event
 }) => (
     <section>
@@ -64,9 +77,5 @@ const EventDescription = ({
         `}</style>
     </section>
 )
-
-EventDescription.propTypes = {
-    event: PropTypes.object
-}
 
 export default EventDescription

@@ -2,8 +2,8 @@ import React, { FC } from 'react'
 
 import Button from './button'
 
-interface ActionProps {
-    action?: {
+interface IActionProps {
+    action: {
         header: string,
         description: string,
         buttonTitle: string,
@@ -11,7 +11,7 @@ interface ActionProps {
     }
 }
 
-const Action: FC<ActionProps> = ({
+const Action: FC<IActionProps> = ({
     action
 }) => (
     <section className="action">

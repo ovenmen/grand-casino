@@ -1,9 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 import classnames from 'classnames'
 import Link from 'next/link'
 
-const Button = ({
+interface IButtonProps {
+    href: string,
+    title: string,
+    bigSize: boolean,
+    invert: boolean
+}
+
+const Button: FC<IButtonProps> = ({
     href,
     title,
     bigSize,
@@ -50,12 +56,5 @@ const Button = ({
         `}</style>
     </span>
 )
-
-Button.propTypes = {
-    href: PropTypes.string,
-    title: PropTypes.string,
-    bigSize: PropTypes.bool,
-    invert: PropTypes.bool
-}
 
 export default Button

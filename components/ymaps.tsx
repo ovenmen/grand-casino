@@ -1,16 +1,30 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import { YMaps, Map, ZoomControl, GeolocationControl, Placemark } from 'react-yandex-maps'
+import React, { FC, ReactInstance, Ref, RefCallback, RefObject, SetStateAction, useState } from 'react'
+import { YMaps, Map, ZoomControl, GeolocationControl, Placemark, WithYMapsProps, YMapsApi, YMapsProps } from 'react-yandex-maps'
 
 import Loader from '../components/loader'
 
-const YMap = ({
+interface IYMapProps extends YMapsApi {
+    map: {
+        header: string,
+        items: [
+            {
+                long: number,
+                lat: number,
+                cooperation: string,
+                city: string
+            }
+        ]
+    },
+    logo: string
+}
+
+const YMap: FC<IYMapProps> = ({
     map,
     logo
 }) => {
     const [instance, setInstance] = useState(null)
 
-    const handleInstanceRef = (instance) => {
+    const handleInstanceRef: SetStateAction<any>  = (instance: null) => {
         setInstance(instance)
     }
 
@@ -79,11 +93,6 @@ const YMap = ({
             `}</style>
         </section>
     )
-}
-
-YMap.propTypes = {
-    map: PropTypes.object,
-    logo: PropTypes.string
 }
 
 export default YMap

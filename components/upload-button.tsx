@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-const UploadButton = () => (
+const UploadButton: FC = () => (
     <div className="field">
         <input name = "photo" type="file" />
 

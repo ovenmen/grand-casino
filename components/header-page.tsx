@@ -1,7 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 
-const HeaderPage = ({
+interface IHeaderPageProps {
+    header: string,
+    headerImage: string
+}
+
+const HeaderPage: FC<IHeaderPageProps> = ({
     header,
     headerImage
 }) => (
@@ -32,10 +36,5 @@ const HeaderPage = ({
         `}</style>
     </div>
 )
-
-HeaderPage.propTypes = {
-    header: PropTypes.string,
-    headerImage: PropTypes.string
-}
 
 export default HeaderPage

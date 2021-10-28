@@ -1,13 +1,13 @@
 import React, { FC } from  'react'
 
-interface PromoProps {
-    promo?: {
+interface IPromoProps {
+    promo: {
         header: string,
         description: string
     }
 }
 
-const Promo: FC<PromoProps> = ({
+const Promo: FC<IPromoProps> = ({
     promo
 }) => (
     <div className="promo">

@@ -1,7 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 
-const Review = ({
+interface IReviewProps {
+    review: {
+        header: string,
+        description: {
+            image: string,
+            fullname: string,
+            city: string,
+            date: string,
+            description: string
+        }
+    }
+}
+
+const Review: FC<IReviewProps> = ({
     review
 }) => (
     <section className="review">
@@ -46,9 +58,5 @@ const Review = ({
         `}</style>
     </section>
 )
-
-Review.propTypes = {
-    review: PropTypes.object
-}
 
 export default Review

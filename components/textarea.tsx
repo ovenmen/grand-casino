@@ -1,10 +1,21 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 
-const Textarea = (props) => (
+interface ITextAreaProps {
+    name: string,
+    label: string,
+    error: string,
+    placeholder: string
+}
+
+const Textarea: FC<ITextAreaProps> = ({
+    name,
+    label,
+    error,
+    placeholder
+}, ...props) => (
     <div className="field">
-        <label htmlFor={props.name}>{props.label}
-            <textarea {...props} error={null} className={props.error && 'error'}></textarea>
+        <label htmlFor={name}>{label}
+            <textarea {...props} error={error} placeholder={placeholder} className={error ? 'error' : ''}></textarea>
         </label>
 
         <style jsx>{`
@@ -25,14 +36,5 @@ const Textarea = (props) => (
         `}</style>
     </div>
 )
-
-Textarea.propTypes = {
-    name: PropTypes.string.isRequired,
-    label: PropTypes.string,
-    type: PropTypes.string,
-    placeholder: PropTypes.string,
-    rows: PropTypes.number,
-    error: PropTypes.bool
-}
 
 export default Textarea

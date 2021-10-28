@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faVk, faFacebook, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
-const Follow = () => (
+const Follow: FC = () => (
     <div className="follow grid-x align-spaced align-middle padding-top-1 padding-bottom-1">
         <p className="lead font-bold">Следить</p>
         <ul className="social-list no-bullet">

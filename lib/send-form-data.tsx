@@ -1,4 +1,4 @@
-const sendFormData = async (url, data) => {
+const sendFormData = async (url: string, data: {}) => {
     try {
         const params = {
             method: 'post',
@@ -9,7 +9,7 @@ const sendFormData = async (url, data) => {
         }
     
         await fetch(url, params)
-    } catch (error) {
+    } catch (error: any) {
         throw new Error(error)
     }
 }

@@ -1,10 +1,25 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { BaseSyntheticEvent, FC } from 'react'
 
-const Input = (props) => (
+interface IInputProps {
+    name: string,
+    label: string,
+    error: boolean,
+    type: string,
+    placeholder: string,
+    onChange: (event: BaseSyntheticEvent) => void
+}
+
+const Input: FC<IInputProps> = ({
+    name,
+    label,
+    error,
+    type,
+    placeholder,
+    onChange
+}, ...props) => (
     <div className="field">
-        <label htmlFor={props.name}>{props.label}
-            <input {...props} error={null} className={props.error && 'error'} />
+        <label htmlFor={name}>{label}
+            <input {...props} type={type} placeholder={placeholder} error={error} className={error ? 'error' : ''} />
         </label>
 
         <style jsx>{`
@@ -25,13 +40,5 @@ const Input = (props) => (
         `}</style>
     </div>
 )
-
-Input.propTypes = {
-    name: PropTypes.string.isRequired,
-    label: PropTypes.string,
-    type: PropTypes.string,
-    placeholder: PropTypes.string,
-    error: PropTypes.bool
-}
 
 export default Input

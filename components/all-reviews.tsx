@@ -1,9 +1,26 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuoteLeft, faQuoteRight, faFrown } from '@fortawesome/free-solid-svg-icons'
 
-const AllReviews = ({
+interface IAllReviewsProps {
+    reviews: {
+        header: string,
+        emptyReviewsMessage: string,
+        actionReviewsMessage: string,
+        items: [
+            {
+                image: string,
+                fullname: string,
+                city: string,
+                date: string,
+                description: string
+            }
+        ]
+
+    }
+}
+
+const AllReviews: FC<IAllReviewsProps> = ({
     reviews
 }) => (
     <section className="all-reviews">
@@ -15,16 +32,7 @@ const AllReviews = ({
         <div className="grid-x">
             <div className="cell">
                 <div className="reviews-container">
-                    {reviews.items.length === 0 &&
-                        <div className="grid-x grid-padding-x margin-top-3">
-                            <div className="cell small-12">
-                                <span className="frown color-white text-center"><FontAwesomeIcon fixedWidth icon={faFrown} height="5em" /></span>
-                                <p className="text-center color-white h5">{reviews.emptyReviewsMessage}</p>
-                                <p className="text-center color-white h5">{reviews.actionReviewsMessage}</p>
-                            </div>
-                        </div>
-                    }
-                    {reviews.items.map((item, index) => (
+                    {reviews.items.map((item, index) => item ? (
                         <div key={index} className="review margin-bottom-1 bordered round radius">
                             <div className="flex-container align-left">
                                 <div className="margin-left-2 margin-right-2 width-30">
@@ -40,6 +48,14 @@ const AllReviews = ({
                             <span className="quote-left"><FontAwesomeIcon icon={faQuoteLeft} height="1em" /></span>
                             <p className="margin-top-2 margin-bottom-2 description">{item.description}</p>
                             <span className="quote-right"><FontAwesomeIcon icon={faQuoteRight} height="1em" /></span>
+                        </div>
+                    ) : (
+                        <div className="grid-x grid-padding-x margin-top-3">
+                            <div className="cell small-12">
+                                <span className="frown color-white text-center"><FontAwesomeIcon fixedWidth icon={faFrown} height="5em" /></span>
+                                <p className="text-center color-white h5">{reviews.emptyReviewsMessage}</p>
+                                <p className="text-center color-white h5">{reviews.actionReviewsMessage}</p>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -90,9 +106,5 @@ const AllReviews = ({
         `}</style>
     </section>
 )
-
-AllReviews.propTypes  = {
-    reviews: PropTypes.object
-}
 
 export default AllReviews

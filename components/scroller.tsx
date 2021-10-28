@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import classnames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons'
 
 const SHOW_SCROLL_POSITION = 150
 
-const Scroller = () => {
+const Scroller: FC = () => {
     const [showScroller, setShowScroller] = useState(false)
 
     const handleScroll = () => {

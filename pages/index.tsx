@@ -10,24 +10,87 @@ import Reviews from '../components/reviews'
 import Navigation from '../components/navigation'
 import Footer from '../components/footer'
 
+interface IHome {
+    resolvedUrl: string,
+    navigation: {
+        items: [
+            {
+                title: string,
+                value: string,
+                submenu?: [
+                   {
+                       title: string,
+                       value: string
+                   }
+                ]
+            }
+        ]
+    },
+    logo: string,
+    promo: {
+        header: string,
+        description: string
+    },
+    action: {
+        header: string,
+        description: string,
+        buttonTitle: string
+        buttonHref: string
+    },
+    activity: {
+        header: string,
+        description: string[],
+        buttonTitle: string,
+        buttonHref: string,
+        items: [
+            {
+                header: string,
+                buttonTitle: string,
+                buttonHref: string
+                image: string
+            }
+        ]
+    }
+}
 
 const ScrollerDynamic = dynamic(() => import('../components/scroller'), {
     ssr: false
 })
 
-const Home: FC = (props) => (
+const Home: FC<IHome> = ({
+    resolvedUrl = '',
+    logo,
+    navigation,
+    promo,
+    action,
+    activity,
+    reviews,
+    footer
+}) => (
     <>
-        <Navigation {...props} />
-        <Promo {...props} />
-        <Action {...props} />
-        <Activity {...props} />
-        <Reviews {...props} />
-        <Footer {...props} />
+        {navigation && (
+            <Navigation
+                navigation={navigation}
+                logo={logo}
+                resolvedUrl={resolvedUrl}
+            />
+        )}
+        {promo && (
+            <Promo promo={promo} />
+        )}
+        {action && (
+            <Action action={action} />
+        )}
+        {activity && (
+            <Activity activity={activity} />
+        )}
+        {/* {reviews && <Reviews {...props} />} */}
+        {/* {footer && <Footer {...props} />} */}
         <ScrollerDynamic />
     </>
 )
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) => {
     const client = await clientPromise
 
     // client.db() will be the default database passed in the MONGODB_URI
@@ -67,6 +130,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     return {
         props: {
+            resolvedUrl,
             title: data.page.title,
             description: data.page.description,
             keywords: data.page.keywords,
@@ -76,7 +140,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
             promo: data.page.promo,
             action: data.page.action,
             activity: data.page.activity,
-            navigation: data.navigation.items,
+            navigation: data.navigation,
             reviews: {
                 header: data.page.reviews.header,
                 items: data.reviews

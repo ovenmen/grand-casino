@@ -1,9 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 
 import Follow from './follow'
 
-const ContactInformation = ({
+interface IContactInformationProps {
+    contacts: {
+        header: string,
+        address: string,
+        operationMode: string,
+        email: string,
+        phone: string
+    }
+}
+
+const ContactInformation: FC<IContactInformationProps> = ({
     contacts
 }) => (
     <section className="contact-information">
@@ -33,9 +42,5 @@ const ContactInformation = ({
         `}</style>
     </section>
 )
-
-ContactInformation.propTypes = {
-    contacts: PropTypes.object
-}
 
 export default ContactInformation

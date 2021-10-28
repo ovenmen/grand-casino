@@ -5,16 +5,22 @@
       "static/chunks/node_modules_next_dist_client_dev_noop_js.js"
     ]
   },
-  "_app.tsx -> ../components/scroller": {
+  "events\\casino-club.tsx -> ../../components/photo-carousel": {
+    "id": "./components/photo-carousel.tsx",
+    "files": [
+      "static/chunks/components_photo-carousel_tsx.js"
+    ]
+  },
+  "events\\casino-club.tsx -> ../../components/scroller": {
     "id": "./components/scroller.tsx",
     "files": [
-      "static/chunks/components_scroller_tsx-_88491.js"
+      "static/chunks/components_scroller_tsx.js"
     ]
   },
   "index.tsx -> ../components/scroller": {
     "id": "./components/scroller.tsx",
     "files": [
-      "static/chunks/components_scroller_tsx-_88490.js"
+      "static/chunks/components_scroller_tsx.js"
     ]
   }
 }

@@ -1,8 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 import Link from 'next/link'
 
-const Logo = ({
+interface ILogoProps {
+    logo: string
+}
+
+const Logo: FC<ILogoProps> = ({
     logo
 }) => (
     <Link href="/">
@@ -11,9 +14,5 @@ const Logo = ({
         </a>
     </Link>
 )
-
-Logo.propTypes = {
-    logo: PropTypes.string
-}
 
 export default Logo

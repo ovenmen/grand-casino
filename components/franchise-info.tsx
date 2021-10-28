@@ -1,8 +1,40 @@
-import React from 'react'
+import React, { FC } from 'react'
 import Link from 'next/link'
-import PropTypes from 'prop-types'
 
-const FranchiseInfo = ({
+interface IFranchiseInfoProps {
+    franchise: {
+        header: string,
+        description: string,
+        profit: {
+            header: string,
+            promo: string,
+            description: string[]
+        },
+        advantages: {
+            header: string,
+            queston: string,
+            action: string,
+            linkHref: string,
+            linkTitle: string,
+            answer: string,
+            items: [
+                {
+                    header: string,
+                    promo: string
+                    description: string[],
+                    list: {
+                        header: string,
+                        description: string[]
+                    },
+                    note: string
+                }
+            ],
+            
+        }
+    }
+}
+
+const FranchiseInfo: FC<IFranchiseInfoProps> = ({
     franchise
 }) => (
     <section className="franchise-info">
@@ -70,9 +102,5 @@ const FranchiseInfo = ({
         `}</style>
     </section>
 )
-
-FranchiseInfo.propTypes = {
-    franchise: PropTypes.object
-}
 
 export default FranchiseInfo

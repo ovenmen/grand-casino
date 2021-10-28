@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-const Loader = () => (
+const Loader: FC = () => (
     <div className="loader text-center">
-        <img src={`/images/loader.svg`} alt="loader.svg" />
+        <img src={'/images/loader.svg'} alt="loader.svg" />
     </div>
 )
 
