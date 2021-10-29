@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 const UploadButton: FC = () => (
     <div className="field">
-        <input name = "photo" type="file" />
+        <input name="photo" type="file" />
 
         <style jsx>{`
             .field .error {

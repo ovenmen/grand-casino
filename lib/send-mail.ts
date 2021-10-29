@@ -37,4 +37,4 @@ const sendMail = async (data: IData) => {
     }
 }
 
-module.exports = sendMail
+export default sendMail

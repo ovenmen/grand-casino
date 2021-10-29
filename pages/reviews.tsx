@@ -167,7 +167,7 @@ export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) =>
             logo: await db.collection('components').findOne({ componentId: 'logo' }),
             navigation: await db.collection('components').findOne({ componentId: 'navigation' }),
             contacts: await db.collection('components').findOne({ componentId: 'contacts' }),
-            reviews: await db.collection('reviews').find({}).toArray(),
+            reviews: await db.collection('reviews').find({ show: true }).toArray(),
             footer: await db.collection('components').findOne({ componentId: 'footer' })
         }
     } catch (error) {

@@ -101,7 +101,7 @@ const ContactForm: FC<IContactFormProps> = ({
                             <h3 className="font-bold margin-bottom-3">{contactsForm.header}</h3>
                         </div>
                     </div>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} method="POST">
                         <div className="grid-x grid-margin-x">
                             <div className="cell small-12 medium-12 large-6 margin-bottom-1">
                                 {nameInput && (

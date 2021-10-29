@@ -1,5 +1,7 @@
 import React, { BaseSyntheticEvent, FC, useState } from 'react'
 
+import sendFormData from '../lib/send-form-data'
+
 import Input from './input'
 import Textarea from './textarea'
 import UploadButton from './upload-button'
@@ -64,8 +66,10 @@ const ReviewsForm: FC<IReviesFormProps> = ({
         })
 
         if (isFormValid) {
+            sendFormData('/api/send-review-form', { name, city, date, message })
             window.alert('Отзыв отправлен!')
             event.target.submit()
+            event.target.reset()
         }
     }
 
@@ -92,7 +96,7 @@ const ReviewsForm: FC<IReviesFormProps> = ({
                             <h3 className="font-bold margin-bottom-3">{reviewsForm.header}</h3>
                         </div>
                     </div>
-                    <form encType="multipart/form-data" onSubmit={handleSubmit} method="post" action="/api/send-review-form">
+                    <form encType="multipart/form-data" onSubmit={handleSubmit} method="POST">
                         <div className="grid-x">
                             <div className="cell margin-bottom-1">
                                 <UploadButton />
