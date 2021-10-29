@@ -63,8 +63,6 @@ const Reviews: FC<ReviewsProps> = ({
             }
             .reviews-avatar {
                 border-radius: 50%;
-                width: 15vh;
-                height: 20vw;
             }
             .review-border:nth-child(odd) .review {
                 border-right: 1px solid #e3eff3;
