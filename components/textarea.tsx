@@ -1,16 +1,8 @@
-import React, { BaseSyntheticEvent, FC } from 'react'
+import React, { FC } from 'react'
 
-interface ITextAreaProps {
-    name: string,
-    label: string,
-    error: boolean,
-    placeholder: string,
-    rows?: number,
-    cols?: number,
-    onChange: (event: BaseSyntheticEvent) => void
-}
+import { TextAreaProps } from '../types/textarea'
 
-const Textarea: FC<ITextAreaProps> = ({
+const Textarea: FC<TextAreaProps> = ({
     name,
     label,
     error,

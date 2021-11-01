@@ -7,23 +7,9 @@ import {
     AccordionItemPanel,
 } from 'react-accessible-accordion'
 
-interface ITablePricesProps {
-    prices: {
-        items: [
-            {
-                title: string,
-                value: string,
-                description: string[],
-                list: {
-                    title: string,
-                    items: string[]
-                }
-            }
-        ]
-    }
-}
+import { TablePricesProps } from '../types/table-prices'
 
-const TablePrices: FC<ITablePricesProps> = ({
+const TablePrices: FC<TablePricesProps> = ({
     prices
 }) => (
     <section className="table-prices">

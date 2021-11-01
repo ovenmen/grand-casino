@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { GetServerSideProps } from 'next'
-import dynamic from 'next/dynamic'
 
 import clientPromise from '../../lib/mongodb'
 import Breadcrumbs from '../../components/breadcrumbs'
@@ -10,80 +9,10 @@ import Info from '../../components/info'
 import AllEvents from '../../components/all-events'
 import Review from '../../components/review'
 import Footer from '../../components/footer'
+import { EventsProps } from '../../types/pages/events'
+import ScrollerDynamic from '../../dynamic-components/scroller-dynamic'
 
-
-interface IEventsProps {
-    header: string,
-    headerImage: string,
-    resolvedUrl: string,
-    logo: string,
-    navigation: {
-        items: [
-            {
-                title: string,
-                value: string,
-                submenu?: [
-                   {
-                       title: string,
-                       value: string
-                   }
-                ]
-            }
-        ]
-    },
-    breadcrumbs: [
-        {
-            active: boolean,
-            title: string,
-            value: string
-        }
-    ],
-    info: {
-        header: string,
-        description: string[],
-        list: {
-            title: string,
-            items: string[]
-        }
-    },
-    events: {
-        items: [
-            {
-                image: string,
-                headerHref: string,
-                header: string,
-                subheader: string,
-                description: string,
-                buttonHref: string,
-                buttonTitle: string
-            }
-        ]
-    },
-    review: {
-        header: string,
-        description: {
-            image: string,
-            fullname: string,
-            city: string,
-            date: string,
-            description: string
-        }
-    },
-    footer: {
-        description: string,
-        address: string,
-        operationMode: string,
-        email: string,
-        phone: string,
-        copirated: string
-    }
-}
-
-const ScrollerDynamic = dynamic(() => import('../../components/scroller'), {
-    ssr: false
-})
-
-const Events: FC<IEventsProps> = ({
+const Events: FC<EventsProps> = ({
     header,
     logo,
     navigation,
@@ -141,13 +70,6 @@ const Events: FC<IEventsProps> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) => {
     const client = await clientPromise
-
-    // client.db() will be the default database passed in the MONGODB_URI
-    // You can change the database by calling the client.db() function and specifying a database like:
-    // const db = client.db("myDatabase");
-    // Then you can execute queries against your database like so:
-    // db.find({}) or any of the MongoDB Node Driver commands
-
     const db = client.db()
 
     let data

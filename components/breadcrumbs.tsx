@@ -1,17 +1,9 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
 
-interface IBreadcrumbsProps {
-    breadcrumbs: [
-        {
-            active: boolean,
-            title: string,
-            value: string
-        }
-    ]
-}
+import { BreadcrumbsProps } from '../types/breadcrumbs'
 
-const Breadcrumbs: FC<IBreadcrumbsProps> = ({
+const Breadcrumbs: FC<BreadcrumbsProps> = ({
     breadcrumbs
 }) => (
     <section className="breadcrumbs">

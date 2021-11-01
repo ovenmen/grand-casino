@@ -1,44 +1,14 @@
 import React, { FC } from 'react'
 import { GetStaticProps } from 'next'
-import dynamic from 'next/dynamic'
 
 import clientPromise from '../lib/mongodb'
 import Navigation from '../components/navigation'
 import Footer from '../components/footer'
 import Info from '../components/info'
+import { Error404Props } from '../types/pages/error404'
+import ScrollerDynamic from '../dynamic-components/scroller-dynamic'
 
-interface IError404Props {
-    header: string,
-    navigation: {
-        items: [
-            {
-                title: string,
-                value: string,
-                submenu?: [
-                   {
-                       title: string,
-                       value: string
-                   }
-                ]
-            }
-        ]
-    },
-    logo: string,
-    footer: {
-        description: string,
-        address: string,
-        operationMode: string,
-        email: string,
-        phone: string,
-        copirated: string
-    }
-}
-
-const ScrollerDynamic = dynamic(() => import('../components/scroller'), {
-    ssr: false
-})
-
-const Error404: FC<IError404Props> = ({
+const Error404: FC<Error404Props> = ({
     header,
     logo,
     navigation,
@@ -75,13 +45,6 @@ const Error404: FC<IError404Props> = ({
 
 export const getStaticProps: GetStaticProps = async () => {
     const client = await clientPromise
-
-    // client.db() will be the default database passed in the MONGODB_URI
-    // You can change the database by calling the client.db() function and specifying a database like:
-    // const db = client.db("myDatabase");
-    // Then you can execute queries against your database like so:
-    // db.find({}) or any of the MongoDB Node Driver commands
-
     const db = client.db()
 
     let data

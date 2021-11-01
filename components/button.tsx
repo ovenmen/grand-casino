@@ -2,14 +2,9 @@ import React, { FC } from 'react'
 import classnames from 'classnames'
 import Link from 'next/link'
 
-interface IButtonProps {
-    href: string,
-    title: string,
-    bigSize?: boolean,
-    invert?: boolean
-}
+import { ButtonProps } from '../types/button'
 
-const Button: FC<IButtonProps> = ({
+const Button: FC<ButtonProps> = ({
     href,
     title,
     bigSize,

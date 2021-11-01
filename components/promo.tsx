@@ -1,13 +1,8 @@
 import React, { FC } from  'react'
 
-interface IPromoProps {
-    promo: {
-        header: string,
-        description: string
-    }
-}
+import { PromoProps } from '../types/promo'
 
-const Promo: FC<IPromoProps> = ({
+const Promo: FC<PromoProps> = ({
     promo
 }) => (
     <div className="promo">

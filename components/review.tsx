@@ -1,20 +1,9 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-interface IReviewProps {
-    review: {
-        header: string,
-        description: {
-            image: string,
-            fullname: string,
-            city: string,
-            date: string,
-            description: string
-        }
-    }
-}
+import { ReviewProps } from '../types/review'
 
-const Review: FC<IReviewProps> = ({
+const Review: FC<ReviewProps> = ({
     review
 }) => (
     <section className="review">
@@ -29,7 +18,6 @@ const Review: FC<IReviewProps> = ({
                 <div className="cell small-12 medium-8 large-6">
                     <div className="review-description text-center radius bordered shadow">
                         <figure>
-                            {/* <img src={`/images/${review.description.image}`} alt={review.description.image} /> */}
                             <Image
                                 src={`/images/${review.description.image}`}
                                 alt={review.description.image}

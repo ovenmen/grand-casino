@@ -2,14 +2,9 @@ import React, { FC, useState } from 'react'
 import FsLightbox from 'fslightbox-react'
 import Image from 'next/image'
 
-interface IPhotoCarouselProps {
-  photos: {
-    header: string,
-    items: string[]
-  };
-}
+import { PhotoCarouselProps } from '../types/photo-carousel'
 
-const PhotoCarousel: FC<IPhotoCarouselProps> = ({
+const PhotoCarousel: FC<PhotoCarouselProps> = ({
     photos = {
         header: '',
         items: [],

@@ -1,18 +1,9 @@
 import React, { FC } from 'react'
 
+import { ContactInformationProps } from '../types/contact-information'
 import Follow from './follow'
 
-interface IContactInformationProps {
-    contacts: {
-        header: string,
-        address: string,
-        operationMode: string,
-        email: string,
-        phone: string
-    }
-}
-
-const ContactInformation: FC<IContactInformationProps> = ({
+const ContactInformation: FC<ContactInformationProps> = ({
     contacts
 }) => (
     <section className="contact-information">

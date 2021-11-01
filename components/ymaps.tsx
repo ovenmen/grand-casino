@@ -1,24 +1,10 @@
-import React, { FC, ReactInstance, Ref, RefCallback, RefObject, SetStateAction, useState } from 'react'
-import { YMaps, Map, ZoomControl, GeolocationControl, Placemark, WithYMapsProps, YMapsApi, YMapsProps } from 'react-yandex-maps'
+import React, { FC, SetStateAction, useState } from 'react'
+import { YMaps, Map, ZoomControl, GeolocationControl, Placemark } from 'react-yandex-maps'
 
 import Loader from '../components/loader'
+import { YMapProps } from '../types/ymaps'
 
-interface IYMapProps extends YMapsApi {
-    map: {
-        header: string,
-        items: [
-            {
-                long: number,
-                lat: number,
-                cooperation: string,
-                city: string
-            }
-        ]
-    },
-    logo: string
-}
-
-const YMap: FC<IYMapProps> = ({
+const YMap: FC<YMapProps> = ({
     map,
     logo
 }) => {

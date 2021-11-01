@@ -4,35 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink, faMapMarkerAlt, faClock, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faVk, faFacebook, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
+import { FooterProps } from '../types/footer'
 import Logo from './logo'
 
-interface IFooterProps {
-    logo: string,
-    footer: {
-        description: string,
-        address: string,
-        operationMode: string,
-        email: string,
-        phone: string,
-        copirated: string
-    },
-    navigation: {
-         items: [
-            {
-                title: string,
-                value: string,
-                submenu?: [
-                    {
-                        title: string,
-                        value: string,
-                    }
-                ]
-            }
-        ]
-    }
-}
-
-const Footer: FC<IFooterProps> = ({
+const Footer: FC<FooterProps> = ({
     logo,
     footer,
     navigation

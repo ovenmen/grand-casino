@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { GetServerSideProps } from 'next'
-import dynamic from 'next/dynamic'
 
 import clientPromise from '../lib/mongodb'
 import Action from '../components/action'
@@ -9,67 +8,10 @@ import Footer from '../components/footer'
 import Breadcrumbs from '../components/breadcrumbs'
 import TablePrices from '../components/table-prices'
 import HeaderPage from '../components/header-page'
+import { PricesProps } from '../types/pages/prices'
+import ScrollerDynamic from '../dynamic-components/scroller-dynamic'
 
-interface IPricesProps {
-    resolvedUrl: string,
-    header: string,
-    headerImage: string,
-    navigation: {
-        items: [
-            {
-                title: string,
-                value: string,
-                submenu?: [
-                   {
-                       title: string,
-                       value: string
-                   }
-                ]
-            }
-        ]
-    },
-    logo: string,
-    breadcrumbs: [
-        {
-            active: boolean,
-            title: string,
-            value: string
-        }
-    ],
-    prices: {
-        items: [
-            {
-                title: string,
-                value: string,
-                description: string[],
-                list: {
-                    title: string,
-                    items: string[]
-                }
-            }
-        ]
-    },
-    action: {
-        header: string,
-        description: string,
-        buttonTitle: string
-        buttonHref: string
-    },
-    footer: {
-        description: string,
-        address: string,
-        operationMode: string,
-        email: string,
-        phone: string,
-        copirated: string
-    }
-}
-
-const ScrollerDynamic = dynamic(() => import('../components/scroller'), {
-    ssr: false
-})
-
-const Prices: FC<IPricesProps> = ({
+const Prices: FC<PricesProps> = ({
     resolvedUrl,
     header,
     headerImage,
@@ -122,13 +64,6 @@ const Prices: FC<IPricesProps> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) => {
     const client = await clientPromise
-
-    // client.db() will be the default database passed in the MONGODB_URI
-    // You can change the database by calling the client.db() function and specifying a database like:
-    // const db = client.db("myDatabase");
-    // Then you can execute queries against your database like so:
-    // db.find({}) or any of the MongoDB Node Driver commands
-
     const db = client.db()
 
     let data

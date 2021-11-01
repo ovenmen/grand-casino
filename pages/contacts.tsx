@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { GetServerSideProps } from 'next'
-import dynamic from 'next/dynamic'
 
 import clientPromise from '../lib/mongodb'
 import Navigation from '../components/navigation'
@@ -10,97 +9,10 @@ import HeaderPage from '../components/header-page'
 import YMap from '../components/ymaps'
 import ContactInformation from '../components/contact-information'
 import ContactForm from '../components/contact-form'
+import { ContactsProps } from '../types/pages/contacts'
+import ScrollerDynamic from '../dynamic-components/scroller-dynamic'
 
-interface IContactsProps {
-    resolvedUrl: string,
-    header: string,
-    headerImage: string,
-    navigation: {
-        items: [
-            {
-                title: string,
-                value: string,
-                submenu?: [
-                   {
-                       title: string,
-                       value: string
-                   }
-                ]
-            }
-        ]
-    },
-    logo: string,
-    breadcrumbs: [
-        {
-            active: boolean,
-            title: string,
-            value: string
-        }
-    ],
-    map: {
-        header: string,
-        items: [
-            {
-                long: number,
-                lat: number,
-                cooperation: string,
-                city: string
-            }
-        ]
-    },
-    contacts: {
-        header: string,
-        address: string,
-        operationMode: string,
-        email: string,
-        phone: string
-    },
-    contactsForm: {
-        header:string,
-        submitButtonTitle: string,
-        fields: [
-            {
-                name: string,
-                type: string,
-                placeholder: string
-            },
-            {
-                name: string,
-                type: string,
-                placeholder: string
-            },
-            {
-                name: string,
-                type: string,
-                placeholder: string
-            },
-            {
-                name: string,
-                type: string,
-                placeholder: string
-            },
-            {
-                name: string,
-                type: string,
-                placeholder: string
-            }
-        ]
-    },
-    footer: {
-        description: string,
-        address: string,
-        operationMode: string,
-        email: string,
-        phone: string,
-        copirated: string
-    }
-}
-
-const ScrollerDynamic = dynamic(() => import('../components/scroller'), {
-    ssr: false
-})
-
-const Contacts: FC<IContactsProps> = ({
+const Contacts: FC<ContactsProps> = ({
     resolvedUrl,
     header,
     headerImage,
@@ -166,13 +78,6 @@ const Contacts: FC<IContactsProps> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) => {
     const client = await clientPromise
-
-    // client.db() will be the default database passed in the MONGODB_URI
-    // You can change the database by calling the client.db() function and specifying a database like:
-    // const db = client.db("myDatabase");
-    // Then you can execute queries against your database like so:
-    // db.find({}) or any of the MongoDB Node Driver commands
-
     const db = client.db()
 
     let data

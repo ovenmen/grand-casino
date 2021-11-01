@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import Head from 'next/head'
-import type { AppProps } from 'next/app'
 
 import '../public/css/foundation.min.css'
+import { AppProps } from '../types/pages/app'
 
 const GrandCasino: FC<AppProps> = ({
     Component,

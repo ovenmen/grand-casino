@@ -1,17 +1,9 @@
 import React, { FC } from 'react'
 
+import { ActionProps } from '../types/action'
 import Button from './button'
 
-interface IActionProps {
-    action: {
-        header: string,
-        description: string,
-        buttonTitle: string,
-        buttonHref: string
-    }
-}
-
-const Action: FC<IActionProps> = ({
+const Action: FC<ActionProps> = ({
     action
 }) => (
     <section className="action">

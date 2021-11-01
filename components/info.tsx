@@ -1,17 +1,8 @@
 import React, { FC } from 'react'
 
-interface IInfoProps {
-    info: {
-        header: string,
-        description?: string[],
-        list?: {
-            title: string,
-            items: string[]
-        }
-    }
-}
+import { InfoProps } from '../types/info'
 
-const Info: FC<IInfoProps> = ({
+const Info: FC<InfoProps> = ({
     info
 }) => (
     <section className="info">

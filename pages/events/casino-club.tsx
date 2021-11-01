@@ -1,83 +1,18 @@
 import React, { FC } from 'react'
-import dynamic from 'next/dynamic'
 import { GetServerSideProps } from 'next'
 
 import clientPromise from '../../lib/mongodb'
 import Breadcrumbs from '../../components/breadcrumbs'
 import EventDescription from '../../components/event-description'
 import Action from '../../components/action'
-import Loader from '../../components/loader'
 import Navigation from '../../components/navigation'
 import Footer from '../../components/footer'
 import HeaderPage from '../../components/header-page'
+import { CasinoClubProps } from '../../types/pages/casino-club'
+import ScrollerDynamic from '../../dynamic-components/scroller-dynamic'
+import PhotosDynamic from '../../dynamic-components/photos-dynamic'
 
-interface ICasinoClubProps {
-    header: string,
-    headerImage: string,
-    resolvedUrl: string,
-    logo: string,
-    navigation: {
-        items: [
-            {
-                title: string,
-                value: string,
-                submenu?: [
-                   {
-                       title: string,
-                       value: string
-                   }
-                ]
-            }
-        ]
-    },
-    breadcrumbs: [
-        {
-            active: boolean,
-            title: string,
-            value: string
-        }
-    ],
-    event: {
-        header: string,
-        list: {
-            title: string,
-            items: string[]
-        },
-        description: string[],
-        marker: string,
-        linkPriceHref: string,
-        linkPriceTitle: string
-    },
-    photos: {
-        header: string,
-        items: string[]
-    },
-    action: {
-        header: string,
-        description: string,
-        buttonTitle: string
-        buttonHref: string
-    },
-    footer: {
-        description: string,
-        address: string,
-        operationMode: string,
-        email: string,
-        phone: string,
-        copirated: string
-    }
-}
-
-const PhotosDynamic = dynamic(() => import('../../components/photo-carousel'), {
-    loading: () => <Loader />,
-    ssr: true
-})
-
-const ScrollerDynamic = dynamic(() => import('../../components/scroller'), {
-    ssr: false
-})
-
-const CasinoClub: FC<ICasinoClubProps> = ({
+const CasinoClub: FC<CasinoClubProps> = ({
     resolvedUrl,
     logo,
     navigation,
@@ -134,13 +69,6 @@ const CasinoClub: FC<ICasinoClubProps> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({ resolvedUrl }) => {
     const client = await clientPromise
-
-    // client.db() will be the default database passed in the MONGODB_URI
-    // You can change the database by calling the client.db() function and specifying a database like:
-    // const db = client.db("myDatabase");
-    // Then you can execute queries against your database like so:
-    // db.find({}) or any of the MongoDB Node Driver commands
-
     const db = client.db()
 
     let data

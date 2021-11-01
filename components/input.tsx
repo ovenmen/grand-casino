@@ -1,15 +1,8 @@
-import React, { BaseSyntheticEvent, FC } from 'react'
+import React, { FC } from 'react'
 
-interface IInputProps {
-    name: string,
-    label: string,
-    error: boolean,
-    type: string,
-    placeholder: string,
-    onChange: (event: BaseSyntheticEvent) => void
-}
+import { InputProps } from '../types/input'
 
-const Input: FC<IInputProps> = ({
+const Input: FC<InputProps> = ({
     name,
     label,
     error,

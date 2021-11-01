@@ -3,24 +3,9 @@ import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuoteLeft, faQuoteRight, faFrown } from '@fortawesome/free-solid-svg-icons'
 
-interface IAllReviewsProps {
-    reviews: {
-        header: string,
-        emptyReviewsMessage: string,
-        actionReviewsMessage: string,
-        items: [
-            {
-                image: string,
-                fullname: string,
-                city: string,
-                date: string,
-                description: string
-            }
-        ]
-    }
-}
+import { AllReviewsProps } from '../types/all-reviews'
 
-const AllReviews: FC<IAllReviewsProps> = ({
+const AllReviews: FC<AllReviewsProps> = ({
     reviews
 }) => (
     <section className="all-reviews">

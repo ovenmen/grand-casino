@@ -4,28 +4,10 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 
+import { NavigationProps } from '../types/navigation'
 import Logo from '../components/logo'
 
-interface INavigationProps {
-    navigation: {
-        items: [
-            {
-                title: string,
-                value: string,
-                submenu?: [
-                    {
-                        title: string,
-                        value: string,
-                    }
-                ]
-            }
-        ]
-    },
-    logo: string,
-    resolvedUrl: string
-}
-
-const Navigation: FC<INavigationProps> = ({
+const Navigation: FC<NavigationProps> = ({
     navigation = {
         items: []
     },

@@ -1,41 +1,13 @@
 import React, { BaseSyntheticEvent, FC, useState } from 'react'
 
 import sendFormData from '../lib/send-form-data'
+import { ReviesFormProps } from '../types/review-form'
 
 import Input from './input'
 import Textarea from './textarea'
 import UploadButton from './upload-button'
 
-interface IReviesFormProps {
-    reviewsForm: {
-        header: string,
-        fields: [
-            {
-                name: string,
-                type: string,
-                placeholder: string
-            },
-            {
-                name: string,
-                type: string,
-                placeholder: string
-            },
-            {
-                name: string,
-                type: string,
-                placeholder: string
-            },
-            {
-                name: string,
-                type: string,
-                placeholder: string
-            }
-        ],
-        submitButtonTitle: string
-    }
-}
-
-const ReviewsForm: FC<IReviesFormProps> = ({
+const ReviewsForm: FC<ReviesFormProps> = ({
     reviewsForm
 }) => {
     const [formValues, setFormValues] = useState({

@@ -4,23 +4,9 @@ import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages } from '@fortawesome/free-solid-svg-icons'
 
-interface IAllEventsProps {
-    events: {
-        items: [
-            {
-                image: string,
-                headerHref: string,
-                header: string,
-                subheader: string,
-                description: string,
-                buttonHref: string,
-                buttonTitle: string
-            }
-        ]
-    }
-}
+import { AllEventsProps } from '../types/all-events'
 
-const AllEvents: FC<IAllEventsProps> = ({
+const AllEvents: FC<AllEventsProps> = ({
     events
 }) => (
     <section>

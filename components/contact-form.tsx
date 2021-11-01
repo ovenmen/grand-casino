@@ -1,44 +1,11 @@
 import React, { BaseSyntheticEvent, FC, useState } from 'react'
 
 import sendFormData from '../lib/send-form-data'
+import { ContactFormProps } from '../types/contact-form'
 import Input from './input'
 import Textarea from './textarea'
 
-interface IContactFormProps {
-    contactsForm: {
-        header:string,
-        submitButtonTitle: string,
-        fields: [
-            {
-                name: string,
-                type: string,
-                placeholder: string
-            },
-            {
-                name: string,
-                type: string,
-                placeholder: string
-            },
-            {
-                name: string,
-                type: string,
-                placeholder: string
-            },
-            {
-                name: string,
-                type: string,
-                placeholder: string
-            },
-            {
-                name: string,
-                type: string,
-                placeholder: string
-            }
-        ]
-    }
-}
-
-const ContactForm: FC<IContactFormProps> = ({
+const ContactForm: FC<ContactFormProps> = ({
     contactsForm
 }) => {
     const [formValues, setFormValues] = useState({

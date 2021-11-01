@@ -1,20 +1,7 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-interface ReviewsProps {
-    reviews: {
-        header: string,
-        items: [
-            {
-                image: string,
-                fullname: string,
-                city: string,
-                date: string,
-                description: string
-            }
-        ]
-    }
-}
+import { ReviewsProps } from '../types/reviews'
 
 const Reviews: FC<ReviewsProps> = ({
     reviews

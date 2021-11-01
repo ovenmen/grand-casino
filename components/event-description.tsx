@@ -4,22 +4,9 @@ import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons'
 
-interface IEventDescriptionProps {
-    event: {
-        header: string,
-        image?: string,
-        list: {
-            title: string,
-            items: string[]
-        },
-        description: string[],
-        marker: string,
-        linkPriceHref: string,
-        linkPriceTitle: string
-    }
-}
+import { EventDescriptionProps } from '../types/event-description'
 
-const EventDescription: FC<IEventDescriptionProps> = ({
+const EventDescription: FC<EventDescriptionProps> = ({
     event
 }) => (
     <section>

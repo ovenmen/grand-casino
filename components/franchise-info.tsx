@@ -1,40 +1,9 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
 
-interface IFranchiseInfoProps {
-    franchise: {
-        header: string,
-        description: string,
-        profit: {
-            header: string,
-            promo: string,
-            description: string[]
-        },
-        advantages: {
-            header: string,
-            queston: string,
-            action: string,
-            linkHref: string,
-            linkTitle: string,
-            answer: string,
-            items: [
-                {
-                    header: string,
-                    promo: string
-                    description: string[],
-                    list: {
-                        header: string,
-                        description: string[]
-                    },
-                    note: string
-                }
-            ],
-            
-        }
-    }
-}
+import { FranchiseInfoProps } from '../types/franchise-info'
 
-const FranchiseInfo: FC<IFranchiseInfoProps> = ({
+const FranchiseInfo: FC<FranchiseInfoProps> = ({
     franchise
 }) => (
     <section className="franchise-info">

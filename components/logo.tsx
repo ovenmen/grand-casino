@@ -1,11 +1,9 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
 
-interface ILogoProps {
-    logo: string
-}
+import { LogoProps } from '../types/logo'
 
-const Logo: FC<ILogoProps> = ({
+const Logo: FC<LogoProps> = ({
     logo
 }) => (
     <Link href="/">

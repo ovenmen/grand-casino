@@ -1,12 +1,9 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-interface IHeaderPageProps {
-    header: string,
-    headerImage: string
-}
+import { HeaderPageProps } from '../types/header-page'
 
-const HeaderPage: FC<IHeaderPageProps> = ({
+const HeaderPage: FC<HeaderPageProps> = ({
     header,
     headerImage
 }) => (

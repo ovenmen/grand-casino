@@ -2,26 +2,10 @@ import React, { FC } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { ActivityProps } from '../types/activity'
 import Button from './button'
 
-interface IActivityProps {
-    activity: {
-        header: string,
-        description: string[],
-        buttonTitle: string,
-        buttonHref: string,
-        items: [
-            {
-                header: string,
-                buttonTitle: string
-                buttonHref: string
-                image: string
-            }
-        ]
-    }
-}
-
-const Activity: FC<IActivityProps> = ({
+const Activity: FC<ActivityProps> = ({
     activity
 }) => (
     <section className="activity">
