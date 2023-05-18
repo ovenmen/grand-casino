@@ -11,13 +11,8 @@ const Button: FC<ButtonProps> = ({
     invert
 }) => (
     <span>
-        <Link href={href}>
-            <a
-                className={classnames('link button text-uppercase text-nowrap', bigSize && 'big', invert && 'invert')}
-                aria-label={title}
-            >
-                {title}
-            </a>
+        <Link href={href} className={classnames('link button text-uppercase text-nowrap', bigSize && 'big', invert && 'invert')} aria-label={title}>
+            {title}
         </Link>
 
         <style jsx>{`

@@ -44,19 +44,15 @@ const Navigation: FC<NavigationProps> = ({
                         <ul className="menu">
                             {navigation.items.map(menuItem => (
                                 <li className="menu-item" key={menuItem.value} onClick={handleClickLink}>
-                                    <Link href={menuItem.value}>
-                                        <a className={classnames('link font-bold h5', menuItem.value === resolvedUrl && 'active')} aria-label={menuItem.title}>
-                                            {menuItem.title}
-                                        </a>
+                                    <Link href={menuItem.value} className={classnames('link font-bold h5', menuItem.value === resolvedUrl && 'active')} aria-label={menuItem.title}>
+                                        {menuItem.title}
                                     </Link>
                                     {menuItem.submenu && (
                                         <ul className="submenu flex-dir-column">
                                             {menuItem.submenu.map(submenuItem => (
                                                 <li className="submenu-item" key={submenuItem.value}>
-                                                    <Link href={submenuItem.value}>
-                                                        <a className={classnames('link font-bold h5', submenuItem.value === resolvedUrl && 'active')} aria-label={submenuItem.title}>
-                                                            {submenuItem.title}
-                                                        </a>
+                                                    <Link href={submenuItem.value} className={classnames('link font-bold h5', submenuItem.value === resolvedUrl && 'active')} aria-label={submenuItem.title}>
+                                                        {submenuItem.title}
                                                     </Link>
                                                 </li>
                                             ))}

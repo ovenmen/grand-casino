@@ -18,8 +18,8 @@ const AllEvents: FC<AllEventsProps> = ({
                             src={`/images/${event.image}`}
                             className="event-image"
                             alt={event.image}
-                            width="100%"
-                            height="100%"
+                            width={100}
+                            height={100}
                             layout="responsive"
                             objectFit="cover"
                         />
@@ -27,19 +27,17 @@ const AllEvents: FC<AllEventsProps> = ({
                     <div className="cell small-12 medium-6 large-3">
                         <div className="event-description">
                             <h4 className="text-uppercase font-bold">
-                                <Link href={event.headerHref}>
-                                    <a className="link color-grey">{event.header}</a>
+                                <Link href={event.headerHref} className="link color-grey">
+                                    {event.header}
                                 </Link>
                             </h4>
                             <h4 className="subheader">{event.subheader}</h4>
                             <p>{event.description}</p>
                             <p className="gallary-button">
-                                <Link href={event.buttonHref}>
-                                    <a className="link color-purple text-uppercase font-bold" aria-label={event.buttonTitle}>
-                                        <span>{event.buttonTitle}</span><span className="icon margin-left-1">
-                                            <FontAwesomeIcon fixedWidth icon={faImages} height="1em" />
-                                        </span>
-                                    </a>
+                                <Link href={event.buttonHref} className="link color-purple text-uppercase font-bold" aria-label={event.buttonTitle}>
+                                    <span>{event.buttonTitle}</span><span className="icon margin-left-1">
+                                        <FontAwesomeIcon fixedWidth icon={faImages} height="1em" />
+                                    </span>
                                 </Link>
                             </p>
                         </div>

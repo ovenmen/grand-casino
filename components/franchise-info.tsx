@@ -52,8 +52,8 @@ const FranchiseInfo: FC<FranchiseInfoProps> = ({
                 <p className="font-bold text-center h4">{franchise.advantages.queston}</p>
                 <p className="font-bold text-center h4">{franchise.advantages.action}</p>
                 <p className="text-center h4">
-                    <Link href={franchise.advantages.linkHref}>
-                        <a className="link color-purple" aria-label={franchise.advantages.linkTitle}>{franchise.advantages.linkTitle}</a>
+                    <Link href={franchise.advantages.linkHref} className="link color-purple" aria-label={franchise.advantages.linkTitle}>
+                        {franchise.advantages.linkTitle}
                     </Link>
                     {franchise.advantages.answer}
                 </p>

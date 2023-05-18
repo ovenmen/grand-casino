@@ -32,10 +32,9 @@ const Footer: FC<FooterProps> = ({
                             <ul className="color-white list">
                                 {navigation && navigation.items.map((item, index) => (
                                     <li key={index} className="list-item">
-                                        <Link href={item.value} passHref>
-                                            <a className="link color-white" aria-label={item.title}>{item.title}
-                                                <span className="icon"><FontAwesomeIcon fixedWidth icon={faLink} height="1em" /></span>
-                                            </a>
+                                        <Link href={item.value} passHref className="link color-white" aria-label={item.title}>
+                                            {item.title}
+                                            <span className="icon"><FontAwesomeIcon fixedWidth icon={faLink} height="1em" /></span>
                                         </Link>
                                     </li>
                                 ))}
@@ -46,10 +45,9 @@ const Footer: FC<FooterProps> = ({
                                 <ul className="color-white list">
                                     {submenu.map(item => (
                                         <li key={item.value} className="list-item">
-                                            <Link href={item.value} passHref>
-                                                <a className="link color-white" aria-label={item.title}>{item.title}
-                                                    <span className="icon"><FontAwesomeIcon fixedWidth icon={faLink} height="1em" /></span>
-                                                </a>
+                                            <Link href={item.value} passHref className="link color-white" aria-label={item.title}>
+                                                {item.title}
+                                                <span className="icon"><FontAwesomeIcon fixedWidth icon={faLink} height="1em" /></span>
                                             </Link>
                                         </li>
                                     ))}

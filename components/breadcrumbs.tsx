@@ -16,7 +16,7 @@ const Breadcrumbs: FC<BreadcrumbsProps> = ({
                                 <li key={index} className="nav-item font-bold text-uppercase">{item.title}</li>
                             ) : (
                                 <li key={index} className="nav-item font-bold text-uppercase">
-                                    <Link href={item.value}><a className="link color-purple" aria-label={item.title}>{item.title}</a></Link>
+                                    <Link href={item.value} className="link color-purple" aria-label={item.title}>{item.title}</Link>
                                     <span className="breadcrumbs-separate">{'/'}</span>
                                 </li>
                             )

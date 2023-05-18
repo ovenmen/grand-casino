@@ -43,7 +43,7 @@ const Activity: FC<ActivityProps> = ({
                                 <div className="activity-event">
                                     <Image className="activity-image" src={`/images/${event.image}`} width="480" height="380" alt={event.image} />
                                     <Link href={event.buttonHref}>
-                                        <a><p className="color-white h4 font-bold text-uppercase event-header">{event.header}</p></a>
+                                        <p className="color-white h4 font-bold text-uppercase event-header">{event.header}</p>
                                     </Link>
                                     <div className="activity-event-button">
                                         <Button title={event.buttonTitle} href={event.buttonHref} invert />

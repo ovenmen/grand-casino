@@ -38,12 +38,11 @@ const PhotoCarousel: FC<PhotoCarouselProps> = ({
                             <Image
                                 src={photo}
                                 alt={photo}
-                                width="200"
-                                height="200"
+                                width={500}
+                                height={500}
                                 onClick={() => openLightboxOnSlide(index + 1)}
-                                objectFit="cover"
-                                layout="responsive"
                                 priority
+                                style={{ objectFit: 'cover', height: '100%' }}
                             />
                         </figure>
                     </div>
@@ -58,20 +57,26 @@ const PhotoCarousel: FC<PhotoCarouselProps> = ({
 
             <style jsx>{`
                 .photo-carousel {
-                background-color: var(--color-purple);
-                padding: 5rem;
-                padding-top: 0;
+                    background-color: var(--color-purple);
+                    padding: 5rem;
+                    padding-top: 0;
                 }
                 .thumbnail {
-                background: var(--color-white);
-                padding: 0.5rem;
-                border: 1px solid;
+                    background: var(--color-white);
+                    padding: 0.5rem;
+                    border: 1px solid;
+                    height: 100%;
+                    position: relative;
+                }
+                .thumbnail img {
+                    height: 100;
+                    object-fit: cover;
                 }
                 .thumbnail:hover {
-                cursor: pointer;
+                    cursor: pointer;
                 }
                 .header {
-                margin-top: 2rem;
+                    margin-top: 2rem;
                 }
             `}</style>
         </section>

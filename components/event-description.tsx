@@ -25,10 +25,8 @@ const EventDescription: FC<EventDescriptionProps> = ({
                     </ul>
                     <p className="h5 font-italic margin-top-3 marker">{event.marker}</p>
                     <p className="margin-top-3">
-                        <Link href={event.linkPriceHref}>
-                            <a className="link color-purple text-uppercase font-bold" aria-label={event.linkPriceTitle}>{event.linkPriceTitle}
-                                <span className="icon margin-left-1"><FontAwesomeIcon fixedWidth icon={faFileInvoiceDollar} height="1em" /></span>
-                            </a>
+                        <Link href={event.linkPriceHref} className="link color-purple text-uppercase font-bold" aria-label={event.linkPriceTitle}>
+                            <span className="icon margin-left-1"><FontAwesomeIcon fixedWidth icon={faFileInvoiceDollar} height="1em" /></span>
                         </Link>
                     </p>
                 </div>
@@ -37,9 +35,9 @@ const EventDescription: FC<EventDescriptionProps> = ({
                 <Image
                     src={`/images/${event.image}`}
                     className="image"
-                    alt={event.image}
-                    width="100%"
-                    height="100%"
+                    alt={event.image || ''}
+                    width={100}
+                    height={100}
                     layout="responsive"
                     objectFit="cover"
                 />

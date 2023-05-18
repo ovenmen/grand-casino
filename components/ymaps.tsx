@@ -1,5 +1,5 @@
 import React, { FC, SetStateAction, useState } from 'react'
-import { YMaps, Map, ZoomControl, GeolocationControl, Placemark } from 'react-yandex-maps'
+import { YMaps, Map, ZoomControl, GeolocationControl, Placemark } from '@pbe/react-yandex-maps'
 
 import Loader from '../components/loader'
 import { YMapProps } from '../types/ymaps'
@@ -32,8 +32,8 @@ const YMap: FC<YMapProps> = ({
                 }
                 <Map
                     width="100%"
-                    height="30rem"
-                    defaultState={{ center: [65, 100], zoom: 3 }}
+                    height={400}
+                    defaultState={{ center: [55, 70], zoom: 3 }}
                     defaultOptions={{ minZoom: 3 }}
                     modules={['geoObject.addon.balloon', 'geoObject.addon.hint']}
                     instanceRef={handleInstanceRef}
