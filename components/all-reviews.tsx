@@ -42,7 +42,7 @@ const AllReviews: FC<AllReviewsProps> = ({
                             <span className="quote-right"><FontAwesomeIcon icon={faQuoteRight} height="1em" /></span>
                         </div>
                     ) : (
-                        <div className="grid-x grid-padding-x margin-top-3">
+                        <div key={index} className="grid-x grid-padding-x margin-top-3">
                             <div className="cell small-12">
                                 <span className="frown color-white text-center"><FontAwesomeIcon fixedWidth icon={faFrown} height="5em" /></span>
                                 <p className="text-center color-white h5">{reviews.emptyReviewsMessage}</p>

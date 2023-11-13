@@ -10,35 +10,35 @@
     "lint": "npx next lint"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "6.4.0",
-    "@fortawesome/free-brands-svg-icons": "6.4.0",
-    "@fortawesome/free-solid-svg-icons": "6.4.0",
+    "@fortawesome/fontawesome-svg-core": "6.4.2",
+    "@fortawesome/free-brands-svg-icons": "6.4.2",
+    "@fortawesome/free-solid-svg-icons": "6.4.2",
     "@fortawesome/react-fontawesome": "0.2.0",
-    "@pbe/react-yandex-maps": "1.2.4",
+    "@pbe/react-yandex-maps": "1.2.5",
     "classnames": "2.3.2",
     "date-fns": "2.30.0",
-    "fslightbox-react": "1.7.4",
-    "mongodb": "5.5.0",
+    "fslightbox-react": "1.7.6",
+    "mongodb": "6.2.0",
     "multer": "1.4.5-lts.1",
-    "next": "13.4.2",
+    "next": "14.0.2",
     "next-connect": "1.0.0",
-    "nodemailer": "6.9.2",
+    "nodemailer": "6.9.7",
     "react": "18.2.0",
     "react-accessible-accordion": "5.0.0",
     "react-dom": "18.2.0",
-    "sharp": "0.32.1"
+    "sharp": "0.32.6"
   },
   "devDependencies": {
     "@types/date-fns": "2.6.0",
-    "@types/fslightbox-react": "1.7.3",
+    "@types/fslightbox-react": "1.7.6",
     "@types/mongodb": "4.0.7",
-    "@types/multer": "1.4.7",
+    "@types/multer": "1.4.10",
     "@types/next": "9.0.0",
-    "@types/node": "20.2.1",
-    "@types/nodemailer": "6.4.8",
-    "@types/react": "18.2.6",
-    "eslint": "8.40.0",
-    "eslint-config-next": "13.4.2",
-    "typescript": "5.0.4"
+    "@types/node": "20.9.0",
+    "@types/nodemailer": "6.4.14",
+    "@types/react": "18.2.37",
+    "eslint": "8.53.0",
+    "eslint-config-next": "14.0.2",
+    "typescript": "5.2.2"
   }
 }
