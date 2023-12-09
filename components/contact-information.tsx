@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 
 import { ContactInformationProps } from '../types/contact-information'
-import Follow from './follow'
 
 const ContactInformation: FC<ContactInformationProps> = ({
     contacts
@@ -18,11 +17,6 @@ const ContactInformation: FC<ContactInformationProps> = ({
                 <p className="lead"><span className="font-bold">Режим работы: </span>{contacts.operationMode}</p>
                 <p className="lead"><span className="font-bold">Email: </span>{contacts.email}</p>
                 <p className="lead"><span className="font-bold">Телефон: </span>{contacts.phone}</p>
-            </div>
-        </div>
-        <div className="grid-x">
-            <div className="cell small-12 medium-12 large-12 margin-top-2">
-                <Follow />
             </div>
         </div>
 

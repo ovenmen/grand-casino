@@ -16,7 +16,6 @@ const AllEvents: FC<AllEventsProps> = ({
                     <div className="cell small-12 medium-6 large-3">
                         <Image
                             src={`/images/${event.image}`}
-                            className="event-image"
                             alt={event.image}
                             width={100}
                             height={100}

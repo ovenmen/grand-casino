@@ -41,7 +41,7 @@ const Activity: FC<ActivityProps> = ({
                         {activity.items.map((event, index) => (
                             <div className="cell small-12 medium-6 large-6" key={index}>
                                 <div className="activity-event">
-                                    <Image className="activity-image" src={`/images/${event.image}`} width="480" height="380" alt={event.image} />
+                                    <Image className="activity-image" src={`/images/${event.image}`} width="480" height="380" alt={event.image} loading="lazy" objectFit="cover" />
                                     <Link href={event.buttonHref}>
                                         <p className="color-white h4 font-bold text-uppercase event-header">{event.header}</p>
                                     </Link>

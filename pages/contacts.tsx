@@ -45,13 +45,6 @@ const Contacts: FC<ContactsProps> = ({
         )}
         <div className="grid-x">
             <div className="cell small-12 medium-6 large-6">
-                {contactsForm && (
-                    <ContactForm
-                        contactsForm={contactsForm}
-                    />
-                )}
-            </div>
-            <div className="cell small-12 medium-6 large-6">
                 {contacts && (
                     <ContactInformation
                         contacts={contacts}

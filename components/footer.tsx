@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink, faMapMarkerAlt, faClock, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { faVk, faFacebook, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
 import { FooterProps } from '../types/footer'
 import Logo from './logo'
@@ -54,7 +53,7 @@ const Footer: FC<FooterProps> = ({
                                 </ul>
                             </div>
                         )}
-                        <div className="cell small-12 medium-6 large-3">
+                        <div className="cell small-12 medium-6 large-3 margin-top-1">
                             <p className="color-white">
                                 <span className="contact-icon"><FontAwesomeIcon fixedWidth icon={faMapMarkerAlt} height="1em" /></span>
                                 {footer.address}
@@ -83,30 +82,6 @@ const Footer: FC<FooterProps> = ({
                         <div className="cell small-12 medium-10 large-10">
                             <p className="color-white">{footer.copirated}</p>
                         </div>
-                        <div className="cell small-12 medium-2 large-2">
-                            <ul className="social-list no-bullet">
-                                <li>
-                                    <a href="https://vk.com/questoria" className="color-white link" rel="noopener noreferrer" target="_blank">
-                                        <FontAwesomeIcon fixedWidth icon={faVk} height="1em" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.facebook.com/questoria/" className="color-white link" rel="noopener noreferrer" target="_blank">
-                                        <FontAwesomeIcon fixedWidth icon={faFacebook} height="1em" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.instagram.com/questories/" className="color-white link" rel="noopener noreferrer" target="_blank">
-                                        <FontAwesomeIcon fixedWidth icon={faInstagram} height="1em" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.youtube.com/user/questoriaru" className="color-white link" rel="noopener noreferrer" target="_blank">
-                                        <FontAwesomeIcon fixedWidth icon={faYoutube} height="1em" />
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -123,8 +98,6 @@ const Footer: FC<FooterProps> = ({
                     margin: 0;
                     padding-bottom: 0;
                     padding-right: 1.5rem;
-                    padding-left: 0.5rem;
-                    padding-top: 0.5rem;
                 }
                 .list {
                     padding: 0 1.5rem;
