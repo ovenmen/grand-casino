@@ -42,7 +42,7 @@ const PhotoCarousel: FC<PhotoCarouselProps> = ({
                                 height={500}
                                 onClick={() => openLightboxOnSlide(index + 1)}
                                 style={{ objectFit: 'cover', height: '100%' }}
-                                loading="lazy"
+                                priority
                             />
                         </figure>
                     </div>

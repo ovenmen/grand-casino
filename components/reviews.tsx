@@ -25,7 +25,6 @@ const Reviews: FC<ReviewsProps> = ({
                                     alt={item.image}
                                     width="150"
                                     height="150"
-                                    loading="lazy"
                                     objectFit="cover"
                                     layout="intrinsic"
                                 />
