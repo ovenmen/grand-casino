@@ -1,4 +1,4 @@
-import format from 'date-fns/format'
+import { format } from 'date-fns'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import clientPromise from '../../lib/mongodb'
@@ -21,7 +21,7 @@ const sendFormData = async (body: ISendFormDataProps) => {
         const modifyName = name.replace(/^./, name[0].toUpperCase())
         const modifyCity = city.replace(/^./, city[0].toUpperCase())
         const modifyMessage = message.replace(/^./, message[0].toUpperCase())
-        const modifyDate = format(new Date(date), 'dd.MM.yyyy')
+        const modifyDate = format?.(new Date(date), 'dd.MM.yyyy')
         const data = {
             subject: 'Новая заявка с сайта grand-casino.ru',
             html: `
